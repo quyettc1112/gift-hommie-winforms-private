@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+/xM+CNfsQz3Y9KqCvDYr68uiwBT5Z1i8nPqeTzmu0xBiduaKRvm4NqO21ZjvYCJbinFv4s7671SbIqVlZQ72g==",
+  "dgSpecHash": "hQ7fzxZzh/bfeXL+7c+qWxNImlZgU4jPSVmufnUzd3jrarbYMQfeD7sHHprzEszLS/uZa3BZ0UfnAoEAPvMaSA==",
   "success": true,
-  "projectFilePath": "D:\\FPT\\FPT_S5_SUM23\\PRN211\\code\\winforms\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+  "projectFilePath": "D:\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MSI\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Repositories
-build_property.ProjectDir = D:\FPT\FPT_S5_SUM23\PRN211\code\winforms\gift-hommie-winforms\Repositories\
+build_property.ProjectDir = D:\gift-hommie-winforms\Repositories\
