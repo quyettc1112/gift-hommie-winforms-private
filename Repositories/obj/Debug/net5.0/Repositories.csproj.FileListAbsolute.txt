@@ -1,0 +1,17 @@
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\Repositories.deps.json
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\Repositories.dll
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\Repositories.pdb
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\BusinessObjects.dll
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\DataAccessObjects.dll
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\DataAccessObjects.pdb
+D:\gift-hommie-winforms\Repositories\bin\Debug\net5.0\BusinessObjects.pdb
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.csproj.AssemblyReference.cache
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.AssemblyInfoInputs.cache
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.AssemblyInfo.cs
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.csproj.CoreCompileInputs.cache
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.csproj.CopyComplete
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.dll
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\refint\Repositories.dll
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\Repositories.pdb
+D:\gift-hommie-winforms\Repositories\obj\Debug\net5.0\ref\Repositories.dll
