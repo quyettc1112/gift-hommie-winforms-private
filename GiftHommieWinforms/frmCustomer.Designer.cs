@@ -103,7 +103,6 @@
             this.tabHome.TabIndex = 0;
             this.tabHome.Text = "Home";
             this.tabHome.UseVisualStyleBackColor = true;
-            this.tabHome.Click += new System.EventHandler(this.tabHome_Click);
             // 
             // splitContainer1
             // 
@@ -141,7 +140,6 @@
             this.groupBoxSearch.TabIndex = 82;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Search";
-            this.groupBoxSearch.Enter += new System.EventHandler(this.groupBoxSearch_Enter);
             // 
             // comboBox1
             // 
@@ -223,7 +221,6 @@
             this.label7.Size = new System.Drawing.Size(127, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Units In Stock Min";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtUnitsInStockMinSearch
             // 
@@ -392,7 +389,6 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(1033, 346);
             this.dgvProducts.TabIndex = 84;
-            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
             // btnCancel
             // 
@@ -413,7 +409,6 @@
             this.tabCart.TabIndex = 1;
             this.tabCart.Text = "My Cart";
             this.tabCart.UseVisualStyleBackColor = true;
-            this.tabCart.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // tabMyOrder
             // 
