@@ -28,5 +28,8 @@ namespace BussinessObjects
         public List<Category> GetAllCategories() => CategoryDAO.Instance.GetAll();
 
         public Category GetCategoryById(int id) => CategoryDAO.Instance.Get(id);
+
+        public List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId) 
+            => GetAllWithFilter(searchId, searchName, searchUnitPriceMin, searchUnitPriceMax, searchUnitInStockMin, searchUnitInStockMax, categoryId);
     }
 }

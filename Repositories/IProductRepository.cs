@@ -20,5 +20,7 @@ namespace BussinessObjects
         public List<Product> GetAllWithStatus(bool status = true);
         List<Category> GetAllCategories();
         Category GetCategoryById(int id);
+
+        List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId);
     }
 }
