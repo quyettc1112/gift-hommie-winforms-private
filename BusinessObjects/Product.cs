@@ -20,7 +20,7 @@ namespace BusinessObjects
         public double Price { get; set; }
         public int? CategoryId { get; set; }
         public string Avatar { get; set; }
-        public byte Status { get; set; }
+        public bool Status { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
