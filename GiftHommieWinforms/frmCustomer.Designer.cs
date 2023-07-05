@@ -50,12 +50,15 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gpProduct = new System.Windows.Forms.GroupBox();
+            this.txtAvailable = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbAvailable = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
             this.lbProductName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbProductAvatar = new System.Windows.Forms.PictureBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tabCart = new System.Windows.Forms.TabPage();
@@ -75,7 +78,8 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.gpProduct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +96,7 @@
             this.tabcontrolCustomer.Size = new System.Drawing.Size(1417, 756);
             this.tabcontrolCustomer.TabIndex = 0;
             this.tabcontrolCustomer.TabStop = false;
+            this.tabcontrolCustomer.Click += new System.EventHandler(this.tabcontrolCustomer_Click);
             // 
             // tabHome
             // 
@@ -103,6 +108,7 @@
             this.tabHome.TabIndex = 0;
             this.tabHome.Text = "Home";
             this.tabHome.UseVisualStyleBackColor = true;
+            this.tabHome.Click += new System.EventHandler(this.tabHome_Click);
             // 
             // splitContainer1
             // 
@@ -306,12 +312,14 @@
             // 
             // gpProduct
             // 
+            this.gpProduct.Controls.Add(this.txtAvailable);
+            this.gpProduct.Controls.Add(this.txtPrice);
             this.gpProduct.Controls.Add(this.groupBox3);
             this.gpProduct.Controls.Add(this.label1);
             this.gpProduct.Controls.Add(this.lbAvailable);
             this.gpProduct.Controls.Add(this.lbPrice);
             this.gpProduct.Controls.Add(this.lbProductName);
-            this.gpProduct.Controls.Add(this.pictureBox1);
+            this.gpProduct.Controls.Add(this.pbProductAvatar);
             this.gpProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpProduct.Location = new System.Drawing.Point(0, 0);
             this.gpProduct.Name = "gpProduct";
@@ -320,14 +328,42 @@
             this.gpProduct.TabStop = false;
             this.gpProduct.Text = "Product Name";
             // 
+            // txtAvailable
+            // 
+            this.txtAvailable.Enabled = false;
+            this.txtAvailable.Location = new System.Drawing.Point(637, 122);
+            this.txtAvailable.Name = "txtAvailable";
+            this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAvailable.Size = new System.Drawing.Size(110, 27);
+            this.txtAvailable.TabIndex = 90;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Enabled = false;
+            this.txtPrice.Location = new System.Drawing.Point(363, 122);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPrice.Size = new System.Drawing.Size(110, 27);
+            this.txtPrice.TabIndex = 0;
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtDesc);
             this.groupBox3.Location = new System.Drawing.Point(290, 195);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(733, 115);
             this.groupBox3.TabIndex = 89;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Description";
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(9, 26);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.ReadOnly = true;
+            this.txtDesc.Size = new System.Drawing.Size(715, 83);
+            this.txtDesc.TabIndex = 0;
             // 
             // label1
             // 
@@ -368,13 +404,14 @@
             this.lbProductName.TabIndex = 1;
             this.lbProductName.Text = "Product Name";
             // 
-            // pictureBox1
+            // pbProductAvatar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(17, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(240, 271);
-            this.pictureBox1.TabIndex = 85;
-            this.pictureBox1.TabStop = false;
+            this.pbProductAvatar.Location = new System.Drawing.Point(17, 39);
+            this.pbProductAvatar.Name = "pbProductAvatar";
+            this.pbProductAvatar.Size = new System.Drawing.Size(240, 271);
+            this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbProductAvatar.TabIndex = 85;
+            this.pbProductAvatar.TabStop = false;
             // 
             // dgvProducts
             // 
@@ -440,6 +477,7 @@
             this.Name = "frmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCustomer";
+            this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.tabcontrolCustomer.ResumeLayout(false);
             this.tabHome.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -458,7 +496,9 @@
             this.splitContainer2.ResumeLayout(false);
             this.gpProduct.ResumeLayout(false);
             this.gpProduct.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.ResumeLayout(false);
 
@@ -489,7 +529,7 @@
         private System.Windows.Forms.TextBox txtProductNameSearch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gpProduct;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbProductAvatar;
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbAvailable;
         private System.Windows.Forms.Label lbPrice;
@@ -499,5 +539,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TextBox txtAvailable;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtDesc;
     }
 }
