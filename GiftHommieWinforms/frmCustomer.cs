@@ -212,11 +212,27 @@ namespace GiftHommieWinforms
         private void lbProductName_TextChanged(object sender, EventArgs e)
         {
             txtCurrentIndex.Text = (bindingSource.Position + 1).ToString();
+            btnBack.Enabled = (bindingSource.Position != 0);
+            btnNext.Enabled = bindingSource.Position + 1 < bindingSource.Count;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            int index = bindingSource.Position - 1 < 0 ? 0 : bindingSource.Position - 1;
+            bindingSource.Position = index;                
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int index = bindingSource.Position;
+            if (index + 1 < bindingSource.Count)
+                index += 1;
+            bindingSource.Position = index;
         }
     }
 }

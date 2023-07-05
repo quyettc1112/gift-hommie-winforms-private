@@ -373,6 +373,7 @@
             this.btnBack.TabIndex = 52;
             this.btnBack.Text = "<< Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNext
             // 
@@ -382,6 +383,7 @@
             this.btnNext.TabIndex = 91;
             this.btnNext.Text = "Next >>";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // txtAvailable
             // 
