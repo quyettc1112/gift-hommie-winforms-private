@@ -46,6 +46,24 @@ namespace DataAccessObjects
             return list;
         }
 
+        public List<Product> GetAllWithStatus(bool status = true)
+        {
+            List<Product> list = new List<Product>();
+            try
+            {
+                using (var context = new HommieStoreContext())
+                {
+                    list = context.Products.Include(item => item.Category).Where(item => item.Status == status).ToList();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return list;
+        }
+
         public Product Get(int id)
         {
             Product entity = null;
@@ -159,7 +177,7 @@ namespace DataAccessObjects
         }
 
 
-        public List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId)
+        public List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId, bool status = true)
         {
             string id = (searchId != null) ? searchId : "";
             string name = (searchName != null) ? searchName : "";
@@ -214,6 +232,7 @@ namespace DataAccessObjects
                             && product.Quantity >= unitInStockMin
                             && product.Quantity <= unitInStockMax
                             && (categoryId == 0 || product.CategoryId == categoryId)
+                            && product.Status == status
                             )
                             .ToList();
                 }

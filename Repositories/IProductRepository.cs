@@ -21,6 +21,6 @@ namespace BussinessObjects
         List<Category> GetAllCategories();
         Category GetCategoryById(int id);
 
-        List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId);
+        List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId, bool status = true);
     }
 }

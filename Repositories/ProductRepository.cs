@@ -12,7 +12,7 @@ namespace BussinessObjects
     {
         public List<Product> GetAll() => ProductDAO.Instance.GetAll();
 
-        public List<Product> GetAllWithStatus(bool status = true) => ProductDAO.Instance.GetAll();
+        public List<Product> GetAllWithStatus(bool status = true) => ProductDAO.Instance.GetAllWithStatus(status);
 
         public void Delete(int id) => ProductDAO.Instance.Delete(id);
 
@@ -29,7 +29,7 @@ namespace BussinessObjects
 
         public Category GetCategoryById(int id) => CategoryDAO.Instance.Get(id);
 
-        public List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId) 
-            => GetAllWithFilter(searchId, searchName, searchUnitPriceMin, searchUnitPriceMax, searchUnitInStockMin, searchUnitInStockMax, categoryId);
+        public List<Product> GetAllWithFilter(string searchId, string searchName, string searchUnitPriceMin, string searchUnitPriceMax, string searchUnitInStockMin, string searchUnitInStockMax, int categoryId, bool status = true) 
+            => GetAllWithFilter(searchId, searchName, searchUnitPriceMin, searchUnitPriceMax, searchUnitInStockMin, searchUnitInStockMax, categoryId, status);
     }
 }
