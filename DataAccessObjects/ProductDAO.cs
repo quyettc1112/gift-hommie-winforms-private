@@ -35,7 +35,7 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    list = context.Products.ToList();
+                    list = context.Products.Include(item => item.Category).ToList();
                 }
 
             }
@@ -53,7 +53,7 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    entity = context.Products.SingleOrDefault<Product>(item => item.Id == id);
+                    entity = context.Products.Include(item => item.Category).SingleOrDefault<Product>(item => item.Id == id);
                 }
             }
             catch (Exception ex)
