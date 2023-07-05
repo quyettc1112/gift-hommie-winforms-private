@@ -387,9 +387,9 @@
             // 
             // txtAvailable
             // 
-            this.txtAvailable.Enabled = false;
             this.txtAvailable.Location = new System.Drawing.Point(637, 122);
             this.txtAvailable.Name = "txtAvailable";
+            this.txtAvailable.ReadOnly = true;
             this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAvailable.Size = new System.Drawing.Size(110, 27);
             this.txtAvailable.TabIndex = 90;
@@ -397,9 +397,9 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Enabled = false;
             this.txtPrice.Location = new System.Drawing.Point(363, 122);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
             this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPrice.Size = new System.Drawing.Size(110, 27);
             this.txtPrice.TabIndex = 0;
@@ -544,6 +544,7 @@
             this.Name = "frmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCustomer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomer_FormClosing);
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.tabcontrolCustomer.ResumeLayout(false);
             this.tabHome.ResumeLayout(false);

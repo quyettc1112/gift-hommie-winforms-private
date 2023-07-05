@@ -101,12 +101,14 @@ namespace GiftHommieWinforms
 
                 dgvProducts.DataSource = null;
                 dgvProducts.DataSource = bindingSource;
+                dgvProducts.Columns["Id"].Visible = false;
                 dgvProducts.Columns["Avatar"].Visible = false;
                 dgvProducts.Columns["Status"].Visible = false;
                 dgvProducts.Columns["Carts"].Visible = false;
                 dgvProducts.Columns["Category"].Visible = false;
                 dgvProducts.Columns["CategoryId"].Visible = false;
                 dgvProducts.Columns["OrderDetails"].Visible = false;
+                setRowNumber(dgvProducts);
 
 
 
@@ -233,6 +235,24 @@ namespace GiftHommieWinforms
             if (index + 1 < bindingSource.Count)
                 index += 1;
             bindingSource.Position = index;
+        }
+
+        private void setRowNumber(DataGridView dgv)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+            }
+        }
+
+        private void frmCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you want to exit?",
+                                    "Confirm to exit",
+                           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (confirmResult == DialogResult.No)
+                e.Cancel = true;
         }
     }
 }
