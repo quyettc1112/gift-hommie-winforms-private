@@ -56,3 +56,5 @@ D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\refint\GiftH
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.pdb
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.genruntimeconfig.cache
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\ref\GiftHommieWinforms.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmCustomer.resources
+D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.csproj.GenerateResource.cache
