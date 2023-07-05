@@ -158,7 +158,7 @@ namespace GiftHommieWinforms
 
         private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
         {
-            HomeLoadData();
+            HomeLoadData();            
         }
 
         private void cbProductCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,6 +207,16 @@ namespace GiftHommieWinforms
             {
                 return 0;
             }
+        }
+
+        private void lbProductName_TextChanged(object sender, EventArgs e)
+        {
+            txtCurrentIndex.Text = (bindingSource.Position + 1).ToString();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

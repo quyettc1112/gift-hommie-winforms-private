@@ -50,6 +50,10 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbProduct = new System.Windows.Forms.GroupBox();
+            this.gbSelect = new System.Windows.Forms.GroupBox();
+            this.txtCurrentIndex = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -64,6 +68,7 @@
             this.tabCart = new System.Windows.Forms.TabPage();
             this.tabMyOrder = new System.Windows.Forms.TabPage();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
+            this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -78,6 +83,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.gbProduct.SuspendLayout();
+            this.gbSelect.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -317,11 +323,12 @@
             this.splitContainer2.Panel2.Controls.Add(this.dgvProducts);
             this.splitContainer2.Panel2.Controls.Add(this.btnClose);
             this.splitContainer2.Size = new System.Drawing.Size(1033, 717);
-            this.splitContainer2.SplitterDistance = 327;
+            this.splitContainer2.SplitterDistance = 376;
             this.splitContainer2.TabIndex = 87;
             // 
             // gbProduct
             // 
+            this.gbProduct.Controls.Add(this.gbSelect);
             this.gbProduct.Controls.Add(this.txtAvailable);
             this.gbProduct.Controls.Add(this.txtPrice);
             this.gbProduct.Controls.Add(this.groupBox3);
@@ -333,10 +340,48 @@
             this.gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbProduct.Location = new System.Drawing.Point(0, 0);
             this.gbProduct.Name = "gbProduct";
-            this.gbProduct.Size = new System.Drawing.Size(1033, 327);
+            this.gbProduct.Size = new System.Drawing.Size(1033, 376);
             this.gbProduct.TabIndex = 86;
             this.gbProduct.TabStop = false;
             this.gbProduct.Text = "Product Name";
+            // 
+            // gbSelect
+            // 
+            this.gbSelect.Controls.Add(this.txtCurrentIndex);
+            this.gbSelect.Controls.Add(this.btnBack);
+            this.gbSelect.Controls.Add(this.btnNext);
+            this.gbSelect.Location = new System.Drawing.Point(6, 320);
+            this.gbSelect.Name = "gbSelect";
+            this.gbSelect.Size = new System.Drawing.Size(1027, 53);
+            this.gbSelect.TabIndex = 92;
+            this.gbSelect.TabStop = false;
+            // 
+            // txtCurrentIndex
+            // 
+            this.txtCurrentIndex.Location = new System.Drawing.Point(434, 18);
+            this.txtCurrentIndex.Name = "txtCurrentIndex";
+            this.txtCurrentIndex.ReadOnly = true;
+            this.txtCurrentIndex.Size = new System.Drawing.Size(126, 27);
+            this.txtCurrentIndex.TabIndex = 52;
+            this.txtCurrentIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(284, 16);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(144, 31);
+            this.btnBack.TabIndex = 52;
+            this.btnBack.Text = "<< Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(566, 16);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(144, 31);
+            this.btnNext.TabIndex = 91;
+            this.btnNext.Text = "Next >>";
+            this.btnNext.UseVisualStyleBackColor = true;
             // 
             // txtAvailable
             // 
@@ -346,6 +391,7 @@
             this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAvailable.Size = new System.Drawing.Size(110, 27);
             this.txtAvailable.TabIndex = 90;
+            this.txtAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPrice
             // 
@@ -355,6 +401,7 @@
             this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPrice.Size = new System.Drawing.Size(110, 27);
             this.txtPrice.TabIndex = 0;
+            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
@@ -413,6 +460,7 @@
             this.lbProductName.Size = new System.Drawing.Size(236, 45);
             this.lbProductName.TabIndex = 1;
             this.lbProductName.Text = "Product Name";
+            this.lbProductName.TextChanged += new System.EventHandler(this.lbProductName_TextChanged);
             // 
             // pbProductAvatar
             // 
@@ -435,18 +483,19 @@
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 29;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1033, 346);
+            this.dgvProducts.Size = new System.Drawing.Size(1033, 297);
             this.dgvProducts.TabIndex = 84;
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(929, 352);
+            this.btnClose.Location = new System.Drawing.Point(929, 303);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 29);
             this.btnClose.TabIndex = 83;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tabCart
             // 
@@ -478,6 +527,12 @@
             this.tabMyProfile.Text = "My Profile";
             this.tabMyProfile.UseVisualStyleBackColor = true;
             // 
+            // sqlCommandBuilder1
+            // 
+            this.sqlCommandBuilder1.DataAdapter = null;
+            this.sqlCommandBuilder1.QuotePrefix = "[";
+            this.sqlCommandBuilder1.QuoteSuffix = "]";
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -506,6 +561,8 @@
             this.splitContainer2.ResumeLayout(false);
             this.gbProduct.ResumeLayout(false);
             this.gbProduct.PerformLayout();
+            this.gbSelect.ResumeLayout(false);
+            this.gbSelect.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
@@ -552,5 +609,10 @@
         private System.Windows.Forms.TextBox txtAvailable;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.GroupBox gbSelect;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnNext;
+        private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+        private System.Windows.Forms.TextBox txtCurrentIndex;
     }
 }
