@@ -49,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.gpProduct = new System.Windows.Forms.GroupBox();
+            this.gbProduct = new System.Windows.Forms.GroupBox();
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -77,7 +77,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.gpProduct.SuspendLayout();
+            this.gbProduct.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -151,10 +151,13 @@
             // 
             this.cbProductCategory.BackColor = System.Drawing.Color.White;
             this.cbProductCategory.FormattingEnabled = true;
+            this.cbProductCategory.Items.AddRange(new object[] {
+            "Select the category"});
             this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
             this.cbProductCategory.Name = "cbProductCategory";
             this.cbProductCategory.Size = new System.Drawing.Size(334, 28);
             this.cbProductCategory.TabIndex = 51;
+            this.cbProductCategory.SelectedIndexChanged += new System.EventHandler(this.cbProductCategory_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -172,6 +175,7 @@
             this.txtProductNameSearch.Name = "txtProductNameSearch";
             this.txtProductNameSearch.Size = new System.Drawing.Size(331, 27);
             this.txtProductNameSearch.TabIndex = 49;
+            this.txtProductNameSearch.TextChanged += new System.EventHandler(this.txtProductNameSearch_TextChanged);
             // 
             // label5
             // 
@@ -190,6 +194,7 @@
             this.btnReset.TabIndex = 47;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // groupBox2
             // 
@@ -210,6 +215,7 @@
             this.txtUnitsInStockMaxSearch.Name = "txtUnitsInStockMaxSearch";
             this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(156, 27);
             this.txtUnitsInStockMaxSearch.TabIndex = 3;
+            this.txtUnitsInStockMaxSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMaxSearch_TextChanged);
             // 
             // label3
             // 
@@ -235,6 +241,7 @@
             this.txtUnitsInStockMinSearch.Name = "txtUnitsInStockMinSearch";
             this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(156, 27);
             this.txtUnitsInStockMinSearch.TabIndex = 1;
+            this.txtUnitsInStockMinSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMinSearch_TextChanged);
             // 
             // groupBox1
             // 
@@ -264,6 +271,7 @@
             this.txtUnitPriceMaxSearch.Name = "txtUnitPriceMaxSearch";
             this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(156, 27);
             this.txtUnitPriceMaxSearch.TabIndex = 3;
+            this.txtUnitPriceMaxSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMaxSearch_TextChanged);
             // 
             // txtUnitPriceMinSearch
             // 
@@ -271,6 +279,7 @@
             this.txtUnitPriceMinSearch.Name = "txtUnitPriceMinSearch";
             this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(156, 27);
             this.txtUnitPriceMinSearch.TabIndex = 1;
+            this.txtUnitPriceMinSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMinSearch_TextChanged);
             // 
             // label2
             // 
@@ -301,7 +310,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.gpProduct);
+            this.splitContainer2.Panel1.Controls.Add(this.gbProduct);
             // 
             // splitContainer2.Panel2
             // 
@@ -311,23 +320,23 @@
             this.splitContainer2.SplitterDistance = 327;
             this.splitContainer2.TabIndex = 87;
             // 
-            // gpProduct
+            // gbProduct
             // 
-            this.gpProduct.Controls.Add(this.txtAvailable);
-            this.gpProduct.Controls.Add(this.txtPrice);
-            this.gpProduct.Controls.Add(this.groupBox3);
-            this.gpProduct.Controls.Add(this.label1);
-            this.gpProduct.Controls.Add(this.lbAvailable);
-            this.gpProduct.Controls.Add(this.lbPrice);
-            this.gpProduct.Controls.Add(this.lbProductName);
-            this.gpProduct.Controls.Add(this.pbProductAvatar);
-            this.gpProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpProduct.Location = new System.Drawing.Point(0, 0);
-            this.gpProduct.Name = "gpProduct";
-            this.gpProduct.Size = new System.Drawing.Size(1033, 327);
-            this.gpProduct.TabIndex = 86;
-            this.gpProduct.TabStop = false;
-            this.gpProduct.Text = "Product Name";
+            this.gbProduct.Controls.Add(this.txtAvailable);
+            this.gbProduct.Controls.Add(this.txtPrice);
+            this.gbProduct.Controls.Add(this.groupBox3);
+            this.gbProduct.Controls.Add(this.label1);
+            this.gbProduct.Controls.Add(this.lbAvailable);
+            this.gbProduct.Controls.Add(this.lbPrice);
+            this.gbProduct.Controls.Add(this.lbProductName);
+            this.gbProduct.Controls.Add(this.pbProductAvatar);
+            this.gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbProduct.Location = new System.Drawing.Point(0, 0);
+            this.gbProduct.Name = "gbProduct";
+            this.gbProduct.Size = new System.Drawing.Size(1033, 327);
+            this.gbProduct.TabIndex = 86;
+            this.gbProduct.TabStop = false;
+            this.gbProduct.Text = "Product Name";
             // 
             // txtAvailable
             // 
@@ -495,8 +504,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.gpProduct.ResumeLayout(false);
-            this.gpProduct.PerformLayout();
+            this.gbProduct.ResumeLayout(false);
+            this.gbProduct.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
@@ -529,7 +538,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtProductNameSearch;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox gpProduct;
+        private System.Windows.Forms.GroupBox gbProduct;
         private System.Windows.Forms.PictureBox pbProductAvatar;
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbAvailable;

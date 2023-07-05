@@ -34,15 +34,12 @@ namespace GiftHommieWinforms
         // TAB HOME
         private void tabHome_Click(object sender, EventArgs e)
         {
+            HomeInitDataForSearchComponent();
             HomeLoadData();
         }
 
-        private void HomeLoadData()
+        private void HomeInitDataForSearchComponent()
         {
-            // Load products
-            List<Product> products = productRepository.GetAllWithStatus(true);
-            HomeLoadDataToGridView(products);
-
             // Load for search
             List<Category> categories = productRepository.GetAllCategories();
             categories.Insert(0, new Category()
@@ -54,6 +51,36 @@ namespace GiftHommieWinforms
             cbProductCategory.ValueMember = "Id";
             cbProductCategory.DisplayMember = "Name";
             cbProductCategory.SelectedValue = 0;
+        }
+
+        private void HomeLoadData()
+        {
+            //// Load for search
+            //List<Category> categories = productRepository.GetAllCategories();
+            //categories.Insert(0, new Category()
+            //{
+            //    Id = 0,
+            //    Name = "Select the category",
+            //});
+            //cbProductCategory.DataSource = categories;
+            //cbProductCategory.ValueMember = "Id";
+            //cbProductCategory.DisplayMember = "Name";
+            //cbProductCategory.SelectedValue = 0;
+
+            // Load products
+            //List<Product> products = productRepository.GetAllWithStatus(true);
+
+            List<Product> products = productRepository.GetAllWithFilter(
+                "",
+                txtProductNameSearch.Text,
+                txtUnitPriceMinSearch.Text, txtUnitPriceMaxSearch.Text,
+                txtUnitsInStockMinSearch.Text, txtUnitsInStockMaxSearch.Text,
+                ToIntOrZero(cbProductCategory.SelectedValue.ToString()),
+                true
+                );
+            HomeLoadDataToGridView(products);
+
+            
         }
 
         private void HomeLoadDataToGridView(IEnumerable<Product> products)
@@ -103,12 +130,15 @@ namespace GiftHommieWinforms
 
         private void HomeReBinding()
         {
+            gbProduct.DataBindings.Clear();
             lbProductName.DataBindings.Clear();
             txtPrice.DataBindings.Clear();
             txtAvailable.DataBindings.Clear();
             txtDesc.DataBindings.Clear();
             pbProductAvatar.DataBindings.Clear();
-            
+
+
+            gbProduct.DataBindings.Add("Text", bindingSource, "Name");
             lbProductName.DataBindings.Add("Text", bindingSource, "Name");
             txtPrice.DataBindings.Add("Text", bindingSource, "Price");
             txtAvailable.DataBindings.Add("Text", bindingSource, "Quantity");
@@ -126,6 +156,57 @@ namespace GiftHommieWinforms
             txtDesc.Text = string.Empty;
         }
 
-        
+        private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void cbProductCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void txtUnitPriceMinSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void txtUnitPriceMaxSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void txtUnitsInStockMinSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void txtUnitsInStockMaxSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtProductNameSearch.Text = string.Empty;
+
+            txtUnitPriceMinSearch.Text = string.Empty;
+            txtUnitPriceMaxSearch.Text = string.Empty;
+            txtUnitsInStockMinSearch.Text = string.Empty;
+            txtUnitsInStockMaxSearch.Text = string.Empty;
+            cbProductCategory.SelectedValue = 0;
+        }
+
+        private int ToIntOrZero(string input)
+        {
+            try
+            {
+                return Convert.ToInt32(input);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }
