@@ -12,6 +12,8 @@ namespace BussinessObjects
     {
         public List<Product> GetAll() => ProductDAO.Instance.GetAll();
 
+        public List<Product> GetAllWithStatus(bool status = true) => ProductDAO.Instance.GetAll();
+
         public void Delete(int id) => ProductDAO.Instance.Delete(id);
 
         public bool Exist(int id) => ProductDAO.Instance.Exist(id);

@@ -28,19 +28,32 @@ namespace GiftHommieWinforms
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            HomeLoadData();
+            tabHome_Click(sender, e);
         }
 
         // TAB HOME
         private void tabHome_Click(object sender, EventArgs e)
         {
-            //LoadData();
+            HomeLoadData();
         }
 
         private void HomeLoadData()
         {
-            List<Product> products = productRepository.GetAll();
+            // Load products
+            List<Product> products = productRepository.GetAllWithStatus(true);
             HomeLoadDataToGridView(products);
+
+            // Load for search
+            List<Category> categories = productRepository.GetAllCategories();
+            categories.Insert(0, new Category()
+            {
+                Id = 0,
+                Name = "Select the category",
+            });
+            cbProductCategory.DataSource = categories;
+            cbProductCategory.ValueMember = "Id";
+            cbProductCategory.DisplayMember = "Name";
+            cbProductCategory.SelectedValue = 0;
         }
 
         private void HomeLoadDataToGridView(IEnumerable<Product> products)

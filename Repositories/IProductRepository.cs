@@ -17,6 +17,7 @@ namespace BussinessObjects
         void Save(Product entity);
         void Delete(int id);
 
+        public List<Product> GetAllWithStatus(bool status = true);
         List<Category> GetAllCategories();
         Category GetCategoryById(int id);
     }

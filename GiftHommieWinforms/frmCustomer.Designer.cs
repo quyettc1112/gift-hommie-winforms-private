@@ -32,7 +32,7 @@
             this.tabHome = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbProductCategory = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.lbProductName = new System.Windows.Forms.Label();
             this.pbProductAvatar = new System.Windows.Forms.PictureBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.tabCart = new System.Windows.Forms.TabPage();
             this.tabMyOrder = new System.Windows.Forms.TabPage();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
@@ -129,7 +129,7 @@
             // 
             // groupBoxSearch
             // 
-            this.groupBoxSearch.Controls.Add(this.comboBox1);
+            this.groupBoxSearch.Controls.Add(this.cbProductCategory);
             this.groupBoxSearch.Controls.Add(this.label4);
             this.groupBoxSearch.Controls.Add(this.txtProductNameSearch);
             this.groupBoxSearch.Controls.Add(this.label5);
@@ -147,14 +147,14 @@
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Search";
             // 
-            // comboBox1
+            // cbProductCategory
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 190);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(334, 28);
-            this.comboBox1.TabIndex = 51;
+            this.cbProductCategory.BackColor = System.Drawing.Color.White;
+            this.cbProductCategory.FormattingEnabled = true;
+            this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
+            this.cbProductCategory.Name = "cbProductCategory";
+            this.cbProductCategory.Size = new System.Drawing.Size(334, 28);
+            this.cbProductCategory.TabIndex = 51;
             // 
             // label4
             // 
@@ -184,9 +184,9 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(258, 39);
+            this.btnReset.Location = new System.Drawing.Point(183, 39);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(82, 31);
+            this.btnReset.Size = new System.Drawing.Size(144, 31);
             this.btnReset.TabIndex = 47;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -283,12 +283,13 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(166, 39);
+            this.btnSearch.Enabled = false;
+            this.btnSearch.Location = new System.Drawing.Point(25, 39);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(86, 31);
+            this.btnSearch.Size = new System.Drawing.Size(142, 31);
             this.btnSearch.TabIndex = 44;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Auto Filting";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
@@ -305,7 +306,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgvProducts);
-            this.splitContainer2.Panel2.Controls.Add(this.btnCancel);
+            this.splitContainer2.Panel2.Controls.Add(this.btnClose);
             this.splitContainer2.Size = new System.Drawing.Size(1033, 717);
             this.splitContainer2.SplitterDistance = 327;
             this.splitContainer2.TabIndex = 87;
@@ -428,15 +429,15 @@
             this.dgvProducts.Size = new System.Drawing.Size(1033, 346);
             this.dgvProducts.TabIndex = 84;
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(929, 352);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(85, 29);
-            this.btnCancel.TabIndex = 83;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(929, 352);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(85, 29);
+            this.btnClose.TabIndex = 83;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // tabCart
             // 
@@ -512,7 +513,7 @@
         private System.Windows.Forms.TabPage tabMyOrder;
         private System.Windows.Forms.TabPage tabMyProfile;
         private System.Windows.Forms.DataGridView dgvProducts;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBoxSearch;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -536,7 +537,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbProductCategory;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox txtAvailable;
