@@ -161,6 +161,7 @@
             // 
             // txtProductNameSearch
             // 
+            this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
             this.txtProductNameSearch.Location = new System.Drawing.Point(9, 121);
             this.txtProductNameSearch.Name = "txtProductNameSearch";
             this.txtProductNameSearch.Size = new System.Drawing.Size(331, 27);
@@ -363,7 +364,7 @@
             this.lbProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbProductName.Location = new System.Drawing.Point(290, 49);
             this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(242, 46);
+            this.lbProductName.Size = new System.Drawing.Size(236, 45);
             this.lbProductName.TabIndex = 1;
             this.lbProductName.Text = "Product Name";
             // 
@@ -405,7 +406,7 @@
             this.tabCart.Location = new System.Drawing.Point(4, 29);
             this.tabCart.Name = "tabCart";
             this.tabCart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCart.Size = new System.Drawing.Size(1409, 759);
+            this.tabCart.Size = new System.Drawing.Size(1409, 723);
             this.tabCart.TabIndex = 1;
             this.tabCart.Text = "My Cart";
             this.tabCart.UseVisualStyleBackColor = true;
@@ -415,7 +416,7 @@
             this.tabMyOrder.Location = new System.Drawing.Point(4, 29);
             this.tabMyOrder.Name = "tabMyOrder";
             this.tabMyOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMyOrder.Size = new System.Drawing.Size(1409, 759);
+            this.tabMyOrder.Size = new System.Drawing.Size(1409, 723);
             this.tabMyOrder.TabIndex = 2;
             this.tabMyOrder.Text = "My Order";
             this.tabMyOrder.UseVisualStyleBackColor = true;
@@ -425,7 +426,7 @@
             this.tabMyProfile.Location = new System.Drawing.Point(4, 29);
             this.tabMyProfile.Name = "tabMyProfile";
             this.tabMyProfile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMyProfile.Size = new System.Drawing.Size(1409, 759);
+            this.tabMyProfile.Size = new System.Drawing.Size(1409, 723);
             this.tabMyProfile.TabIndex = 3;
             this.tabMyProfile.Text = "My Profile";
             this.tabMyProfile.UseVisualStyleBackColor = true;
