@@ -404,7 +404,24 @@ namespace GiftHommieWinforms
                 dgvOrderDetails.Columns["ProductId"].Visible = false;
                 dgvOrderDetails.Columns["Order"].Visible = false;
                 dgvOrderDetails.Columns["Product"].DisplayIndex = 1;
-                dgvOrderDetails.Columns["Product"].Width = 400;
+                dgvOrderDetails.Columns["Product"].Width = 520;
+
+                // Add the column to the DataGridView
+                if (dgvOrderDetails.Columns["Total"] == null)
+                    dgvOrderDetails.Columns.Add("Total", "Total");
+
+                //Calculate and assign the total value for each row
+                foreach (DataGridViewRow row in dgvOrderDetails.Rows)
+                    {
+                        int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                        decimal total = quantity * price;
+
+                        row.Cells["Total"].Value = total;
+                    }
+                dgvOrderDetails.Columns["Total"].DisplayIndex = 4;
+
                 //dgvOrders.Columns["Comment"].Visible = false;
                 //dgvOrders.Columns["Status"].Visible = false;
 
@@ -465,12 +482,12 @@ namespace GiftHommieWinforms
             pbOrderProductAvatar.DataBindings.Clear();
 
 
-            ////gbProduct.DataBindings.Add("Text", bindingSource, "Name");
-            //lbOrderProductName.DataBindings.Add("Text", bindingSource, "Product.Name");
-            //txtOrderPrice.DataBindings.Add("Text", bindingSource, "Product.Price");
-            //txtOrderQuantity.DataBindings.Add("Text", bindingSource, "Product.Quantity");       
-            //pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
-            //                    "ImageLocation", bindingSource, "Product.Avatar", true));
+            ////gbProduct.DataBindings.Add("Text", orderDetailBindingSource, "Name");
+            lbOrderProductName.DataBindings.Add("Text", orderDetailBindingSource, "Product.Name");
+            txtOrderPrice.DataBindings.Add("Text", orderDetailBindingSource, "Product.Price");
+            txtOrderQuantity.DataBindings.Add("Text", orderDetailBindingSource, "Product.Quantity");
+            pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
+                                "ImageLocation", orderDetailBindingSource, "Product.Avatar", true));
 
         }
 

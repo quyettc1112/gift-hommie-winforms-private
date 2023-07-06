@@ -109,7 +109,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lbReceiver = new System.Windows.Forms.Label();
             this.txtOrderStatus = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
@@ -773,9 +772,9 @@
             this.gbOrderProduct.Controls.Add(this.txtOrderPrice);
             this.gbOrderProduct.Controls.Add(this.txtOrderQuantity);
             this.gbOrderProduct.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbOrderProduct.Location = new System.Drawing.Point(0, 82);
+            this.gbOrderProduct.Location = new System.Drawing.Point(0, 58);
             this.gbOrderProduct.Name = "gbOrderProduct";
-            this.gbOrderProduct.Size = new System.Drawing.Size(465, 350);
+            this.gbOrderProduct.Size = new System.Drawing.Size(465, 374);
             this.gbOrderProduct.TabIndex = 99;
             this.gbOrderProduct.TabStop = false;
             this.gbOrderProduct.Text = "Product";
@@ -783,7 +782,7 @@
             // pbOrderProductAvatar
             // 
             this.pbOrderProductAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbOrderProductAvatar.Location = new System.Drawing.Point(23, 55);
+            this.pbOrderProductAvatar.Location = new System.Drawing.Point(16, 113);
             this.pbOrderProductAvatar.Name = "pbOrderProductAvatar";
             this.pbOrderProductAvatar.Size = new System.Drawing.Size(163, 192);
             this.pbOrderProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -792,7 +791,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(297, 207);
+            this.textBox7.Location = new System.Drawing.Point(297, 257);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -804,7 +803,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(203, 109);
+            this.label11.Location = new System.Drawing.Point(203, 131);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(58, 28);
             this.label11.TabIndex = 93;
@@ -814,7 +813,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(203, 206);
+            this.label14.Location = new System.Drawing.Point(207, 253);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 28);
             this.label14.TabIndex = 97;
@@ -824,7 +823,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(203, 159);
+            this.label10.Location = new System.Drawing.Point(203, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 28);
             this.label10.TabIndex = 94;
@@ -834,7 +833,7 @@
             // 
             this.lbOrderProductName.AutoSize = true;
             this.lbOrderProductName.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbOrderProductName.Location = new System.Drawing.Point(192, 55);
+            this.lbOrderProductName.Location = new System.Drawing.Point(16, 40);
             this.lbOrderProductName.Name = "lbOrderProductName";
             this.lbOrderProductName.Size = new System.Drawing.Size(199, 41);
             this.lbOrderProductName.TabIndex = 96;
@@ -842,7 +841,7 @@
             // 
             // txtOrderPrice
             // 
-            this.txtOrderPrice.Location = new System.Drawing.Point(297, 113);
+            this.txtOrderPrice.Location = new System.Drawing.Point(297, 132);
             this.txtOrderPrice.Name = "txtOrderPrice";
             this.txtOrderPrice.ReadOnly = true;
             this.txtOrderPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -852,7 +851,7 @@
             // 
             // txtOrderQuantity
             // 
-            this.txtOrderQuantity.Location = new System.Drawing.Point(297, 160);
+            this.txtOrderQuantity.Location = new System.Drawing.Point(297, 198);
             this.txtOrderQuantity.Name = "txtOrderQuantity";
             this.txtOrderQuantity.ReadOnly = true;
             this.txtOrderQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -863,12 +862,12 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(98, 34);
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(60, 14);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(219, 45);
+            this.label12.Size = new System.Drawing.Size(349, 41);
             this.label12.TabIndex = 92;
-            this.label12.Text = "Order Details";
+            this.label12.Text = "Order Detail Information";
             // 
             // splitContainer6
             // 
@@ -883,7 +882,6 @@
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.label15);
             this.splitContainer6.Panel2.Controls.Add(this.dgvOrderDetails);
             this.splitContainer6.Size = new System.Drawing.Size(930, 432);
             this.splitContainer6.SplitterDistance = 254;
@@ -1066,16 +1064,6 @@
             this.txtOrderStatus.TabIndex = 151;
             this.txtOrderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(795, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(136, 28);
-            this.label15.TabIndex = 99;
-            this.label15.Text = "Order Details";
-            // 
             // dgvOrderDetails
             // 
             this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1161,7 +1149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbOrderProductAvatar)).EndInit();
             this.splitContainer6.Panel1.ResumeLayout(false);
             this.splitContainer6.Panel2.ResumeLayout(false);
-            this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
             this.gbOrderTarget.ResumeLayout(false);
@@ -1252,7 +1239,6 @@
         private System.Windows.Forms.Label lbOrderProductName;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox gbOrderProduct;
         private System.Windows.Forms.GroupBox gbOrderTarget;
         private System.Windows.Forms.TextBox txtOrderMessage;
