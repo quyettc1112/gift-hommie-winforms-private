@@ -1,5 +1,6 @@
 ﻿using BusinessObjects;
 using BussinessObjects;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SaleManagementWinApp;
 using System;
 using System.Collections.Generic;
@@ -425,6 +426,24 @@ namespace GiftHommieWinforms
             {
                 tabMyOrder_Click(sender, e);
             }
+        }
+
+        private void dgvOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvOrders.DataSource != null)
+            {
+                Order order = bindingSource.Current as Order;
+                gbOrderTarget.Text = "Order >> " + order.Id;
+            }
+        }
+
+        private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
+        {
+            if(dgvOrders.DataSource != null)
+            {
+                Order order = bindingSource.Current as Order;
+                gbOrderTarget.Text = "Order >> " + order.Id;
+            }  
         }
 
         // END OF TAB HOME AREA -------------------------------------------

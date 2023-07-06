@@ -108,7 +108,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lbReceiver = new System.Windows.Forms.Label();
             this.txtOrderStatus = new System.Windows.Forms.TextBox();
-            this.lbOrderStatus = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
@@ -740,6 +739,8 @@
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(930, 230);
             this.dgvOrders.TabIndex = 104;
+            this.dgvOrders.DataSourceChanged += new System.EventHandler(this.dgvOrders_DataSourceChanged);
+            this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
             // 
             // splitContainer5
             // 
@@ -904,7 +905,6 @@
             this.gbOrderTarget.Controls.Add(this.label8);
             this.gbOrderTarget.Controls.Add(this.lbReceiver);
             this.gbOrderTarget.Controls.Add(this.txtOrderStatus);
-            this.gbOrderTarget.Controls.Add(this.lbOrderStatus);
             this.gbOrderTarget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbOrderTarget.Location = new System.Drawing.Point(0, 0);
             this.gbOrderTarget.Name = "gbOrderTarget";
@@ -921,7 +921,6 @@
             this.txtOrderMessage.ReadOnly = true;
             this.txtOrderMessage.Size = new System.Drawing.Size(276, 27);
             this.txtOrderMessage.TabIndex = 159;
-            this.txtOrderMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
@@ -950,7 +949,6 @@
             this.txtOrderReceiver.ReadOnly = true;
             this.txtOrderReceiver.Size = new System.Drawing.Size(273, 27);
             this.txtOrderReceiver.TabIndex = 145;
-            this.txtOrderReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbOrderShippingFee
             // 
@@ -979,7 +977,6 @@
             this.txtOrderAddress.ReadOnly = true;
             this.txtOrderAddress.Size = new System.Drawing.Size(276, 27);
             this.txtOrderAddress.TabIndex = 155;
-            this.txtOrderAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbOrderDate
             // 
@@ -1020,7 +1017,9 @@
             // 
             // dtpOrderTime
             // 
+            this.dtpOrderTime.CustomFormat = "MMM dd, yyyy hh:ss";
             this.dtpOrderTime.Enabled = false;
+            this.dtpOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpOrderTime.Location = new System.Drawing.Point(686, 44);
             this.dtpOrderTime.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dtpOrderTime.Name = "dtpOrderTime";
@@ -1047,22 +1046,13 @@
             // 
             // txtOrderStatus
             // 
-            this.txtOrderStatus.Location = new System.Drawing.Point(795, 1);
+            this.txtOrderStatus.Location = new System.Drawing.Point(780, 1);
             this.txtOrderStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtOrderStatus.Name = "txtOrderStatus";
             this.txtOrderStatus.ReadOnly = true;
             this.txtOrderStatus.Size = new System.Drawing.Size(121, 27);
             this.txtOrderStatus.TabIndex = 151;
             this.txtOrderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbOrderStatus
-            // 
-            this.lbOrderStatus.AutoSize = true;
-            this.lbOrderStatus.Location = new System.Drawing.Point(698, 4);
-            this.lbOrderStatus.Name = "lbOrderStatus";
-            this.lbOrderStatus.Size = new System.Drawing.Size(91, 20);
-            this.lbOrderStatus.TabIndex = 150;
-            this.lbOrderStatus.Text = "Order Status";
             // 
             // label15
             // 
@@ -1255,6 +1245,5 @@
         private System.Windows.Forms.GroupBox gbOrderTarget;
         private System.Windows.Forms.TextBox txtOrderMessage;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lbOrderStatus;
     }
 }
