@@ -16,5 +16,7 @@ namespace BussinessObjects
         void Delete(int id);
 
         public List<Order> GetAllOrdersOfCustomer(string username);
+
+        double GetTotalOfOrder(int id);
     }
 }

@@ -35,7 +35,7 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    list = context.Orders.Include(item => item.User).ToList();
+                    list = context.Orders.Include(item => item.OrderDetails).Include(item => item.User).ToList();
                 }
 
             }
@@ -53,7 +53,7 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    list = context.Orders.Include(item => item.User).Where(item => item.Username.ToLower().Equals(username.ToLower())).ToList();
+                    list = context.Orders.Include(item => item.OrderDetails).Include(item => item.User).Where(item => item.Username.ToLower().Equals(username.ToLower())).ToList();
                 }
 
             }
@@ -71,7 +71,7 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    entity = context.Orders.Include(item => item.User).SingleOrDefault<Order>(item => item.Id == id);
+                    entity = context.Orders.Include(item => item.OrderDetails).Include(item => item.User).SingleOrDefault<Order>(item => item.Id == id);
                 }
             }
             catch (Exception ex)

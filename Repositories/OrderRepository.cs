@@ -22,5 +22,21 @@ namespace BussinessObjects
         public void Save(Order entity) => OrderDAO.Instance.Save(entity);
 
         public List<Order> GetAllOrdersOfCustomer(string username) => OrderDAO.Instance.GetAllOrdersOfUser(username);
+
+        public double GetTotalOfOrder(int id)
+        {            
+            Order order = Get(id);
+            if (order == null)
+                return 0;
+            double res = order.ShippingFee.Value;
+
+            if(order.OrderDetails != null)
+            {
+                foreach (OrderDetail detail in order.OrderDetails)
+                    res += detail.Price.Value * detail.Quantity.Value;
+            }
+
+            return res;
+        }
     }
 }

@@ -434,6 +434,7 @@ namespace GiftHommieWinforms
             {
                 Order order = bindingSource.Current as Order;
                 gbOrderTarget.Text = "Order >> " + order.Id;
+                txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
             }
         }
 
@@ -443,6 +444,7 @@ namespace GiftHommieWinforms
             {
                 Order order = bindingSource.Current as Order;
                 gbOrderTarget.Text = "Order >> " + order.Id;
+                txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
             }  
         }
 
