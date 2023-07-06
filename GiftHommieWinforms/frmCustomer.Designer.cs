@@ -199,11 +199,12 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1403, 717);
-            this.splitContainer1.SplitterDistance = 366;
+            this.splitContainer1.SplitterDistance = 339;
             this.splitContainer1.TabIndex = 87;
             // 
             // groupBoxSearch
             // 
+            this.groupBoxSearch.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxSearch.Controls.Add(this.cbProductCategory);
             this.groupBoxSearch.Controls.Add(this.label4);
             this.groupBoxSearch.Controls.Add(this.txtProductNameSearch);
@@ -217,7 +218,7 @@
             this.groupBoxSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxSearch.Name = "groupBoxSearch";
             this.groupBoxSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxSearch.Size = new System.Drawing.Size(366, 717);
+            this.groupBoxSearch.Size = new System.Drawing.Size(339, 717);
             this.groupBoxSearch.TabIndex = 0;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Search";
@@ -230,7 +231,7 @@
             "Select the category"});
             this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
             this.cbProductCategory.Name = "cbProductCategory";
-            this.cbProductCategory.Size = new System.Drawing.Size(334, 28);
+            this.cbProductCategory.Size = new System.Drawing.Size(290, 28);
             this.cbProductCategory.TabIndex = 3;
             this.cbProductCategory.SelectedIndexChanged += new System.EventHandler(this.cbProductCategory_SelectedIndexChanged);
             // 
@@ -248,7 +249,7 @@
             this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
             this.txtProductNameSearch.Location = new System.Drawing.Point(9, 121);
             this.txtProductNameSearch.Name = "txtProductNameSearch";
-            this.txtProductNameSearch.Size = new System.Drawing.Size(331, 27);
+            this.txtProductNameSearch.Size = new System.Drawing.Size(290, 27);
             this.txtProductNameSearch.TabIndex = 0;
             this.txtProductNameSearch.TextChanged += new System.EventHandler(this.txtProductNameSearch_TextChanged);
             // 
@@ -263,9 +264,9 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(183, 39);
+            this.btnReset.Location = new System.Drawing.Point(185, 39);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(144, 31);
+            this.btnReset.Size = new System.Drawing.Size(114, 31);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -279,7 +280,7 @@
             this.groupBox2.Controls.Add(this.txtUnitsInStockMinSearch);
             this.groupBox2.Location = new System.Drawing.Point(9, 402);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(334, 125);
+            this.groupBox2.Size = new System.Drawing.Size(311, 125);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Units In Stock";
@@ -288,8 +289,9 @@
             // 
             this.txtUnitsInStockMaxSearch.Location = new System.Drawing.Point(152, 84);
             this.txtUnitsInStockMaxSearch.Name = "txtUnitsInStockMaxSearch";
-            this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(156, 27);
+            this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(138, 27);
             this.txtUnitsInStockMaxSearch.TabIndex = 1;
+            this.txtUnitsInStockMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitsInStockMaxSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMaxSearch_TextChanged);
             // 
             // label3
@@ -314,8 +316,9 @@
             // 
             this.txtUnitsInStockMinSearch.Location = new System.Drawing.Point(152, 45);
             this.txtUnitsInStockMinSearch.Name = "txtUnitsInStockMinSearch";
-            this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(156, 27);
+            this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(138, 27);
             this.txtUnitsInStockMinSearch.TabIndex = 0;
+            this.txtUnitsInStockMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitsInStockMinSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMinSearch_TextChanged);
             // 
             // groupBox1
@@ -326,7 +329,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(9, 249);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 125);
+            this.groupBox1.Size = new System.Drawing.Size(311, 125);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Unit Price";
@@ -344,16 +347,18 @@
             // 
             this.txtUnitPriceMaxSearch.Location = new System.Drawing.Point(152, 87);
             this.txtUnitPriceMaxSearch.Name = "txtUnitPriceMaxSearch";
-            this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(156, 27);
+            this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(138, 27);
             this.txtUnitPriceMaxSearch.TabIndex = 1;
+            this.txtUnitPriceMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitPriceMaxSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMaxSearch_TextChanged);
             // 
             // txtUnitPriceMinSearch
             // 
             this.txtUnitPriceMinSearch.Location = new System.Drawing.Point(152, 45);
             this.txtUnitPriceMinSearch.Name = "txtUnitPriceMinSearch";
-            this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(156, 27);
+            this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(138, 27);
             this.txtUnitPriceMinSearch.TabIndex = 0;
+            this.txtUnitPriceMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitPriceMinSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMinSearch_TextChanged);
             // 
             // label2
@@ -391,7 +396,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgvProducts);
             this.splitContainer2.Panel2.Controls.Add(this.btnClose);
-            this.splitContainer2.Size = new System.Drawing.Size(1033, 717);
+            this.splitContainer2.Size = new System.Drawing.Size(1060, 717);
             this.splitContainer2.SplitterDistance = 376;
             this.splitContainer2.TabIndex = 87;
             // 
@@ -409,7 +414,7 @@
             this.gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbProduct.Location = new System.Drawing.Point(0, 0);
             this.gbProduct.Name = "gbProduct";
-            this.gbProduct.Size = new System.Drawing.Size(1033, 376);
+            this.gbProduct.Size = new System.Drawing.Size(1060, 376);
             this.gbProduct.TabIndex = 86;
             this.gbProduct.TabStop = false;
             this.gbProduct.Text = "Product Name";
@@ -419,15 +424,16 @@
             this.gbSelect.Controls.Add(this.txtCurrentIndex);
             this.gbSelect.Controls.Add(this.btnBack);
             this.gbSelect.Controls.Add(this.btnNext);
-            this.gbSelect.Location = new System.Drawing.Point(6, 320);
+            this.gbSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbSelect.Location = new System.Drawing.Point(3, 320);
             this.gbSelect.Name = "gbSelect";
-            this.gbSelect.Size = new System.Drawing.Size(1027, 53);
+            this.gbSelect.Size = new System.Drawing.Size(1054, 53);
             this.gbSelect.TabIndex = 92;
             this.gbSelect.TabStop = false;
             // 
             // txtCurrentIndex
             // 
-            this.txtCurrentIndex.Location = new System.Drawing.Point(434, 18);
+            this.txtCurrentIndex.Location = new System.Drawing.Point(473, 18);
             this.txtCurrentIndex.Name = "txtCurrentIndex";
             this.txtCurrentIndex.ReadOnly = true;
             this.txtCurrentIndex.Size = new System.Drawing.Size(126, 27);
@@ -436,7 +442,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(284, 16);
+            this.btnBack.Location = new System.Drawing.Point(323, 16);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(144, 31);
             this.btnBack.TabIndex = 0;
@@ -446,7 +452,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(566, 16);
+            this.btnNext.Location = new System.Drawing.Point(605, 16);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(144, 31);
             this.btnNext.TabIndex = 2;
@@ -548,19 +554,20 @@
             this.dgvProducts.AllowUserToDeleteRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvProducts.Location = new System.Drawing.Point(0, 0);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 29;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1033, 297);
+            this.dgvProducts.Size = new System.Drawing.Size(1060, 297);
             this.dgvProducts.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(929, 303);
+            this.btnClose.Location = new System.Drawing.Point(961, 303);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 29);
             this.btnClose.TabIndex = 83;
@@ -617,11 +624,13 @@
             // 
             // splitContainer4.Panel1
             // 
+            this.splitContainer4.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer4.Panel1.Controls.Add(this.btnSort);
             this.splitContainer4.Panel1.Controls.Add(this.gbFilter);
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer4.Panel2.Controls.Add(this.cbOrderStatus);
             this.splitContainer4.Panel2.Controls.Add(this.btnCleanAllFilterOrder);
             this.splitContainer4.Panel2.Controls.Add(this.btnSearchOrder);
