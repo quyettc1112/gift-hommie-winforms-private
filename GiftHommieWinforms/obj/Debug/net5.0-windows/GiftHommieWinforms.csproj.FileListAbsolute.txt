@@ -59,3 +59,4 @@ D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\ref\GiftHomm
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmCustomer.resources
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.csproj.GenerateResource.cache
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\SaleManagementWinApp.frmLogin.resources
+D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmStaff.resources
