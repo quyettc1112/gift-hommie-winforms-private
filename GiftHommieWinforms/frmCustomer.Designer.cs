@@ -67,8 +67,21 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.tabCart = new System.Windows.Forms.TabPage();
             this.tabMyOrder = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lbEndDate = new System.Windows.Forms.Label();
+            this.lbStartDate = new System.Windows.Forms.Label();
+            this.gbFilter = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.dgvOrderList = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSearchOrder = new System.Windows.Forms.Button();
+            this.btnCleanAllFilterOrder = new System.Windows.Forms.Button();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -87,6 +100,16 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            this.tabMyOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            this.gbFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.SuspendLayout();
             // 
             // tabcontrolCustomer
@@ -511,6 +534,7 @@
             // 
             // tabMyOrder
             // 
+            this.tabMyOrder.Controls.Add(this.splitContainer3);
             this.tabMyOrder.Location = new System.Drawing.Point(4, 29);
             this.tabMyOrder.Name = "tabMyOrder";
             this.tabMyOrder.Padding = new System.Windows.Forms.Padding(3);
@@ -518,6 +542,21 @@
             this.tabMyOrder.TabIndex = 2;
             this.tabMyOrder.Text = "My Order";
             this.tabMyOrder.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            this.splitContainer3.Size = new System.Drawing.Size(1403, 717);
+            this.splitContainer3.SplitterDistance = 297;
+            this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer3_SplitterMoved);
             // 
             // tabMyProfile
             // 
@@ -534,6 +573,139 @@
             this.sqlCommandBuilder1.DataAdapter = null;
             this.sqlCommandBuilder1.QuotePrefix = "[";
             this.sqlCommandBuilder1.QuoteSuffix = "]";
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btnSort);
+            this.splitContainer4.Panel1.Controls.Add(this.dtpEndDate);
+            this.splitContainer4.Panel1.Controls.Add(this.dtpStartDate);
+            this.splitContainer4.Panel1.Controls.Add(this.lbEndDate);
+            this.splitContainer4.Panel1.Controls.Add(this.lbStartDate);
+            this.splitContainer4.Panel1.Controls.Add(this.gbFilter);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnCleanAllFilterOrder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnSearchOrder);
+            this.splitContainer4.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer4.Panel2.Controls.Add(this.dgvOrderList);
+            this.splitContainer4.Size = new System.Drawing.Size(1403, 297);
+            this.splitContainer4.SplitterDistance = 467;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Location = new System.Drawing.Point(128, 203);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
+            this.dtpEndDate.TabIndex = 112;
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Location = new System.Drawing.Point(128, 156);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
+            this.dtpStartDate.TabIndex = 111;
+            // 
+            // lbEndDate
+            // 
+            this.lbEndDate.AutoSize = true;
+            this.lbEndDate.Location = new System.Drawing.Point(29, 208);
+            this.lbEndDate.Name = "lbEndDate";
+            this.lbEndDate.Size = new System.Drawing.Size(70, 20);
+            this.lbEndDate.TabIndex = 109;
+            this.lbEndDate.Text = "End Date";
+            // 
+            // lbStartDate
+            // 
+            this.lbStartDate.AutoSize = true;
+            this.lbStartDate.Location = new System.Drawing.Point(29, 161);
+            this.lbStartDate.Name = "lbStartDate";
+            this.lbStartDate.Size = new System.Drawing.Size(76, 20);
+            this.lbStartDate.TabIndex = 108;
+            this.lbStartDate.Text = "Start Date";
+            // 
+            // gbFilter
+            // 
+            this.gbFilter.Controls.Add(this.btnFilter);
+            this.gbFilter.Location = new System.Drawing.Point(5, 116);
+            this.gbFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbFilter.Name = "gbFilter";
+            this.gbFilter.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbFilter.Size = new System.Drawing.Size(459, 171);
+            this.gbFilter.TabIndex = 110;
+            this.gbFilter.TabStop = false;
+            this.gbFilter.Text = "Filt by Date";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Enabled = false;
+            this.btnFilter.Location = new System.Drawing.Point(156, 132);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(135, 31);
+            this.btnFilter.TabIndex = 44;
+            this.btnFilter.Text = "Auto Filting";
+            this.btnFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFilter.UseVisualStyleBackColor = true;
+            // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(98, 34);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(278, 53);
+            this.btnSort.TabIndex = 113;
+            this.btnSort.Text = "Sort In Descending Date Order";
+            this.btnSort.UseVisualStyleBackColor = true;
+            // 
+            // dgvOrderList
+            // 
+            this.dgvOrderList.AllowUserToAddRows = false;
+            this.dgvOrderList.AllowUserToDeleteRows = false;
+            this.dgvOrderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvOrderList.Location = new System.Drawing.Point(0, 67);
+            this.dgvOrderList.Name = "dgvOrderList";
+            this.dgvOrderList.ReadOnly = true;
+            this.dgvOrderList.RowHeadersWidth = 51;
+            this.dgvOrderList.RowTemplate.Height = 29;
+            this.dgvOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrderList.Size = new System.Drawing.Size(932, 230);
+            this.dgvOrderList.TabIndex = 104;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(115, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(330, 27);
+            this.textBox1.TabIndex = 105;
+            // 
+            // btnSearchOrder
+            // 
+            this.btnSearchOrder.Location = new System.Drawing.Point(15, 20);
+            this.btnSearchOrder.Name = "btnSearchOrder";
+            this.btnSearchOrder.Size = new System.Drawing.Size(94, 29);
+            this.btnSearchOrder.TabIndex = 1;
+            this.btnSearchOrder.Text = "Search";
+            this.btnSearchOrder.UseVisualStyleBackColor = false;
+            // 
+            // btnCleanAllFilterOrder
+            // 
+            this.btnCleanAllFilterOrder.Location = new System.Drawing.Point(802, 14);
+            this.btnCleanAllFilterOrder.Name = "btnCleanAllFilterOrder";
+            this.btnCleanAllFilterOrder.Size = new System.Drawing.Size(125, 41);
+            this.btnCleanAllFilterOrder.TabIndex = 106;
+            this.btnCleanAllFilterOrder.Text = "Clean all filters";
+            this.btnCleanAllFilterOrder.UseVisualStyleBackColor = false;
             // 
             // frmCustomer
             // 
@@ -570,6 +742,18 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            this.tabMyOrder.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel1.PerformLayout();
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.gbFilter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -617,5 +801,18 @@
         private System.Windows.Forms.Button btnNext;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
         private System.Windows.Forms.TextBox txtCurrentIndex;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.Label lbEndDate;
+        private System.Windows.Forms.Label lbStartDate;
+        private System.Windows.Forms.GroupBox gbFilter;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnSearchOrder;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dgvOrderList;
+        private System.Windows.Forms.Button btnCleanAllFilterOrder;
     }
 }

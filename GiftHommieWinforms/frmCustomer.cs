@@ -271,12 +271,20 @@ namespace GiftHommieWinforms
                 GlobalData.AuthenticatedUser = null;
             }
         }
+
+        private void splitContainer3_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        // END OF TAB HOME AREA -------------------------------------------
+
+        // TAB ORDER AREA -------------------------------------------------
+
+
     }
 
-    // END OF TAB HOME AREA -------------------------------------------
-
-    // TAB ORDER AREA -------------------------------------------------
-    // END OF TAB ORDER AREA ------------------------------------------
+    
 
 
 }
