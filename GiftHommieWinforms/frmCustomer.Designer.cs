@@ -94,6 +94,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.gbOrderTarget = new System.Windows.Forms.GroupBox();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txtOrderMessage = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -113,7 +114,6 @@
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -777,6 +777,7 @@
             // 
             // splitContainer5.Panel1
             // 
+            this.splitContainer5.Panel1.BackColor = System.Drawing.Color.Azure;
             this.splitContainer5.Panel1.Controls.Add(this.gbOrderProduct);
             this.splitContainer5.Panel1.Controls.Add(this.label12);
             // 
@@ -915,7 +916,8 @@
             // 
             // gbOrderTarget
             // 
-            this.gbOrderTarget.Controls.Add(this.button1);
+            this.gbOrderTarget.BackColor = System.Drawing.Color.Azure;
+            this.gbOrderTarget.Controls.Add(this.btnCancelOrder);
             this.gbOrderTarget.Controls.Add(this.label16);
             this.gbOrderTarget.Controls.Add(this.txtOrderMessage);
             this.gbOrderTarget.Controls.Add(this.label13);
@@ -940,6 +942,17 @@
             this.gbOrderTarget.TabStop = false;
             this.gbOrderTarget.Text = "Order >> ID";
             this.gbOrderTarget.Enter += new System.EventHandler(this.gbOrderTarget_Enter);
+            // 
+            // btnCancelOrder
+            // 
+            this.btnCancelOrder.BackColor = System.Drawing.Color.Khaki;
+            this.btnCancelOrder.Location = new System.Drawing.Point(788, 213);
+            this.btnCancelOrder.Name = "btnCancelOrder";
+            this.btnCancelOrder.Size = new System.Drawing.Size(136, 29);
+            this.btnCancelOrder.TabIndex = 161;
+            this.btnCancelOrder.Text = "Cancel Order";
+            this.btnCancelOrder.UseVisualStyleBackColor = false;
+            this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
             // 
             // label16
             // 
@@ -1120,15 +1133,6 @@
             this.sqlCommandBuilder1.QuotePrefix = "[";
             this.sqlCommandBuilder1.QuoteSuffix = "]";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(806, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 161;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1283,6 +1287,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cbOrderStatus;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancelOrder;
     }
 }

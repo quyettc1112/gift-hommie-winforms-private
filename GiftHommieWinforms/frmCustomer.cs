@@ -266,7 +266,7 @@ namespace GiftHommieWinforms
 
         private void frmCustomer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you want to exit?",
+            var confirmResult = MessageBox.Show("Do you want to exit?",
                                     "Confirm to exit",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -523,10 +523,10 @@ namespace GiftHommieWinforms
 
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrder();
+            WhenSelectTheOrder();
         }
 
-        private void whenSelectTheOrder()
+        private void WhenSelectTheOrder()
         {
             if (dgvOrders.DataSource != null && bindingSource.Count > 0)
             {
@@ -534,9 +534,10 @@ namespace GiftHommieWinforms
                 gbOrderTarget.Text = "Order >> " + order.Id;
                 txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
                 OrderDetailLoadData();
+                btnCancelOrder.Visible = order.Status.Equals("PENDING");
             }
         }
-        private void whenSelectTheOrderDetail()
+        private void WhenSelectTheOrderDetail()
         {
             if (dgvOrderDetails.DataSource != null && orderDetailBindingSource.Count > 0)
             {
@@ -546,7 +547,7 @@ namespace GiftHommieWinforms
         }
         private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrder();
+            WhenSelectTheOrder();
         }
 
         private void gbOrderTarget_Enter(object sender, EventArgs e)
@@ -556,12 +557,12 @@ namespace GiftHommieWinforms
 
         private void dgvOrderDetails_DataSourceChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrderDetail();
+            WhenSelectTheOrderDetail();
         }
 
         private void dgvOrderDetails_SelectionChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrderDetail();
+            WhenSelectTheOrderDetail();
         }
 
         private void btnSort_Click(object sender, EventArgs e)
@@ -593,6 +594,25 @@ namespace GiftHommieWinforms
             OrderResetFilter();
         }
 
+        private void btnCancelOrder_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("You want to cancel this order?", "Confirmation",
+                           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (confirmResult == DialogResult.No)
+            {
+                // do nothing
+            }                
+            else if (dgvOrders.DataSource != null && bindingSource.Count > 0)
+            {
+                Order order = bindingSource.Current as Order;
+                order.Status = "CANCELLED";
+                orderRepository.Update(order);
+                int index = bindingSource.Position;
+                OrderLoadData();
+                bindingSource.Position = index;
+            }
+        }
         // END OF TAB HOME AREA -------------------------------------------
 
 
