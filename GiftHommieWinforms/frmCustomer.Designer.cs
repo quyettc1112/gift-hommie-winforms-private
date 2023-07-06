@@ -76,9 +76,10 @@
             this.lbStartDate = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.lbEndDate = new System.Windows.Forms.Label();
+            this.cbOrderStatus = new System.Windows.Forms.ComboBox();
             this.btnCleanAllFilterOrder = new System.Windows.Forms.Button();
             this.btnSearchOrder = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtOrderSearch = new System.Windows.Forms.TextBox();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.gbOrderProduct = new System.Windows.Forms.GroupBox();
@@ -112,6 +113,7 @@
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -620,9 +622,10 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.cbOrderStatus);
             this.splitContainer4.Panel2.Controls.Add(this.btnCleanAllFilterOrder);
             this.splitContainer4.Panel2.Controls.Add(this.btnSearchOrder);
-            this.splitContainer4.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer4.Panel2.Controls.Add(this.txtOrderSearch);
             this.splitContainer4.Panel2.Controls.Add(this.dgvOrders);
             this.splitContainer4.Size = new System.Drawing.Size(1403, 279);
             this.splitContainer4.SplitterDistance = 467;
@@ -634,8 +637,9 @@
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(278, 53);
             this.btnSort.TabIndex = 113;
-            this.btnSort.Text = "Sort In Descending Date Order";
+            this.btnSort.Text = "Sort In Ascending Date Order";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // gbFilter
             // 
@@ -672,6 +676,7 @@
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
             this.dtpEndDate.TabIndex = 112;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbStartDate
             // 
@@ -689,6 +694,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
             this.dtpStartDate.TabIndex = 111;
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbEndDate
             // 
@@ -699,6 +705,24 @@
             this.lbEndDate.TabIndex = 109;
             this.lbEndDate.Text = "End Date";
             // 
+            // cbOrderStatus
+            // 
+            this.cbOrderStatus.FormattingEnabled = true;
+            this.cbOrderStatus.Items.AddRange(new object[] {
+            "All status",
+            "PENDING",
+            "CONFIRMED",
+            "DELIVERYING",
+            "SUCCESSFUL",
+            "CANCALLED",
+            "REFUSED",
+            "FAIL"});
+            this.cbOrderStatus.Location = new System.Drawing.Point(442, 12);
+            this.cbOrderStatus.Name = "cbOrderStatus";
+            this.cbOrderStatus.Size = new System.Drawing.Size(151, 28);
+            this.cbOrderStatus.TabIndex = 107;
+            this.cbOrderStatus.SelectedIndexChanged += new System.EventHandler(this.cbOrderStatus_SelectedIndexChanged);
+            // 
             // btnCleanAllFilterOrder
             // 
             this.btnCleanAllFilterOrder.Location = new System.Drawing.Point(806, 6);
@@ -707,22 +731,24 @@
             this.btnCleanAllFilterOrder.TabIndex = 106;
             this.btnCleanAllFilterOrder.Text = "Clean all filters";
             this.btnCleanAllFilterOrder.UseVisualStyleBackColor = false;
+            this.btnCleanAllFilterOrder.Click += new System.EventHandler(this.btnCleanAllFilterOrder_Click);
             // 
             // btnSearchOrder
             // 
             this.btnSearchOrder.Location = new System.Drawing.Point(6, 12);
             this.btnSearchOrder.Name = "btnSearchOrder";
-            this.btnSearchOrder.Size = new System.Drawing.Size(94, 29);
+            this.btnSearchOrder.Size = new System.Drawing.Size(77, 29);
             this.btnSearchOrder.TabIndex = 1;
             this.btnSearchOrder.Text = "Search";
             this.btnSearchOrder.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtOrderSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(330, 27);
-            this.textBox1.TabIndex = 105;
+            this.txtOrderSearch.Location = new System.Drawing.Point(89, 13);
+            this.txtOrderSearch.Name = "txtOrderSearch";
+            this.txtOrderSearch.Size = new System.Drawing.Size(330, 27);
+            this.txtOrderSearch.TabIndex = 105;
+            this.txtOrderSearch.TextChanged += new System.EventHandler(this.txtOrderSearch_TextChanged);
             // 
             // dgvOrders
             // 
@@ -889,6 +915,7 @@
             // 
             // gbOrderTarget
             // 
+            this.gbOrderTarget.Controls.Add(this.button1);
             this.gbOrderTarget.Controls.Add(this.label16);
             this.gbOrderTarget.Controls.Add(this.txtOrderMessage);
             this.gbOrderTarget.Controls.Add(this.label13);
@@ -1093,6 +1120,15 @@
             this.sqlCommandBuilder1.QuotePrefix = "[";
             this.sqlCommandBuilder1.QuoteSuffix = "]";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(806, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 161;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1213,7 +1249,7 @@
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnSearchOrder;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtOrderSearch;
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Button btnCleanAllFilterOrder;
         private System.Windows.Forms.SplitContainer splitContainer5;
@@ -1246,5 +1282,7 @@
         private System.Windows.Forms.TextBox txtOrderMessage;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cbOrderStatus;
+        private System.Windows.Forms.Button button1;
     }
 }

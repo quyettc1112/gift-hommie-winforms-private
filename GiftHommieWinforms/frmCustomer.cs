@@ -17,6 +17,7 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
         private BindingSource orderDetailBindingSource = null;
+        private bool orderTimeDescMode = true;
         public frmCustomer()
         {
             InitializeComponent();
@@ -119,7 +120,7 @@ namespace GiftHommieWinforms
 
                 dgvProducts.DataSource = null;
                 dgvProducts.DataSource = bindingSource;
-                dgvProducts.Columns["Id"].Visible = false;
+                //dgvProducts.Columns["Id"].Visible = false;
                 dgvProducts.Columns["Avatar"].Visible = false;
                 dgvProducts.Columns["Status"].Visible = false;
                 dgvProducts.Columns["Carts"].Visible = false;
@@ -280,39 +281,45 @@ namespace GiftHommieWinforms
         // TAB ORDER AREA -------------------------------------------------
         private void tabMyOrder_Click(object sender, EventArgs e)
         {
-            OrderLoadData();
-            
+            OrderInitDataForSearchComponent();
+            OrderLoadData();            
         }
 
         private void OrderInitDataForSearchComponent()
         {
-            // Load for search
-            //List<Category> categories = productRepository.GetAllCategories();
-            //categories.Insert(0, new Category()
-            //{
-            //    Id = 0,
-            //    Name = "Select the category",
-            //});
-            //cbProductCategory.DataSource = categories;
-            //cbProductCategory.ValueMember = "Id";
-            //cbProductCategory.DisplayMember = "Name";
-            //cbProductCategory.SelectedValue = 0;
+            OrderResetFilter();
+        }
+
+        private void OrderResetFilter()
+        {
+            orderTimeDescMode = true;
+            if (orderTimeDescMode)
+                btnSort.Text = "Sort In Ascending Date Order";
+            else btnSort.Text = "Sort In Descending Date Order";
+
+            txtOrderSearch.Text = string.Empty;
+            dtpStartDate.Value = new DateTime(2015, 01, 31);
+            dtpEndDate.Value = DateTime.Now;
+            cbOrderStatus.SelectedIndex = 0;
         }
 
         private void OrderLoadData()
         {
 
             // Load orders
-            List<Order> orders = orderRepository.GetAllOrdersOfCustomer(GlobalData.AuthenticatedUser.Username);
+            List<Order> orders = orderRepository.GetAllOrdersOfCustomer(GlobalData.AuthenticatedUser.Username)
+                            .Where(o => (
+                                o.OrderTime >= dtpStartDate.Value && o.OrderTime < dtpEndDate.Value)
+                                && (o.Id.ToString().Contains(txtOrderSearch.Text) || o.Name.ToLower().Contains(txtOrderSearch.Text.ToLower()))
+                                && (cbOrderStatus.SelectedIndex == 0 || o.Status.Equals(cbOrderStatus.SelectedItem?.ToString()))
+                            )                                                        
+                            .ToList();
 
-            //List<Product> products = productRepository.GetAllWithFilter(
-            //    "",
-            //    txtProductNameSearch.Text,
-            //    txtUnitPriceMinSearch.Text, txtUnitPriceMaxSearch.Text,
-            //    txtUnitsInStockMinSearch.Text, txtUnitsInStockMaxSearch.Text,
-            //    ToIntOrZero(cbProductCategory.SelectedValue.ToString()),
-            //    true
-            //    );
+            if (orderTimeDescMode)
+                orders = orders.OrderByDescending(o => o.OrderTime).ToList();
+            else
+                orders = orders.OrderBy(o => o.OrderTime).ToList();
+
             OrderLoadDataToGridView(orders);
 
 
@@ -557,10 +564,41 @@ namespace GiftHommieWinforms
             whenSelectTheOrderDetail();
         }
 
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            orderTimeDescMode = !orderTimeDescMode;
+            if (orderTimeDescMode)
+                btnSort.Text = "Sort In Ascending Date Order";
+            else btnSort.Text = "Sort In Descending Date Order";
+            OrderLoadData();
+        }
+
+        private void dtpRangeDate_ValueChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void txtOrderSearch_TextChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void cbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void btnCleanAllFilterOrder_Click(object sender, EventArgs e)
+        {
+            OrderResetFilter();
+        }
+
         // END OF TAB HOME AREA -------------------------------------------
 
 
+        // TAB CART AREA
 
+        // TAB PROFILE AREA
 
     }
 
