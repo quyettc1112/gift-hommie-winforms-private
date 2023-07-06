@@ -1,13 +1,9 @@
 ﻿using BusinessObjects;
 using BussinessObjects;
+using SaleManagementWinApp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GiftHommieWinforms
@@ -21,13 +17,20 @@ namespace GiftHommieWinforms
             InitializeComponent();
             if (GlobalData.AuthenticatedUser == null)
             {
-                frmLogin frmLogin = new frmLogin();
-                frmLogin.FormClosed += delegate
-                {
-                    this.Close();
-                };
-                this.Hide();
-                frmLogin.ShowDialog();
+                MessageBox.Show("Let's start with Login form!");
+                this.Close();
+                //frmLogin frmLogin = new frmLogin();
+                //frmLogin.FormClosed += delegate
+                //{
+                //    this.Close();
+                //};
+                //frmLogin.VisibleChanged += delegate
+                //{
+                //    if (frmLogin.Visible == false)
+                //        this.Close();
+                //};
+                //this.Hide();
+                //frmLogin.ShowDialog();
             }                
         }
 

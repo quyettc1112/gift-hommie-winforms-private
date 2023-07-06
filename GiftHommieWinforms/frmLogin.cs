@@ -24,14 +24,28 @@ namespace SaleManagementWinApp
                     user = userRepository.Authenticate(txtEmail.Text, txtPassword.Text);
                     if(user != null)
                     {
-                        GlobalData.AuthenticatedUser = user;          
-                        frmCustomer frmCustomer = new frmCustomer();
-                        this.Hide();
-                        frmCustomer.Show();
-                        frmCustomer.FormClosed += delegate
+                        GlobalData.AuthenticatedUser = user;
+                        if (user.Role.Equals("CUSTOMER")) // CUSTOMER
                         {
-                            this.Close();
-                        };
+                            frmCustomer frmCustomer = new frmCustomer();
+                            this.Hide();
+                            frmCustomer.Show();
+                            frmCustomer.FormClosed += delegate
+                            {
+                                this.Close();
+                            };
+                        }
+                        else if (user.Role.Equals("STAFF")) // STAFF
+                        {
+                            //frmStaff frmStaff = new frmStaff();
+                            //this.Hide();
+                            //frmStaff.Show();
+                            //frmStaff.FormClosed += delegate
+                            //{
+                            //    this.Close();
+                            //};
+                        }
+                        
                     }
                     else
                     {
