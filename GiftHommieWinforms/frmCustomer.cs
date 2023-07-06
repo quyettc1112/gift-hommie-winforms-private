@@ -1,13 +1,12 @@
 ﻿using BusinessObjects;
 using BussinessObjects;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SaleManagementWinApp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GiftHommieWinforms
@@ -15,15 +14,34 @@ namespace GiftHommieWinforms
     public partial class frmCustomer : Form
     {
         private IProductRepository productRepository = new ProductRepository();
+        private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
+        private BindingSource orderDetailBindingSource = null;
         public frmCustomer()
         {
             InitializeComponent();
+            if (GlobalData.AuthenticatedUser == null)
+            {
+                MessageBox.Show("Let's start with Login form!");
+                this.Close();
+                //frmLogin frmLogin = new frmLogin();
+                //frmLogin.FormClosed += delegate
+                //{
+                //    this.Close();
+                //};
+                //frmLogin.VisibleChanged += delegate
+                //{
+                //    if (frmLogin.Visible == false)
+                //        this.Close();
+                //};
+                //this.Hide();
+                //frmLogin.ShowDialog();
+            }                
         }
 
         private void tabcontrolCustomer_Click(object sender, EventArgs e)
         {
-            //tabCart.BackColor = Color.Blue;
+            
         }
 
         private void frmCustomer_Load(object sender, EventArgs e)
@@ -31,7 +49,7 @@ namespace GiftHommieWinforms
             tabHome_Click(sender, e);
         }
 
-        // TAB HOME
+        // TAB HOME AREA ------------------------------------------------------------
         private void tabHome_Click(object sender, EventArgs e)
         {
             HomeInitDataForSearchComponent();
@@ -253,6 +271,300 @@ namespace GiftHommieWinforms
 
             if (confirmResult == DialogResult.No)
                 e.Cancel = true;
+            else
+            {
+                GlobalData.AuthenticatedUser = null;
+            }
         }
+
+        // TAB ORDER AREA -------------------------------------------------
+        private void tabMyOrder_Click(object sender, EventArgs e)
+        {
+            OrderLoadData();
+            
+        }
+
+        private void OrderInitDataForSearchComponent()
+        {
+            // Load for search
+            //List<Category> categories = productRepository.GetAllCategories();
+            //categories.Insert(0, new Category()
+            //{
+            //    Id = 0,
+            //    Name = "Select the category",
+            //});
+            //cbProductCategory.DataSource = categories;
+            //cbProductCategory.ValueMember = "Id";
+            //cbProductCategory.DisplayMember = "Name";
+            //cbProductCategory.SelectedValue = 0;
+        }
+
+        private void OrderLoadData()
+        {
+
+            // Load orders
+            List<Order> orders = orderRepository.GetAllOrdersOfCustomer(GlobalData.AuthenticatedUser.Username);
+
+            //List<Product> products = productRepository.GetAllWithFilter(
+            //    "",
+            //    txtProductNameSearch.Text,
+            //    txtUnitPriceMinSearch.Text, txtUnitPriceMaxSearch.Text,
+            //    txtUnitsInStockMinSearch.Text, txtUnitsInStockMaxSearch.Text,
+            //    ToIntOrZero(cbProductCategory.SelectedValue.ToString()),
+            //    true
+            //    );
+            OrderLoadDataToGridView(orders);
+
+
+        }
+
+        private void OrderDetailLoadData()
+        {
+            IEnumerable<OrderDetail> orderDetails = new List<OrderDetail>();
+            if (dgvOrders.DataSource != null && bindingSource.Count > 0)
+            {
+
+                Order order = bindingSource.Current as Order;
+                orderDetails = order.OrderDetails;
+            }
+           
+            OrderDetailLoadDataToGridView(orderDetails);
+
+
+        }
+        private void OrderLoadDataToGridView(IEnumerable<Order> orders)
+        {
+            if (orders == null)
+                orders = new List<Order>()
+                {
+                };
+
+            try
+            {
+                bindingSource = new BindingSource();
+                bindingSource.DataSource = orders;
+
+                OrderReBinding();
+
+                dgvOrders.DataSource = null;
+                dgvOrders.DataSource = bindingSource;
+                dgvOrders.Columns["Id"].Visible = false;
+                dgvOrders.Columns["Username"].Visible = false;
+                
+                dgvOrders.Columns["LastUpdatedTime"].Visible = false;
+                dgvOrders.Columns["User"].Visible = false;
+                dgvOrders.Columns["OrderDetails"].Visible = false;
+                //dgvOrders.Columns["Comment"].Visible = false;
+                //dgvOrders.Columns["Status"].Visible = false;
+
+                setRowNumber(dgvOrders);
+
+
+
+                if (orders.Count() == 0)
+                {
+                    // gbProduct => hide
+                }
+                else
+                {
+                    // gbProduct=> not hide
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void OrderDetailLoadDataToGridView(IEnumerable<OrderDetail> orderDetails)
+        {
+            if (orderDetails == null)
+                orderDetails = new List<OrderDetail>()
+                {
+                };
+
+            foreach(OrderDetail detail in orderDetails)
+            {
+                Product product = productRepository.Get(detail.ProductId.Value);
+                detail.Product = product;
+            }
+
+            try
+            {
+                orderDetailBindingSource = new BindingSource();
+                orderDetailBindingSource.DataSource = orderDetails;
+
+                OrderDetailReBinding();
+
+                dgvOrderDetails.DataSource = null;
+                dgvOrderDetails.DataSource = orderDetailBindingSource;
+                dgvOrderDetails.Columns["Id"].Visible = false;
+                dgvOrderDetails.Columns["OrderId"].Visible = false;
+                dgvOrderDetails.Columns["ProductId"].Visible = false;
+                dgvOrderDetails.Columns["Order"].Visible = false;
+                dgvOrderDetails.Columns["Product"].DisplayIndex = 1;
+                dgvOrderDetails.Columns["Product"].Width = 520;
+
+                // Add the column to the DataGridView
+                if (dgvOrderDetails.Columns["Total"] == null)
+                    dgvOrderDetails.Columns.Add("Total", "Total");
+
+                //Calculate and assign the total value for each row
+                foreach (DataGridViewRow row in dgvOrderDetails.Rows)
+                    {
+                        int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                        decimal total = quantity * price;
+
+                        row.Cells["Total"].Value = total;
+                    }
+                dgvOrderDetails.Columns["Total"].DisplayIndex = 4;
+                dgvOrderDetails.Columns["Total"].DataPropertyName = "Total";
+
+                //dgvOrders.Columns["Comment"].Visible = false;
+                //dgvOrders.Columns["Status"].Visible = false;
+
+                setRowNumber(dgvOrderDetails);
+
+
+
+                if (orderDetails.Count() == 0)
+                {
+                    // gbProduct => hide
+                }
+                else
+                {
+                    // gbProduct=> not hide
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void OrderReBinding()
+        {
+            //gbOrderTarget.DataBindings.Clear();
+            txtOrderStatus.DataBindings.Clear();
+            dtpOrderTime.DataBindings.Clear();
+
+            txtOrderReceiver.DataBindings.Clear();
+            txtOrderPhone.DataBindings.Clear();
+            txtOrderAddress.DataBindings.Clear();
+            txtOrderMessage.DataBindings.Clear();
+
+            txtOrderShippingFee.DataBindings.Clear();
+            //txtOrderTotal.DataBindings.Clear();
+
+
+            //gbProduct.DataBindings.Add("Text", bindingSource, "Name");
+            txtOrderStatus.DataBindings.Add("Text", bindingSource, "Status");
+            dtpOrderTime.DataBindings.Add("Text", bindingSource, "OrderTime");
+
+            txtOrderReceiver.DataBindings.Add("Text", bindingSource, "Name");
+            txtOrderPhone.DataBindings.Add("Text", bindingSource, "Phone");
+            txtOrderAddress.DataBindings.Add("Text", bindingSource, "Address");
+            txtOrderMessage.DataBindings.Add("Text", bindingSource, "Message");
+
+            txtOrderShippingFee.DataBindings.Add("Text", bindingSource, "ShippingFee");
+            //txtOrderTotal.DataBindings.Add("Text", bindingSource, "");
+
+        }
+
+        private void OrderDetailReBinding()
+        {
+            //gbOrderProduct.DataBindings.Clear();
+            lbOrderProductName.DataBindings.Clear();
+            txtOrderPrice.DataBindings.Clear();
+            txtOrderQuantity.DataBindings.Clear();
+            pbOrderProductAvatar.DataBindings.Clear();
+            //txtOrderDetailTotal.DataBindings.Clear();
+
+
+            ////gbProduct.DataBindings.Add("Text", orderDetailBindingSource, "Name");
+            lbOrderProductName.DataBindings.Add("Text", orderDetailBindingSource, "Product.Name");
+            txtOrderPrice.DataBindings.Add("Text", orderDetailBindingSource, "Product.Price");
+            txtOrderQuantity.DataBindings.Add("Text", orderDetailBindingSource, "Product.Quantity");
+            pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
+                                "ImageLocation", orderDetailBindingSource, "Product.Avatar", true));
+            //if(dgvOrderDetails.DataSource != null)
+            //    txtOrderDetailTotal.DataBindings.Add("Text", dgvOrderDetails.DataSource, "Total");
+
+        }
+
+        private void OrderDetailClearText()
+        {
+            lbOrderProductName.Text = string.Empty;
+            txtOrderPrice.Text = string.Empty;
+            txtOrderQuantity.Text = string.Empty;
+        }
+
+        private void tabcontrolCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabcontrolCustomer.SelectedIndex == 0)
+            {
+                tabHome_Click(sender, e);
+            }
+            else if (tabcontrolCustomer.SelectedIndex == 2)
+            {
+                tabMyOrder_Click(sender, e);
+            }
+        }
+
+        private void dgvOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrder();
+        }
+
+        private void whenSelectTheOrder()
+        {
+            if (dgvOrders.DataSource != null && bindingSource.Count > 0)
+            {
+                Order order = bindingSource.Current as Order;
+                gbOrderTarget.Text = "Order >> " + order.Id;
+                txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
+                OrderDetailLoadData();
+            }
+        }
+        private void whenSelectTheOrderDetail()
+        {
+            if (dgvOrderDetails.DataSource != null && orderDetailBindingSource.Count > 0)
+            {
+                OrderDetail orderDetail = orderDetailBindingSource.Current as OrderDetail;
+                txtOrderDetailTotal.Text = (orderDetail.Price * orderDetail.Quantity).ToString();
+            }
+        }
+        private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrder();
+        }
+
+        private void gbOrderTarget_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvOrderDetails_DataSourceChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrderDetail();
+        }
+
+        private void dgvOrderDetails_SelectionChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrderDetail();
+        }
+
+        // END OF TAB HOME AREA -------------------------------------------
+
+
+
+
     }
+
+
+
+
 }
