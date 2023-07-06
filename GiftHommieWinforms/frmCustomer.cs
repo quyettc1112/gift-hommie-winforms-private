@@ -1,12 +1,8 @@
 ﻿using BusinessObjects;
 using BussinessObjects;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using SaleManagementWinApp;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace GiftHommieWinforms
@@ -515,9 +511,17 @@ namespace GiftHommieWinforms
             {
                 tabHome_Click(sender, e);
             }
+            else if (tabcontrolCustomer.SelectedIndex == 1)
+            {
+                tabCart_Click(sender, e);
+            }
             else if (tabcontrolCustomer.SelectedIndex == 2)
             {
                 tabMyOrder_Click(sender, e);
+            }
+            else if (tabcontrolCustomer.SelectedIndex == 3)
+            {
+                tabMyProfile_Click(sender, e);
             }
         }
 
@@ -613,12 +617,28 @@ namespace GiftHommieWinforms
                 bindingSource.Position = index;
             }
         }
-        // END OF TAB HOME AREA -------------------------------------------
+
+
+        // END OF TAB HOME & ORDER AREA -------------------------------------------
 
 
         // TAB CART AREA
+        private void tabCart_Click(object sender, EventArgs e)
+        {
+            // trig when click move to tab // START CODE IN HERE
+            // example:
+            MessageBox.Show("Welcome to cart");
+        }
+
+
 
         // TAB PROFILE AREA
+        private void tabMyProfile_Click(object sender, EventArgs e)
+        {
+            // trig when click move to tab // START CODE IN HERE
+            // example:
+            MessageBox.Show("Welcome to profile");
+        }
 
     }
 

@@ -584,6 +584,7 @@
             this.tabCart.TabIndex = 1;
             this.tabCart.Text = "My Cart";
             this.tabCart.UseVisualStyleBackColor = true;
+            this.tabCart.Click += new System.EventHandler(this.tabCart_Click);
             // 
             // tabMyOrder
             // 
@@ -1135,6 +1136,7 @@
             this.tabMyProfile.TabIndex = 3;
             this.tabMyProfile.Text = "My Profile";
             this.tabMyProfile.UseVisualStyleBackColor = true;
+            this.tabMyProfile.Click += new System.EventHandler(this.tabMyProfile_Click);
             // 
             // sqlCommandBuilder1
             // 
