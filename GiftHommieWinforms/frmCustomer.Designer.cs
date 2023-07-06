@@ -83,7 +83,7 @@
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.gbOrderProduct = new System.Windows.Forms.GroupBox();
             this.pbOrderProductAvatar = new System.Windows.Forms.PictureBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtOrderDetailTotal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -764,7 +764,7 @@
             // gbOrderProduct
             // 
             this.gbOrderProduct.Controls.Add(this.pbOrderProductAvatar);
-            this.gbOrderProduct.Controls.Add(this.textBox7);
+            this.gbOrderProduct.Controls.Add(this.txtOrderDetailTotal);
             this.gbOrderProduct.Controls.Add(this.label11);
             this.gbOrderProduct.Controls.Add(this.label14);
             this.gbOrderProduct.Controls.Add(this.label10);
@@ -789,15 +789,15 @@
             this.pbOrderProductAvatar.TabIndex = 86;
             this.pbOrderProductAvatar.TabStop = false;
             // 
-            // textBox7
+            // txtOrderDetailTotal
             // 
-            this.textBox7.Location = new System.Drawing.Point(297, 257);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox7.Size = new System.Drawing.Size(99, 27);
-            this.textBox7.TabIndex = 98;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOrderDetailTotal.Location = new System.Drawing.Point(297, 257);
+            this.txtOrderDetailTotal.Name = "txtOrderDetailTotal";
+            this.txtOrderDetailTotal.ReadOnly = true;
+            this.txtOrderDetailTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtOrderDetailTotal.Size = new System.Drawing.Size(99, 27);
+            this.txtOrderDetailTotal.TabIndex = 98;
+            this.txtOrderDetailTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -1074,6 +1074,8 @@
             this.dgvOrderDetails.RowTemplate.Height = 29;
             this.dgvOrderDetails.Size = new System.Drawing.Size(930, 174);
             this.dgvOrderDetails.TabIndex = 0;
+            this.dgvOrderDetails.DataSourceChanged += new System.EventHandler(this.dgvOrderDetails_DataSourceChanged);
+            this.dgvOrderDetails.SelectionChanged += new System.EventHandler(this.dgvOrderDetails_SelectionChanged);
             // 
             // tabMyProfile
             // 
@@ -1237,7 +1239,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbOrderProductName;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtOrderDetailTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox gbOrderProduct;
         private System.Windows.Forms.GroupBox gbOrderTarget;

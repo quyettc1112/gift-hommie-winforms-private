@@ -421,6 +421,7 @@ namespace GiftHommieWinforms
                         row.Cells["Total"].Value = total;
                     }
                 dgvOrderDetails.Columns["Total"].DisplayIndex = 4;
+                dgvOrderDetails.Columns["Total"].DataPropertyName = "Total";
 
                 //dgvOrders.Columns["Comment"].Visible = false;
                 //dgvOrders.Columns["Status"].Visible = false;
@@ -480,6 +481,7 @@ namespace GiftHommieWinforms
             txtOrderPrice.DataBindings.Clear();
             txtOrderQuantity.DataBindings.Clear();
             pbOrderProductAvatar.DataBindings.Clear();
+            //txtOrderDetailTotal.DataBindings.Clear();
 
 
             ////gbProduct.DataBindings.Add("Text", orderDetailBindingSource, "Name");
@@ -488,6 +490,8 @@ namespace GiftHommieWinforms
             txtOrderQuantity.DataBindings.Add("Text", orderDetailBindingSource, "Product.Quantity");
             pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
                                 "ImageLocation", orderDetailBindingSource, "Product.Avatar", true));
+            //if(dgvOrderDetails.DataSource != null)
+            //    txtOrderDetailTotal.DataBindings.Add("Text", dgvOrderDetails.DataSource, "Total");
 
         }
 
@@ -525,6 +529,14 @@ namespace GiftHommieWinforms
                 OrderDetailLoadData();
             }
         }
+        private void whenSelectTheOrderDetail()
+        {
+            if (dgvOrderDetails.DataSource != null && orderDetailBindingSource.Count > 0)
+            {
+                OrderDetail orderDetail = orderDetailBindingSource.Current as OrderDetail;
+                txtOrderDetailTotal.Text = (orderDetail.Price * orderDetail.Quantity).ToString();
+            }
+        }
         private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
         {
             whenSelectTheOrder();
@@ -533,6 +545,16 @@ namespace GiftHommieWinforms
         private void gbOrderTarget_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvOrderDetails_DataSourceChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrderDetail();
+        }
+
+        private void dgvOrderDetails_SelectionChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrderDetail();
         }
 
         // END OF TAB HOME AREA -------------------------------------------
