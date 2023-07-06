@@ -15,6 +15,6 @@ namespace BussinessObjects
         void Save(Order entity);
         void Delete(int id);
 
-        public List<Order> GetAllOrdersOfCustomer(int customerId);
+        public List<Order> GetAllOrdersOfCustomer(string username);
     }
 }

@@ -113,7 +113,7 @@ namespace BusinessObjects
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.UsernameNavigation)
+                entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Username)
                     .OnDelete(DeleteBehavior.ClientSetNull)

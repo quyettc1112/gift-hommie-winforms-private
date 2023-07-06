@@ -70,43 +70,45 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.btnSort = new System.Windows.Forms.Button();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.lbEndDate = new System.Windows.Forms.Label();
-            this.lbStartDate = new System.Windows.Forms.Label();
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.lbStartDate = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lbEndDate = new System.Windows.Forms.Label();
             this.btnCleanAllFilterOrder = new System.Windows.Forms.Button();
             this.btnSearchOrder = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dgvOrderList = new System.Windows.Forms.DataGridView();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.gbOrderProduct = new System.Windows.Forms.GroupBox();
+            this.pbOrderProductAvatar = new System.Windows.Forms.PictureBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lbOrderProductName = new System.Windows.Forms.Label();
+            this.txtOrderPrice = new System.Windows.Forms.TextBox();
+            this.txtOrderQuantity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.gbOrderTarget = new System.Windows.Forms.GroupBox();
+            this.txtOrderMessage = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtOrderShippingFee = new System.Windows.Forms.TextBox();
+            this.txtOrderReceiver = new System.Windows.Forms.TextBox();
             this.lbOrderShippingFee = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtOrderStatus = new System.Windows.Forms.TextBox();
-            this.txtOrderID = new System.Windows.Forms.TextBox();
-            this.lbOrderStatus = new System.Windows.Forms.Label();
-            this.lbReceiver = new System.Windows.Forms.Label();
-            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.lbTotal = new System.Windows.Forms.Label();
+            this.txtOrderTotal = new System.Windows.Forms.TextBox();
+            this.txtOrderAddress = new System.Windows.Forms.TextBox();
             this.lbOrderDate = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.txtCustomerID = new System.Windows.Forms.TextBox();
-            this.lbOrderID = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.txtOrderPhone = new System.Windows.Forms.TextBox();
+            this.dtpOrderTime = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbReceiver = new System.Windows.Forms.Label();
+            this.txtOrderStatus = new System.Windows.Forms.TextBox();
+            this.lbOrderStatus = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
@@ -139,16 +141,18 @@
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             this.gbFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gbOrderProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOrderProductAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
+            this.gbOrderTarget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,6 +169,7 @@
             this.tabcontrolCustomer.Size = new System.Drawing.Size(1417, 756);
             this.tabcontrolCustomer.TabIndex = 0;
             this.tabcontrolCustomer.TabStop = false;
+            this.tabcontrolCustomer.SelectedIndexChanged += new System.EventHandler(this.tabcontrolCustomer_SelectedIndexChanged);
             this.tabcontrolCustomer.Click += new System.EventHandler(this.tabcontrolCustomer_Click);
             // 
             // tabHome
@@ -582,6 +587,7 @@
             this.tabMyOrder.TabIndex = 2;
             this.tabMyOrder.Text = "My Order";
             this.tabMyOrder.UseVisualStyleBackColor = true;
+            this.tabMyOrder.Click += new System.EventHandler(this.tabMyOrder_Click);
             // 
             // splitContainer3
             // 
@@ -600,7 +606,6 @@
             this.splitContainer3.Size = new System.Drawing.Size(1403, 717);
             this.splitContainer3.SplitterDistance = 279;
             this.splitContainer3.TabIndex = 0;
-            this.splitContainer3.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer3_SplitterMoved);
             // 
             // splitContainer4
             // 
@@ -619,7 +624,7 @@
             this.splitContainer4.Panel2.Controls.Add(this.btnCleanAllFilterOrder);
             this.splitContainer4.Panel2.Controls.Add(this.btnSearchOrder);
             this.splitContainer4.Panel2.Controls.Add(this.textBox1);
-            this.splitContainer4.Panel2.Controls.Add(this.dgvOrderList);
+            this.splitContainer4.Panel2.Controls.Add(this.dgvOrders);
             this.splitContainer4.Size = new System.Drawing.Size(1403, 279);
             this.splitContainer4.SplitterDistance = 467;
             this.splitContainer4.TabIndex = 0;
@@ -632,40 +637,6 @@
             this.btnSort.TabIndex = 113;
             this.btnSort.Text = "Sort In Descending Date Order";
             this.btnSort.UseVisualStyleBackColor = true;
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Location = new System.Drawing.Point(126, 88);
-            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
-            this.dtpEndDate.TabIndex = 112;
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.Location = new System.Drawing.Point(126, 41);
-            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
-            this.dtpStartDate.TabIndex = 111;
-            // 
-            // lbEndDate
-            // 
-            this.lbEndDate.AutoSize = true;
-            this.lbEndDate.Location = new System.Drawing.Point(27, 93);
-            this.lbEndDate.Name = "lbEndDate";
-            this.lbEndDate.Size = new System.Drawing.Size(70, 20);
-            this.lbEndDate.TabIndex = 109;
-            this.lbEndDate.Text = "End Date";
-            // 
-            // lbStartDate
-            // 
-            this.lbStartDate.AutoSize = true;
-            this.lbStartDate.Location = new System.Drawing.Point(27, 46);
-            this.lbStartDate.Name = "lbStartDate";
-            this.lbStartDate.Size = new System.Drawing.Size(76, 20);
-            this.lbStartDate.TabIndex = 108;
-            this.lbStartDate.Text = "Start Date";
             // 
             // gbFilter
             // 
@@ -695,6 +666,40 @@
             this.btnFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFilter.UseVisualStyleBackColor = true;
             // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Location = new System.Drawing.Point(126, 88);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
+            this.dtpEndDate.TabIndex = 112;
+            // 
+            // lbStartDate
+            // 
+            this.lbStartDate.AutoSize = true;
+            this.lbStartDate.Location = new System.Drawing.Point(27, 46);
+            this.lbStartDate.Name = "lbStartDate";
+            this.lbStartDate.Size = new System.Drawing.Size(76, 20);
+            this.lbStartDate.TabIndex = 108;
+            this.lbStartDate.Text = "Start Date";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Location = new System.Drawing.Point(126, 41);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
+            this.dtpStartDate.TabIndex = 111;
+            // 
+            // lbEndDate
+            // 
+            this.lbEndDate.AutoSize = true;
+            this.lbEndDate.Location = new System.Drawing.Point(27, 93);
+            this.lbEndDate.Name = "lbEndDate";
+            this.lbEndDate.Size = new System.Drawing.Size(70, 20);
+            this.lbEndDate.TabIndex = 109;
+            this.lbEndDate.Text = "End Date";
+            // 
             // btnCleanAllFilterOrder
             // 
             this.btnCleanAllFilterOrder.Location = new System.Drawing.Point(806, 6);
@@ -720,21 +725,21 @@
             this.textBox1.Size = new System.Drawing.Size(330, 27);
             this.textBox1.TabIndex = 105;
             // 
-            // dgvOrderList
+            // dgvOrders
             // 
-            this.dgvOrderList.AllowUserToAddRows = false;
-            this.dgvOrderList.AllowUserToDeleteRows = false;
-            this.dgvOrderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvOrderList.Location = new System.Drawing.Point(0, 47);
-            this.dgvOrderList.Name = "dgvOrderList";
-            this.dgvOrderList.ReadOnly = true;
-            this.dgvOrderList.RowHeadersWidth = 51;
-            this.dgvOrderList.RowTemplate.Height = 29;
-            this.dgvOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderList.Size = new System.Drawing.Size(930, 230);
-            this.dgvOrderList.TabIndex = 104;
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvOrders.Location = new System.Drawing.Point(0, 47);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.ReadOnly = true;
+            this.dgvOrders.RowHeadersWidth = 51;
+            this.dgvOrders.RowTemplate.Height = 29;
+            this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrders.Size = new System.Drawing.Size(930, 230);
+            this.dgvOrders.TabIndex = 104;
             // 
             // splitContainer5
             // 
@@ -745,15 +750,8 @@
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.textBox7);
-            this.splitContainer5.Panel1.Controls.Add(this.label14);
-            this.splitContainer5.Panel1.Controls.Add(this.label13);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox5);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox6);
-            this.splitContainer5.Panel1.Controls.Add(this.label10);
-            this.splitContainer5.Panel1.Controls.Add(this.label11);
+            this.splitContainer5.Panel1.Controls.Add(this.gbOrderProduct);
             this.splitContainer5.Panel1.Controls.Add(this.label12);
-            this.splitContainer5.Panel1.Controls.Add(this.pictureBox1);
             // 
             // splitContainer5.Panel2
             // 
@@ -762,9 +760,37 @@
             this.splitContainer5.SplitterDistance = 467;
             this.splitContainer5.TabIndex = 0;
             // 
+            // gbOrderProduct
+            // 
+            this.gbOrderProduct.Controls.Add(this.pbOrderProductAvatar);
+            this.gbOrderProduct.Controls.Add(this.textBox7);
+            this.gbOrderProduct.Controls.Add(this.label11);
+            this.gbOrderProduct.Controls.Add(this.label14);
+            this.gbOrderProduct.Controls.Add(this.label10);
+            this.gbOrderProduct.Controls.Add(this.lbOrderProductName);
+            this.gbOrderProduct.Controls.Add(this.txtOrderPrice);
+            this.gbOrderProduct.Controls.Add(this.txtOrderQuantity);
+            this.gbOrderProduct.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbOrderProduct.Location = new System.Drawing.Point(0, 82);
+            this.gbOrderProduct.Name = "gbOrderProduct";
+            this.gbOrderProduct.Size = new System.Drawing.Size(465, 350);
+            this.gbOrderProduct.TabIndex = 99;
+            this.gbOrderProduct.TabStop = false;
+            this.gbOrderProduct.Text = "Product";
+            // 
+            // pbOrderProductAvatar
+            // 
+            this.pbOrderProductAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbOrderProductAvatar.Location = new System.Drawing.Point(23, 55);
+            this.pbOrderProductAvatar.Name = "pbOrderProductAvatar";
+            this.pbOrderProductAvatar.Size = new System.Drawing.Size(163, 192);
+            this.pbOrderProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOrderProductAvatar.TabIndex = 86;
+            this.pbOrderProductAvatar.TabStop = false;
+            // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(284, 264);
+            this.textBox7.Location = new System.Drawing.Point(297, 207);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -772,65 +798,65 @@
             this.textBox7.TabIndex = 98;
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(203, 109);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 28);
+            this.label11.TabIndex = 93;
+            this.label11.Text = "Price:";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(190, 263);
+            this.label14.Location = new System.Drawing.Point(203, 206);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 28);
             this.label14.TabIndex = 97;
             this.label14.Text = "Total";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(179, 112);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(199, 41);
-            this.label13.TabIndex = 96;
-            this.label13.Text = "Product Name";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(284, 217);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox5.Size = new System.Drawing.Size(99, 27);
-            this.textBox5.TabIndex = 95;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(284, 170);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox6.Size = new System.Drawing.Size(99, 27);
-            this.textBox6.TabIndex = 91;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(190, 216);
+            this.label10.Location = new System.Drawing.Point(203, 159);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 28);
             this.label10.TabIndex = 94;
             this.label10.Text = "Quantity";
             // 
-            // label11
+            // lbOrderProductName
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(190, 166);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 28);
-            this.label11.TabIndex = 93;
-            this.label11.Text = "Price:";
+            this.lbOrderProductName.AutoSize = true;
+            this.lbOrderProductName.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbOrderProductName.Location = new System.Drawing.Point(192, 55);
+            this.lbOrderProductName.Name = "lbOrderProductName";
+            this.lbOrderProductName.Size = new System.Drawing.Size(199, 41);
+            this.lbOrderProductName.TabIndex = 96;
+            this.lbOrderProductName.Text = "Product Name";
+            // 
+            // txtOrderPrice
+            // 
+            this.txtOrderPrice.Location = new System.Drawing.Point(297, 113);
+            this.txtOrderPrice.Name = "txtOrderPrice";
+            this.txtOrderPrice.ReadOnly = true;
+            this.txtOrderPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtOrderPrice.Size = new System.Drawing.Size(99, 27);
+            this.txtOrderPrice.TabIndex = 91;
+            this.txtOrderPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtOrderQuantity
+            // 
+            this.txtOrderQuantity.Location = new System.Drawing.Point(297, 160);
+            this.txtOrderQuantity.Name = "txtOrderQuantity";
+            this.txtOrderQuantity.ReadOnly = true;
+            this.txtOrderQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtOrderQuantity.Size = new System.Drawing.Size(99, 27);
+            this.txtOrderQuantity.TabIndex = 95;
+            this.txtOrderQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -842,16 +868,6 @@
             this.label12.TabIndex = 92;
             this.label12.Text = "Order Details";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 112);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(163, 192);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 86;
-            this.pictureBox1.TabStop = false;
-            // 
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -861,22 +877,7 @@
             // 
             // splitContainer6.Panel1
             // 
-            this.splitContainer6.Panel1.Controls.Add(this.textBox4);
-            this.splitContainer6.Panel1.Controls.Add(this.lbOrderShippingFee);
-            this.splitContainer6.Panel1.Controls.Add(this.textBox3);
-            this.splitContainer6.Panel1.Controls.Add(this.label9);
-            this.splitContainer6.Panel1.Controls.Add(this.textBox2);
-            this.splitContainer6.Panel1.Controls.Add(this.label8);
-            this.splitContainer6.Panel1.Controls.Add(this.txtOrderStatus);
-            this.splitContainer6.Panel1.Controls.Add(this.txtOrderID);
-            this.splitContainer6.Panel1.Controls.Add(this.lbOrderStatus);
-            this.splitContainer6.Panel1.Controls.Add(this.lbReceiver);
-            this.splitContainer6.Panel1.Controls.Add(this.dtpOrderDate);
-            this.splitContainer6.Panel1.Controls.Add(this.lbTotal);
-            this.splitContainer6.Panel1.Controls.Add(this.lbOrderDate);
-            this.splitContainer6.Panel1.Controls.Add(this.txtTotal);
-            this.splitContainer6.Panel1.Controls.Add(this.txtCustomerID);
-            this.splitContainer6.Panel1.Controls.Add(this.lbOrderID);
+            this.splitContainer6.Panel1.Controls.Add(this.gbOrderTarget);
             // 
             // splitContainer6.Panel2
             // 
@@ -886,149 +887,182 @@
             this.splitContainer6.SplitterDistance = 254;
             this.splitContainer6.TabIndex = 0;
             // 
-            // textBox4
+            // gbOrderTarget
             // 
-            this.textBox4.Location = new System.Drawing.Point(675, 141);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(215, 27);
-            this.textBox4.TabIndex = 157;
+            this.gbOrderTarget.Controls.Add(this.txtOrderMessage);
+            this.gbOrderTarget.Controls.Add(this.label13);
+            this.gbOrderTarget.Controls.Add(this.txtOrderShippingFee);
+            this.gbOrderTarget.Controls.Add(this.txtOrderReceiver);
+            this.gbOrderTarget.Controls.Add(this.lbOrderShippingFee);
+            this.gbOrderTarget.Controls.Add(this.txtOrderTotal);
+            this.gbOrderTarget.Controls.Add(this.txtOrderAddress);
+            this.gbOrderTarget.Controls.Add(this.lbOrderDate);
+            this.gbOrderTarget.Controls.Add(this.label9);
+            this.gbOrderTarget.Controls.Add(this.lbTotal);
+            this.gbOrderTarget.Controls.Add(this.txtOrderPhone);
+            this.gbOrderTarget.Controls.Add(this.dtpOrderTime);
+            this.gbOrderTarget.Controls.Add(this.label8);
+            this.gbOrderTarget.Controls.Add(this.lbReceiver);
+            this.gbOrderTarget.Controls.Add(this.txtOrderStatus);
+            this.gbOrderTarget.Controls.Add(this.lbOrderStatus);
+            this.gbOrderTarget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbOrderTarget.Location = new System.Drawing.Point(0, 0);
+            this.gbOrderTarget.Name = "gbOrderTarget";
+            this.gbOrderTarget.Size = new System.Drawing.Size(930, 254);
+            this.gbOrderTarget.TabIndex = 107;
+            this.gbOrderTarget.TabStop = false;
+            this.gbOrderTarget.Text = "Order >> ID";
+            // 
+            // txtOrderMessage
+            // 
+            this.txtOrderMessage.Location = new System.Drawing.Point(167, 156);
+            this.txtOrderMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderMessage.Name = "txtOrderMessage";
+            this.txtOrderMessage.ReadOnly = true;
+            this.txtOrderMessage.Size = new System.Drawing.Size(276, 27);
+            this.txtOrderMessage.TabIndex = 159;
+            this.txtOrderMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(38, 159);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 20);
+            this.label13.TabIndex = 158;
+            this.label13.Text = "Message";
+            // 
+            // txtOrderShippingFee
+            // 
+            this.txtOrderShippingFee.Location = new System.Drawing.Point(686, 156);
+            this.txtOrderShippingFee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderShippingFee.Name = "txtOrderShippingFee";
+            this.txtOrderShippingFee.ReadOnly = true;
+            this.txtOrderShippingFee.Size = new System.Drawing.Size(215, 27);
+            this.txtOrderShippingFee.TabIndex = 157;
+            this.txtOrderShippingFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtOrderReceiver
+            // 
+            this.txtOrderReceiver.Location = new System.Drawing.Point(167, 51);
+            this.txtOrderReceiver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderReceiver.Name = "txtOrderReceiver";
+            this.txtOrderReceiver.ReadOnly = true;
+            this.txtOrderReceiver.Size = new System.Drawing.Size(273, 27);
+            this.txtOrderReceiver.TabIndex = 145;
+            this.txtOrderReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbOrderShippingFee
             // 
             this.lbOrderShippingFee.AutoSize = true;
-            this.lbOrderShippingFee.Location = new System.Drawing.Point(550, 144);
+            this.lbOrderShippingFee.Location = new System.Drawing.Point(561, 159);
             this.lbOrderShippingFee.Name = "lbOrderShippingFee";
             this.lbOrderShippingFee.Size = new System.Drawing.Size(95, 20);
             this.lbOrderShippingFee.TabIndex = 156;
             this.lbOrderShippingFee.Text = "Shipping Fee";
             // 
-            // textBox3
+            // txtOrderTotal
             // 
-            this.textBox3.Location = new System.Drawing.Point(155, 137);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(273, 27);
-            this.textBox3.TabIndex = 155;
+            this.txtOrderTotal.Location = new System.Drawing.Point(453, 210);
+            this.txtOrderTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderTotal.Name = "txtOrderTotal";
+            this.txtOrderTotal.ReadOnly = true;
+            this.txtOrderTotal.Size = new System.Drawing.Size(176, 27);
+            this.txtOrderTotal.TabIndex = 144;
+            this.txtOrderTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label9
+            // txtOrderAddress
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 140);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 20);
-            this.label9.TabIndex = 154;
-            this.label9.Text = "Address";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(674, 89);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(216, 27);
-            this.textBox2.TabIndex = 153;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(550, 92);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 20);
-            this.label8.TabIndex = 152;
-            this.label8.Text = "Phone";
-            // 
-            // txtOrderStatus
-            // 
-            this.txtOrderStatus.Location = new System.Drawing.Point(597, 206);
-            this.txtOrderStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtOrderStatus.Name = "txtOrderStatus";
-            this.txtOrderStatus.ReadOnly = true;
-            this.txtOrderStatus.Size = new System.Drawing.Size(121, 27);
-            this.txtOrderStatus.TabIndex = 151;
-            // 
-            // txtOrderID
-            // 
-            this.txtOrderID.Location = new System.Drawing.Point(155, 27);
-            this.txtOrderID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtOrderID.Name = "txtOrderID";
-            this.txtOrderID.ReadOnly = true;
-            this.txtOrderID.Size = new System.Drawing.Size(273, 27);
-            this.txtOrderID.TabIndex = 147;
-            // 
-            // lbOrderStatus
-            // 
-            this.lbOrderStatus.AutoSize = true;
-            this.lbOrderStatus.Location = new System.Drawing.Point(500, 209);
-            this.lbOrderStatus.Name = "lbOrderStatus";
-            this.lbOrderStatus.Size = new System.Drawing.Size(91, 20);
-            this.lbOrderStatus.TabIndex = 150;
-            this.lbOrderStatus.Text = "Order Status";
-            // 
-            // lbReceiver
-            // 
-            this.lbReceiver.AutoSize = true;
-            this.lbReceiver.Location = new System.Drawing.Point(23, 83);
-            this.lbReceiver.Name = "lbReceiver";
-            this.lbReceiver.Size = new System.Drawing.Size(65, 20);
-            this.lbReceiver.TabIndex = 142;
-            this.lbReceiver.Text = "Receiver";
-            // 
-            // dtpOrderDate
-            // 
-            this.dtpOrderDate.Enabled = false;
-            this.dtpOrderDate.Location = new System.Drawing.Point(675, 29);
-            this.dtpOrderDate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.dtpOrderDate.Name = "dtpOrderDate";
-            this.dtpOrderDate.Size = new System.Drawing.Size(215, 27);
-            this.dtpOrderDate.TabIndex = 149;
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(189, 209);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(42, 20);
-            this.lbTotal.TabIndex = 143;
-            this.lbTotal.Text = "Total";
+            this.txtOrderAddress.Location = new System.Drawing.Point(167, 104);
+            this.txtOrderAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderAddress.Name = "txtOrderAddress";
+            this.txtOrderAddress.ReadOnly = true;
+            this.txtOrderAddress.Size = new System.Drawing.Size(276, 27);
+            this.txtOrderAddress.TabIndex = 155;
+            this.txtOrderAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbOrderDate
             // 
             this.lbOrderDate.AutoSize = true;
-            this.lbOrderDate.Location = new System.Drawing.Point(550, 34);
+            this.lbOrderDate.Location = new System.Drawing.Point(561, 49);
             this.lbOrderDate.Name = "lbOrderDate";
             this.lbOrderDate.Size = new System.Drawing.Size(84, 20);
             this.lbOrderDate.TabIndex = 148;
             this.lbOrderDate.Text = "Order Time";
             // 
-            // txtTotal
+            // label9
             // 
-            this.txtTotal.Location = new System.Drawing.Point(257, 206);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(200, 27);
-            this.txtTotal.TabIndex = 144;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(38, 107);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 20);
+            this.label9.TabIndex = 154;
+            this.label9.Text = "Address";
             // 
-            // txtCustomerID
+            // lbTotal
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(155, 83);
-            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.ReadOnly = true;
-            this.txtCustomerID.Size = new System.Drawing.Size(273, 27);
-            this.txtCustomerID.TabIndex = 145;
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(380, 213);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(42, 20);
+            this.lbTotal.TabIndex = 143;
+            this.lbTotal.Text = "Total";
             // 
-            // lbOrderID
+            // txtOrderPhone
             // 
-            this.lbOrderID.AutoSize = true;
-            this.lbOrderID.Location = new System.Drawing.Point(23, 27);
-            this.lbOrderID.Name = "lbOrderID";
-            this.lbOrderID.Size = new System.Drawing.Size(66, 20);
-            this.lbOrderID.TabIndex = 146;
-            this.lbOrderID.Text = "Order ID";
+            this.txtOrderPhone.Location = new System.Drawing.Point(685, 104);
+            this.txtOrderPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderPhone.Name = "txtOrderPhone";
+            this.txtOrderPhone.ReadOnly = true;
+            this.txtOrderPhone.Size = new System.Drawing.Size(216, 27);
+            this.txtOrderPhone.TabIndex = 153;
+            this.txtOrderPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dtpOrderTime
+            // 
+            this.dtpOrderTime.Enabled = false;
+            this.dtpOrderTime.Location = new System.Drawing.Point(686, 44);
+            this.dtpOrderTime.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.dtpOrderTime.Name = "dtpOrderTime";
+            this.dtpOrderTime.Size = new System.Drawing.Size(215, 27);
+            this.dtpOrderTime.TabIndex = 149;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(561, 107);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 20);
+            this.label8.TabIndex = 152;
+            this.label8.Text = "Phone";
+            // 
+            // lbReceiver
+            // 
+            this.lbReceiver.AutoSize = true;
+            this.lbReceiver.Location = new System.Drawing.Point(35, 51);
+            this.lbReceiver.Name = "lbReceiver";
+            this.lbReceiver.Size = new System.Drawing.Size(65, 20);
+            this.lbReceiver.TabIndex = 142;
+            this.lbReceiver.Text = "Receiver";
+            // 
+            // txtOrderStatus
+            // 
+            this.txtOrderStatus.Location = new System.Drawing.Point(795, 1);
+            this.txtOrderStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOrderStatus.Name = "txtOrderStatus";
+            this.txtOrderStatus.ReadOnly = true;
+            this.txtOrderStatus.Size = new System.Drawing.Size(121, 27);
+            this.txtOrderStatus.TabIndex = 151;
+            this.txtOrderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbOrderStatus
+            // 
+            this.lbOrderStatus.AutoSize = true;
+            this.lbOrderStatus.Location = new System.Drawing.Point(698, 4);
+            this.lbOrderStatus.Name = "lbOrderStatus";
+            this.lbOrderStatus.Size = new System.Drawing.Size(91, 20);
+            this.lbOrderStatus.TabIndex = 150;
+            this.lbOrderStatus.Text = "Order Status";
             // 
             // label15
             // 
@@ -1114,19 +1148,22 @@
             this.splitContainer4.ResumeLayout(false);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel1.PerformLayout();
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gbOrderProduct.ResumeLayout(false);
+            this.gbOrderProduct.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOrderProductAvatar)).EndInit();
             this.splitContainer6.Panel1.ResumeLayout(false);
-            this.splitContainer6.Panel1.PerformLayout();
             this.splitContainer6.Panel2.ResumeLayout(false);
             this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
+            this.gbOrderTarget.ResumeLayout(false);
+            this.gbOrderTarget.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1186,36 +1223,38 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnSearchOrder;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dgvOrderList;
+        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Button btnCleanAllFilterOrder;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.TextBox txtOrderStatus;
-        private System.Windows.Forms.TextBox txtOrderID;
-        private System.Windows.Forms.Label lbOrderStatus;
         private System.Windows.Forms.Label lbReceiver;
-        private System.Windows.Forms.DateTimePicker dtpOrderDate;
+        private System.Windows.Forms.DateTimePicker dtpOrderTime;
         private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.Label lbOrderDate;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox txtCustomerID;
-        private System.Windows.Forms.Label lbOrderID;
+        private System.Windows.Forms.TextBox txtOrderTotal;
+        private System.Windows.Forms.TextBox txtOrderReceiver;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtOrderShippingFee;
         private System.Windows.Forms.Label lbOrderShippingFee;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOrderAddress;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtOrderPhone;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.PictureBox pbOrderProductAvatar;
+        private System.Windows.Forms.TextBox txtOrderQuantity;
+        private System.Windows.Forms.TextBox txtOrderPrice;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lbOrderProductName;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox gbOrderProduct;
+        private System.Windows.Forms.GroupBox gbOrderTarget;
+        private System.Windows.Forms.TextBox txtOrderMessage;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lbOrderStatus;
     }
 }
