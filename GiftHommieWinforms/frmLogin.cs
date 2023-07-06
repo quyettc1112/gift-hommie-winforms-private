@@ -28,12 +28,16 @@ namespace SaleManagementWinApp
                         if (user.Role.Equals("CUSTOMER")) // CUSTOMER
                         {
                             frmCustomer frmCustomer = new frmCustomer();
-                            this.Hide();
-                            frmCustomer.Show();
+
+                            frmCustomer.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "!";
+
                             frmCustomer.FormClosed += delegate
                             {
                                 this.Close();
                             };
+                            this.Hide();
+                            frmCustomer.Show();
+                            
                         }
                         else if (user.Role.Equals("STAFF")) // STAFF
                         {
@@ -62,6 +66,12 @@ namespace SaleManagementWinApp
         {
             txtEmail.Text = "";
             txtPassword.Text = "";
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin_Click(sender, e);
         }
     }
 

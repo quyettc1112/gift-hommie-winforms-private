@@ -218,7 +218,7 @@
             this.groupBoxSearch.Name = "groupBoxSearch";
             this.groupBoxSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxSearch.Size = new System.Drawing.Size(366, 717);
-            this.groupBoxSearch.TabIndex = 82;
+            this.groupBoxSearch.TabIndex = 0;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Search";
             // 
@@ -231,7 +231,7 @@
             this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
             this.cbProductCategory.Name = "cbProductCategory";
             this.cbProductCategory.Size = new System.Drawing.Size(334, 28);
-            this.cbProductCategory.TabIndex = 51;
+            this.cbProductCategory.TabIndex = 3;
             this.cbProductCategory.SelectedIndexChanged += new System.EventHandler(this.cbProductCategory_SelectedIndexChanged);
             // 
             // label4
@@ -249,7 +249,7 @@
             this.txtProductNameSearch.Location = new System.Drawing.Point(9, 121);
             this.txtProductNameSearch.Name = "txtProductNameSearch";
             this.txtProductNameSearch.Size = new System.Drawing.Size(331, 27);
-            this.txtProductNameSearch.TabIndex = 49;
+            this.txtProductNameSearch.TabIndex = 0;
             this.txtProductNameSearch.TextChanged += new System.EventHandler(this.txtProductNameSearch_TextChanged);
             // 
             // label5
@@ -266,7 +266,7 @@
             this.btnReset.Location = new System.Drawing.Point(183, 39);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(144, 31);
-            this.btnReset.TabIndex = 47;
+            this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -289,7 +289,7 @@
             this.txtUnitsInStockMaxSearch.Location = new System.Drawing.Point(152, 84);
             this.txtUnitsInStockMaxSearch.Name = "txtUnitsInStockMaxSearch";
             this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(156, 27);
-            this.txtUnitsInStockMaxSearch.TabIndex = 3;
+            this.txtUnitsInStockMaxSearch.TabIndex = 1;
             this.txtUnitsInStockMaxSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMaxSearch_TextChanged);
             // 
             // label3
@@ -315,7 +315,7 @@
             this.txtUnitsInStockMinSearch.Location = new System.Drawing.Point(152, 45);
             this.txtUnitsInStockMinSearch.Name = "txtUnitsInStockMinSearch";
             this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(156, 27);
-            this.txtUnitsInStockMinSearch.TabIndex = 1;
+            this.txtUnitsInStockMinSearch.TabIndex = 0;
             this.txtUnitsInStockMinSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMinSearch_TextChanged);
             // 
             // groupBox1
@@ -345,7 +345,7 @@
             this.txtUnitPriceMaxSearch.Location = new System.Drawing.Point(152, 87);
             this.txtUnitPriceMaxSearch.Name = "txtUnitPriceMaxSearch";
             this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(156, 27);
-            this.txtUnitPriceMaxSearch.TabIndex = 3;
+            this.txtUnitPriceMaxSearch.TabIndex = 1;
             this.txtUnitPriceMaxSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMaxSearch_TextChanged);
             // 
             // txtUnitPriceMinSearch
@@ -353,7 +353,7 @@
             this.txtUnitPriceMinSearch.Location = new System.Drawing.Point(152, 45);
             this.txtUnitPriceMinSearch.Name = "txtUnitPriceMinSearch";
             this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(156, 27);
-            this.txtUnitPriceMinSearch.TabIndex = 1;
+            this.txtUnitPriceMinSearch.TabIndex = 0;
             this.txtUnitPriceMinSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMinSearch_TextChanged);
             // 
             // label2
@@ -372,7 +372,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(142, 31);
-            this.btnSearch.TabIndex = 44;
+            this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Auto Filting";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -431,7 +431,7 @@
             this.txtCurrentIndex.Name = "txtCurrentIndex";
             this.txtCurrentIndex.ReadOnly = true;
             this.txtCurrentIndex.Size = new System.Drawing.Size(126, 27);
-            this.txtCurrentIndex.TabIndex = 52;
+            this.txtCurrentIndex.TabIndex = 1;
             this.txtCurrentIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnBack
@@ -439,7 +439,7 @@
             this.btnBack.Location = new System.Drawing.Point(284, 16);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(144, 31);
-            this.btnBack.TabIndex = 52;
+            this.btnBack.TabIndex = 0;
             this.btnBack.Text = "<< Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -449,7 +449,7 @@
             this.btnNext.Location = new System.Drawing.Point(566, 16);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(144, 31);
-            this.btnNext.TabIndex = 91;
+            this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next >>";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
@@ -461,7 +461,7 @@
             this.txtAvailable.ReadOnly = true;
             this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAvailable.Size = new System.Drawing.Size(110, 27);
-            this.txtAvailable.TabIndex = 90;
+            this.txtAvailable.TabIndex = 2;
             this.txtAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPrice
@@ -471,7 +471,7 @@
             this.txtPrice.ReadOnly = true;
             this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPrice.Size = new System.Drawing.Size(110, 27);
-            this.txtPrice.TabIndex = 0;
+            this.txtPrice.TabIndex = 1;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
@@ -529,7 +529,7 @@
             this.lbProductName.Location = new System.Drawing.Point(290, 49);
             this.lbProductName.Name = "lbProductName";
             this.lbProductName.Size = new System.Drawing.Size(236, 45);
-            this.lbProductName.TabIndex = 1;
+            this.lbProductName.TabIndex = 0;
             this.lbProductName.Text = "Product Name";
             this.lbProductName.TextChanged += new System.EventHandler(this.lbProductName_TextChanged);
             // 
@@ -555,7 +555,7 @@
             this.dgvProducts.RowTemplate.Height = 29;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(1033, 297);
-            this.dgvProducts.TabIndex = 84;
+            this.dgvProducts.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -636,7 +636,7 @@
             this.btnSort.Location = new System.Drawing.Point(98, 34);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(278, 53);
-            this.btnSort.TabIndex = 113;
+            this.btnSort.TabIndex = 0;
             this.btnSort.Text = "Sort In Ascending Date Order";
             this.btnSort.UseVisualStyleBackColor = true;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
@@ -675,7 +675,7 @@
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
-            this.dtpEndDate.TabIndex = 112;
+            this.dtpEndDate.TabIndex = 1;
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbStartDate
@@ -693,7 +693,7 @@
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
-            this.dtpStartDate.TabIndex = 111;
+            this.dtpStartDate.TabIndex = 0;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbEndDate
@@ -720,7 +720,7 @@
             this.cbOrderStatus.Location = new System.Drawing.Point(442, 12);
             this.cbOrderStatus.Name = "cbOrderStatus";
             this.cbOrderStatus.Size = new System.Drawing.Size(151, 28);
-            this.cbOrderStatus.TabIndex = 107;
+            this.cbOrderStatus.TabIndex = 2;
             this.cbOrderStatus.SelectedIndexChanged += new System.EventHandler(this.cbOrderStatus_SelectedIndexChanged);
             // 
             // btnCleanAllFilterOrder
@@ -728,7 +728,7 @@
             this.btnCleanAllFilterOrder.Location = new System.Drawing.Point(806, 6);
             this.btnCleanAllFilterOrder.Name = "btnCleanAllFilterOrder";
             this.btnCleanAllFilterOrder.Size = new System.Drawing.Size(120, 35);
-            this.btnCleanAllFilterOrder.TabIndex = 106;
+            this.btnCleanAllFilterOrder.TabIndex = 3;
             this.btnCleanAllFilterOrder.Text = "Clean all filters";
             this.btnCleanAllFilterOrder.UseVisualStyleBackColor = false;
             this.btnCleanAllFilterOrder.Click += new System.EventHandler(this.btnCleanAllFilterOrder_Click);
@@ -738,7 +738,7 @@
             this.btnSearchOrder.Location = new System.Drawing.Point(6, 12);
             this.btnSearchOrder.Name = "btnSearchOrder";
             this.btnSearchOrder.Size = new System.Drawing.Size(77, 29);
-            this.btnSearchOrder.TabIndex = 1;
+            this.btnSearchOrder.TabIndex = 0;
             this.btnSearchOrder.Text = "Search";
             this.btnSearchOrder.UseVisualStyleBackColor = false;
             // 
@@ -747,7 +747,7 @@
             this.txtOrderSearch.Location = new System.Drawing.Point(89, 13);
             this.txtOrderSearch.Name = "txtOrderSearch";
             this.txtOrderSearch.Size = new System.Drawing.Size(330, 27);
-            this.txtOrderSearch.TabIndex = 105;
+            this.txtOrderSearch.TabIndex = 1;
             this.txtOrderSearch.TextChanged += new System.EventHandler(this.txtOrderSearch_TextChanged);
             // 
             // dgvOrders
@@ -764,7 +764,7 @@
             this.dgvOrders.RowTemplate.Height = 29;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(930, 230);
-            this.dgvOrders.TabIndex = 104;
+            this.dgvOrders.TabIndex = 1;
             this.dgvOrders.DataSourceChanged += new System.EventHandler(this.dgvOrders_DataSourceChanged);
             this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
             // 
@@ -823,7 +823,7 @@
             this.txtOrderDetailTotal.ReadOnly = true;
             this.txtOrderDetailTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtOrderDetailTotal.Size = new System.Drawing.Size(99, 27);
-            this.txtOrderDetailTotal.TabIndex = 98;
+            this.txtOrderDetailTotal.TabIndex = 2;
             this.txtOrderDetailTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
@@ -873,7 +873,7 @@
             this.txtOrderPrice.ReadOnly = true;
             this.txtOrderPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtOrderPrice.Size = new System.Drawing.Size(99, 27);
-            this.txtOrderPrice.TabIndex = 91;
+            this.txtOrderPrice.TabIndex = 0;
             this.txtOrderPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderQuantity
@@ -883,7 +883,7 @@
             this.txtOrderQuantity.ReadOnly = true;
             this.txtOrderQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtOrderQuantity.Size = new System.Drawing.Size(99, 27);
-            this.txtOrderQuantity.TabIndex = 95;
+            this.txtOrderQuantity.TabIndex = 1;
             this.txtOrderQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
@@ -949,7 +949,7 @@
             this.btnCancelOrder.Location = new System.Drawing.Point(788, 213);
             this.btnCancelOrder.Name = "btnCancelOrder";
             this.btnCancelOrder.Size = new System.Drawing.Size(136, 29);
-            this.btnCancelOrder.TabIndex = 161;
+            this.btnCancelOrder.TabIndex = 8;
             this.btnCancelOrder.Text = "Cancel Order";
             this.btnCancelOrder.UseVisualStyleBackColor = false;
             this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
@@ -960,7 +960,7 @@
             this.label16.Location = new System.Drawing.Point(506, 213);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 20);
-            this.label16.TabIndex = 160;
+            this.label16.TabIndex = 7;
             this.label16.Text = "Status";
             // 
             // txtOrderMessage
@@ -970,7 +970,7 @@
             this.txtOrderMessage.Name = "txtOrderMessage";
             this.txtOrderMessage.ReadOnly = true;
             this.txtOrderMessage.Size = new System.Drawing.Size(276, 27);
-            this.txtOrderMessage.TabIndex = 159;
+            this.txtOrderMessage.TabIndex = 4;
             // 
             // label13
             // 
@@ -988,7 +988,7 @@
             this.txtOrderShippingFee.Name = "txtOrderShippingFee";
             this.txtOrderShippingFee.ReadOnly = true;
             this.txtOrderShippingFee.Size = new System.Drawing.Size(215, 27);
-            this.txtOrderShippingFee.TabIndex = 157;
+            this.txtOrderShippingFee.TabIndex = 5;
             this.txtOrderShippingFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderReceiver
@@ -998,7 +998,7 @@
             this.txtOrderReceiver.Name = "txtOrderReceiver";
             this.txtOrderReceiver.ReadOnly = true;
             this.txtOrderReceiver.Size = new System.Drawing.Size(273, 27);
-            this.txtOrderReceiver.TabIndex = 145;
+            this.txtOrderReceiver.TabIndex = 0;
             // 
             // lbOrderShippingFee
             // 
@@ -1016,7 +1016,7 @@
             this.txtOrderTotal.Name = "txtOrderTotal";
             this.txtOrderTotal.ReadOnly = true;
             this.txtOrderTotal.Size = new System.Drawing.Size(176, 27);
-            this.txtOrderTotal.TabIndex = 144;
+            this.txtOrderTotal.TabIndex = 6;
             this.txtOrderTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderAddress
@@ -1026,7 +1026,7 @@
             this.txtOrderAddress.Name = "txtOrderAddress";
             this.txtOrderAddress.ReadOnly = true;
             this.txtOrderAddress.Size = new System.Drawing.Size(276, 27);
-            this.txtOrderAddress.TabIndex = 155;
+            this.txtOrderAddress.TabIndex = 2;
             // 
             // lbOrderDate
             // 
@@ -1062,7 +1062,7 @@
             this.txtOrderPhone.Name = "txtOrderPhone";
             this.txtOrderPhone.ReadOnly = true;
             this.txtOrderPhone.Size = new System.Drawing.Size(216, 27);
-            this.txtOrderPhone.TabIndex = 153;
+            this.txtOrderPhone.TabIndex = 3;
             this.txtOrderPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtpOrderTime
@@ -1074,7 +1074,7 @@
             this.dtpOrderTime.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dtpOrderTime.Name = "dtpOrderTime";
             this.dtpOrderTime.Size = new System.Drawing.Size(215, 27);
-            this.dtpOrderTime.TabIndex = 149;
+            this.dtpOrderTime.TabIndex = 1;
             // 
             // label8
             // 
