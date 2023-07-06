@@ -59,3 +59,11 @@ D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\ref\GiftHomm
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmCustomer.resources
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.csproj.GenerateResource.cache
 D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\SaleManagementWinApp.frmLogin.resources
+D:\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmStaff.resources
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\appsettings.json

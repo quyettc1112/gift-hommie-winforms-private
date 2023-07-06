@@ -1,12 +1,8 @@
 ﻿using BusinessObjects;
 using BussinessObjects;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using SaleManagementWinApp;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace GiftHommieWinforms
@@ -17,6 +13,7 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
         private BindingSource orderDetailBindingSource = null;
+        private bool orderTimeDescMode = true;
         public frmCustomer()
         {
             InitializeComponent();
@@ -119,7 +116,7 @@ namespace GiftHommieWinforms
 
                 dgvProducts.DataSource = null;
                 dgvProducts.DataSource = bindingSource;
-                dgvProducts.Columns["Id"].Visible = false;
+                //dgvProducts.Columns["Id"].Visible = false;
                 dgvProducts.Columns["Avatar"].Visible = false;
                 dgvProducts.Columns["Status"].Visible = false;
                 dgvProducts.Columns["Carts"].Visible = false;
@@ -265,7 +262,7 @@ namespace GiftHommieWinforms
 
         private void frmCustomer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you want to exit?",
+            var confirmResult = MessageBox.Show("Do you want to exit?",
                                     "Confirm to exit",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -280,39 +277,45 @@ namespace GiftHommieWinforms
         // TAB ORDER AREA -------------------------------------------------
         private void tabMyOrder_Click(object sender, EventArgs e)
         {
-            OrderLoadData();
-            
+            OrderInitDataForSearchComponent();
+            OrderLoadData();            
         }
 
         private void OrderInitDataForSearchComponent()
         {
-            // Load for search
-            //List<Category> categories = productRepository.GetAllCategories();
-            //categories.Insert(0, new Category()
-            //{
-            //    Id = 0,
-            //    Name = "Select the category",
-            //});
-            //cbProductCategory.DataSource = categories;
-            //cbProductCategory.ValueMember = "Id";
-            //cbProductCategory.DisplayMember = "Name";
-            //cbProductCategory.SelectedValue = 0;
+            OrderResetFilter();
+        }
+
+        private void OrderResetFilter()
+        {
+            orderTimeDescMode = true;
+            if (orderTimeDescMode)
+                btnSort.Text = "Sort In Ascending Date Order";
+            else btnSort.Text = "Sort In Descending Date Order";
+
+            txtOrderSearch.Text = string.Empty;
+            dtpStartDate.Value = new DateTime(2015, 01, 31);
+            dtpEndDate.Value = DateTime.Now;
+            cbOrderStatus.SelectedIndex = 0;
         }
 
         private void OrderLoadData()
         {
 
             // Load orders
-            List<Order> orders = orderRepository.GetAllOrdersOfCustomer(GlobalData.AuthenticatedUser.Username);
+            List<Order> orders = orderRepository.GetAllOrdersOfCustomer(GlobalData.AuthenticatedUser.Username)
+                            .Where(o => (
+                                o.OrderTime >= dtpStartDate.Value && o.OrderTime < dtpEndDate.Value)
+                                && (o.Id.ToString().Contains(txtOrderSearch.Text) || o.Name.ToLower().Contains(txtOrderSearch.Text.ToLower()))
+                                && (cbOrderStatus.SelectedIndex == 0 || o.Status.Equals(cbOrderStatus.SelectedItem?.ToString()))
+                            )                                                        
+                            .ToList();
 
-            //List<Product> products = productRepository.GetAllWithFilter(
-            //    "",
-            //    txtProductNameSearch.Text,
-            //    txtUnitPriceMinSearch.Text, txtUnitPriceMaxSearch.Text,
-            //    txtUnitsInStockMinSearch.Text, txtUnitsInStockMaxSearch.Text,
-            //    ToIntOrZero(cbProductCategory.SelectedValue.ToString()),
-            //    true
-            //    );
+            if (orderTimeDescMode)
+                orders = orders.OrderByDescending(o => o.OrderTime).ToList();
+            else
+                orders = orders.OrderBy(o => o.OrderTime).ToList();
+
             OrderLoadDataToGridView(orders);
 
 
@@ -508,18 +511,26 @@ namespace GiftHommieWinforms
             {
                 tabHome_Click(sender, e);
             }
+            else if (tabcontrolCustomer.SelectedIndex == 1)
+            {
+                tabCart_Click(sender, e);
+            }
             else if (tabcontrolCustomer.SelectedIndex == 2)
             {
                 tabMyOrder_Click(sender, e);
+            }
+            else if (tabcontrolCustomer.SelectedIndex == 3)
+            {
+                tabMyProfile_Click(sender, e);
             }
         }
 
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrder();
+            WhenSelectTheOrder();
         }
 
-        private void whenSelectTheOrder()
+        private void WhenSelectTheOrder()
         {
             if (dgvOrders.DataSource != null && bindingSource.Count > 0)
             {
@@ -527,9 +538,10 @@ namespace GiftHommieWinforms
                 gbOrderTarget.Text = "Order >> " + order.Id;
                 txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
                 OrderDetailLoadData();
+                btnCancelOrder.Visible = order.Status.Equals("PENDING");
             }
         }
-        private void whenSelectTheOrderDetail()
+        private void WhenSelectTheOrderDetail()
         {
             if (dgvOrderDetails.DataSource != null && orderDetailBindingSource.Count > 0)
             {
@@ -539,7 +551,7 @@ namespace GiftHommieWinforms
         }
         private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrder();
+            WhenSelectTheOrder();
         }
 
         private void gbOrderTarget_Enter(object sender, EventArgs e)
@@ -549,18 +561,84 @@ namespace GiftHommieWinforms
 
         private void dgvOrderDetails_DataSourceChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrderDetail();
+            WhenSelectTheOrderDetail();
         }
 
         private void dgvOrderDetails_SelectionChanged(object sender, EventArgs e)
         {
-            whenSelectTheOrderDetail();
+            WhenSelectTheOrderDetail();
         }
 
-        // END OF TAB HOME AREA -------------------------------------------
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            orderTimeDescMode = !orderTimeDescMode;
+            if (orderTimeDescMode)
+                btnSort.Text = "Sort In Ascending Date Order";
+            else btnSort.Text = "Sort In Descending Date Order";
+            OrderLoadData();
+        }
+
+        private void dtpRangeDate_ValueChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void txtOrderSearch_TextChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void cbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OrderLoadData();
+        }
+
+        private void btnCleanAllFilterOrder_Click(object sender, EventArgs e)
+        {
+            OrderResetFilter();
+        }
+
+        private void btnCancelOrder_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("You want to cancel this order?", "Confirmation",
+                           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (confirmResult == DialogResult.No)
+            {
+                // do nothing
+            }                
+            else if (dgvOrders.DataSource != null && bindingSource.Count > 0)
+            {
+                Order order = bindingSource.Current as Order;
+                order.Status = "CANCELLED";
+                orderRepository.Update(order);
+                int index = bindingSource.Position;
+                OrderLoadData();
+                bindingSource.Position = index;
+            }
+        }
+
+
+        // END OF TAB HOME & ORDER AREA -------------------------------------------
+
+
+        // TAB CART AREA
+        private void tabCart_Click(object sender, EventArgs e)
+        {
+            // trig when click move to tab // START CODE IN HERE
+            // example:
+            MessageBox.Show("Welcome to cart");
+        }
 
 
 
+        // TAB PROFILE AREA
+        private void tabMyProfile_Click(object sender, EventArgs e)
+        {
+            // trig when click move to tab // START CODE IN HERE
+            // example:
+            MessageBox.Show("Welcome to profile");
+        }
 
     }
 

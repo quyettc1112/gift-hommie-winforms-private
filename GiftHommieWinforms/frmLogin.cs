@@ -28,22 +28,28 @@ namespace SaleManagementWinApp
                         if (user.Role.Equals("CUSTOMER")) // CUSTOMER
                         {
                             frmCustomer frmCustomer = new frmCustomer();
-                            this.Hide();
-                            frmCustomer.Show();
+
+                            frmCustomer.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "!";
+
                             frmCustomer.FormClosed += delegate
                             {
                                 this.Close();
                             };
+                            this.Hide();
+                            frmCustomer.Show();
+                            
                         }
                         else if (user.Role.Equals("STAFF")) // STAFF
                         {
-                            //frmStaff frmStaff = new frmStaff();
-                            //this.Hide();
-                            //frmStaff.Show();
-                            //frmStaff.FormClosed += delegate
-                            //{
-                            //    this.Close();
-                            //};
+                            frmStaff frmStaff = new frmStaff();
+                            frmStaff.FormClosed += delegate
+                            {
+                                this.Close();
+                            };
+                            frmStaff.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [Staff Mode]";
+                            this.Hide();
+                            frmStaff.Show();
+                            
                         }
                         
                     }
@@ -62,6 +68,12 @@ namespace SaleManagementWinApp
         {
             txtEmail.Text = "";
             txtPassword.Text = "";
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin_Click(sender, e);
         }
     }
 
