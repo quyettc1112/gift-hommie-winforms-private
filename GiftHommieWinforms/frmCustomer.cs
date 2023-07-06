@@ -19,11 +19,21 @@ namespace GiftHommieWinforms
         public frmCustomer()
         {
             InitializeComponent();
+            if (GlobalData.AuthenticatedUser == null)
+            {
+                frmLogin frmLogin = new frmLogin();
+                frmLogin.FormClosed += delegate
+                {
+                    this.Close();
+                };
+                this.Hide();
+                frmLogin.ShowDialog();
+            }                
         }
 
         private void tabcontrolCustomer_Click(object sender, EventArgs e)
         {
-            //tabCart.BackColor = Color.Blue;
+            
         }
 
         private void frmCustomer_Load(object sender, EventArgs e)
@@ -31,7 +41,7 @@ namespace GiftHommieWinforms
             tabHome_Click(sender, e);
         }
 
-        // TAB HOME
+        // TAB HOME AREA ------------------------------------------------------------
         private void tabHome_Click(object sender, EventArgs e)
         {
             HomeInitDataForSearchComponent();
@@ -253,6 +263,17 @@ namespace GiftHommieWinforms
 
             if (confirmResult == DialogResult.No)
                 e.Cancel = true;
+            else
+            {
+                GlobalData.AuthenticatedUser = null;
+            }
         }
     }
+
+    // END OF TAB HOME AREA -------------------------------------------
+
+    // TAB ORDER AREA -------------------------------------------------
+    // END OF TAB ORDER AREA ------------------------------------------
+
+
 }

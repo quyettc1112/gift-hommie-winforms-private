@@ -1,3 +1,4 @@
+using BusinessObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,15 @@ using System.Windows.Forms;
 
 namespace GiftHommieWinforms
 {
+    internal static class GlobalData
+    {
+        public static User AuthenticatedUser { get; set; }
+
+        static GlobalData()
+        {
+            AuthenticatedUser = null;
+        }
+    }
     internal static class Program
     {
         /// <summary>
