@@ -114,6 +114,7 @@
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            this.btnAddToCart = new System.Windows.Forms.Button();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -402,6 +403,7 @@
             // 
             // gbProduct
             // 
+            this.gbProduct.Controls.Add(this.btnAddToCart);
             this.gbProduct.Controls.Add(this.gbSelect);
             this.gbProduct.Controls.Add(this.txtAvailable);
             this.gbProduct.Controls.Add(this.txtPrice);
@@ -1144,6 +1146,16 @@
             this.sqlCommandBuilder1.QuotePrefix = "[";
             this.sqlCommandBuilder1.QuoteSuffix = "]";
             // 
+            // btnAddToCart
+            // 
+            this.btnAddToCart.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnAddToCart.Location = new System.Drawing.Point(858, 160);
+            this.btnAddToCart.Name = "btnAddToCart";
+            this.btnAddToCart.Size = new System.Drawing.Size(144, 38);
+            this.btnAddToCart.TabIndex = 3;
+            this.btnAddToCart.Text = "Add To Cart";
+            this.btnAddToCart.UseVisualStyleBackColor = false;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1299,5 +1311,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cbOrderStatus;
         private System.Windows.Forms.Button btnCancelOrder;
+        private System.Windows.Forms.Button btnAddToCart;
     }
 }
