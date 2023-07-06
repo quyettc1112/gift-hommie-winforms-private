@@ -93,6 +93,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.gbOrderTarget = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtOrderMessage = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtOrderShippingFee = new System.Windows.Forms.TextBox();
@@ -109,7 +110,7 @@
             this.lbReceiver = new System.Windows.Forms.Label();
             this.txtOrderStatus = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             this.tabcontrolCustomer.SuspendLayout();
@@ -152,7 +153,7 @@
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
             this.gbOrderTarget.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // tabcontrolCustomer
@@ -883,13 +884,14 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.label15);
-            this.splitContainer6.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer6.Panel2.Controls.Add(this.dgvOrderDetails);
             this.splitContainer6.Size = new System.Drawing.Size(930, 432);
             this.splitContainer6.SplitterDistance = 254;
             this.splitContainer6.TabIndex = 0;
             // 
             // gbOrderTarget
             // 
+            this.gbOrderTarget.Controls.Add(this.label16);
             this.gbOrderTarget.Controls.Add(this.txtOrderMessage);
             this.gbOrderTarget.Controls.Add(this.label13);
             this.gbOrderTarget.Controls.Add(this.txtOrderShippingFee);
@@ -912,6 +914,16 @@
             this.gbOrderTarget.TabIndex = 107;
             this.gbOrderTarget.TabStop = false;
             this.gbOrderTarget.Text = "Order >> ID";
+            this.gbOrderTarget.Enter += new System.EventHandler(this.gbOrderTarget_Enter);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(506, 213);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 20);
+            this.label16.TabIndex = 160;
+            this.label16.Text = "Status";
             // 
             // txtOrderMessage
             // 
@@ -961,7 +973,7 @@
             // 
             // txtOrderTotal
             // 
-            this.txtOrderTotal.Location = new System.Drawing.Point(453, 210);
+            this.txtOrderTotal.Location = new System.Drawing.Point(301, 210);
             this.txtOrderTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtOrderTotal.Name = "txtOrderTotal";
             this.txtOrderTotal.ReadOnly = true;
@@ -999,7 +1011,7 @@
             // lbTotal
             // 
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(380, 213);
+            this.lbTotal.Location = new System.Drawing.Point(228, 213);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(42, 20);
             this.lbTotal.TabIndex = 143;
@@ -1046,7 +1058,7 @@
             // 
             // txtOrderStatus
             // 
-            this.txtOrderStatus.Location = new System.Drawing.Point(780, 1);
+            this.txtOrderStatus.Location = new System.Drawing.Point(561, 210);
             this.txtOrderStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtOrderStatus.Name = "txtOrderStatus";
             this.txtOrderStatus.ReadOnly = true;
@@ -1064,16 +1076,16 @@
             this.label15.TabIndex = 99;
             this.label15.Text = "Order Details";
             // 
-            // dataGridView1
+            // dgvOrderDetails
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(930, 174);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOrderDetails.Location = new System.Drawing.Point(0, 0);
+            this.dgvOrderDetails.Name = "dgvOrderDetails";
+            this.dgvOrderDetails.RowHeadersWidth = 51;
+            this.dgvOrderDetails.RowTemplate.Height = 29;
+            this.dgvOrderDetails.Size = new System.Drawing.Size(930, 174);
+            this.dgvOrderDetails.TabIndex = 0;
             // 
             // tabMyProfile
             // 
@@ -1154,7 +1166,7 @@
             this.splitContainer6.ResumeLayout(false);
             this.gbOrderTarget.ResumeLayout(false);
             this.gbOrderTarget.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1224,7 +1236,7 @@
         private System.Windows.Forms.Label lbOrderDate;
         private System.Windows.Forms.TextBox txtOrderTotal;
         private System.Windows.Forms.TextBox txtOrderReceiver;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvOrderDetails;
         private System.Windows.Forms.TextBox txtOrderShippingFee;
         private System.Windows.Forms.Label lbOrderShippingFee;
         private System.Windows.Forms.TextBox txtOrderAddress;
@@ -1245,5 +1257,6 @@
         private System.Windows.Forms.GroupBox gbOrderTarget;
         private System.Windows.Forms.TextBox txtOrderMessage;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
     }
 }

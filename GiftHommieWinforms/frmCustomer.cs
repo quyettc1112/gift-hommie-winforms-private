@@ -317,6 +317,21 @@ namespace GiftHommieWinforms
 
 
         }
+
+        private void OrderDetailLoadData()
+        {
+            IEnumerable<OrderDetail> orderDetails = new List<OrderDetail>();
+            if (dgvOrders.DataSource != null && bindingSource.Count > 0)
+            {
+
+                Order order = bindingSource.Current as Order;
+                orderDetails = order.OrderDetails;
+            }
+           
+            OrderDetailLoadDataToGridView(orderDetails);
+
+
+        }
         private void OrderLoadDataToGridView(IEnumerable<Order> orders)
         {
             if (orders == null)
@@ -362,6 +377,56 @@ namespace GiftHommieWinforms
             }
         }
 
+        private void OrderDetailLoadDataToGridView(IEnumerable<OrderDetail> orderDetails)
+        {
+            if (orderDetails == null)
+                orderDetails = new List<OrderDetail>()
+                {
+                };
+
+            foreach(OrderDetail detail in orderDetails)
+            {
+                Product product = productRepository.Get(detail.ProductId.Value);
+                detail.Product = product;
+            }
+
+            try
+            {
+                orderDetailBindingSource = new BindingSource();
+                orderDetailBindingSource.DataSource = orderDetails;
+
+                OrderDetailReBinding();
+
+                dgvOrderDetails.DataSource = null;
+                dgvOrderDetails.DataSource = orderDetailBindingSource;
+                dgvOrderDetails.Columns["Id"].Visible = false;
+                dgvOrderDetails.Columns["OrderId"].Visible = false;
+                dgvOrderDetails.Columns["ProductId"].Visible = false;
+                dgvOrderDetails.Columns["Order"].Visible = false;
+                dgvOrderDetails.Columns["Product"].DisplayIndex = 1;
+                dgvOrderDetails.Columns["Product"].Width = 400;
+                //dgvOrders.Columns["Comment"].Visible = false;
+                //dgvOrders.Columns["Status"].Visible = false;
+
+                setRowNumber(dgvOrderDetails);
+
+
+
+                if (orderDetails.Count() == 0)
+                {
+                    // gbProduct => hide
+                }
+                else
+                {
+                    // gbProduct=> not hide
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void OrderReBinding()
         {
             //gbOrderTarget.DataBindings.Clear();
@@ -391,7 +456,7 @@ namespace GiftHommieWinforms
 
         }
 
-        private void OrderProductReBinding()
+        private void OrderDetailReBinding()
         {
             //gbOrderProduct.DataBindings.Clear();
             lbOrderProductName.DataBindings.Clear();
@@ -400,16 +465,16 @@ namespace GiftHommieWinforms
             pbOrderProductAvatar.DataBindings.Clear();
 
 
-            //gbProduct.DataBindings.Add("Text", bindingSource, "Name");
-            lbOrderProductName.DataBindings.Add("Text", bindingSource, "Name");
-            txtOrderPrice.DataBindings.Add("Text", bindingSource, "Price");
-            txtOrderQuantity.DataBindings.Add("Text", bindingSource, "Quantity");       
-            pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
-                                "ImageLocation", bindingSource, "Avatar", true));
+            ////gbProduct.DataBindings.Add("Text", bindingSource, "Name");
+            //lbOrderProductName.DataBindings.Add("Text", bindingSource, "Product.Name");
+            //txtOrderPrice.DataBindings.Add("Text", bindingSource, "Product.Price");
+            //txtOrderQuantity.DataBindings.Add("Text", bindingSource, "Product.Quantity");       
+            //pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
+            //                    "ImageLocation", bindingSource, "Product.Avatar", true));
 
         }
 
-        private void OrderProductClearText()
+        private void OrderDetailClearText()
         {
             lbOrderProductName.Text = string.Empty;
             txtOrderPrice.Text = string.Empty;
@@ -430,22 +495,27 @@ namespace GiftHommieWinforms
 
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvOrders.DataSource != null)
-            {
-                Order order = bindingSource.Current as Order;
-                gbOrderTarget.Text = "Order >> " + order.Id;
-                txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
-            }
+            whenSelectTheOrder();
         }
 
-        private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
+        private void whenSelectTheOrder()
         {
-            if(dgvOrders.DataSource != null)
+            if (dgvOrders.DataSource != null && bindingSource.Count > 0)
             {
                 Order order = bindingSource.Current as Order;
                 gbOrderTarget.Text = "Order >> " + order.Id;
                 txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
-            }  
+                OrderDetailLoadData();
+            }
+        }
+        private void dgvOrders_DataSourceChanged(object sender, EventArgs e)
+        {
+            whenSelectTheOrder();
+        }
+
+        private void gbOrderTarget_Enter(object sender, EventArgs e)
+        {
+
         }
 
         // END OF TAB HOME AREA -------------------------------------------
