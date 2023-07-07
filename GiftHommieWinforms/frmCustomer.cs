@@ -126,7 +126,7 @@ namespace GiftHommieWinforms
 
                 dgvProducts.DataSource = null;
                 dgvProducts.DataSource = bindingSource;
-                //dgvProducts.Columns["Id"].Visible = false;
+                dgvProducts.Columns["Id"].Visible = false;
                 dgvProducts.Columns["Avatar"].Visible = false;
                 dgvProducts.Columns["Status"].Visible = false;
                 dgvProducts.Columns["Carts"].Visible = false;
@@ -241,11 +241,12 @@ namespace GiftHommieWinforms
             }
         }
 
+        private bool flagBtnNext_Click = false;
         private void lbProductName_TextChanged(object sender, EventArgs e)
         {
             txtCurrentIndex.Text = (bindingSource.Position + 1).ToString();
             btnBack.Enabled = (bindingSource.Position != 0);
-            btnNext.Enabled = bindingSource.Position + 1 < bindingSource.Count;
+            btnNext.Enabled = flagBtnNext_Click == true || bindingSource.Position + 1 < bindingSource.Count;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -264,7 +265,10 @@ namespace GiftHommieWinforms
             int index = bindingSource.Position;
             if (index + 1 < bindingSource.Count)
                 index += 1;
+            flagBtnNext_Click = true;
             bindingSource.Position = index;
+            flagBtnNext_Click = false;
+            btnNext.Enabled = bindingSource.Position + 1 < bindingSource.Count;
         }
 
         private void setRowNumber(DataGridView dgv)
@@ -366,7 +370,7 @@ namespace GiftHommieWinforms
 
                 dgvOrders.DataSource = null;
                 dgvOrders.DataSource = bindingSource;
-                dgvOrders.Columns["Id"].Visible = false;
+                //dgvOrders.Columns["Id"].Visible = false;
                 dgvOrders.Columns["Username"].Visible = false;
                 
                 dgvOrders.Columns["LastUpdatedTime"].Visible = false;
@@ -504,8 +508,8 @@ namespace GiftHommieWinforms
 
             ////gbProduct.DataBindings.Add("Text", orderDetailBindingSource, "Name");
             lbOrderProductName.DataBindings.Add("Text", orderDetailBindingSource, "Product.Name");
-            txtOrderPrice.DataBindings.Add("Text", orderDetailBindingSource, "Product.Price");
-            txtOrderQuantity.DataBindings.Add("Text", orderDetailBindingSource, "Product.Quantity");
+            txtOrderPrice.DataBindings.Add("Text", orderDetailBindingSource, "Price");
+            txtOrderQuantity.DataBindings.Add("Text", orderDetailBindingSource, "Quantity");
             pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
                                 "ImageLocation", orderDetailBindingSource, "Product.Avatar", true));
             //if(dgvOrderDetails.DataSource != null)
