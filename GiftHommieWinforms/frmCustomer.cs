@@ -66,6 +66,7 @@ namespace GiftHommieWinforms
             cbProductCategory.ValueMember = "Id";
             cbProductCategory.DisplayMember = "Name";
             cbProductCategory.SelectedValue = 0;
+            cbProductSort.SelectedIndex = 0;
         }
 
         private void HomeLoadData()
@@ -93,6 +94,15 @@ namespace GiftHommieWinforms
                 ToIntOrZero(cbProductCategory.SelectedValue.ToString()),
                 true
                 );
+            if (cbProductSort.SelectedIndex == 1)
+            {
+                products = products.OrderBy(p => p.Price).ToList();
+            }
+            else if (cbProductSort.SelectedIndex == 2)
+            {
+                products = products.OrderByDescending(p => p.Price).ToList();
+            }
+                
             HomeLoadDataToGridView(products);
 
             
@@ -202,6 +212,10 @@ namespace GiftHommieWinforms
         {
             HomeLoadData();
         }
+        private void cbProductSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -212,6 +226,7 @@ namespace GiftHommieWinforms
             txtUnitsInStockMinSearch.Text = string.Empty;
             txtUnitsInStockMaxSearch.Text = string.Empty;
             cbProductCategory.SelectedValue = 0;
+            cbProductSort.SelectedIndex = 0;
         }
 
         private int ToIntOrZero(string input)
@@ -593,6 +608,8 @@ namespace GiftHommieWinforms
             OrderLoadData();
         }
 
+        
+
         private void btnCleanAllFilterOrder_Click(object sender, EventArgs e)
         {
             OrderResetFilter();
@@ -640,6 +657,7 @@ namespace GiftHommieWinforms
             MessageBox.Show("Welcome to profile");
         }
 
+        
     }
 
 
