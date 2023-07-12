@@ -30,6 +30,7 @@
         {
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             tabMyProfile = new System.Windows.Forms.TabPage();
+            btnSave = new System.Windows.Forms.Button();
             btnEdit = new System.Windows.Forms.Button();
             txtAddress = new System.Windows.Forms.TextBox();
             txtYob = new System.Windows.Forms.TextBox();
@@ -239,6 +240,7 @@
             // tabMyProfile
             // 
             tabMyProfile.BackColor = System.Drawing.Color.Azure;
+            tabMyProfile.Controls.Add(btnSave);
             tabMyProfile.Controls.Add(btnEdit);
             tabMyProfile.Controls.Add(txtAddress);
             tabMyProfile.Controls.Add(txtYob);
@@ -265,12 +267,23 @@
             tabMyProfile.Text = "My Profile";
             tabMyProfile.Click += tabMyProfile_Click;
             // 
+            // btnSave
+            // 
+            btnSave.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnSave.Location = new System.Drawing.Point(736, 383);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new System.Drawing.Size(92, 50);
+            btnSave.TabIndex = 36;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // btnEdit
             // 
             btnEdit.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnEdit.Location = new System.Drawing.Point(521, 383);
+            btnEdit.Location = new System.Drawing.Point(527, 383);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new System.Drawing.Size(92, 50);
+            btnEdit.Size = new System.Drawing.Size(130, 50);
             btnEdit.TabIndex = 35;
             btnEdit.Text = "Edit Profile";
             btnEdit.UseVisualStyleBackColor = true;
@@ -2086,5 +2099,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbUserName;
+        private System.Windows.Forms.Button btnSave;
     }
 }
