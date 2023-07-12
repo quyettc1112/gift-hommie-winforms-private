@@ -18,5 +18,7 @@ namespace Repositories
         public List<Order> GetAllOrdersOfCustomer(string username);
 
         double GetTotalOfOrder(int id);
+        public List<Order> GetOrdersWithStatus(List<string> status);
+        public int GetAvailableProductQuantity(int id);
     }
 }
