@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BussinessObjects
+namespace Repositories
 {
     public interface IUserRepository
     {
