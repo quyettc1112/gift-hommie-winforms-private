@@ -1,5 +1,5 @@
 ﻿using BusinessObjects;
-using BussinessObjects;
+using Repositories;
 using GiftHommieWinforms;
 using System;
 using System.Windows.Forms;
