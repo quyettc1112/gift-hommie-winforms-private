@@ -53,8 +53,6 @@ namespace DataAccessObjects
             {
                 using (var context = new HommieStoreContext())
                 {
-                    List<User> list = context.Users.ToList();
-
                     entity = context.Users.SingleOrDefault(item => 
                                                                 item.Username.ToLower().Equals(usernameOrEmail.ToLower()) 
                                                             || item.Email.ToLower().Equals(usernameOrEmail.ToLower()));

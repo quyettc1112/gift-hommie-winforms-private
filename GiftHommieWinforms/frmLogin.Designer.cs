@@ -28,105 +28,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnReset = new System.Windows.Forms.Button();
-            btnLogin = new System.Windows.Forms.Button();
-            lbPassword = new System.Windows.Forms.Label();
-            lbEmail = new System.Windows.Forms.Label();
-            txtPassword = new System.Windows.Forms.TextBox();
-            txtEmail = new System.Windows.Forms.TextBox();
-            lbLogin = new System.Windows.Forms.Label();
-            SuspendLayout();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.lbPassword = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lbLogin = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // btnReset
             // 
-            btnReset.Location = new System.Drawing.Point(318, 322);
-            btnReset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new System.Drawing.Size(108, 38);
-            btnReset.TabIndex = 6;
-            btnReset.Text = "Reset";
-            btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += btnReset_Click;
+            this.btnReset.Location = new System.Drawing.Point(254, 258);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(86, 30);
+            this.btnReset.TabIndex = 6;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnLogin
             // 
-            btnLogin.Location = new System.Drawing.Point(202, 322);
-            btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new System.Drawing.Size(108, 38);
-            btnLogin.TabIndex = 5;
-            btnLogin.Text = "Login";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
+            this.btnLogin.Location = new System.Drawing.Point(162, 258);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(86, 30);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lbPassword
             // 
-            lbPassword.AutoSize = true;
-            lbPassword.Location = new System.Drawing.Point(169, 210);
-            lbPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lbPassword.Name = "lbPassword";
-            lbPassword.Size = new System.Drawing.Size(87, 25);
-            lbPassword.TabIndex = 3;
-            lbPassword.Text = "Password";
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.Location = new System.Drawing.Point(135, 168);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(70, 20);
+            this.lbPassword.TabIndex = 3;
+            this.lbPassword.Text = "Password";
             // 
             // lbEmail
             // 
-            lbEmail.AutoSize = true;
-            lbEmail.Location = new System.Drawing.Point(169, 125);
-            lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lbEmail.Name = "lbEmail";
-            lbEmail.Size = new System.Drawing.Size(140, 25);
-            lbEmail.TabIndex = 1;
-            lbEmail.Text = "Email/Username";
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(135, 100);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(118, 20);
+            this.lbEmail.TabIndex = 1;
+            this.lbEmail.Text = "Email/Username";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new System.Drawing.Point(169, 240);
-            txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new System.Drawing.Size(306, 31);
-            txtPassword.TabIndex = 4;
-            txtPassword.KeyDown += txtPassword_KeyDown;
+            this.txtPassword.Location = new System.Drawing.Point(135, 192);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(246, 27);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtEmail
             // 
-            txtEmail.Location = new System.Drawing.Point(169, 155);
-            txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new System.Drawing.Size(306, 31);
-            txtEmail.TabIndex = 2;
+            this.txtEmail.Location = new System.Drawing.Point(135, 124);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(246, 27);
+            this.txtEmail.TabIndex = 2;
             // 
             // lbLogin
             // 
-            lbLogin.AutoSize = true;
-            lbLogin.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbLogin.Location = new System.Drawing.Point(262, 45);
-            lbLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lbLogin.Name = "lbLogin";
-            lbLogin.Size = new System.Drawing.Size(122, 54);
-            lbLogin.TabIndex = 0;
-            lbLogin.Text = "Login";
+            this.lbLogin.AutoSize = true;
+            this.lbLogin.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbLogin.Location = new System.Drawing.Point(210, 36);
+            this.lbLogin.Name = "lbLogin";
+            this.lbLogin.Size = new System.Drawing.Size(103, 46);
+            this.lbLogin.TabIndex = 0;
+            this.lbLogin.Text = "Login";
             // 
             // frmLogin
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(645, 405);
-            Controls.Add(btnReset);
-            Controls.Add(btnLogin);
-            Controls.Add(lbPassword);
-            Controls.Add(lbEmail);
-            Controls.Add(txtPassword);
-            Controls.Add(txtEmail);
-            Controls.Add(lbLogin);
-            Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            Name = "frmLogin";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "Login | Hommie Store";
-            Load += frmLogin_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(516, 324);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.lbEmail);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lbLogin);
+            this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Login | Hommie Store";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
