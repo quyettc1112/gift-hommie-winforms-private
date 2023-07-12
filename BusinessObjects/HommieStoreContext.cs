@@ -46,13 +46,16 @@ namespace BusinessObjects
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
+            //EDIT
+            modelBuilder.Entity<Cart>()
+                .HasKey(e => e.Id);
+            
             modelBuilder.Entity<Cart>(entity =>
             {
                 entity.ToTable("Cart");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    //.ValueGeneratedNever()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.LastUpdatedTime).HasColumnType("datetime");

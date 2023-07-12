@@ -2,6 +2,7 @@
 using DataAccessObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repositories
 {
@@ -38,5 +39,28 @@ namespace Repositories
 
             return res;
         }
+
+        public List<Order> GetOrdersWithStatus(List<string> status) => GetAll()
+                                            .Where(o => status.Contains(o.Status)).ToList();
+        
+        private int GetOrderedProductQuantity(int id)
+        {
+            List<string> statusList = new List<string>{"PENDING", "DELIVERY", "SUCCESSFUL", "CONFIRM"};
+            List<Order> list = GetOrdersWithStatus(statusList);
+            int orderedQuantity = 0;
+
+            foreach (Order order in list)
+            {
+                foreach (OrderDetail detail in order.OrderDetails)
+                {
+                    if (detail.ProductId == id)
+                        orderedQuantity += (int)detail.Quantity; 
+                }
+            }
+
+            return orderedQuantity;
+        }
+
+        public int GetAvailableProductQuantity(int id) => (ProductDAO.Instance.Get(id)).Quantity - GetOrderedProductQuantity(id);
     }
 }

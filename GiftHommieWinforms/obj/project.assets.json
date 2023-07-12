@@ -1826,6 +1826,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
+          "Microsoft.Extensions.Configuration": "5.0.0",
           "Microsoft.Extensions.Configuration.Json": "5.0.0"
         },
         "compile": {
@@ -6217,24 +6218,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MSI\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+      "projectUniqueName": "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
       "projectName": "GiftHommieWinforms",
-      "projectPath": "D:\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
-      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "D:\\gift-hommie-winforms\\GiftHommieWinforms\\obj\\",
+      "projectPath": "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\GiftHubdotNet\\GiftHommieWinforms\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6242,15 +6238,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\gift-hommie-winforms\\Repositories\\Repositories.csproj": {
-              "projectPath": "D:\\gift-hommie-winforms\\Repositories\\Repositories.csproj"
+            "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj": {
+              "projectPath": "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj"
             }
           }
         }
