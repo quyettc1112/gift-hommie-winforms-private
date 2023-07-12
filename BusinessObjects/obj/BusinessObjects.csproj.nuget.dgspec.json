@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj": {}
+    "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj": {}
   },
   "projects": {
-    "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj": {
+    "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj",
+        "projectUniqueName": "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj",
         "projectName": "BusinessObjects",
-        "projectPath": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\GiftHubdotNet\\BusinessObjects\\obj\\",
+        "projectPath": "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj",
+        "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
+        "outputPath": "D:\\gift-hommie-winforms\\BusinessObjects\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,10 +54,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.17, )"
-            },
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
