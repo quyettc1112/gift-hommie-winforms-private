@@ -646,12 +646,28 @@ namespace GiftHommieWinforms
         //================= TAB CART AREA =========================
         //CHOOSEN MEMORY
         private Dictionary<int, bool> memory = new Dictionary<int, bool>();
+        private void CartPageReset()
+        {
+            cbCartFilterCategory.SelectedIndex = 0;
+            cbCartSorting.SelectedIndex = 0;
+            txtCartFilterName.Text = "";
+            memory.Clear();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            CartPageReset();
             LoadCart();
         }
-
+        //CART EVENT TEXTCHANGED
+        private void cbCartSorting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetCartVisible();
+        }
         private void txtFilterName_TextChanged(object sender, EventArgs e)
+        {
+            SetCartVisible();
+        }
+        private void cbCartFilterCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetCartVisible();
         }
@@ -663,6 +679,7 @@ namespace GiftHommieWinforms
                 try
                 {
                     int productId = ((Product)bindingSource.Current).Id;
+
                     Cart cart = new Cart
                     {
                         Username = GlobalData.AuthenticatedUser.Username,
@@ -720,15 +737,41 @@ namespace GiftHommieWinforms
 
             }
         }
+        //LOAD LIST FILTER
+        private List<Cart> CartFilterTheDataGridView(List<Cart> list)
+        {
+            list = list.Where(c => c.Product.Name.Trim().ToUpper()
+                .Contains(txtCartFilterName.Text.ToUpper()))
+                .ToList();
+
+            if (cbCartFilterCategory.SelectedIndex > 0)
+            {
+                list = list.Where(c => c.Product.CategoryId == (int)cbCartFilterCategory.SelectedValue)
+                    .ToList();
+            }
+
+            if (cbCartSorting.SelectedIndex > 0)
+            {
+                if (cbCartSorting.SelectedIndex == 1)
+                {
+                    list = list.OrderBy(c => c.Product.Price * c.Quantity).ToList();
+                }
+                else
+                {
+                    list = list.OrderByDescending(c => c.Product.Price * c.Quantity).ToList();
+                }
+            }
+            return list;
+        }
+
         private void SetCartVisible()
         {
             List<Cart> list = cartRepository.GetAllCartItemsByUsername(GlobalData.AuthenticatedUser.Username);
             bindingSource = new BindingSource();
 
-            foreach (Cart cart in list)
-                cart.Product = productRepository.Get((int)cart.ProductId);
+            //RELOAD CART FILTER
+            list = CartFilterTheDataGridView(list);
 
-            list = list.Where(c => c.Product.Name.Contains(txtCartFilterName.Text)).ToList();
             bindingSource.DataSource = list;
             dgvCarts.DataSource = bindingSource;
 
@@ -752,26 +795,26 @@ namespace GiftHommieWinforms
                 MessageBox.Show("YOUR CART HAS BEEN CHANGE");
 
             SetCartVisible();
-            LoadCartTotal();
         }
-
+        private void LoadCartFilter()
+        {
+            List<Category> list = new List<Category> { new Category { Id = 0, Name = "Select the category" } };
+            list.AddRange(productRepository.GetAllCategories());
+            cbCartFilterCategory.DataSource = list;
+            cbCartFilterCategory.ValueMember = "Id";
+            cbCartFilterCategory.DisplayMember = "Name";
+            cbCartFilterCategory.SelectedIndex = 0;
+            cbCartSorting.SelectedIndex = 0;
+        }
         private void tabCart_Click(object sender, EventArgs e)
         {
             // trig when click move to tab // START CODE IN HERE
             // example:
-            MessageBox.Show("Welcome to cart");
+            LoadCartFilter();
             LoadCart();
             //SetCartVisible();
         }
         //CART CHECKOUT
-
-        //REMOVE CART ITEM
-        private void RemoveCartItem(int id)
-        {
-            cartRepository.DeleteCartById(id);
-            memory[id] = false;
-        }
-
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             List<Cart> list = new List<Cart>();
@@ -795,15 +838,13 @@ namespace GiftHommieWinforms
                 {
                     MessageBox.Show("BUY SUCCESSFULLY");
 
-                    foreach (Cart item in list)
-                    {
-                        RemoveCartItem(item.Id);
-                    }
-
+                    DeleteChoosenCartItem();
                     LoadCart();
                 }
             }
         }
+
+        //CART CLICK
         private void dgvCarts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int productId = (int)((Cart)bindingSource.Current).ProductId;
@@ -815,6 +856,7 @@ namespace GiftHommieWinforms
         {
             lblCartIndex.Text = (bindingSource.Position + 1).ToString();
             int c, r;
+
             if (e.ColumnIndex == 0 && dgvCarts.RowCount > 0)
             {
                 c = e.ColumnIndex;
@@ -829,7 +871,6 @@ namespace GiftHommieWinforms
                 LoadCartTotal();
             }
         }
-
         private void btnCartBack_Click(object sender, EventArgs e)
         {
             if (bindingSource.Position > 0)
@@ -840,7 +881,6 @@ namespace GiftHommieWinforms
                 lblCartIndex.Text = (index + 1).ToString();
             }
         }
-
         private void btnCartNext_Click(object sender, EventArgs e)
         {
             if (bindingSource.Position < dgvCarts.RowCount - 1)
@@ -852,19 +892,6 @@ namespace GiftHommieWinforms
             }
         }
         //LOAD TOTAL PRICE OF CART
-        private void LoadCartTotal()
-        {
-            txtCartTotal.Text = "0";
-
-            foreach (int cartId in memory.Keys.Where(k => memory[k]))
-            {
-                Cart cart = cartRepository.GetCartById(GlobalData.AuthenticatedUser.Username, cartId);
-
-                txtCartTotal.Text = (int.Parse(txtCartTotal.Text)
-                    + cart.Quantity
-                    * (productRepository.Get((int)cart.ProductId).Price)).ToString();
-            }
-        }
         private void btnIncrease_Click(object sender, EventArgs e)
         {
             try
@@ -880,11 +907,10 @@ namespace GiftHommieWinforms
                     cart.Quantity = quantity + 1;
                     cart.LastUpdatedTime = DateTime.Now;
                     LoadCartTotal();
+                    //SetCartVisible();
                 }
                 else
-                {
                     MessageBox.Show("QUANTITY CANNOT MORE THAN AVAILABLE");
-                }
             }
             catch (Exception ex)
             {
@@ -913,10 +939,22 @@ namespace GiftHommieWinforms
 
             }
         }
-        //GET ALL DATA GRID VIEW ROWS WITH STATUS OF CHECKBOX
-        private List<DataGridViewRow> GetAllCartDataGridViewRows(bool status)
+        private void LoadCartTotal()
         {
+            txtCartTotal.Text = "0";
 
+            foreach (int cartId in memory.Keys.Where(k => memory[k]))
+            {
+                Cart cart = cartRepository.GetCartById(GlobalData.AuthenticatedUser.Username, cartId);
+
+                txtCartTotal.Text = (int.Parse(txtCartTotal.Text)
+                    + cart.Quantity
+                    * (productRepository.Get((int)cart.ProductId).Price)).ToString();
+            }
+        }
+        //GET ALL DATA GRID VIEW ROWS WITH STATUS OF CHECKBOX
+        /*private List<DataGridViewRow> GetAllCartDataGridViewRows(bool status)
+        {
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
             foreach (DataGridViewRow row in dgvCarts.Rows)
             {
@@ -924,30 +962,26 @@ namespace GiftHommieWinforms
                     rows.Add(row);
             }
             return rows;
+        }*/
+        private void DeleteChoosenCartItem()
+        {
+            foreach (int id in memory.Keys.Where(i => memory[i]).ToList())
+            {
+                if (memory[id])
+                    cartRepository.DeleteCartById(id);
+            }
+            memory.Clear();
         }
-
         private void btnCartDelete_Click(object sender, EventArgs e)
         {
-            List<DataGridViewRow> list = GetAllCartDataGridViewRows(true);
+            List<int> list = memory.Keys.Where(i => memory[i]).ToList();
 
             if (list.Count > 0 && MessageBox.Show("DO YOU WANT TO DELETE CART ITEMS?", "CONFIRM", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-
-                foreach (DataGridViewRow row in list)
-                {
-                    try
-                    {
-                        //cartRepository.DeleteCartById(int.Parse(row.Cells["Id"].Value.ToString()));
-                        RemoveCartItem((int)row.Cells["Id"].Value);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-                LoadCart();
+                DeleteChoosenCartItem();
             }
 
+            LoadCart();
         }
         //===================================================================
         // ======================= TAB PROFILE AREA =============================
@@ -984,6 +1018,10 @@ namespace GiftHommieWinforms
         }
 
         private void txtCartTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void cbCartFilterCategory_SelectedValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -1,4 +1,5 @@
 ﻿using BusinessObjects;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace DataAccessObjects
             {
                 using(var context = new HommieStoreContext())
                 {
-                    return context.Carts.ToList();
+                    return context.Carts.Include(c => c.Product).ToList();
                 }
 
             }

@@ -52,7 +52,6 @@ namespace BusinessObjects
                 entity.ToTable("Cart");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.LastUpdatedTime).HasColumnType("datetime");
