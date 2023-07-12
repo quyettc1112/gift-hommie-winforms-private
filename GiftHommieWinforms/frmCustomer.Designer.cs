@@ -32,6 +32,8 @@
             this.tabHome = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.cbProductSort = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.cbProductCategory = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
@@ -115,8 +117,6 @@
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.tabMyProfile = new System.Windows.Forms.TabPage();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            this.cbProductSort = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.tabcontrolCustomer.SuspendLayout();
             this.tabHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -228,9 +228,34 @@
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Search";
             // 
+            // cbProductSort
+            // 
+            this.cbProductSort.BackColor = System.Drawing.Color.White;
+            this.cbProductSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProductSort.FormattingEnabled = true;
+            this.cbProductSort.Items.AddRange(new object[] {
+            "Sort by",
+            "Price asc",
+            "Price desc"});
+            this.cbProductSort.Location = new System.Drawing.Point(9, 262);
+            this.cbProductSort.Name = "cbProductSort";
+            this.cbProductSort.Size = new System.Drawing.Size(290, 28);
+            this.cbProductSort.TabIndex = 51;
+            this.cbProductSort.SelectedIndexChanged += new System.EventHandler(this.cbProductSort_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 239);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 20);
+            this.label15.TabIndex = 52;
+            this.label15.Text = "Sorting";
+            // 
             // cbProductCategory
             // 
             this.cbProductCategory.BackColor = System.Drawing.Color.White;
+            this.cbProductCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProductCategory.FormattingEnabled = true;
             this.cbProductCategory.Items.AddRange(new object[] {
             "Select the category"});
@@ -298,6 +323,7 @@
             this.txtUnitsInStockMaxSearch.TabIndex = 1;
             this.txtUnitsInStockMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitsInStockMaxSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMaxSearch_TextChanged);
+            this.txtUnitsInStockMaxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPriceMinSearch_KeyPress);
             // 
             // label3
             // 
@@ -325,6 +351,7 @@
             this.txtUnitsInStockMinSearch.TabIndex = 0;
             this.txtUnitsInStockMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitsInStockMinSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMinSearch_TextChanged);
+            this.txtUnitsInStockMinSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPriceMinSearch_KeyPress);
             // 
             // groupBox1
             // 
@@ -356,6 +383,7 @@
             this.txtUnitPriceMaxSearch.TabIndex = 1;
             this.txtUnitPriceMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitPriceMaxSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMaxSearch_TextChanged);
+            this.txtUnitPriceMaxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPriceMinSearch_KeyPress);
             // 
             // txtUnitPriceMinSearch
             // 
@@ -365,6 +393,7 @@
             this.txtUnitPriceMinSearch.TabIndex = 0;
             this.txtUnitPriceMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUnitPriceMinSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMinSearch_TextChanged);
+            this.txtUnitPriceMinSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPriceMinSearch_KeyPress);
             // 
             // label2
             // 
@@ -1159,29 +1188,6 @@
             this.sqlCommandBuilder1.DataAdapter = null;
             this.sqlCommandBuilder1.QuotePrefix = "[";
             this.sqlCommandBuilder1.QuoteSuffix = "]";
-            // 
-            // cbProductSort
-            // 
-            this.cbProductSort.BackColor = System.Drawing.Color.White;
-            this.cbProductSort.FormattingEnabled = true;
-            this.cbProductSort.Items.AddRange(new object[] {
-            "Sort by",
-            "Price asc",
-            "Price desc"});
-            this.cbProductSort.Location = new System.Drawing.Point(9, 262);
-            this.cbProductSort.Name = "cbProductSort";
-            this.cbProductSort.Size = new System.Drawing.Size(290, 28);
-            this.cbProductSort.TabIndex = 51;
-            this.cbProductSort.SelectedIndexChanged += new System.EventHandler(this.cbProductSort_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 239);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 20);
-            this.label15.TabIndex = 52;
-            this.label15.Text = "Sorting";
             // 
             // frmCustomer
             // 

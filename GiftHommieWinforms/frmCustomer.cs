@@ -661,7 +661,10 @@ namespace GiftHommieWinforms
             MessageBox.Show("Welcome to profile");
         }
 
-        
+        private void txtUnitPriceMinSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 
 
