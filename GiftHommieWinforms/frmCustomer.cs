@@ -3,6 +3,7 @@ using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GiftHommieWinforms
@@ -990,7 +991,6 @@ namespace GiftHommieWinforms
         {
             // trig when click move to tab // START CODE IN HERE
             // example:
-            MessageBox.Show("Welcome to profile");
             LoadUserProfile();
         }
 
@@ -1045,16 +1045,126 @@ namespace GiftHommieWinforms
                 txtPhone.Text = user.Phone;
                 txtAddress.Text = user.Address;
                 txtYob.Text = user.Yob.ToString();
+                btnSave.Visible = false;
             }
         }
+        private bool CheckCharacterOfPhone(String input)
+        {
+            string pattern = @"^\d{9,12}$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool CheckCharacterOfYob(String input)
+        {
+            string pattern = @"^\d{4,4}$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool CheckCharacter(String input)
+        {
+            string pattern = "^[a-zA-Z ]+$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool ValidateInputs()
+        {
+            if (
+                string.IsNullOrEmpty(txtName.Text) ||
+                string.IsNullOrEmpty(txtYob.Text) ||
+                string.IsNullOrEmpty(txtAddress.Text) ||
+                string.IsNullOrEmpty(txtPhone.Text)
+
+                )
+
+            {
+                MessageBox.Show("Hãy điền đầy đủ thông tin", "Thiếu Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (CheckCharacterOfPhone(txtPhone.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập số trong ô Phone từ 9 đến 12 số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
+
+            if (CheckCharacter(txtName.Text) != true)
+            {
+                MessageBox.Show("Tên không chứa chữ số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Clear();
+                return false;
+            }
+
+            if (CheckCharacterOfYob(txtYob.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập đúng năm sinh  .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtYob.Clear();
+                return false;
+
+            }
+
+            return true;
+        }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            txtUserName.ReadOnly = false;
-            txtName.ReadOnly = false;
-            txtPhone.ReadOnly = false;
-            txtAddress.ReadOnly = false;
-            txtYob.ReadOnly = false;
+            if (btnEdit.Text == "Edit")
+            {
+                btnEdit.Text = "Cancel";
+                txtName.ReadOnly = false;
+                txtPhone.ReadOnly = false;
+                txtAddress.ReadOnly = false;
+                txtYob.ReadOnly = false;
+                btnSave.Visible = true;
+            }
+            else
+            {
+                btnEdit.Text = "Edit";
+                ChangeReadOnly();
+                LoadUserProfile();
+            }
+        }
+
+        private void ChangeReadOnly()
+        {
+            txtName.ReadOnly = true;
+            txtPhone.ReadOnly = true;
+            txtAddress.ReadOnly = true;
+            txtYob.ReadOnly = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(ValidateInputs() == true)
+            {
+                User user = new User()
+                {
+                    Username = GlobalData.AuthenticatedUser.Username,
+                    Email = GlobalData.AuthenticatedUser.Email,
+                    Role = GlobalData.AuthenticatedUser.Role,
+                    Password = GlobalData.AuthenticatedUser.Password,
+                    Name = txtName.Text,
+                    Phone = txtPhone.Text,
+                    Gender = GlobalData.AuthenticatedUser.Gender,
+                    Yob = int.Parse(txtYob.Text.Trim()),
+                    Address = txtAddress.Text,
+                    Avatar = GlobalData.AuthenticatedUser.Avatar,
+                    Enabled = GlobalData.AuthenticatedUser.Enabled
+                };
+                DialogResult d;
+                d = MessageBox.Show($"Save User ", "Profile", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+
+                if (d == DialogResult.OK)
+                {
+                    userRepository.Save(user);
+                    DialogResult = DialogResult.OK;
+                    btnEdit.Text = "Edit";
+                    ChangeReadOnly();
+                    LoadUserProfile();
+                }
+            }
+
         }
     }
 
