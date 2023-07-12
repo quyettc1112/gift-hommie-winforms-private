@@ -25,14 +25,16 @@ namespace GiftHommieWinforms
         {
             InitializeComponent();
         }
-        private void CheckValidation()
+        private void SetValidation()
         {
-            if (txtPhone.Text.Trim().Length < 10)
-                throw new Exception("WRONG FORMAT OF PHONE NUMBER");
-            if (txtName.Text.Trim().Length < 5)
-                throw new Exception("WRONG FORMAT OF NAME");
-            if (txtAddress.Text.Trim().Length < 5)
-                throw new Exception("WRONG FORMAT OF ADDRESS");
+            if (txtPhone.Text.Trim().Length < 8)
+                btnCheckout.Enabled = false;
+            else if (txtName.Text.Trim().Length < 2)
+                btnCheckout.Enabled = false;
+            else if (txtAddress.Text.Trim().Length < 5)
+                btnCheckout.Enabled = false;
+            else
+                btnCheckout.Enabled = true;
         }
 
         private Order GetCurrentOrder()
@@ -68,6 +70,8 @@ namespace GiftHommieWinforms
             dgvCheckout.Columns["Username"].Visible = false;
             dgvCheckout.Columns["ProductId"].Visible = false;
             dgvCheckout.Columns["UsernameNavigation"].Visible = false;
+
+            SetValidation();
         }
 
         private void frmCheckout_Load(object sender, EventArgs e)
@@ -88,8 +92,7 @@ namespace GiftHommieWinforms
                     details.Add(new OrderDetail
                     {
                         ProductId = cart.ProductId,
-                        Price = productRepository.Get((int)cart.ProductId).Price
-                                * cart.Quantity,
+                        Price = cart.Product.Price,
                         Quantity = cart.Quantity,
                     });
                 }
@@ -114,6 +117,7 @@ namespace GiftHommieWinforms
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
+            SetValidation();
             foreach (char c in txtAddress.Text)
             {
                 if (!char.IsLetterOrDigit(c) && c != ' ' && c != ',')
@@ -132,6 +136,7 @@ namespace GiftHommieWinforms
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
+            SetValidation();
             foreach (char c in txtName.Text)
             {
                 if (!char.IsLetter(c) && c != ' ')
@@ -145,6 +150,7 @@ namespace GiftHommieWinforms
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
         {
+            SetValidation();
             foreach (char c in txtPhone.Text)
             {
                 if (!char.IsDigit(c))
