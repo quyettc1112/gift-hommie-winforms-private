@@ -28,8 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            this.tabMyProfile = new System.Windows.Forms.TabPage();
+            this.tabcontrolCustomer = new System.Windows.Forms.TabControl();
+            this.tabHome = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.cbProductCategory = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtProductNameSearch = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtUnitsInStockMaxSearch = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUnitsInStockMinSearch = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUnitPriceMaxSearch = new System.Windows.Forms.TextBox();
+            this.txtUnitPriceMinSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.gbProduct = new System.Windows.Forms.GroupBox();
+            this.btnAddToCart = new System.Windows.Forms.Button();
+            this.gbSelect = new System.Windows.Forms.GroupBox();
+            this.txtCurrentIndex = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.txtAvailable = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbAvailable = new System.Windows.Forms.Label();
+            this.lbPrice = new System.Windows.Forms.Label();
+            this.lbProductName = new System.Windows.Forms.Label();
+            this.pbProductAvatar = new System.Windows.Forms.PictureBox();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.tabCart = new System.Windows.Forms.TabPage();
             this.tabMyOrder = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -76,83 +113,28 @@
             this.lbReceiver = new System.Windows.Forms.Label();
             this.txtOrderStatus = new System.Windows.Forms.TextBox();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
-            this.tabHome = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.tabMyProfile = new System.Windows.Forms.TabPage();
+            this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             this.cbProductSort = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.cbProductCategory = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtProductNameSearch = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtUnitsInStockMaxSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtUnitsInStockMinSearch = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUnitPriceMaxSearch = new System.Windows.Forms.TextBox();
-            this.txtUnitPriceMinSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.gbProduct = new System.Windows.Forms.GroupBox();
-            this.btnAddToCart = new System.Windows.Forms.Button();
-            this.gbSelect = new System.Windows.Forms.GroupBox();
-            this.txtCurrentIndex = new System.Windows.Forms.TextBox();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.txtAvailable = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtDesc = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbAvailable = new System.Windows.Forms.Label();
-            this.lbPrice = new System.Windows.Forms.Label();
-            this.lbProductName = new System.Windows.Forms.Label();
-            this.pbProductAvatar = new System.Windows.Forms.PictureBox();
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.tabcontrolCustomer = new System.Windows.Forms.TabControl();
-            this.tabCart = new System.Windows.Forms.TabPage();
-            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtCartTotal = new System.Windows.Forms.TextBox();
-            this.lbCartTotal = new System.Windows.Forms.Label();
-            this.cbSorting = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbFilterCategory = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtCartFilterName = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.splitContainer8 = new System.Windows.Forms.SplitContainer();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnCartDelete = new System.Windows.Forms.Button();
-            this.btnDecrease = new System.Windows.Forms.Button();
-            this.btnIncrease = new System.Windows.Forms.Button();
-            this.txtCartQuantity = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.btnCheckout = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.lblCartIndex = new System.Windows.Forms.TextBox();
-            this.btnCartBack = new System.Windows.Forms.Button();
-            this.btnCartNext = new System.Windows.Forms.Button();
-            this.txtCartAvailable = new System.Windows.Forms.TextBox();
-            this.txtCartPrice = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.txtCartDescription = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.lbCartName = new System.Windows.Forms.Label();
-            this.pbCartAvatar = new System.Windows.Forms.PictureBox();
-            this.dgvCarts = new System.Windows.Forms.DataGridView();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button6 = new System.Windows.Forms.Button();
+            this.tabcontrolCustomer.SuspendLayout();
+            this.tabHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBoxSearch.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.gbProduct.SuspendLayout();
+            this.gbSelect.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.tabMyOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -176,67 +158,461 @@
             this.splitContainer6.SuspendLayout();
             this.gbOrderTarget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
-            this.tabHome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.groupBoxSearch.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.gbProduct.SuspendLayout();
-            this.gbSelect.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
-            this.tabcontrolCustomer.SuspendLayout();
-            this.tabCart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
-            this.splitContainer7.Panel1.SuspendLayout();
-            this.splitContainer7.Panel2.SuspendLayout();
-            this.splitContainer7.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).BeginInit();
-            this.splitContainer8.Panel1.SuspendLayout();
-            this.splitContainer8.Panel2.SuspendLayout();
-            this.splitContainer8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCartAvatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarts)).BeginInit();
             this.SuspendLayout();
             // 
-            // sqlCommandBuilder1
+            // tabcontrolCustomer
             // 
-            this.sqlCommandBuilder1.DataAdapter = null;
-            this.sqlCommandBuilder1.QuotePrefix = "[";
-            this.sqlCommandBuilder1.QuoteSuffix = "]";
+            this.tabcontrolCustomer.Controls.Add(this.tabHome);
+            this.tabcontrolCustomer.Controls.Add(this.tabCart);
+            this.tabcontrolCustomer.Controls.Add(this.tabMyOrder);
+            this.tabcontrolCustomer.Controls.Add(this.tabMyProfile);
+            this.tabcontrolCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabcontrolCustomer.Location = new System.Drawing.Point(0, 0);
+            this.tabcontrolCustomer.Name = "tabcontrolCustomer";
+            this.tabcontrolCustomer.SelectedIndex = 0;
+            this.tabcontrolCustomer.Size = new System.Drawing.Size(1417, 756);
+            this.tabcontrolCustomer.TabIndex = 0;
+            this.tabcontrolCustomer.TabStop = false;
+            this.tabcontrolCustomer.SelectedIndexChanged += new System.EventHandler(this.tabcontrolCustomer_SelectedIndexChanged);
+            this.tabcontrolCustomer.Click += new System.EventHandler(this.tabcontrolCustomer_Click);
             // 
-            // tabMyProfile
+            // tabHome
             // 
-            this.tabMyProfile.Location = new System.Drawing.Point(4, 29);
-            this.tabMyProfile.Name = "tabMyProfile";
-            this.tabMyProfile.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabMyProfile.Size = new System.Drawing.Size(1409, 723);
-            this.tabMyProfile.TabIndex = 3;
-            this.tabMyProfile.Text = "My Profile";
-            this.tabMyProfile.UseVisualStyleBackColor = true;
+            this.tabHome.Controls.Add(this.splitContainer1);
+            this.tabHome.Location = new System.Drawing.Point(4, 29);
+            this.tabHome.Name = "tabHome";
+            this.tabHome.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHome.Size = new System.Drawing.Size(1409, 723);
+            this.tabHome.TabIndex = 0;
+            this.tabHome.Text = "Home";
+            this.tabHome.UseVisualStyleBackColor = true;
+            this.tabHome.Click += new System.EventHandler(this.tabHome_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxSearch);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(1403, 717);
+            this.splitContainer1.SplitterDistance = 339;
+            this.splitContainer1.TabIndex = 87;
+            // 
+            // groupBoxSearch
+            // 
+            this.groupBoxSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxSearch.Controls.Add(this.cbProductSort);
+            this.groupBoxSearch.Controls.Add(this.label15);
+            this.groupBoxSearch.Controls.Add(this.cbProductCategory);
+            this.groupBoxSearch.Controls.Add(this.label4);
+            this.groupBoxSearch.Controls.Add(this.txtProductNameSearch);
+            this.groupBoxSearch.Controls.Add(this.label5);
+            this.groupBoxSearch.Controls.Add(this.btnReset);
+            this.groupBoxSearch.Controls.Add(this.groupBox2);
+            this.groupBoxSearch.Controls.Add(this.groupBox1);
+            this.groupBoxSearch.Controls.Add(this.btnSearch);
+            this.groupBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxSearch.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxSearch.Name = "groupBoxSearch";
+            this.groupBoxSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxSearch.Size = new System.Drawing.Size(339, 717);
+            this.groupBoxSearch.TabIndex = 0;
+            this.groupBoxSearch.TabStop = false;
+            this.groupBoxSearch.Text = "Search";
+            // 
+            // cbProductCategory
+            // 
+            this.cbProductCategory.BackColor = System.Drawing.Color.White;
+            this.cbProductCategory.FormattingEnabled = true;
+            this.cbProductCategory.Items.AddRange(new object[] {
+            "Select the category"});
+            this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
+            this.cbProductCategory.Name = "cbProductCategory";
+            this.cbProductCategory.Size = new System.Drawing.Size(290, 28);
+            this.cbProductCategory.TabIndex = 3;
+            this.cbProductCategory.SelectedIndexChanged += new System.EventHandler(this.cbProductCategory_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 167);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Category";
+            // 
+            // txtProductNameSearch
+            // 
+            this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
+            this.txtProductNameSearch.Location = new System.Drawing.Point(9, 121);
+            this.txtProductNameSearch.Name = "txtProductNameSearch";
+            this.txtProductNameSearch.Size = new System.Drawing.Size(290, 27);
+            this.txtProductNameSearch.TabIndex = 0;
+            this.txtProductNameSearch.TextChanged += new System.EventHandler(this.txtProductNameSearch_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 20);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Product Name";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(185, 39);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(114, 31);
+            this.btnReset.TabIndex = 7;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtUnitsInStockMaxSearch);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtUnitsInStockMinSearch);
+            this.groupBox2.Location = new System.Drawing.Point(9, 469);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(311, 125);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Units In Stock";
+            // 
+            // txtUnitsInStockMaxSearch
+            // 
+            this.txtUnitsInStockMaxSearch.Location = new System.Drawing.Point(152, 84);
+            this.txtUnitsInStockMaxSearch.Name = "txtUnitsInStockMaxSearch";
+            this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(138, 27);
+            this.txtUnitsInStockMaxSearch.TabIndex = 1;
+            this.txtUnitsInStockMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitsInStockMaxSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMaxSearch_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Units In Stock Max";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 45);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Units In Stock Min";
+            // 
+            // txtUnitsInStockMinSearch
+            // 
+            this.txtUnitsInStockMinSearch.Location = new System.Drawing.Point(152, 45);
+            this.txtUnitsInStockMinSearch.Name = "txtUnitsInStockMinSearch";
+            this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(138, 27);
+            this.txtUnitsInStockMinSearch.TabIndex = 0;
+            this.txtUnitsInStockMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitsInStockMinSearch.TextChanged += new System.EventHandler(this.txtUnitsInStockMinSearch_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtUnitPriceMaxSearch);
+            this.groupBox1.Controls.Add(this.txtUnitPriceMinSearch);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(9, 316);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(311, 125);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Unit Price";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Unit Price Min";
+            // 
+            // txtUnitPriceMaxSearch
+            // 
+            this.txtUnitPriceMaxSearch.Location = new System.Drawing.Point(152, 87);
+            this.txtUnitPriceMaxSearch.Name = "txtUnitPriceMaxSearch";
+            this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(138, 27);
+            this.txtUnitPriceMaxSearch.TabIndex = 1;
+            this.txtUnitPriceMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitPriceMaxSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMaxSearch_TextChanged);
+            // 
+            // txtUnitPriceMinSearch
+            // 
+            this.txtUnitPriceMinSearch.Location = new System.Drawing.Point(152, 45);
+            this.txtUnitPriceMinSearch.Name = "txtUnitPriceMinSearch";
+            this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(138, 27);
+            this.txtUnitPriceMinSearch.TabIndex = 0;
+            this.txtUnitPriceMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitPriceMinSearch.TextChanged += new System.EventHandler(this.txtUnitPriceMinSearch_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Unit Price Max";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Enabled = false;
+            this.btnSearch.Location = new System.Drawing.Point(25, 39);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(142, 31);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "Auto Filting";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.gbProduct);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.dgvProducts);
+            this.splitContainer2.Panel2.Controls.Add(this.btnClose);
+            this.splitContainer2.Size = new System.Drawing.Size(1060, 717);
+            this.splitContainer2.SplitterDistance = 376;
+            this.splitContainer2.TabIndex = 87;
+            // 
+            // gbProduct
+            // 
+            this.gbProduct.Controls.Add(this.btnAddToCart);
+            this.gbProduct.Controls.Add(this.gbSelect);
+            this.gbProduct.Controls.Add(this.txtAvailable);
+            this.gbProduct.Controls.Add(this.txtPrice);
+            this.gbProduct.Controls.Add(this.groupBox3);
+            this.gbProduct.Controls.Add(this.label1);
+            this.gbProduct.Controls.Add(this.lbAvailable);
+            this.gbProduct.Controls.Add(this.lbPrice);
+            this.gbProduct.Controls.Add(this.lbProductName);
+            this.gbProduct.Controls.Add(this.pbProductAvatar);
+            this.gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbProduct.Location = new System.Drawing.Point(0, 0);
+            this.gbProduct.Name = "gbProduct";
+            this.gbProduct.Size = new System.Drawing.Size(1060, 376);
+            this.gbProduct.TabIndex = 86;
+            this.gbProduct.TabStop = false;
+            this.gbProduct.Text = "Product Name";
+            // 
+            // btnAddToCart
+            // 
+            this.btnAddToCart.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnAddToCart.Location = new System.Drawing.Point(858, 160);
+            this.btnAddToCart.Name = "btnAddToCart";
+            this.btnAddToCart.Size = new System.Drawing.Size(144, 38);
+            this.btnAddToCart.TabIndex = 3;
+            this.btnAddToCart.Text = "Add To Cart";
+            this.btnAddToCart.UseVisualStyleBackColor = false;
+            // 
+            // gbSelect
+            // 
+            this.gbSelect.Controls.Add(this.txtCurrentIndex);
+            this.gbSelect.Controls.Add(this.btnBack);
+            this.gbSelect.Controls.Add(this.btnNext);
+            this.gbSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbSelect.Location = new System.Drawing.Point(3, 320);
+            this.gbSelect.Name = "gbSelect";
+            this.gbSelect.Size = new System.Drawing.Size(1054, 53);
+            this.gbSelect.TabIndex = 92;
+            this.gbSelect.TabStop = false;
+            // 
+            // txtCurrentIndex
+            // 
+            this.txtCurrentIndex.Location = new System.Drawing.Point(473, 18);
+            this.txtCurrentIndex.Name = "txtCurrentIndex";
+            this.txtCurrentIndex.ReadOnly = true;
+            this.txtCurrentIndex.Size = new System.Drawing.Size(126, 27);
+            this.txtCurrentIndex.TabIndex = 1;
+            this.txtCurrentIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(323, 16);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(144, 31);
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "<< Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(605, 16);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(144, 31);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.Text = "Next >>";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // txtAvailable
+            // 
+            this.txtAvailable.Location = new System.Drawing.Point(637, 122);
+            this.txtAvailable.Name = "txtAvailable";
+            this.txtAvailable.ReadOnly = true;
+            this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAvailable.Size = new System.Drawing.Size(110, 27);
+            this.txtAvailable.TabIndex = 2;
+            this.txtAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(363, 122);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPrice.Size = new System.Drawing.Size(110, 27);
+            this.txtPrice.TabIndex = 1;
+            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtDesc);
+            this.groupBox3.Location = new System.Drawing.Point(290, 195);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(733, 115);
+            this.groupBox3.TabIndex = 89;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Description";
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(9, 26);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.ReadOnly = true;
+            this.txtDesc.Size = new System.Drawing.Size(715, 83);
+            this.txtDesc.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(299, 195);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 28);
+            this.label1.TabIndex = 88;
+            // 
+            // lbAvailable
+            // 
+            this.lbAvailable.AutoSize = true;
+            this.lbAvailable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbAvailable.Location = new System.Drawing.Point(535, 121);
+            this.lbAvailable.Name = "lbAvailable";
+            this.lbAvailable.Size = new System.Drawing.Size(96, 28);
+            this.lbAvailable.TabIndex = 87;
+            this.lbAvailable.Text = "Available:";
+            // 
+            // lbPrice
+            // 
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbPrice.Location = new System.Drawing.Point(299, 121);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(58, 28);
+            this.lbPrice.TabIndex = 86;
+            this.lbPrice.Text = "Price:";
+            // 
+            // lbProductName
+            // 
+            this.lbProductName.AutoSize = true;
+            this.lbProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbProductName.Location = new System.Drawing.Point(290, 49);
+            this.lbProductName.Name = "lbProductName";
+            this.lbProductName.Size = new System.Drawing.Size(236, 45);
+            this.lbProductName.TabIndex = 0;
+            this.lbProductName.Text = "Product Name";
+            this.lbProductName.TextChanged += new System.EventHandler(this.lbProductName_TextChanged);
+            // 
+            // pbProductAvatar
+            // 
+            this.pbProductAvatar.Location = new System.Drawing.Point(17, 39);
+            this.pbProductAvatar.Name = "pbProductAvatar";
+            this.pbProductAvatar.Size = new System.Drawing.Size(240, 271);
+            this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbProductAvatar.TabIndex = 85;
+            this.pbProductAvatar.TabStop = false;
+            // 
+            // dgvProducts
+            // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvProducts.Location = new System.Drawing.Point(0, 0);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowHeadersWidth = 51;
+            this.dgvProducts.RowTemplate.Height = 29;
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProducts.Size = new System.Drawing.Size(1060, 297);
+            this.dgvProducts.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(961, 303);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(85, 29);
+            this.btnClose.TabIndex = 83;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tabCart
+            // 
+            this.tabCart.Location = new System.Drawing.Point(4, 29);
+            this.tabCart.Name = "tabCart";
+            this.tabCart.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCart.Size = new System.Drawing.Size(1409, 723);
+            this.tabCart.TabIndex = 1;
+            this.tabCart.Text = "My Cart";
+            this.tabCart.UseVisualStyleBackColor = true;
+            this.tabCart.Click += new System.EventHandler(this.tabCart_Click);
             // 
             // tabMyOrder
             // 
             this.tabMyOrder.Controls.Add(this.splitContainer3);
             this.tabMyOrder.Location = new System.Drawing.Point(4, 29);
             this.tabMyOrder.Name = "tabMyOrder";
-            this.tabMyOrder.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabMyOrder.Padding = new System.Windows.Forms.Padding(3);
             this.tabMyOrder.Size = new System.Drawing.Size(1409, 723);
             this.tabMyOrder.TabIndex = 2;
             this.tabMyOrder.Text = "My Order";
             this.tabMyOrder.UseVisualStyleBackColor = true;
+            this.tabMyOrder.Click += new System.EventHandler(this.tabMyOrder_Click);
             // 
             // splitContainer3
             // 
@@ -253,7 +629,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer3.Size = new System.Drawing.Size(1403, 717);
-            this.splitContainer3.SplitterDistance = 278;
+            this.splitContainer3.SplitterDistance = 279;
             this.splitContainer3.TabIndex = 0;
             // 
             // splitContainer4
@@ -277,8 +653,8 @@
             this.splitContainer4.Panel2.Controls.Add(this.btnSearchOrder);
             this.splitContainer4.Panel2.Controls.Add(this.txtOrderSearch);
             this.splitContainer4.Panel2.Controls.Add(this.dgvOrders);
-            this.splitContainer4.Size = new System.Drawing.Size(1403, 278);
-            this.splitContainer4.SplitterDistance = 466;
+            this.splitContainer4.Size = new System.Drawing.Size(1403, 279);
+            this.splitContainer4.SplitterDistance = 467;
             this.splitContainer4.TabIndex = 0;
             // 
             // btnSort
@@ -289,6 +665,7 @@
             this.btnSort.TabIndex = 0;
             this.btnSort.Text = "Sort In Ascending Date Order";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // gbFilter
             // 
@@ -325,6 +702,7 @@
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(262, 27);
             this.dtpEndDate.TabIndex = 1;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbStartDate
             // 
@@ -342,6 +720,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(262, 27);
             this.dtpStartDate.TabIndex = 0;
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpRangeDate_ValueChanged);
             // 
             // lbEndDate
             // 
@@ -368,6 +747,7 @@
             this.cbOrderStatus.Name = "cbOrderStatus";
             this.cbOrderStatus.Size = new System.Drawing.Size(151, 28);
             this.cbOrderStatus.TabIndex = 2;
+            this.cbOrderStatus.SelectedIndexChanged += new System.EventHandler(this.cbOrderStatus_SelectedIndexChanged);
             // 
             // btnCleanAllFilterOrder
             // 
@@ -377,6 +757,7 @@
             this.btnCleanAllFilterOrder.TabIndex = 3;
             this.btnCleanAllFilterOrder.Text = "Clean all filters";
             this.btnCleanAllFilterOrder.UseVisualStyleBackColor = false;
+            this.btnCleanAllFilterOrder.Click += new System.EventHandler(this.btnCleanAllFilterOrder_Click);
             // 
             // btnSearchOrder
             // 
@@ -393,6 +774,7 @@
             this.txtOrderSearch.Name = "txtOrderSearch";
             this.txtOrderSearch.Size = new System.Drawing.Size(330, 27);
             this.txtOrderSearch.TabIndex = 1;
+            this.txtOrderSearch.TextChanged += new System.EventHandler(this.txtOrderSearch_TextChanged);
             // 
             // dgvOrders
             // 
@@ -401,14 +783,16 @@
             this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvOrders.Location = new System.Drawing.Point(0, 46);
+            this.dgvOrders.Location = new System.Drawing.Point(0, 47);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 29;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrders.Size = new System.Drawing.Size(931, 230);
+            this.dgvOrders.Size = new System.Drawing.Size(930, 230);
             this.dgvOrders.TabIndex = 1;
+            this.dgvOrders.DataSourceChanged += new System.EventHandler(this.dgvOrders_DataSourceChanged);
+            this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
             // 
             // splitContainer5
             // 
@@ -426,8 +810,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(1403, 435);
-            this.splitContainer5.SplitterDistance = 466;
+            this.splitContainer5.Size = new System.Drawing.Size(1403, 434);
+            this.splitContainer5.SplitterDistance = 467;
             this.splitContainer5.TabIndex = 0;
             // 
             // gbOrderProduct
@@ -441,9 +825,9 @@
             this.gbOrderProduct.Controls.Add(this.txtOrderPrice);
             this.gbOrderProduct.Controls.Add(this.txtOrderQuantity);
             this.gbOrderProduct.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbOrderProduct.Location = new System.Drawing.Point(0, 59);
+            this.gbOrderProduct.Location = new System.Drawing.Point(0, 58);
             this.gbOrderProduct.Name = "gbOrderProduct";
-            this.gbOrderProduct.Size = new System.Drawing.Size(464, 374);
+            this.gbOrderProduct.Size = new System.Drawing.Size(465, 374);
             this.gbOrderProduct.TabIndex = 99;
             this.gbOrderProduct.TabStop = false;
             this.gbOrderProduct.Text = "Product";
@@ -552,7 +936,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.dgvOrderDetails);
-            this.splitContainer6.Size = new System.Drawing.Size(931, 433);
+            this.splitContainer6.Size = new System.Drawing.Size(930, 432);
             this.splitContainer6.SplitterDistance = 254;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -579,10 +963,11 @@
             this.gbOrderTarget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbOrderTarget.Location = new System.Drawing.Point(0, 0);
             this.gbOrderTarget.Name = "gbOrderTarget";
-            this.gbOrderTarget.Size = new System.Drawing.Size(931, 254);
+            this.gbOrderTarget.Size = new System.Drawing.Size(930, 254);
             this.gbOrderTarget.TabIndex = 107;
             this.gbOrderTarget.TabStop = false;
             this.gbOrderTarget.Text = "Order >> ID";
+            this.gbOrderTarget.Enter += new System.EventHandler(this.gbOrderTarget_Enter);
             // 
             // btnCancelOrder
             // 
@@ -593,6 +978,7 @@
             this.btnCancelOrder.TabIndex = 8;
             this.btnCancelOrder.Text = "Cancel Order";
             this.btnCancelOrder.UseVisualStyleBackColor = false;
+            this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
             // 
             // label16
             // 
@@ -752,59 +1138,27 @@
             this.dgvOrderDetails.Name = "dgvOrderDetails";
             this.dgvOrderDetails.RowHeadersWidth = 51;
             this.dgvOrderDetails.RowTemplate.Height = 29;
-            this.dgvOrderDetails.Size = new System.Drawing.Size(931, 175);
+            this.dgvOrderDetails.Size = new System.Drawing.Size(930, 174);
             this.dgvOrderDetails.TabIndex = 0;
+            this.dgvOrderDetails.DataSourceChanged += new System.EventHandler(this.dgvOrderDetails_DataSourceChanged);
+            this.dgvOrderDetails.SelectionChanged += new System.EventHandler(this.dgvOrderDetails_SelectionChanged);
             // 
-            // tabHome
+            // tabMyProfile
             // 
-            this.tabHome.Controls.Add(this.splitContainer1);
-            this.tabHome.Location = new System.Drawing.Point(4, 29);
-            this.tabHome.Name = "tabHome";
-            this.tabHome.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabHome.Size = new System.Drawing.Size(1409, 723);
-            this.tabHome.TabIndex = 0;
-            this.tabHome.Text = "Home";
-            this.tabHome.UseVisualStyleBackColor = true;
+            this.tabMyProfile.Location = new System.Drawing.Point(4, 29);
+            this.tabMyProfile.Name = "tabMyProfile";
+            this.tabMyProfile.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMyProfile.Size = new System.Drawing.Size(1409, 723);
+            this.tabMyProfile.TabIndex = 3;
+            this.tabMyProfile.Text = "My Profile";
+            this.tabMyProfile.UseVisualStyleBackColor = true;
+            this.tabMyProfile.Click += new System.EventHandler(this.tabMyProfile_Click);
             // 
-            // splitContainer1
+            // sqlCommandBuilder1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxSearch);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1403, 717);
-            this.splitContainer1.SplitterDistance = 331;
-            this.splitContainer1.TabIndex = 87;
-            // 
-            // groupBoxSearch
-            // 
-            this.groupBoxSearch.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxSearch.Controls.Add(this.cbProductSort);
-            this.groupBoxSearch.Controls.Add(this.label15);
-            this.groupBoxSearch.Controls.Add(this.cbProductCategory);
-            this.groupBoxSearch.Controls.Add(this.label4);
-            this.groupBoxSearch.Controls.Add(this.txtProductNameSearch);
-            this.groupBoxSearch.Controls.Add(this.label5);
-            this.groupBoxSearch.Controls.Add(this.btnReset);
-            this.groupBoxSearch.Controls.Add(this.groupBox2);
-            this.groupBoxSearch.Controls.Add(this.groupBox1);
-            this.groupBoxSearch.Controls.Add(this.btnSearch);
-            this.groupBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxSearch.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxSearch.Size = new System.Drawing.Size(331, 717);
-            this.groupBoxSearch.TabIndex = 0;
-            this.groupBoxSearch.TabStop = false;
-            this.groupBoxSearch.Text = "Search";
+            this.sqlCommandBuilder1.DataAdapter = null;
+            this.sqlCommandBuilder1.QuotePrefix = "[";
+            this.sqlCommandBuilder1.QuoteSuffix = "]";
             // 
             // cbProductSort
             // 
@@ -818,6 +1172,7 @@
             this.cbProductSort.Name = "cbProductSort";
             this.cbProductSort.Size = new System.Drawing.Size(290, 28);
             this.cbProductSort.TabIndex = 51;
+            this.cbProductSort.SelectedIndexChanged += new System.EventHandler(this.cbProductSort_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -828,792 +1183,6 @@
             this.label15.TabIndex = 52;
             this.label15.Text = "Sorting";
             // 
-            // cbProductCategory
-            // 
-            this.cbProductCategory.BackColor = System.Drawing.Color.White;
-            this.cbProductCategory.FormattingEnabled = true;
-            this.cbProductCategory.Items.AddRange(new object[] {
-            "Select the category"});
-            this.cbProductCategory.Location = new System.Drawing.Point(9, 190);
-            this.cbProductCategory.Name = "cbProductCategory";
-            this.cbProductCategory.Size = new System.Drawing.Size(290, 28);
-            this.cbProductCategory.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 167);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 20);
-            this.label4.TabIndex = 50;
-            this.label4.Text = "Category";
-            // 
-            // txtProductNameSearch
-            // 
-            this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
-            this.txtProductNameSearch.Location = new System.Drawing.Point(9, 121);
-            this.txtProductNameSearch.Name = "txtProductNameSearch";
-            this.txtProductNameSearch.Size = new System.Drawing.Size(290, 27);
-            this.txtProductNameSearch.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 20);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "Product Name";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(185, 39);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(114, 31);
-            this.btnReset.TabIndex = 7;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtUnitsInStockMaxSearch);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtUnitsInStockMinSearch);
-            this.groupBox2.Location = new System.Drawing.Point(9, 469);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(311, 125);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Units In Stock";
-            // 
-            // txtUnitsInStockMaxSearch
-            // 
-            this.txtUnitsInStockMaxSearch.Location = new System.Drawing.Point(152, 84);
-            this.txtUnitsInStockMaxSearch.Name = "txtUnitsInStockMaxSearch";
-            this.txtUnitsInStockMaxSearch.Size = new System.Drawing.Size(138, 27);
-            this.txtUnitsInStockMaxSearch.TabIndex = 1;
-            this.txtUnitsInStockMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Units In Stock Max";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 45);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Units In Stock Min";
-            // 
-            // txtUnitsInStockMinSearch
-            // 
-            this.txtUnitsInStockMinSearch.Location = new System.Drawing.Point(152, 45);
-            this.txtUnitsInStockMinSearch.Name = "txtUnitsInStockMinSearch";
-            this.txtUnitsInStockMinSearch.Size = new System.Drawing.Size(138, 27);
-            this.txtUnitsInStockMinSearch.TabIndex = 0;
-            this.txtUnitsInStockMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtUnitPriceMaxSearch);
-            this.groupBox1.Controls.Add(this.txtUnitPriceMinSearch);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(9, 316);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(311, 125);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Unit Price";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Unit Price Min";
-            // 
-            // txtUnitPriceMaxSearch
-            // 
-            this.txtUnitPriceMaxSearch.Location = new System.Drawing.Point(152, 87);
-            this.txtUnitPriceMaxSearch.Name = "txtUnitPriceMaxSearch";
-            this.txtUnitPriceMaxSearch.Size = new System.Drawing.Size(138, 27);
-            this.txtUnitPriceMaxSearch.TabIndex = 1;
-            this.txtUnitPriceMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtUnitPriceMinSearch
-            // 
-            this.txtUnitPriceMinSearch.Location = new System.Drawing.Point(152, 45);
-            this.txtUnitPriceMinSearch.Name = "txtUnitPriceMinSearch";
-            this.txtUnitPriceMinSearch.Size = new System.Drawing.Size(138, 27);
-            this.txtUnitPriceMinSearch.TabIndex = 0;
-            this.txtUnitPriceMinSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Unit Price Max";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Enabled = false;
-            this.btnSearch.Location = new System.Drawing.Point(25, 39);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(142, 31);
-            this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "Auto Filting";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.gbProduct);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.dgvProducts);
-            this.splitContainer2.Panel2.Controls.Add(this.btnClose);
-            this.splitContainer2.Size = new System.Drawing.Size(1068, 717);
-            this.splitContainer2.SplitterDistance = 375;
-            this.splitContainer2.TabIndex = 87;
-            // 
-            // gbProduct
-            // 
-            this.gbProduct.Controls.Add(this.btnAddToCart);
-            this.gbProduct.Controls.Add(this.gbSelect);
-            this.gbProduct.Controls.Add(this.txtAvailable);
-            this.gbProduct.Controls.Add(this.txtPrice);
-            this.gbProduct.Controls.Add(this.groupBox3);
-            this.gbProduct.Controls.Add(this.label1);
-            this.gbProduct.Controls.Add(this.lbAvailable);
-            this.gbProduct.Controls.Add(this.lbPrice);
-            this.gbProduct.Controls.Add(this.lbProductName);
-            this.gbProduct.Controls.Add(this.pbProductAvatar);
-            this.gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbProduct.Location = new System.Drawing.Point(0, 0);
-            this.gbProduct.Name = "gbProduct";
-            this.gbProduct.Size = new System.Drawing.Size(1068, 375);
-            this.gbProduct.TabIndex = 86;
-            this.gbProduct.TabStop = false;
-            this.gbProduct.Text = "Product Name";
-            // 
-            // btnAddToCart
-            // 
-            this.btnAddToCart.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnAddToCart.Location = new System.Drawing.Point(858, 160);
-            this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(144, 38);
-            this.btnAddToCart.TabIndex = 3;
-            this.btnAddToCart.Text = "Add To Cart";
-            this.btnAddToCart.UseVisualStyleBackColor = false;
-            // 
-            // gbSelect
-            // 
-            this.gbSelect.Controls.Add(this.txtCurrentIndex);
-            this.gbSelect.Controls.Add(this.btnBack);
-            this.gbSelect.Controls.Add(this.btnNext);
-            this.gbSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbSelect.Location = new System.Drawing.Point(3, 319);
-            this.gbSelect.Name = "gbSelect";
-            this.gbSelect.Size = new System.Drawing.Size(1062, 53);
-            this.gbSelect.TabIndex = 92;
-            this.gbSelect.TabStop = false;
-            // 
-            // txtCurrentIndex
-            // 
-            this.txtCurrentIndex.Location = new System.Drawing.Point(473, 18);
-            this.txtCurrentIndex.Name = "txtCurrentIndex";
-            this.txtCurrentIndex.ReadOnly = true;
-            this.txtCurrentIndex.Size = new System.Drawing.Size(126, 27);
-            this.txtCurrentIndex.TabIndex = 1;
-            this.txtCurrentIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(323, 16);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(144, 31);
-            this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "<< Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(605, 16);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(144, 31);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = "Next >>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // txtAvailable
-            // 
-            this.txtAvailable.Location = new System.Drawing.Point(637, 122);
-            this.txtAvailable.Name = "txtAvailable";
-            this.txtAvailable.ReadOnly = true;
-            this.txtAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtAvailable.Size = new System.Drawing.Size(110, 27);
-            this.txtAvailable.TabIndex = 2;
-            this.txtAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(363, 122);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPrice.Size = new System.Drawing.Size(110, 27);
-            this.txtPrice.TabIndex = 1;
-            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtDesc);
-            this.groupBox3.Location = new System.Drawing.Point(290, 195);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(733, 115);
-            this.groupBox3.TabIndex = 89;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Description";
-            // 
-            // txtDesc
-            // 
-            this.txtDesc.Location = new System.Drawing.Point(9, 26);
-            this.txtDesc.Multiline = true;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.ReadOnly = true;
-            this.txtDesc.Size = new System.Drawing.Size(715, 83);
-            this.txtDesc.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(299, 195);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 28);
-            this.label1.TabIndex = 88;
-            // 
-            // lbAvailable
-            // 
-            this.lbAvailable.AutoSize = true;
-            this.lbAvailable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbAvailable.Location = new System.Drawing.Point(535, 121);
-            this.lbAvailable.Name = "lbAvailable";
-            this.lbAvailable.Size = new System.Drawing.Size(96, 28);
-            this.lbAvailable.TabIndex = 87;
-            this.lbAvailable.Text = "Available:";
-            // 
-            // lbPrice
-            // 
-            this.lbPrice.AutoSize = true;
-            this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbPrice.Location = new System.Drawing.Point(299, 121);
-            this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(58, 28);
-            this.lbPrice.TabIndex = 86;
-            this.lbPrice.Text = "Price:";
-            // 
-            // lbProductName
-            // 
-            this.lbProductName.AutoSize = true;
-            this.lbProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbProductName.Location = new System.Drawing.Point(290, 49);
-            this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(236, 45);
-            this.lbProductName.TabIndex = 0;
-            this.lbProductName.Text = "Product Name";
-            // 
-            // pbProductAvatar
-            // 
-            this.pbProductAvatar.Location = new System.Drawing.Point(17, 39);
-            this.pbProductAvatar.Name = "pbProductAvatar";
-            this.pbProductAvatar.Size = new System.Drawing.Size(240, 271);
-            this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbProductAvatar.TabIndex = 85;
-            this.pbProductAvatar.TabStop = false;
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.AllowUserToDeleteRows = false;
-            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvProducts.Location = new System.Drawing.Point(0, 0);
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.RowTemplate.Height = 29;
-            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1068, 297);
-            this.dgvProducts.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(978, 303);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 29);
-            this.btnClose.TabIndex = 83;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // tabcontrolCustomer
-            // 
-            this.tabcontrolCustomer.Controls.Add(this.tabHome);
-            this.tabcontrolCustomer.Controls.Add(this.tabCart);
-            this.tabcontrolCustomer.Controls.Add(this.tabMyOrder);
-            this.tabcontrolCustomer.Controls.Add(this.tabMyProfile);
-            this.tabcontrolCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabcontrolCustomer.Location = new System.Drawing.Point(0, 0);
-            this.tabcontrolCustomer.Name = "tabcontrolCustomer";
-            this.tabcontrolCustomer.SelectedIndex = 0;
-            this.tabcontrolCustomer.Size = new System.Drawing.Size(1417, 756);
-            this.tabcontrolCustomer.TabIndex = 0;
-            this.tabcontrolCustomer.TabStop = false;
-            // 
-            // tabCart
-            // 
-            this.tabCart.Controls.Add(this.splitContainer7);
-            this.tabCart.Location = new System.Drawing.Point(4, 29);
-            this.tabCart.Name = "tabCart";
-            this.tabCart.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabCart.Size = new System.Drawing.Size(1409, 723);
-            this.tabCart.TabIndex = 1;
-            this.tabCart.Text = "My Cart";
-            this.tabCart.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer7
-            // 
-            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer7.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.splitContainer7.Name = "splitContainer7";
-            // 
-            // splitContainer7.Panel1
-            // 
-            this.splitContainer7.Panel1.Controls.Add(this.groupBox4);
-            // 
-            // splitContainer7.Panel2
-            // 
-            this.splitContainer7.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer7.Size = new System.Drawing.Size(1403, 717);
-            this.splitContainer7.SplitterDistance = 330;
-            this.splitContainer7.SplitterWidth = 3;
-            this.splitContainer7.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox4.Controls.Add(this.txtCartTotal);
-            this.groupBox4.Controls.Add(this.lbCartTotal);
-            this.groupBox4.Controls.Add(this.cbSorting);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.cbFilterCategory);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.txtCartFilterName);
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(330, 717);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Search";
-            // 
-            // txtCartTotal
-            // 
-            this.txtCartTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtCartTotal.Location = new System.Drawing.Point(93, 331);
-            this.txtCartTotal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtCartTotal.Name = "txtCartTotal";
-            this.txtCartTotal.ReadOnly = true;
-            this.txtCartTotal.Size = new System.Drawing.Size(206, 39);
-            this.txtCartTotal.TabIndex = 54;
-            // 
-            // lbCartTotal
-            // 
-            this.lbCartTotal.AutoSize = true;
-            this.lbCartTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbCartTotal.Location = new System.Drawing.Point(7, 332);
-            this.lbCartTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbCartTotal.Name = "lbCartTotal";
-            this.lbCartTotal.Size = new System.Drawing.Size(99, 32);
-            this.lbCartTotal.TabIndex = 53;
-            this.lbCartTotal.Text = "TOTAL: ";
-            // 
-            // cbSorting
-            // 
-            this.cbSorting.BackColor = System.Drawing.Color.White;
-            this.cbSorting.FormattingEnabled = true;
-            this.cbSorting.Items.AddRange(new object[] {
-            "Sort by",
-            "Price asc",
-            "Price desc"});
-            this.cbSorting.Location = new System.Drawing.Point(9, 262);
-            this.cbSorting.Name = "cbSorting";
-            this.cbSorting.Size = new System.Drawing.Size(290, 28);
-            this.cbSorting.TabIndex = 51;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(7, 241);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 20);
-            this.label17.TabIndex = 52;
-            this.label17.Text = "Sorting";
-            // 
-            // cbFilterCategory
-            // 
-            this.cbFilterCategory.BackColor = System.Drawing.Color.White;
-            this.cbFilterCategory.FormattingEnabled = true;
-            this.cbFilterCategory.Items.AddRange(new object[] {
-            "Select the category"});
-            this.cbFilterCategory.Location = new System.Drawing.Point(9, 190);
-            this.cbFilterCategory.Name = "cbFilterCategory";
-            this.cbFilterCategory.Size = new System.Drawing.Size(290, 28);
-            this.cbFilterCategory.TabIndex = 3;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(7, 169);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 20);
-            this.label18.TabIndex = 50;
-            this.label18.Text = "Category";
-            // 
-            // txtCartFilterName
-            // 
-            this.txtCartFilterName.BackColor = System.Drawing.Color.White;
-            this.txtCartFilterName.Location = new System.Drawing.Point(9, 121);
-            this.txtCartFilterName.Name = "txtCartFilterName";
-            this.txtCartFilterName.Size = new System.Drawing.Size(290, 27);
-            this.txtCartFilterName.TabIndex = 0;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 99);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(104, 20);
-            this.label19.TabIndex = 48;
-            this.label19.Text = "Product Name";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(185, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Reset";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(25, 39);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 31);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Auto Filting";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer8
-            // 
-            this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer8.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer8.Name = "splitContainer8";
-            this.splitContainer8.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer8.Panel1
-            // 
-            this.splitContainer8.Panel1.Controls.Add(this.groupBox7);
-            // 
-            // splitContainer8.Panel2
-            // 
-            this.splitContainer8.Panel2.Controls.Add(this.dgvCarts);
-            this.splitContainer8.Panel2.Controls.Add(this.button6);
-            this.splitContainer8.Size = new System.Drawing.Size(1070, 717);
-            this.splitContainer8.SplitterDistance = 375;
-            this.splitContainer8.TabIndex = 88;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.btnCartDelete);
-            this.groupBox7.Controls.Add(this.btnDecrease);
-            this.groupBox7.Controls.Add(this.btnIncrease);
-            this.groupBox7.Controls.Add(this.txtCartQuantity);
-            this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.btnCheckout);
-            this.groupBox7.Controls.Add(this.groupBox8);
-            this.groupBox7.Controls.Add(this.txtCartAvailable);
-            this.groupBox7.Controls.Add(this.txtCartPrice);
-            this.groupBox7.Controls.Add(this.groupBox9);
-            this.groupBox7.Controls.Add(this.label24);
-            this.groupBox7.Controls.Add(this.label25);
-            this.groupBox7.Controls.Add(this.label26);
-            this.groupBox7.Controls.Add(this.lbCartName);
-            this.groupBox7.Controls.Add(this.pbCartAvatar);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(0, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1070, 375);
-            this.groupBox7.TabIndex = 86;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Product Name";
-            // 
-            // btnCartDelete
-            // 
-            this.btnCartDelete.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnCartDelete.Location = new System.Drawing.Point(828, 159);
-            this.btnCartDelete.Name = "btnCartDelete";
-            this.btnCartDelete.Size = new System.Drawing.Size(144, 38);
-            this.btnCartDelete.TabIndex = 97;
-            this.btnCartDelete.Text = "Delete";
-            this.btnCartDelete.UseVisualStyleBackColor = false;
-            // 
-            // btnDecrease
-            // 
-            this.btnDecrease.Location = new System.Drawing.Point(938, 124);
-            this.btnDecrease.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnDecrease.Name = "btnDecrease";
-            this.btnDecrease.Size = new System.Drawing.Size(34, 24);
-            this.btnDecrease.TabIndex = 96;
-            this.btnDecrease.Text = "-";
-            this.btnDecrease.UseVisualStyleBackColor = true;
-            // 
-            // btnIncrease
-            // 
-            this.btnIncrease.Location = new System.Drawing.Point(938, 98);
-            this.btnIncrease.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnIncrease.Name = "btnIncrease";
-            this.btnIncrease.Size = new System.Drawing.Size(34, 21);
-            this.btnIncrease.TabIndex = 95;
-            this.btnIncrease.Text = "+";
-            this.btnIncrease.UseVisualStyleBackColor = true;
-            // 
-            // txtCartQuantity
-            // 
-            this.txtCartQuantity.Location = new System.Drawing.Point(881, 110);
-            this.txtCartQuantity.Name = "txtCartQuantity";
-            this.txtCartQuantity.ReadOnly = true;
-            this.txtCartQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCartQuantity.Size = new System.Drawing.Size(53, 27);
-            this.txtCartQuantity.TabIndex = 94;
-            this.txtCartQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(786, 110);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(92, 28);
-            this.label28.TabIndex = 93;
-            this.label28.Text = "Quantity:";
-            // 
-            // btnCheckout
-            // 
-            this.btnCheckout.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnCheckout.Location = new System.Drawing.Point(878, 32);
-            this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(144, 38);
-            this.btnCheckout.TabIndex = 3;
-            this.btnCheckout.Text = "Checkout";
-            this.btnCheckout.UseVisualStyleBackColor = false;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.lblCartIndex);
-            this.groupBox8.Controls.Add(this.btnCartBack);
-            this.groupBox8.Controls.Add(this.btnCartNext);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox8.Location = new System.Drawing.Point(3, 319);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1064, 53);
-            this.groupBox8.TabIndex = 92;
-            this.groupBox8.TabStop = false;
-            // 
-            // lblCartIndex
-            // 
-            this.lblCartIndex.Location = new System.Drawing.Point(473, 18);
-            this.lblCartIndex.Name = "lblCartIndex";
-            this.lblCartIndex.ReadOnly = true;
-            this.lblCartIndex.Size = new System.Drawing.Size(126, 27);
-            this.lblCartIndex.TabIndex = 1;
-            this.lblCartIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnCartBack
-            // 
-            this.btnCartBack.Location = new System.Drawing.Point(323, 16);
-            this.btnCartBack.Name = "btnCartBack";
-            this.btnCartBack.Size = new System.Drawing.Size(144, 31);
-            this.btnCartBack.TabIndex = 0;
-            this.btnCartBack.Text = "<< Back";
-            this.btnCartBack.UseVisualStyleBackColor = true;
-            // 
-            // btnCartNext
-            // 
-            this.btnCartNext.Location = new System.Drawing.Point(605, 16);
-            this.btnCartNext.Name = "btnCartNext";
-            this.btnCartNext.Size = new System.Drawing.Size(144, 31);
-            this.btnCartNext.TabIndex = 2;
-            this.btnCartNext.Text = "Next >>";
-            this.btnCartNext.UseVisualStyleBackColor = true;
-            // 
-            // txtCartAvailable
-            // 
-            this.txtCartAvailable.Location = new System.Drawing.Point(630, 112);
-            this.txtCartAvailable.Name = "txtCartAvailable";
-            this.txtCartAvailable.ReadOnly = true;
-            this.txtCartAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCartAvailable.Size = new System.Drawing.Size(110, 27);
-            this.txtCartAvailable.TabIndex = 2;
-            this.txtCartAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtCartPrice
-            // 
-            this.txtCartPrice.Location = new System.Drawing.Point(362, 112);
-            this.txtCartPrice.Name = "txtCartPrice";
-            this.txtCartPrice.ReadOnly = true;
-            this.txtCartPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCartPrice.Size = new System.Drawing.Size(110, 27);
-            this.txtCartPrice.TabIndex = 1;
-            this.txtCartPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.txtCartDescription);
-            this.groupBox9.Location = new System.Drawing.Point(290, 195);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(733, 115);
-            this.groupBox9.TabIndex = 89;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Description";
-            // 
-            // txtCartDescription
-            // 
-            this.txtCartDescription.Location = new System.Drawing.Point(9, 26);
-            this.txtCartDescription.Multiline = true;
-            this.txtCartDescription.Name = "txtCartDescription";
-            this.txtCartDescription.ReadOnly = true;
-            this.txtCartDescription.Size = new System.Drawing.Size(715, 83);
-            this.txtCartDescription.TabIndex = 0;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(300, 196);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(0, 28);
-            this.label24.TabIndex = 88;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(531, 110);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(96, 28);
-            this.label25.TabIndex = 87;
-            this.label25.Text = "Available:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(298, 110);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(58, 28);
-            this.label26.TabIndex = 86;
-            this.label26.Text = "Price:";
-            // 
-            // lbCartName
-            // 
-            this.lbCartName.AutoSize = true;
-            this.lbCartName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbCartName.Location = new System.Drawing.Point(290, 50);
-            this.lbCartName.Name = "lbCartName";
-            this.lbCartName.Size = new System.Drawing.Size(236, 45);
-            this.lbCartName.TabIndex = 0;
-            this.lbCartName.Text = "Product Name";
-            // 
-            // pbCartAvatar
-            // 
-            this.pbCartAvatar.Location = new System.Drawing.Point(17, 39);
-            this.pbCartAvatar.Name = "pbCartAvatar";
-            this.pbCartAvatar.Size = new System.Drawing.Size(240, 271);
-            this.pbCartAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbCartAvatar.TabIndex = 85;
-            this.pbCartAvatar.TabStop = false;
-            // 
-            // dgvCarts
-            // 
-            this.dgvCarts.AllowUserToAddRows = false;
-            this.dgvCarts.AllowUserToDeleteRows = false;
-            this.dgvCarts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Check});
-            this.dgvCarts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvCarts.Location = new System.Drawing.Point(0, 0);
-            this.dgvCarts.Name = "dgvCarts";
-            this.dgvCarts.ReadOnly = true;
-            this.dgvCarts.RowHeadersWidth = 51;
-            this.dgvCarts.RowTemplate.Height = 29;
-            this.dgvCarts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarts.Size = new System.Drawing.Size(1070, 297);
-            this.dgvCarts.TabIndex = 0;
-            // 
-            // Check
-            // 
-            this.Check.FalseValue = "false";
-            this.Check.HeaderText = "Choose";
-            this.Check.MinimumWidth = 8;
-            this.Check.Name = "Check";
-            this.Check.ReadOnly = true;
-            this.Check.TrueValue = "true";
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(1913, 583);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 29);
-            this.button6.TabIndex = 83;
-            this.button6.Text = "Close";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1623,6 +1192,32 @@
             this.Name = "frmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCustomer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomer_FormClosing);
+            this.Load += new System.EventHandler(this.frmCustomer_Load);
+            this.tabcontrolCustomer.ResumeLayout(false);
+            this.tabHome.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBoxSearch.ResumeLayout(false);
+            this.groupBoxSearch.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.gbProduct.ResumeLayout(false);
+            this.gbProduct.PerformLayout();
+            this.gbSelect.ResumeLayout(false);
+            this.gbSelect.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.tabMyOrder.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
@@ -1651,111 +1246,20 @@
             this.gbOrderTarget.ResumeLayout(false);
             this.gbOrderTarget.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
-            this.tabHome.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.groupBoxSearch.ResumeLayout(false);
-            this.groupBoxSearch.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.gbProduct.ResumeLayout(false);
-            this.gbProduct.PerformLayout();
-            this.gbSelect.ResumeLayout(false);
-            this.gbSelect.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
-            this.tabcontrolCustomer.ResumeLayout(false);
-            this.tabCart.ResumeLayout(false);
-            this.splitContainer7.Panel1.ResumeLayout(false);
-            this.splitContainer7.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
-            this.splitContainer7.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.splitContainer8.Panel1.ResumeLayout(false);
-            this.splitContainer8.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
-            this.splitContainer8.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCartAvatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarts)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
-        private System.Windows.Forms.TabPage tabMyProfile;
-        private System.Windows.Forms.TabPage tabMyOrder;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.Button btnSort;
-        private System.Windows.Forms.GroupBox gbFilter;
-        private System.Windows.Forms.Button btnFilter;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Label lbStartDate;
-        private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.Label lbEndDate;
-        private System.Windows.Forms.ComboBox cbOrderStatus;
-        private System.Windows.Forms.Button btnCleanAllFilterOrder;
-        private System.Windows.Forms.Button btnSearchOrder;
-        private System.Windows.Forms.TextBox txtOrderSearch;
-        private System.Windows.Forms.DataGridView dgvOrders;
-        private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.GroupBox gbOrderProduct;
-        private System.Windows.Forms.PictureBox pbOrderProductAvatar;
-        private System.Windows.Forms.TextBox txtOrderDetailTotal;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lbOrderProductName;
-        private System.Windows.Forms.TextBox txtOrderPrice;
-        private System.Windows.Forms.TextBox txtOrderQuantity;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.SplitContainer splitContainer6;
-        private System.Windows.Forms.GroupBox gbOrderTarget;
-        private System.Windows.Forms.Button btnCancelOrder;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtOrderMessage;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtOrderShippingFee;
-        private System.Windows.Forms.TextBox txtOrderReceiver;
-        private System.Windows.Forms.Label lbOrderShippingFee;
-        private System.Windows.Forms.TextBox txtOrderTotal;
-        private System.Windows.Forms.TextBox txtOrderAddress;
-        private System.Windows.Forms.Label lbOrderDate;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lbTotal;
-        private System.Windows.Forms.TextBox txtOrderPhone;
-        private System.Windows.Forms.DateTimePicker dtpOrderTime;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lbReceiver;
-        private System.Windows.Forms.TextBox txtOrderStatus;
-        private System.Windows.Forms.DataGridView dgvOrderDetails;
+
+        private System.Windows.Forms.TabControl tabcontrolCustomer;
         private System.Windows.Forms.TabPage tabHome;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TabPage tabCart;
+        private System.Windows.Forms.TabPage tabMyOrder;
+        private System.Windows.Forms.TabPage tabMyProfile;
+        private System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBoxSearch;
-        private System.Windows.Forms.ComboBox cbProductSort;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox cbProductCategory;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtProductNameSearch;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtUnitsInStockMaxSearch;
@@ -1768,61 +1272,74 @@
         private System.Windows.Forms.TextBox txtUnitPriceMinSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TextBox txtProductNameSearch;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbProduct;
-        private System.Windows.Forms.Button btnAddToCart;
-        private System.Windows.Forms.GroupBox gbSelect;
-        private System.Windows.Forms.TextBox txtCurrentIndex;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.TextBox txtAvailable;
-        private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtDesc;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbProductAvatar;
+        private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbAvailable;
         private System.Windows.Forms.Label lbPrice;
-        private System.Windows.Forms.Label lbProductName;
-        private System.Windows.Forms.PictureBox pbProductAvatar;
-        private System.Windows.Forms.DataGridView dgvProducts;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TabControl tabcontrolCustomer;
-        private System.Windows.Forms.TabPage tabCart;
-        private System.Windows.Forms.SplitContainer splitContainer7;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cbSorting;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cbFilterCategory;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtCartFilterName;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.SplitContainer splitContainer8;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox lblCartIndex;
-        private System.Windows.Forms.Button btnCartBack;
-        private System.Windows.Forms.Button btnCartNext;
-        private System.Windows.Forms.TextBox txtCartAvailable;
-        private System.Windows.Forms.TextBox txtCartPrice;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.TextBox txtCartDescription;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label lbCartName;
-        private System.Windows.Forms.PictureBox pbCartAvatar;
-        private System.Windows.Forms.DataGridView dgvCarts;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Button btnDecrease;
-        private System.Windows.Forms.Button btnIncrease;
-        private System.Windows.Forms.TextBox txtCartQuantity;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
-        private System.Windows.Forms.TextBox txtCartTotal;
-        private System.Windows.Forms.Label lbCartTotal;
-        private System.Windows.Forms.Button btnCartDelete;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbProductCategory;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TextBox txtAvailable;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.GroupBox gbSelect;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnNext;
+        private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+        private System.Windows.Forms.TextBox txtCurrentIndex;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.Label lbEndDate;
+        private System.Windows.Forms.Label lbStartDate;
+        private System.Windows.Forms.GroupBox gbFilter;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnSearchOrder;
+        private System.Windows.Forms.TextBox txtOrderSearch;
+        private System.Windows.Forms.DataGridView dgvOrders;
+        private System.Windows.Forms.Button btnCleanAllFilterOrder;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.SplitContainer splitContainer6;
+        private System.Windows.Forms.TextBox txtOrderStatus;
+        private System.Windows.Forms.Label lbReceiver;
+        private System.Windows.Forms.DateTimePicker dtpOrderTime;
+        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.Label lbOrderDate;
+        private System.Windows.Forms.TextBox txtOrderTotal;
+        private System.Windows.Forms.TextBox txtOrderReceiver;
+        private System.Windows.Forms.DataGridView dgvOrderDetails;
+        private System.Windows.Forms.TextBox txtOrderShippingFee;
+        private System.Windows.Forms.Label lbOrderShippingFee;
+        private System.Windows.Forms.TextBox txtOrderAddress;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtOrderPhone;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pbOrderProductAvatar;
+        private System.Windows.Forms.TextBox txtOrderQuantity;
+        private System.Windows.Forms.TextBox txtOrderPrice;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbOrderProductName;
+        private System.Windows.Forms.TextBox txtOrderDetailTotal;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox gbOrderProduct;
+        private System.Windows.Forms.GroupBox gbOrderTarget;
+        private System.Windows.Forms.TextBox txtOrderMessage;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cbOrderStatus;
+        private System.Windows.Forms.Button btnCancelOrder;
+        private System.Windows.Forms.Button btnAddToCart;
+        private System.Windows.Forms.ComboBox cbProductSort;
+        private System.Windows.Forms.Label label15;
     }
 }
