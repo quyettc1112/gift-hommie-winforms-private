@@ -361,7 +361,7 @@ namespace GiftHommieWinforms
                 orders = orders.OrderByDescending(o => o.OrderTime).ToList();
             else
                 orders = orders.OrderBy(o => o.OrderTime).ToList();
-            cbStatus.Visible = false;
+            //cbStatus.Visible = false;
             OrderLoadDataToGridView(orders);
 
 
@@ -381,7 +381,7 @@ namespace GiftHommieWinforms
 
                 dgvOrders.DataSource = null;
                 dgvOrders.DataSource = bindingSource;
-                //dgvOrders.Columns["Id"].Visible = false;
+                dgvOrders.Columns["Id"].Visible = false;
                 dgvOrders.Columns["Username"].Visible = false;
 
                 dgvOrders.Columns["LastUpdatedTime"].Visible = false;
@@ -394,15 +394,6 @@ namespace GiftHommieWinforms
 
 
 
-                if (orders.Count() == 0)
-                {
-                    // gbProduct => hide
-                }
-                else
-                {
-                    // gbProduct=> not hide
-
-                }
             }
             catch (Exception ex)
             {
@@ -446,10 +437,24 @@ namespace GiftHommieWinforms
             OrderLoadData();
         }
 
-        private void dgvOrders_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+
+
+        private int GetSelectedRowOrderIdValue()
         {
-            var frm = new frmStaffOrderDetail();
-            frm.ShowDialog();
+            if (dgvOrders.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvOrders.SelectedRows[0];
+                DataGridViewCell idCell = selectedRow.Cells["Id"];
+
+                if (dgvOrders.Columns["Id"].Visible == false && idCell != null && idCell.Value != null
+                    && int.TryParse(idCell.Value.ToString(), out int result))
+                {
+                    return result;
+                }
+            }
+
+            // Nếu không thể chuyển đổi thành công hoặc không có giá trị, trả về giá trị mặc định (vd: -1)
+            return -1;
         }
 
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
@@ -460,6 +465,50 @@ namespace GiftHommieWinforms
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
             OrderLoadData();
+        }
+
+        private void dgvOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmStaffOrderDetail frm = new frmStaffOrderDetail()
+            {
+                orderDetails = orderRepository.GetOrderDetails(GetSelectedRowOrderIdValue()),
+                Order = orderRepository.Get(GetSelectedRowOrderIdValue())
+            };
+            frm.ShowDialog();
+        }
+
+        private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnConfirm.Visible = false;
+            btnRefuse.Visible = false;
+
+            if (GetSelectedStatusValue().Equals("CANCELLED"))
+            {
+                btnConfirm.Visible = false;
+                btnRefuse.Visible = false;
+            }
+            if (GetSelectedStatusValue().Equals("PENDING"))
+            {
+                btnConfirm.Visible = true;
+                btnRefuse.Visible = true;
+            }
+        }
+
+        private string GetSelectedStatusValue()
+        {
+            if (dgvOrders.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvOrders.SelectedRows[0];
+                DataGridViewCell idCell = selectedRow.Cells["Status"];
+
+                if (dgvOrders.Columns["Status"].Visible != false && idCell != null && idCell.Value != null)
+                {
+                    return idCell.Value.ToString();
+                }
+            }
+
+            // Nếu không có giá trị, trả về giá trị mặc định (vd: "")
+            return "";
         }
     }
 }

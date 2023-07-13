@@ -175,5 +175,22 @@ namespace DataAccessObjects
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<OrderDetail> GetOrderDetails(int orderID)
+        {
+            List<OrderDetail> list = new List<OrderDetail>();
+            try
+            {
+                using (var context = new HommieStoreContext())
+                {
+                    list = context.OrderDetails.Where(od => od.OrderId == orderID).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return list;
+        }
     }
 }

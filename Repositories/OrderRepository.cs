@@ -62,5 +62,8 @@ namespace Repositories
         }
 
         public int GetAvailableProductQuantity(int id) => (ProductDAO.Instance.Get(id)).Quantity - GetOrderedProductQuantity(id);
+
+        public List<OrderDetail> GetOrderDetails(int id) => OrderDAO.Instance.GetOrderDetails(id);
+     
     }
 }
