@@ -17,6 +17,8 @@ namespace Repositories
 
         public List<Order> GetAllOrdersOfCustomer(string username);
 
+        // Lấy một list order detail với order id
+        public List<OrderDetail> GetOrderDetails(int id);
         double GetTotalOfOrder(int id);
         public List<Order> GetOrdersWithStatus(List<string> status);
         public int GetAvailableProductQuantity(int id);

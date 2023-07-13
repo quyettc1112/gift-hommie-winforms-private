@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             label16 = new System.Windows.Forms.Label();
@@ -47,7 +46,7 @@
             label8 = new System.Windows.Forms.Label();
             lbReceiver = new System.Windows.Forms.Label();
             txtOrderStatus = new System.Windows.Forms.TextBox();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            dgvStaffOrderDetail = new System.Windows.Forms.DataGridView();
             label12 = new System.Windows.Forms.Label();
             lbOrderProductName = new System.Windows.Forms.Label();
             pbOrderProductAvatar = new System.Windows.Forms.PictureBox();
@@ -57,17 +56,13 @@
             label10 = new System.Windows.Forms.Label();
             txtOrderPrice = new System.Windows.Forms.TextBox();
             txtOrderQuantity = new System.Windows.Forms.TextBox();
+            btnRefuse = new System.Windows.Forms.Button();
+            btnConfirm = new System.Windows.Forms.Button();
+            btnEdit = new System.Windows.Forms.Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStaffOrderDetail).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrderProductAvatar).BeginInit();
             SuspendLayout();
-            // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.Connection = null;
-            sqlCommand1.Notification = null;
-            sqlCommand1.Transaction = null;
             // 
             // groupBox1
             // 
@@ -90,17 +85,21 @@
             groupBox1.Controls.Add(lbReceiver);
             groupBox1.Controls.Add(txtOrderStatus);
             groupBox1.Location = new System.Drawing.Point(1, 2);
+            groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(857, 390);
+            groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox1.Size = new System.Drawing.Size(750, 292);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "OrderDetail";
             // 
             // groupBox2
             // 
-            groupBox2.Location = new System.Drawing.Point(863, 0);
+            groupBox2.Location = new System.Drawing.Point(755, 0);
+            groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(453, 399);
+            groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox2.Size = new System.Drawing.Size(396, 299);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
@@ -108,111 +107,105 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(458, 228);
+            label16.Location = new System.Drawing.Point(401, 171);
             label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(49, 20);
+            label16.Size = new System.Drawing.Size(39, 15);
             label16.TabIndex = 166;
             label16.Text = "Status";
             // 
             // txtOrderMessage
             // 
-            txtOrderMessage.Location = new System.Drawing.Point(154, 169);
-            txtOrderMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderMessage.Location = new System.Drawing.Point(135, 127);
             txtOrderMessage.Name = "txtOrderMessage";
             txtOrderMessage.ReadOnly = true;
-            txtOrderMessage.Size = new System.Drawing.Size(276, 27);
+            txtOrderMessage.Size = new System.Drawing.Size(242, 23);
             txtOrderMessage.TabIndex = 163;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(25, 172);
+            label13.Location = new System.Drawing.Point(22, 129);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(67, 20);
+            label13.Size = new System.Drawing.Size(53, 15);
             label13.TabIndex = 174;
             label13.Text = "Message";
             // 
             // txtOrderShippingFee
             // 
-            txtOrderShippingFee.Location = new System.Drawing.Point(580, 172);
-            txtOrderShippingFee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderShippingFee.Location = new System.Drawing.Point(508, 129);
             txtOrderShippingFee.Name = "txtOrderShippingFee";
             txtOrderShippingFee.ReadOnly = true;
-            txtOrderShippingFee.Size = new System.Drawing.Size(215, 27);
+            txtOrderShippingFee.Size = new System.Drawing.Size(189, 23);
             txtOrderShippingFee.TabIndex = 164;
             txtOrderShippingFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderReceiver
             // 
-            txtOrderReceiver.Location = new System.Drawing.Point(154, 64);
-            txtOrderReceiver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderReceiver.Location = new System.Drawing.Point(135, 48);
             txtOrderReceiver.Name = "txtOrderReceiver";
             txtOrderReceiver.ReadOnly = true;
-            txtOrderReceiver.Size = new System.Drawing.Size(273, 27);
+            txtOrderReceiver.Size = new System.Drawing.Size(239, 23);
             txtOrderReceiver.TabIndex = 159;
             // 
             // lbOrderShippingFee
             // 
             lbOrderShippingFee.AutoSize = true;
-            lbOrderShippingFee.Location = new System.Drawing.Point(455, 175);
+            lbOrderShippingFee.Location = new System.Drawing.Point(398, 131);
             lbOrderShippingFee.Name = "lbOrderShippingFee";
-            lbOrderShippingFee.Size = new System.Drawing.Size(95, 20);
+            lbOrderShippingFee.Size = new System.Drawing.Size(75, 15);
             lbOrderShippingFee.TabIndex = 173;
             lbOrderShippingFee.Text = "Shipping Fee";
             // 
             // txtOrderTotal
             // 
-            txtOrderTotal.Location = new System.Drawing.Point(154, 226);
-            txtOrderTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderTotal.Location = new System.Drawing.Point(135, 170);
             txtOrderTotal.Name = "txtOrderTotal";
             txtOrderTotal.ReadOnly = true;
-            txtOrderTotal.Size = new System.Drawing.Size(176, 27);
+            txtOrderTotal.Size = new System.Drawing.Size(154, 23);
             txtOrderTotal.TabIndex = 165;
             txtOrderTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderAddress
             // 
-            txtOrderAddress.Location = new System.Drawing.Point(154, 117);
-            txtOrderAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderAddress.Location = new System.Drawing.Point(135, 88);
             txtOrderAddress.Name = "txtOrderAddress";
             txtOrderAddress.ReadOnly = true;
-            txtOrderAddress.Size = new System.Drawing.Size(276, 27);
+            txtOrderAddress.Size = new System.Drawing.Size(242, 23);
             txtOrderAddress.TabIndex = 161;
             // 
             // lbOrderDate
             // 
             lbOrderDate.AutoSize = true;
-            lbOrderDate.Location = new System.Drawing.Point(455, 65);
+            lbOrderDate.Location = new System.Drawing.Point(398, 49);
             lbOrderDate.Name = "lbOrderDate";
-            lbOrderDate.Size = new System.Drawing.Size(84, 20);
+            lbOrderDate.Size = new System.Drawing.Size(66, 15);
             lbOrderDate.TabIndex = 169;
             lbOrderDate.Text = "Order Time";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(25, 120);
+            label9.Location = new System.Drawing.Point(22, 90);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(62, 20);
+            label9.Size = new System.Drawing.Size(49, 15);
             label9.TabIndex = 172;
             label9.Text = "Address";
             // 
             // lbTotal
             // 
             lbTotal.AutoSize = true;
-            lbTotal.Location = new System.Drawing.Point(29, 229);
+            lbTotal.Location = new System.Drawing.Point(25, 172);
             lbTotal.Name = "lbTotal";
-            lbTotal.Size = new System.Drawing.Size(42, 20);
+            lbTotal.Size = new System.Drawing.Size(32, 15);
             lbTotal.TabIndex = 168;
             lbTotal.Text = "Total";
             // 
             // txtOrderPhone
             // 
-            txtOrderPhone.Location = new System.Drawing.Point(579, 120);
-            txtOrderPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderPhone.Location = new System.Drawing.Point(507, 90);
             txtOrderPhone.Name = "txtOrderPhone";
             txtOrderPhone.ReadOnly = true;
-            txtOrderPhone.Size = new System.Drawing.Size(216, 27);
+            txtOrderPhone.Size = new System.Drawing.Size(190, 23);
             txtOrderPhone.TabIndex = 162;
             txtOrderPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -221,57 +214,59 @@
             dtpOrderTime.CustomFormat = "MMM dd, yyyy hh:ss";
             dtpOrderTime.Enabled = false;
             dtpOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dtpOrderTime.Location = new System.Drawing.Point(580, 60);
-            dtpOrderTime.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            dtpOrderTime.Location = new System.Drawing.Point(508, 45);
+            dtpOrderTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dtpOrderTime.Name = "dtpOrderTime";
-            dtpOrderTime.Size = new System.Drawing.Size(215, 27);
+            dtpOrderTime.Size = new System.Drawing.Size(189, 23);
             dtpOrderTime.TabIndex = 160;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(455, 123);
+            label8.Location = new System.Drawing.Point(398, 92);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(50, 20);
+            label8.Size = new System.Drawing.Size(41, 15);
             label8.TabIndex = 171;
             label8.Text = "Phone";
             // 
             // lbReceiver
             // 
             lbReceiver.AutoSize = true;
-            lbReceiver.Location = new System.Drawing.Point(22, 64);
+            lbReceiver.Location = new System.Drawing.Point(19, 48);
             lbReceiver.Name = "lbReceiver";
-            lbReceiver.Size = new System.Drawing.Size(65, 20);
+            lbReceiver.Size = new System.Drawing.Size(51, 15);
             lbReceiver.TabIndex = 167;
             lbReceiver.Text = "Receiver";
             // 
             // txtOrderStatus
             // 
-            txtOrderStatus.Location = new System.Drawing.Point(580, 222);
-            txtOrderStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtOrderStatus.Location = new System.Drawing.Point(508, 166);
             txtOrderStatus.Name = "txtOrderStatus";
             txtOrderStatus.ReadOnly = true;
-            txtOrderStatus.Size = new System.Drawing.Size(121, 27);
+            txtOrderStatus.Size = new System.Drawing.Size(106, 23);
             txtOrderStatus.TabIndex = 170;
             txtOrderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dataGridView1
+            // dgvStaffOrderDetail
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(1, 398);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new System.Drawing.Size(1316, 313);
-            dataGridView1.TabIndex = 1;
+            dgvStaffOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStaffOrderDetail.Location = new System.Drawing.Point(1, 298);
+            dgvStaffOrderDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            dgvStaffOrderDetail.Name = "dgvStaffOrderDetail";
+            dgvStaffOrderDetail.RowHeadersWidth = 51;
+            dgvStaffOrderDetail.RowTemplate.Height = 29;
+            dgvStaffOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvStaffOrderDetail.Size = new System.Drawing.Size(940, 235);
+            dgvStaffOrderDetail.TabIndex = 1;
+            dgvStaffOrderDetail.CellClick += dgvStaffOrderDetail_CellClick;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label12.Location = new System.Drawing.Point(904, 25);
+            label12.Location = new System.Drawing.Point(791, 19);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(349, 41);
+            label12.Size = new System.Drawing.Size(284, 32);
             label12.TabIndex = 93;
             label12.Text = "Order Detail Information";
             // 
@@ -279,29 +274,31 @@
             // 
             lbOrderProductName.AutoSize = true;
             lbOrderProductName.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbOrderProductName.Location = new System.Drawing.Point(971, 83);
+            lbOrderProductName.Location = new System.Drawing.Point(850, 62);
             lbOrderProductName.Name = "lbOrderProductName";
-            lbOrderProductName.Size = new System.Drawing.Size(199, 41);
+            lbOrderProductName.Size = new System.Drawing.Size(160, 32);
             lbOrderProductName.TabIndex = 97;
             lbOrderProductName.Text = "Product Name";
             // 
             // pbOrderProductAvatar
             // 
             pbOrderProductAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pbOrderProductAvatar.Location = new System.Drawing.Point(876, 138);
+            pbOrderProductAvatar.Location = new System.Drawing.Point(766, 104);
+            pbOrderProductAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             pbOrderProductAvatar.Name = "pbOrderProductAvatar";
-            pbOrderProductAvatar.Size = new System.Drawing.Size(200, 241);
+            pbOrderProductAvatar.Size = new System.Drawing.Size(175, 181);
             pbOrderProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             pbOrderProductAvatar.TabIndex = 98;
             pbOrderProductAvatar.TabStop = false;
             // 
             // txtOrderDetailTotal
             // 
-            txtOrderDetailTotal.Location = new System.Drawing.Point(1176, 310);
+            txtOrderDetailTotal.Location = new System.Drawing.Point(1029, 232);
+            txtOrderDetailTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtOrderDetailTotal.Name = "txtOrderDetailTotal";
             txtOrderDetailTotal.ReadOnly = true;
             txtOrderDetailTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            txtOrderDetailTotal.Size = new System.Drawing.Size(99, 27);
+            txtOrderDetailTotal.Size = new System.Drawing.Size(87, 23);
             txtOrderDetailTotal.TabIndex = 101;
             txtOrderDetailTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -309,9 +306,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label11.Location = new System.Drawing.Point(1082, 184);
+            label11.Location = new System.Drawing.Point(947, 138);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(58, 28);
+            label11.Size = new System.Drawing.Size(47, 21);
             label11.TabIndex = 102;
             label11.Text = "Price:";
             // 
@@ -319,9 +316,9 @@
             // 
             label14.AutoSize = true;
             label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label14.Location = new System.Drawing.Point(1086, 306);
+            label14.Location = new System.Drawing.Point(950, 230);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(54, 28);
+            label14.Size = new System.Drawing.Size(42, 21);
             label14.TabIndex = 104;
             label14.Text = "Total";
             // 
@@ -329,37 +326,81 @@
             // 
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label10.Location = new System.Drawing.Point(1082, 247);
+            label10.Location = new System.Drawing.Point(947, 185);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(88, 28);
+            label10.Size = new System.Drawing.Size(70, 21);
             label10.TabIndex = 103;
             label10.Text = "Quantity";
             // 
             // txtOrderPrice
             // 
-            txtOrderPrice.Location = new System.Drawing.Point(1176, 185);
+            txtOrderPrice.Location = new System.Drawing.Point(1029, 139);
+            txtOrderPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtOrderPrice.Name = "txtOrderPrice";
             txtOrderPrice.ReadOnly = true;
             txtOrderPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            txtOrderPrice.Size = new System.Drawing.Size(99, 27);
+            txtOrderPrice.Size = new System.Drawing.Size(87, 23);
             txtOrderPrice.TabIndex = 99;
             txtOrderPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderQuantity
             // 
-            txtOrderQuantity.Location = new System.Drawing.Point(1176, 251);
+            txtOrderQuantity.Location = new System.Drawing.Point(1029, 188);
+            txtOrderQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtOrderQuantity.Name = "txtOrderQuantity";
             txtOrderQuantity.ReadOnly = true;
             txtOrderQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            txtOrderQuantity.Size = new System.Drawing.Size(99, 27);
+            txtOrderQuantity.Size = new System.Drawing.Size(87, 23);
             txtOrderQuantity.TabIndex = 100;
             txtOrderQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnRefuse
+            // 
+            btnRefuse.BackColor = System.Drawing.Color.Red;
+            btnRefuse.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnRefuse.Location = new System.Drawing.Point(1008, 364);
+            btnRefuse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnRefuse.Name = "btnRefuse";
+            btnRefuse.Size = new System.Drawing.Size(108, 33);
+            btnRefuse.TabIndex = 106;
+            btnRefuse.Text = "Refuse";
+            btnRefuse.UseVisualStyleBackColor = false;
+            btnRefuse.Visible = false;
+            // 
+            // btnConfirm
+            // 
+            btnConfirm.BackColor = System.Drawing.Color.Cyan;
+            btnConfirm.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnConfirm.Location = new System.Drawing.Point(1008, 305);
+            btnConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new System.Drawing.Size(108, 33);
+            btnConfirm.TabIndex = 105;
+            btnConfirm.Text = "Confirm";
+            btnConfirm.UseVisualStyleBackColor = false;
+            btnConfirm.Visible = false;
+            // 
+            // btnEdit
+            // 
+            btnEdit.BackColor = System.Drawing.Color.Red;
+            btnEdit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnEdit.Location = new System.Drawing.Point(1008, 500);
+            btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(108, 33);
+            btnEdit.TabIndex = 107;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Visible = false;
+            // 
             // frmStaffOrderDetail
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1313, 738);
+            ClientSize = new System.Drawing.Size(1149, 554);
+            Controls.Add(btnEdit);
+            Controls.Add(btnRefuse);
+            Controls.Add(btnConfirm);
             Controls.Add(txtOrderDetailTotal);
             Controls.Add(label11);
             Controls.Add(label14);
@@ -369,13 +410,15 @@
             Controls.Add(pbOrderProductAvatar);
             Controls.Add(lbOrderProductName);
             Controls.Add(label12);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvStaffOrderDetail);
             Controls.Add(groupBox1);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "frmStaffOrderDetail";
             Text = "frmStaffOrderDetail";
+            Load += frmStaffOrderDetail_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStaffOrderDetail).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbOrderProductAvatar).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -401,7 +444,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbReceiver;
         private System.Windows.Forms.TextBox txtOrderStatus;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvStaffOrderDetail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbOrderProductName;
         private System.Windows.Forms.PictureBox pbOrderProductAvatar;
@@ -411,5 +454,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtOrderPrice;
         private System.Windows.Forms.TextBox txtOrderQuantity;
+        private System.Windows.Forms.Button btnRefuse;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
