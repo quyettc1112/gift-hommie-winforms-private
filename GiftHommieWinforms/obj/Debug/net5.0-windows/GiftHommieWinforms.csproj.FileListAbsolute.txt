@@ -211,3 +211,4 @@ D:\GiftHubdotNet\GiftHommieWinforms\obj\Debug\net5.0-windows\ref\GiftHommieWinfo
 C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmCheckout.resources
 C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmLogin.resources
 C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmStaffOrderDetail.resources
+C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmRegister.resources

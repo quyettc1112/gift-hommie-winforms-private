@@ -14,15 +14,18 @@ namespace GiftHommieWinforms
 {
     public partial class frmStaffOrderDetail : Form
     {
-        public frmStaffOrderDetail()
+        private frmStaff _parentForm;
+        public frmStaffOrderDetail(frmStaff parentForm)
         {
             InitializeComponent();
+            _parentForm = parentForm;
         }
+
 
         public List<OrderDetail> orderDetails { get; set; }
         public Order Order { get; set; }
 
-
+        private frmStaff staffform;
         private IProductRepository productRepository = new ProductRepository();
         private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
@@ -35,42 +38,44 @@ namespace GiftHommieWinforms
         }
         private void LoadUserInfo()
         {
-            bindingSource = new BindingSource();
-            bindingSource.DataSource = Order;
-            txtOrderStatus.DataBindings.Clear();
-            dtpOrderTime.DataBindings.Clear();
 
-            txtOrderReceiver.DataBindings.Clear();
-            txtOrderPhone.DataBindings.Clear();
-            txtOrderAddress.DataBindings.Clear();
-            txtOrderMessage.DataBindings.Clear();
-
-            txtOrderShippingFee.DataBindings.Clear();
-            txtOrderTotal.DataBindings.Clear();
-
-
-            txtOrderStatus.DataBindings.Add("Text", bindingSource, "Status");
-            dtpOrderTime.DataBindings.Add("Text", bindingSource, "OrderTime");
-
-            txtOrderReceiver.DataBindings.Add("Text", bindingSource, "Name");
-            txtOrderPhone.DataBindings.Add("Text", bindingSource, "Phone");
-            txtOrderAddress.DataBindings.Add("Text", bindingSource, "Address");
-            txtOrderMessage.DataBindings.Add("Text", bindingSource, "Message");
-
-            txtOrderShippingFee.DataBindings.Add("Text", bindingSource, "ShippingFee");
-
-            double? total = 0;
-            double? fee = Order.ShippingFee;
-            for (int i = 0; i < orderDetails.Count; i++)
+            if (Order != null)
             {
-                total = total + (orderDetails[i].Price * orderDetails[i].Quantity);
+                bindingSource = new BindingSource();
+                bindingSource.DataSource = Order;
 
+                cbOrderStatus.DataBindings.Clear();
+                dtpOrderTime.DataBindings.Clear();
+
+                txtOrderReceiver.DataBindings.Clear();
+                txtOrderPhone.DataBindings.Clear();
+                txtOrderAddress.DataBindings.Clear();
+                txtOrderMessage.DataBindings.Clear();
+                rComment.DataBindings.Clear();
+                txtOrderShippingFee.DataBindings.Clear();
+                txtOrderTotal.DataBindings.Clear();
+
+
+                cbOrderStatus.DataBindings.Add("Text", bindingSource, "Status");
+                dtpOrderTime.DataBindings.Add("Text", bindingSource, "OrderTime");
+
+                txtOrderReceiver.DataBindings.Add("Text", bindingSource, "Name");
+                txtOrderPhone.DataBindings.Add("Text", bindingSource, "Phone");
+                txtOrderAddress.DataBindings.Add("Text", bindingSource, "Address");
+                txtOrderMessage.DataBindings.Add("Text", bindingSource, "Message");
+                rComment.DataBindings.Add("Text", bindingSource, "Comment");
+                txtOrderShippingFee.DataBindings.Add("Text", bindingSource, "ShippingFee");
+
+                double? total = 0;
+                double? fee = Order.ShippingFee;
+                for (int i = 0; i < orderDetails.Count; i++)
+                {
+                    total = total + (orderDetails[i].Price * orderDetails[i].Quantity);
+
+                }
+
+                txtOrderTotal.Text = (total + fee).ToString();
             }
-
-            txtOrderTotal.Text = (total + fee).ToString();
-
-
-
 
         }
 
@@ -183,6 +188,40 @@ namespace GiftHommieWinforms
         private void dgvStaffOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtOrderDetailTotal.Text = GetSelectedRowOrderIdValue().ToString();
+        }
+
+        private void btnEditStatus_Click(object sender, EventArgs e)
+        {
+            if (Order != null)
+            {
+                DialogResult d;
+                d = MessageBox.Show($"Save Status Order ", "Order", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+
+                if (d == DialogResult.OK)
+                {
+                    Order.Status = cbOrderStatus.Text;
+                    Order.Comment = rComment.Text;
+                    orderRepository.Save(Order);
+                    DialogResult = DialogResult.OK;
+                    OrderDetailLoadDataToGridView(orderDetails);
+                    //LoadUserInfo();
+                    
+                }
+            }
+        }
+
+        private void frmStaffOrderDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _parentForm.OrderLoadData();
+            _parentForm.LoadOrderInfo(Order);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _parentForm.OrderLoadData();
+            _parentForm.LoadOrderInfo(Order);
+            this.Close();
         }
 
 

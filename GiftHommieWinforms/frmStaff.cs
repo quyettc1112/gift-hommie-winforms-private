@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,13 +17,15 @@ namespace GiftHommieWinforms
     public partial class frmStaff : Form
     {
         private IProductRepository productRepository = new ProductRepository();
+        private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
+        private BindingSource bindingSourceOrderInfo = null;
         private IOrderRepository orderRepository = new OrderRepository();
         private bool orderTimeDescMode = true;
         public frmStaff()
         {
             InitializeComponent();
-            dgvProducts.CellDoubleClick += DgvProduct_CellDoubleClick;
+
         }
 
 
@@ -325,7 +328,11 @@ namespace GiftHommieWinforms
         {
             OrderInitDataForSearchComponent();
             OrderLoadData();
+            //dgvOrders.CellClick += dgvOrders_CellClick;
+
         }
+
+
 
         private void OrderInitDataForSearchComponent()
         {
@@ -345,7 +352,7 @@ namespace GiftHommieWinforms
             cbOrderStatus.SelectedIndex = 0;
         }
 
-        private void OrderLoadData()
+        public void OrderLoadData()
         {
 
             // Load orders
@@ -387,7 +394,7 @@ namespace GiftHommieWinforms
                 dgvOrders.Columns["LastUpdatedTime"].Visible = false;
                 dgvOrders.Columns["User"].Visible = false;
                 dgvOrders.Columns["OrderDetails"].Visible = false;
-                //dgvOrders.Columns["Comment"].Visible = false;
+                dgvOrders.Columns["Comment"].Width = 500;
                 //dgvOrders.Columns["Status"].Visible = false;
 
                 setRowNumber(dgvOrders);
@@ -441,6 +448,7 @@ namespace GiftHommieWinforms
 
         private int GetSelectedRowOrderIdValue()
         {
+
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvOrders.SelectedRows[0];
@@ -469,7 +477,7 @@ namespace GiftHommieWinforms
 
         private void dgvOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmStaffOrderDetail frm = new frmStaffOrderDetail()
+            frmStaffOrderDetail frm = new frmStaffOrderDetail(this)
             {
                 orderDetails = orderRepository.GetOrderDetails(GetSelectedRowOrderIdValue()),
                 Order = orderRepository.Get(GetSelectedRowOrderIdValue())
@@ -492,8 +500,55 @@ namespace GiftHommieWinforms
                 btnConfirm.Visible = true;
                 btnRefuse.Visible = true;
             }
-        }
 
+            Order order = orderRepository.Get(GetSelectedRowOrderIdValue());
+            if (order != null)
+            {
+                LoadOrderInfo(order);
+            }
+
+        }
+        public void LoadOrderInfo(Order order)
+        {
+
+            bindingSourceOrderInfo = new BindingSource();
+            bindingSourceOrderInfo.DataSource = order;
+            txtOrderStatus.DataBindings.Clear();
+            dtpOrderTime.DataBindings.Clear();
+
+            txtOrderReceiver.DataBindings.Clear();
+            txtOrderPhone.DataBindings.Clear();
+            txtOrderAddress.DataBindings.Clear();
+            txtOrderMessage.DataBindings.Clear();
+
+            txtOrderShippingFee.DataBindings.Clear();
+            txtOrderTotal.DataBindings.Clear();
+            rComment.DataBindings.Clear();
+
+            txtOrderStatus.DataBindings.Add("Text", bindingSourceOrderInfo, "Status");
+            dtpOrderTime.DataBindings.Add("Text", bindingSourceOrderInfo, "OrderTime");
+
+            txtOrderReceiver.DataBindings.Add("Text", bindingSourceOrderInfo, "Name");
+            txtOrderPhone.DataBindings.Add("Text", bindingSourceOrderInfo, "Phone");
+            txtOrderAddress.DataBindings.Add("Text", bindingSourceOrderInfo, "Address");
+            txtOrderMessage.DataBindings.Add("Text", bindingSourceOrderInfo, "Message");
+            rComment.DataBindings.Add("Text", bindingSourceOrderInfo, "Comment");
+
+            txtOrderShippingFee.DataBindings.Add("Text", bindingSourceOrderInfo, "ShippingFee");
+
+            double? total = 0;
+            double? fee = order.ShippingFee;
+            List<OrderDetail> orderDetails = orderRepository.GetOrderDetails(order.Id);
+            for (int i = 0; i < orderDetails.Count; i++)
+            {
+                total = total + (orderDetails[i].Price * orderDetails[i].Quantity);
+
+            }
+
+            txtOrderTotal.Text = (total + fee).ToString();
+
+
+        }
         private string GetSelectedStatusValue()
         {
             if (dgvOrders.SelectedRows.Count > 0)
@@ -509,6 +564,208 @@ namespace GiftHommieWinforms
 
             // Nếu không có giá trị, trả về giá trị mặc định (vd: "")
             return "";
+        }
+
+
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (GetSelectedStatusValue().Equals("PENDING"))
+            {
+                Order order = orderRepository.Get(GetSelectedRowOrderIdValue());
+                //User user = userRepository.Get(order.Username);
+                if (order != null)
+                {
+                    DialogResult d;
+                    d = MessageBox.Show($"Conform Order ", "Order", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+
+                    if (d == DialogResult.OK)
+                    {
+                        order.Status = "CONFIRMED";
+                        orderRepository.Save(order);
+                        DialogResult = DialogResult.OK;
+                        OrderLoadData();
+                        LoadOrderInfo(order);
+                    }
+                }
+
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefuse_Click(object sender, EventArgs e)
+        {
+            if (GetSelectedStatusValue().Equals("PENDING"))
+            {
+                Order order = orderRepository.Get(GetSelectedRowOrderIdValue());
+                //User user = userRepository.Get(order.Username);
+                if (order != null)
+                {
+                    DialogResult d;
+                    d = MessageBox.Show($"Refuse Order ", "Order", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+
+                    if (d == DialogResult.OK)
+                    {
+                        order.Status = "REFUSED";
+                        orderRepository.Save(order);
+                        DialogResult = DialogResult.OK;
+                        OrderLoadData();
+                        LoadOrderInfo(order);
+                    }
+                }
+
+            }
+        }
+
+        //======================== Profile
+
+        private void tabcontrolStaff_Click(object sender, EventArgs e)
+        {
+            LoadUserProfile();
+        }
+
+
+        private void LoadUserProfile()
+        {
+            User user = userRepository.Get(GlobalData.AuthenticatedUser.Username);
+            if (user == null)
+            {
+                MessageBox.Show("something went wrong");
+            }
+            else
+            {
+                txtUserName.Text = user.Username;
+                txtEmail.Text = user.Email;
+                txtRole.Text = user.Role;
+                txtName.Text = user.Name;
+                txtGender.Text = user.Gender == 1 ? "Male" : "Female";
+                txtPhone.Text = user.Phone;
+                txtAddress.Text = user.Address;
+                txtYob.Text = user.Yob.ToString();
+                btnSave.Visible = false;
+            }
+        }
+        private bool CheckCharacterOfPhone(String input)
+        {
+            string pattern = @"^\d{9,12}$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool CheckCharacterOfYob(String input)
+        {
+            string pattern = @"^\d{4,4}$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool CheckCharacter(String input)
+        {
+            string pattern = "^[a-zA-Z ]+$"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private bool ValidateInputs()
+        {
+            if (
+                string.IsNullOrEmpty(txtName.Text) ||
+                string.IsNullOrEmpty(txtYob.Text) ||
+                string.IsNullOrEmpty(txtAddress.Text) ||
+                string.IsNullOrEmpty(txtPhone.Text)
+
+                )
+
+            {
+                MessageBox.Show("Hãy điền đầy đủ thông tin", "Thiếu Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (CheckCharacterOfPhone(txtPhone.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập số trong ô Phone từ 9 đến 12 số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
+
+            if (CheckCharacter(txtName.Text) != true)
+            {
+                MessageBox.Show("Tên không chứa chữ số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Clear();
+                return false;
+            }
+
+            if (CheckCharacterOfYob(txtYob.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập đúng năm sinh  .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtYob.Clear();
+                return false;
+
+            }
+
+            return true;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (btnEdit.Text == "Edit")
+            {
+                btnEdit.Text = "Cancel";
+                txtName.ReadOnly = false;
+                txtPhone.ReadOnly = false;
+                txtAddress.ReadOnly = false;
+                txtYob.ReadOnly = false;
+                btnSave.Visible = true;
+            }
+            else
+            {
+                btnEdit.Text = "Edit";
+                ChangeReadOnly();
+                LoadUserProfile();
+            }
+        }
+
+        private void ChangeReadOnly()
+        {
+            txtName.ReadOnly = true;
+            txtPhone.ReadOnly = true;
+            txtAddress.ReadOnly = true;
+            txtYob.ReadOnly = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateInputs() == true)
+            {
+                User user = new User()
+                {
+                    Username = GlobalData.AuthenticatedUser.Username,
+                    Email = GlobalData.AuthenticatedUser.Email,
+                    Role = GlobalData.AuthenticatedUser.Role,
+                    Password = GlobalData.AuthenticatedUser.Password,
+                    Name = txtName.Text,
+                    Phone = txtPhone.Text,
+                    Gender = GlobalData.AuthenticatedUser.Gender,
+                    Yob = int.Parse(txtYob.Text.Trim()),
+                    Address = txtAddress.Text,
+                    Avatar = GlobalData.AuthenticatedUser.Avatar,
+                    Enabled = GlobalData.AuthenticatedUser.Enabled
+                };
+                DialogResult d;
+                d = MessageBox.Show($"Save User ", "Profile", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+
+                if (d == DialogResult.OK)
+                {
+                    userRepository.Save(user);
+                    DialogResult = DialogResult.OK;
+                    btnEdit.Text = "Edit";
+                    ChangeReadOnly();
+                    LoadUserProfile();
+                }
+            }
         }
     }
 }
