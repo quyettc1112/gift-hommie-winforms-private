@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new System.Windows.Forms.GroupBox();
+            rComment = new System.Windows.Forms.RichTextBox();
+            label2 = new System.Windows.Forms.Label();
+            cbOrderStatus = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
             groupBox2 = new System.Windows.Forms.GroupBox();
             label16 = new System.Windows.Forms.Label();
             txtOrderMessage = new System.Windows.Forms.TextBox();
@@ -45,7 +49,7 @@
             dtpOrderTime = new System.Windows.Forms.DateTimePicker();
             label8 = new System.Windows.Forms.Label();
             lbReceiver = new System.Windows.Forms.Label();
-            txtOrderStatus = new System.Windows.Forms.TextBox();
+            btnEditStatus = new System.Windows.Forms.Button();
             dgvStaffOrderDetail = new System.Windows.Forms.DataGridView();
             label12 = new System.Windows.Forms.Label();
             lbOrderProductName = new System.Windows.Forms.Label();
@@ -58,7 +62,7 @@
             txtOrderQuantity = new System.Windows.Forms.TextBox();
             btnRefuse = new System.Windows.Forms.Button();
             btnConfirm = new System.Windows.Forms.Button();
-            btnEdit = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStaffOrderDetail).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrderProductAvatar).BeginInit();
@@ -67,6 +71,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            groupBox1.Controls.Add(rComment);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(cbOrderStatus);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Controls.Add(label16);
             groupBox1.Controls.Add(txtOrderMessage);
@@ -83,7 +91,6 @@
             groupBox1.Controls.Add(dtpOrderTime);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(lbReceiver);
-            groupBox1.Controls.Add(txtOrderStatus);
             groupBox1.Location = new System.Drawing.Point(1, 2);
             groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
@@ -92,6 +99,42 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "OrderDetail";
+            // 
+            // rComment
+            // 
+            rComment.Location = new System.Drawing.Point(135, 233);
+            rComment.Name = "rComment";
+            rComment.Size = new System.Drawing.Size(562, 50);
+            rComment.TabIndex = 179;
+            rComment.Text = "";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(25, 243);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(61, 15);
+            label2.TabIndex = 178;
+            label2.Text = "Comment";
+            // 
+            // cbOrderStatus
+            // 
+            cbOrderStatus.FormattingEnabled = true;
+            cbOrderStatus.Items.AddRange(new object[] { "PENDING", "CONFIRMED", "DELIVERYING", "SUCCESSFUL", "CANCALLED", "REFUSED", "FAIL" });
+            cbOrderStatus.Location = new System.Drawing.Point(508, 172);
+            cbOrderStatus.Name = "cbOrderStatus";
+            cbOrderStatus.Size = new System.Drawing.Size(121, 23);
+            cbOrderStatus.TabIndex = 176;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(135, 196);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(99, 13);
+            label1.TabIndex = 175;
+            label1.Text = "Added Shipping Fee";
             // 
             // groupBox2
             // 
@@ -238,14 +281,18 @@
             lbReceiver.TabIndex = 167;
             lbReceiver.Text = "Receiver";
             // 
-            // txtOrderStatus
+            // btnEditStatus
             // 
-            txtOrderStatus.Location = new System.Drawing.Point(508, 166);
-            txtOrderStatus.Name = "txtOrderStatus";
-            txtOrderStatus.ReadOnly = true;
-            txtOrderStatus.Size = new System.Drawing.Size(106, 23);
-            txtOrderStatus.TabIndex = 170;
-            txtOrderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            btnEditStatus.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnEditStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnEditStatus.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            btnEditStatus.Location = new System.Drawing.Point(1027, 420);
+            btnEditStatus.Name = "btnEditStatus";
+            btnEditStatus.Size = new System.Drawing.Size(75, 44);
+            btnEditStatus.TabIndex = 177;
+            btnEditStatus.Text = "Save";
+            btnEditStatus.UseVisualStyleBackColor = false;
+            btnEditStatus.Click += btnEditStatus_Click;
             // 
             // dgvStaffOrderDetail
             // 
@@ -380,27 +427,25 @@
             btnConfirm.UseVisualStyleBackColor = false;
             btnConfirm.Visible = false;
             // 
-            // btnEdit
+            // button1
             // 
-            btnEdit.BackColor = System.Drawing.Color.Red;
-            btnEdit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnEdit.Location = new System.Drawing.Point(1008, 500);
-            btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new System.Drawing.Size(108, 33);
-            btnEdit.TabIndex = 107;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = false;
-            btnEdit.Visible = false;
+            button1.Location = new System.Drawing.Point(1029, 510);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(75, 23);
+            button1.TabIndex = 178;
+            button1.Text = "Close";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmStaffOrderDetail
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1149, 554);
-            Controls.Add(btnEdit);
+            Controls.Add(button1);
             Controls.Add(btnRefuse);
             Controls.Add(btnConfirm);
+            Controls.Add(btnEditStatus);
             Controls.Add(txtOrderDetailTotal);
             Controls.Add(label11);
             Controls.Add(label14);
@@ -415,6 +460,7 @@
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "frmStaffOrderDetail";
             Text = "frmStaffOrderDetail";
+            FormClosed += frmStaffOrderDetail_FormClosed;
             Load += frmStaffOrderDetail_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -443,7 +489,7 @@
         private System.Windows.Forms.DateTimePicker dtpOrderTime;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbReceiver;
-        private System.Windows.Forms.TextBox txtOrderStatus;
+        private System.Windows.Forms.TextBox comboBox1;
         private System.Windows.Forms.DataGridView dgvStaffOrderDetail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbOrderProductName;
@@ -456,6 +502,11 @@
         private System.Windows.Forms.TextBox txtOrderQuantity;
         private System.Windows.Forms.Button btnRefuse;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbOrderStatus;
+        private System.Windows.Forms.Button btnEditStatus;
+        private System.Windows.Forms.RichTextBox rComment;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
