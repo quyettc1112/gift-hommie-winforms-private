@@ -42,15 +42,15 @@
             txtEmail = new System.Windows.Forms.TextBox();
             txtName = new System.Windows.Forms.TextBox();
             cbYob = new System.Windows.Forms.ComboBox();
-            radioButton1 = new System.Windows.Forms.RadioButton();
-            radioButton2 = new System.Windows.Forms.RadioButton();
+            rbMale = new System.Windows.Forms.RadioButton();
+            rbFemale = new System.Windows.Forms.RadioButton();
             txtPhone = new System.Windows.Forms.TextBox();
             txtAddress = new System.Windows.Forms.TextBox();
             txtPassword = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
             txtConfirmPassword = new System.Windows.Forms.TextBox();
             btnRegister = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
+            btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
@@ -182,27 +182,27 @@
             cbYob.Size = new System.Drawing.Size(189, 36);
             cbYob.TabIndex = 12;
             // 
-            // radioButton1
+            // rbMale
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new System.Drawing.Point(552, 74);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new System.Drawing.Size(63, 24);
-            radioButton1.TabIndex = 13;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Male";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbMale.AutoSize = true;
+            rbMale.Location = new System.Drawing.Point(552, 74);
+            rbMale.Name = "rbMale";
+            rbMale.Size = new System.Drawing.Size(63, 24);
+            rbMale.TabIndex = 13;
+            rbMale.TabStop = true;
+            rbMale.Text = "Male";
+            rbMale.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbFemale
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new System.Drawing.Point(644, 74);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new System.Drawing.Size(78, 24);
-            radioButton2.TabIndex = 14;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Female";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbFemale.AutoSize = true;
+            rbFemale.Location = new System.Drawing.Point(644, 74);
+            rbFemale.Name = "rbFemale";
+            rbFemale.Size = new System.Drawing.Size(78, 24);
+            rbFemale.TabIndex = 14;
+            rbFemale.TabStop = true;
+            rbFemale.Text = "Female";
+            rbFemale.UseVisualStyleBackColor = true;
             // 
             // txtPhone
             // 
@@ -258,31 +258,33 @@
             btnRegister.TabIndex = 20;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click;
             // 
-            // button1
+            // btnReset
             // 
-            button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button1.Location = new System.Drawing.Point(444, 415);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(122, 44);
-            button1.TabIndex = 21;
-            button1.Text = "Reset";
-            button1.UseVisualStyleBackColor = true;
+            btnReset.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnReset.Location = new System.Drawing.Point(444, 415);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new System.Drawing.Size(122, 44);
+            btnReset.TabIndex = 21;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // frmRegister
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(952, 519);
-            Controls.Add(button1);
+            Controls.Add(btnReset);
             Controls.Add(btnRegister);
             Controls.Add(txtConfirmPassword);
             Controls.Add(label10);
             Controls.Add(txtPassword);
             Controls.Add(txtAddress);
             Controls.Add(txtPhone);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(rbFemale);
+            Controls.Add(rbMale);
             Controls.Add(cbYob);
             Controls.Add(txtName);
             Controls.Add(txtEmail);
@@ -323,9 +325,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rbFemale;
+        private System.Windows.Forms.RadioButton rbMale;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label label10;
