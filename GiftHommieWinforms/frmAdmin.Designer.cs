@@ -52,15 +52,12 @@
             gbSelect = new System.Windows.Forms.GroupBox();
             btnCustomerStatus = new System.Windows.Forms.Button();
             label4 = new System.Windows.Forms.Label();
-            txtCurrentIndex = new System.Windows.Forms.TextBox();
-            btnBack = new System.Windows.Forms.Button();
-            btnNext = new System.Windows.Forms.Button();
             txtCustomerEmail = new System.Windows.Forms.TextBox();
             txtCustomerUsername = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             lbPrice = new System.Windows.Forms.Label();
             lblCustomerFullname = new System.Windows.Forms.Label();
-            pbProductAvatar = new System.Windows.Forms.PictureBox();
+            pbCustomerAvatar = new System.Windows.Forms.PictureBox();
             dgvCustomers = new System.Windows.Forms.DataGridView();
             btnClose = new System.Windows.Forms.Button();
             tabStaff = new System.Windows.Forms.TabPage();
@@ -87,15 +84,12 @@
             groupBox3 = new System.Windows.Forms.GroupBox();
             btnStaffStatus = new System.Windows.Forms.Button();
             label18 = new System.Windows.Forms.Label();
-            textBox7 = new System.Windows.Forms.TextBox();
-            button4 = new System.Windows.Forms.Button();
-            button5 = new System.Windows.Forms.Button();
             txtStaffEmail = new System.Windows.Forms.TextBox();
             txtStaffUsername = new System.Windows.Forms.TextBox();
             label19 = new System.Windows.Forms.Label();
             label20 = new System.Windows.Forms.Label();
             lblStaffFullname = new System.Windows.Forms.Label();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
+            pbStaffAvatar = new System.Windows.Forms.PictureBox();
             dgvStaffs = new System.Windows.Forms.DataGridView();
             button6 = new System.Windows.Forms.Button();
             tabControlAdmin.SuspendLayout();
@@ -111,7 +105,7 @@
             splitContainer2.SuspendLayout();
             gbProduct.SuspendLayout();
             gbSelect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbProductAvatar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCustomerAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
             tabStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
@@ -125,7 +119,7 @@
             splitContainer4.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStaffs).BeginInit();
             SuspendLayout();
             // 
@@ -298,7 +292,7 @@
             gbProduct.Controls.Add(label1);
             gbProduct.Controls.Add(lbPrice);
             gbProduct.Controls.Add(lblCustomerFullname);
-            gbProduct.Controls.Add(pbProductAvatar);
+            gbProduct.Controls.Add(pbCustomerAvatar);
             gbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             gbProduct.Location = new System.Drawing.Point(0, 0);
             gbProduct.Margin = new System.Windows.Forms.Padding(4);
@@ -410,9 +404,6 @@
             // 
             gbSelect.Controls.Add(btnCustomerStatus);
             gbSelect.Controls.Add(label4);
-            gbSelect.Controls.Add(txtCurrentIndex);
-            gbSelect.Controls.Add(btnBack);
-            gbSelect.Controls.Add(btnNext);
             gbSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
             gbSelect.Location = new System.Drawing.Point(4, 405);
             gbSelect.Margin = new System.Windows.Forms.Padding(4);
@@ -445,36 +436,6 @@
             label4.Size = new System.Drawing.Size(184, 32);
             label4.TabIndex = 104;
             label4.Text = "Orders Quantity";
-            // 
-            // txtCurrentIndex
-            // 
-            txtCurrentIndex.Location = new System.Drawing.Point(591, 22);
-            txtCurrentIndex.Margin = new System.Windows.Forms.Padding(4);
-            txtCurrentIndex.Name = "txtCurrentIndex";
-            txtCurrentIndex.ReadOnly = true;
-            txtCurrentIndex.Size = new System.Drawing.Size(156, 31);
-            txtCurrentIndex.TabIndex = 1;
-            txtCurrentIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnBack
-            // 
-            btnBack.Location = new System.Drawing.Point(404, 20);
-            btnBack.Margin = new System.Windows.Forms.Padding(4);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new System.Drawing.Size(180, 39);
-            btnBack.TabIndex = 0;
-            btnBack.Text = "<< Back";
-            btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            btnNext.Location = new System.Drawing.Point(756, 20);
-            btnNext.Margin = new System.Windows.Forms.Padding(4);
-            btnNext.Name = "btnNext";
-            btnNext.Size = new System.Drawing.Size(180, 39);
-            btnNext.TabIndex = 2;
-            btnNext.Text = "Next >>";
-            btnNext.UseVisualStyleBackColor = true;
             // 
             // txtCustomerEmail
             // 
@@ -530,15 +491,15 @@
             lblCustomerFullname.TabIndex = 0;
             lblCustomerFullname.Text = "Customer Fullname";
             // 
-            // pbProductAvatar
+            // pbCustomerAvatar
             // 
-            pbProductAvatar.Location = new System.Drawing.Point(21, 49);
-            pbProductAvatar.Margin = new System.Windows.Forms.Padding(4);
-            pbProductAvatar.Name = "pbProductAvatar";
-            pbProductAvatar.Size = new System.Drawing.Size(300, 348);
-            pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pbProductAvatar.TabIndex = 85;
-            pbProductAvatar.TabStop = false;
+            pbCustomerAvatar.Location = new System.Drawing.Point(21, 49);
+            pbCustomerAvatar.Margin = new System.Windows.Forms.Padding(4);
+            pbCustomerAvatar.Name = "pbCustomerAvatar";
+            pbCustomerAvatar.Size = new System.Drawing.Size(300, 348);
+            pbCustomerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pbCustomerAvatar.TabIndex = 85;
+            pbCustomerAvatar.TabStop = false;
             // 
             // dgvCustomers
             // 
@@ -561,7 +522,7 @@
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(2359, 706);
+            btnClose.Location = new System.Drawing.Point(2359, 704);
             btnClose.Margin = new System.Windows.Forms.Padding(4);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(106, 36);
@@ -723,7 +684,7 @@
             groupBox2.Controls.Add(label19);
             groupBox2.Controls.Add(label20);
             groupBox2.Controls.Add(lblStaffFullname);
-            groupBox2.Controls.Add(pictureBox1);
+            groupBox2.Controls.Add(pbStaffAvatar);
             groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             groupBox2.Location = new System.Drawing.Point(0, 0);
             groupBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -848,9 +809,6 @@
             // 
             groupBox3.Controls.Add(btnStaffStatus);
             groupBox3.Controls.Add(label18);
-            groupBox3.Controls.Add(textBox7);
-            groupBox3.Controls.Add(button4);
-            groupBox3.Controls.Add(button5);
             groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             groupBox3.Location = new System.Drawing.Point(4, 405);
             groupBox3.Margin = new System.Windows.Forms.Padding(4);
@@ -883,36 +841,6 @@
             label18.Size = new System.Drawing.Size(184, 32);
             label18.TabIndex = 104;
             label18.Text = "Orders Quantity";
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new System.Drawing.Point(591, 22);
-            textBox7.Margin = new System.Windows.Forms.Padding(4);
-            textBox7.Name = "textBox7";
-            textBox7.ReadOnly = true;
-            textBox7.Size = new System.Drawing.Size(156, 31);
-            textBox7.TabIndex = 1;
-            textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button4
-            // 
-            button4.Location = new System.Drawing.Point(404, 20);
-            button4.Margin = new System.Windows.Forms.Padding(4);
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(180, 39);
-            button4.TabIndex = 0;
-            button4.Text = "<< Back";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new System.Drawing.Point(756, 20);
-            button5.Margin = new System.Windows.Forms.Padding(4);
-            button5.Name = "button5";
-            button5.Size = new System.Drawing.Size(180, 39);
-            button5.TabIndex = 2;
-            button5.Text = "Next >>";
-            button5.UseVisualStyleBackColor = true;
             // 
             // txtStaffEmail
             // 
@@ -968,15 +896,15 @@
             lblStaffFullname.TabIndex = 0;
             lblStaffFullname.Text = "Staff Fullname";
             // 
-            // pictureBox1
+            // pbStaffAvatar
             // 
-            pictureBox1.Location = new System.Drawing.Point(21, 49);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(300, 348);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 85;
-            pictureBox1.TabStop = false;
+            pbStaffAvatar.Location = new System.Drawing.Point(21, 49);
+            pbStaffAvatar.Margin = new System.Windows.Forms.Padding(4);
+            pbStaffAvatar.Name = "pbStaffAvatar";
+            pbStaffAvatar.Size = new System.Drawing.Size(300, 348);
+            pbStaffAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pbStaffAvatar.TabIndex = 85;
+            pbStaffAvatar.TabStop = false;
             // 
             // dgvStaffs
             // 
@@ -999,7 +927,7 @@
             // button6
             // 
             button6.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button6.Location = new System.Drawing.Point(3515, 1090);
+            button6.Location = new System.Drawing.Point(3515, 1088);
             button6.Margin = new System.Windows.Forms.Padding(4);
             button6.Name = "button6";
             button6.Size = new System.Drawing.Size(106, 36);
@@ -1032,7 +960,7 @@
             gbProduct.PerformLayout();
             gbSelect.ResumeLayout(false);
             gbSelect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbProductAvatar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCustomerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
             tabStaff.ResumeLayout(false);
             splitContainer3.Panel1.ResumeLayout(false);
@@ -1049,7 +977,7 @@
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStaffs).EndInit();
             ResumeLayout(false);
         }
@@ -1069,16 +997,13 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox gbProduct;
         private System.Windows.Forms.GroupBox gbSelect;
-        private System.Windows.Forms.TextBox txtCurrentIndex;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.TextBox txtCustomerEmail;
         private System.Windows.Forms.TextBox txtCustomerUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbAvailable;
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Label lblCustomerFullname;
-        private System.Windows.Forms.PictureBox pbProductAvatar;
+        private System.Windows.Forms.PictureBox pbCustomerAvatar;
         private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TabPage tabStaff;
@@ -1114,15 +1039,12 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnStaffStatus;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox txtStaffEmail;
         private System.Windows.Forms.TextBox txtStaffUsername;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblStaffFullname;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbStaffAvatar;
         private System.Windows.Forms.DataGridView dgvStaffs;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button txtStaffAdd;

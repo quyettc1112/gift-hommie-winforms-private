@@ -27,6 +27,10 @@ namespace Repositories
             User user = Get(usernameOrEmail);
             if (user == null || user.Password.Equals(password) == false)
                 return null;
+
+            if (user.Enabled == false)
+                throw new Exception("YOUR ACCOUNT WAS BANNED");
+            
             return user;
         }
     }
