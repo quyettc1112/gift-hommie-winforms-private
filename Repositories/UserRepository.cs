@@ -2,13 +2,14 @@
 using DataAccessObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
         public List<User> GetAll() => UserDAO.Instance.GetAll();
-
+        public List<User> GetUsersByRole(string role) => GetAll().Where(u => u.Role.Equals(role)).ToList();
         public User Get(string usernameOrEmail) => UserDAO.Instance.Get(usernameOrEmail);
 
         public bool Exist(string usernameOrEmail) => UserDAO.Instance.Exist(usernameOrEmail);
