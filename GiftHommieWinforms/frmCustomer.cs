@@ -1135,7 +1135,7 @@ namespace GiftHommieWinforms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(ValidateInputs() == true)
+            if (ValidateInputs() == true)
             {
                 User user = new User()
                 {
@@ -1165,6 +1165,11 @@ namespace GiftHommieWinforms
                 }
             }
 
+        }
+
+        private void txtUnitPriceMinSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 

@@ -8,6 +8,7 @@ namespace GiftHommieWinforms
 {
     public partial class frmLogin : Form
     {
+        private string ADMIN_ROLE = "ADMIN";
         public frmLogin()
         {
             InitializeComponent();
@@ -23,9 +24,6 @@ namespace GiftHommieWinforms
             User user = null;
             try
             {
-
-
-
                 user = userRepository.Authenticate(txtEmail.Text, txtPassword.Text);
                 if (user != null)
                 {
@@ -54,9 +52,18 @@ namespace GiftHommieWinforms
                         frmStaff.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [Staff Mode]";
                         this.Hide();
                         frmStaff.Show();
-
                     }
-
+                    else if (user.Role.Equals(ADMIN_ROLE)) //ADMIN
+                    {
+                        var form = new frmAdmin();
+                        form.FormClosed += delegate
+                        {
+                            this.Close();
+                        };
+                        form.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [ADMIN Mode]";
+                        this.Hide();
+                        form.Show();
+                    }
                 }
                 else
                 {

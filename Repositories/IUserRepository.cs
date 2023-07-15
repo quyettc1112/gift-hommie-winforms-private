@@ -7,6 +7,7 @@ namespace Repositories
     public interface IUserRepository
     {
         List<User> GetAll();
+        public List<User> GetUsersByRole(string role);
         User Get(string usernameOrEmail);
         bool Exist(string usernameOrEmail);
         void Create(User entity);
