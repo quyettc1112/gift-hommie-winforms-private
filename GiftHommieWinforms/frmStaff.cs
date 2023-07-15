@@ -22,6 +22,7 @@ namespace GiftHommieWinforms
         private BindingSource bindingSourceOrderInfo = null;
         private IOrderRepository orderRepository = new OrderRepository();
         private bool orderTimeDescMode = true;
+        private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
         public frmStaff()
         {
             InitializeComponent();
@@ -648,6 +649,7 @@ namespace GiftHommieWinforms
                 txtPhone.Text = user.Phone;
                 txtAddress.Text = user.Address;
                 txtYob.Text = user.Yob.ToString();
+                pbStaffAvatar.ImageLocation = DEFAULT_AVATAR;
                 btnSave.Visible = false;
             }
         }
