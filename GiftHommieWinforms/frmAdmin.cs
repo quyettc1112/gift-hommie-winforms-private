@@ -18,6 +18,8 @@ namespace GiftHommieWinforms
         IUserRepository userRepository = new UserRepository();
         private const string CUSTOMER_ROLE = "CUSTOMER";
         private const string STAFF_ROLE = "STAFF";
+        private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
+
         public frmAdmin()
         {
             InitializeComponent();
@@ -90,6 +92,7 @@ namespace GiftHommieWinforms
             txtCustomerAddress.DataBindings.Add("Text", source, "Address");
             txtCustomerYob.DataBindings.Add("Text", source, "Yob");
             txtCustomerGender.DataBindings.Add("Text", source, "Gender");
+            pbCustomerAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvCustomers.DataSource = source;
             btnCustomerStatus.Enabled = false;
@@ -179,7 +182,7 @@ namespace GiftHommieWinforms
             source = new BindingSource();
             List<User> list = userRepository.GetUsersByRole(STAFF_ROLE);
             list = LoadStaffFilter(list);
-
+                
             source.DataSource = list;
             lblStaffFullname.DataBindings.Clear();
             txtStaffEmail.DataBindings.Clear();
@@ -196,6 +199,7 @@ namespace GiftHommieWinforms
             txtStaffAddress.DataBindings.Add("Text", source, "Address");
             txtStaffYob.DataBindings.Add("Text", source, "Yob");
             txtStaffGender.DataBindings.Add("Text", source, "Gender");
+            pbStaffAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvStaffs.DataSource = source;
             btnStaffStatus.Enabled = false;
