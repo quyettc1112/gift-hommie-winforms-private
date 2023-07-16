@@ -46,6 +46,7 @@ namespace GiftHommieWinforms
 
         private void LoadDataToUpdate()
         {
+            this.Text = "Update Product";
             // Clear ảnh củ nếu có thay đổi
             pbProductAvatar.DataBindings.Clear();
 
@@ -66,6 +67,7 @@ namespace GiftHommieWinforms
 
         private void ClearDataToCreate()
         {
+            this.Text = "Add New Product";
             txtName.DataBindings.Clear();
             txtPrice.DataBindings.Clear();
             cbAvailable.DataBindings.Clear();
@@ -94,7 +96,8 @@ namespace GiftHommieWinforms
             }
         }
 
-        private  bool CheckCharacter(String input) {
+        private bool CheckCharacter(String input)
+        {
             string pattern = @"\D"; // Ký tự chữ cái không phải là số
             return !Regex.IsMatch(input, pattern);
         }
@@ -114,19 +117,20 @@ namespace GiftHommieWinforms
                 MessageBox.Show("Hãy điền đầy đủ thông tin", "Thiếu Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-            if (CheckCharacter(txtPrice.Text) != true )
-              {
-                 MessageBox.Show("Vui lòng chỉ nhập số trong ô Quantity và Price .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 txtPrice.Clear();
-                  return false;
-                }
-            if (CheckCharacter(txtQuantity.Text) != true) {
+            if (CheckCharacter(txtPrice.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập số trong ô Quantity và Price .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPrice.Clear();
+                return false;
+            }
+            if (CheckCharacter(txtQuantity.Text) != true)
+            {
                 MessageBox.Show("Vui lòng chỉ nhập số trong ô Quantity và Price .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuantity.Clear();
                 return false;
 
             }
-  
+
             return true;
         }
 

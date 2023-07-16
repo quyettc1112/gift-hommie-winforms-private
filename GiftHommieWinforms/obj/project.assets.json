@@ -6288,23 +6288,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\X\\.nuget\\packages\\": {},
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
       "projectName": "GiftHommieWinforms",
-      "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
-      "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\gift-hommie-winforms\\GiftHommieWinforms\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6320,8 +6320,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj": {
-              "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj"
+            "C:\\Users\\Admin\\Desktop\\gift-hommie-winforms\\Repositories\\Repositories.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Desktop\\gift-hommie-winforms\\Repositories\\Repositories.csproj"
             }
           }
         }
@@ -6347,7 +6347,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -6359,7 +6360,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

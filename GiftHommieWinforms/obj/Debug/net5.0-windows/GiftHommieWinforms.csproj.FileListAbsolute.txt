@@ -217,3 +217,7 @@ D:\GiftHubdotNet\GiftHommieWinforms\obj\Debug\net5.0-windows\refint\GiftHommieWi
 D:\GiftHubdotNet\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.pdb
 D:\GiftHubdotNet\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.genruntimeconfig.cache
 D:\GiftHubdotNet\GiftHommieWinforms\obj\Debug\net5.0-windows\ref\GiftHommieWinforms.dll
+C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\OxyPlot.dll
+C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\bin\Debug\net5.0-windows\OxyPlot.WindowsForms.dll
+C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmAdmin.resources
+C:\Users\Admin\Desktop\gift-hommie-winforms\GiftHommieWinforms\obj\Debug\net5.0-windows\GiftHommieWinforms.frmStaffRegister.resources

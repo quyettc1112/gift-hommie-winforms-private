@@ -206,7 +206,7 @@ namespace GiftHommieWinforms
                     DialogResult = DialogResult.OK;
                     OrderDetailLoadDataToGridView(orderDetails);
                     //LoadUserInfo();
-                    
+
                 }
             }
         }

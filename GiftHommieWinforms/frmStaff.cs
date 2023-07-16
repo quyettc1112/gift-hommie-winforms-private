@@ -48,13 +48,35 @@ namespace GiftHommieWinforms
             // Nếu không thể chuyển đổi thành công hoặc không có giá trị, trả về giá trị mặc định (vd: -1)
             return -1;
         }
+        private void dgvProducts_Click(object sender, EventArgs e)
+        {
+            btnEditProduct.Visible = true;
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            frmStaffManageProduct frm = new frmStaffManageProduct()
+            {
+
+                Product = productRepository.Get(GetSelectedRowIdValue()),
+                CreateOrUpdate = true
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                HomeLoadData();
+            }
+
+        }
+
 
 
         // Hàm này để hiển thị Product Detail và có thể Update Product
         private void DgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnEditProduct.Visible = true;
             frmStaffManageProduct frm = new frmStaffManageProduct()
             {
+
                 Product = productRepository.Get(GetSelectedRowIdValue()),
                 CreateOrUpdate = true
             };
@@ -69,6 +91,7 @@ namespace GiftHommieWinforms
         {
             frmStaffManageProduct frm = new frmStaffManageProduct()
             {
+
                 CreateOrUpdate = false,
                 Product = new Product() { }
             };
@@ -478,6 +501,17 @@ namespace GiftHommieWinforms
 
         private void dgvOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+            frmStaffOrderDetail frm = new frmStaffOrderDetail(this)
+            {
+                orderDetails = orderRepository.GetOrderDetails(GetSelectedRowOrderIdValue()),
+                Order = orderRepository.Get(GetSelectedRowOrderIdValue())
+            };
+            frm.ShowDialog();
+        }
+
+        private void VbtnViewOrderDetail_Click(object sender, EventArgs e)
+        {
             frmStaffOrderDetail frm = new frmStaffOrderDetail(this)
             {
                 orderDetails = orderRepository.GetOrderDetails(GetSelectedRowOrderIdValue()),
@@ -774,5 +808,13 @@ namespace GiftHommieWinforms
                 }
             }
         }
+
+        
+
+
+
+
+        //=========================== Create Order
+
     }
 }
