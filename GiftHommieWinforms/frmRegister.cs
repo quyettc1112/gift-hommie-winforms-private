@@ -50,6 +50,12 @@ namespace GiftHommieWinforms
             return Regex.IsMatch(input, pattern);
         }
 
+        private bool CheckName(String input)
+        {
+            string pattern = @"\d"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
         private bool ValidateInputs()
         {
             if (
@@ -72,7 +78,7 @@ namespace GiftHommieWinforms
                 return false;
             }
 
-            if (CheckCharacter(txtName.Text) != true)
+            if (CheckName(txtName.Text) == true)
             {
                 MessageBox.Show("Tên không chứa chữ số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Clear();

@@ -45,6 +45,12 @@ namespace GiftHommieWinforms
             string pattern = @"^\d{9,12}$"; // Ký tự chữ cái không phải là số
             return Regex.IsMatch(input, pattern);
         }
+        private bool CheckName(String input)
+        {
+            string pattern = @"\d"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
+        }
+
         private bool CheckCharacter(String input)
         {
             string pattern = "^[a-zA-Z ]+$"; // Ký tự chữ cái không phải là số
@@ -73,7 +79,7 @@ namespace GiftHommieWinforms
                 return false;
             }
 
-            if (CheckCharacter(txtName.Text) != true)
+            if (CheckName(txtName.Text) == true)
             {
                 MessageBox.Show("Name cannot contain number", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Clear();
