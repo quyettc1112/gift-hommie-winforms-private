@@ -9,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
+using OxyPlot.Axes;
 
 namespace GiftHommieWinforms
 {
@@ -182,7 +186,7 @@ namespace GiftHommieWinforms
             source = new BindingSource();
             List<User> list = userRepository.GetUsersByRole(STAFF_ROLE);
             list = LoadStaffFilter(list);
-                
+
             source.DataSource = list;
             lblStaffFullname.DataBindings.Clear();
             txtStaffEmail.DataBindings.Clear();
@@ -306,6 +310,22 @@ namespace GiftHommieWinforms
             {
                 tabStaff_Click(sender, e);
             }
+            else if (tabControlAdmin.SelectedIndex == 2)
+            {
+                tabStatisticOveral_Click(sender, e);
+            }
+        }
+        //====================statistic=====================
+
+
+        private void tabStatisticOveral_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
