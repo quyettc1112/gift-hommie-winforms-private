@@ -331,7 +331,7 @@ namespace GiftHommieWinforms
         {
             date = DateTime.Now.Date;
 
-            while (date.AddHours(-1).Day == date.Day) 
+            while (date.AddHours(-1).Day == date.Day)
                 date = date.AddHours(-1);
 
             return date;
@@ -349,8 +349,8 @@ namespace GiftHommieWinforms
             while (start.AddDays(-1).Month == start.Month)
             {
                 start = start.AddDays(-1);
-            }    
-            
+            }
+
             while (start.AddMonths(1).Year == start.Year)
             {
                 revenueList.Add(orderRepository.GetRevenueByMonth(start));
@@ -359,7 +359,7 @@ namespace GiftHommieWinforms
             revenueList.Add(orderRepository.GetRevenueByMonth(start));
 
             return revenueList;
-        }        
+        }
         private List<int> GetTotalOrderListOfYear(DateTime date)
         {
             DateTime start = date;
@@ -373,8 +373,8 @@ namespace GiftHommieWinforms
             while (start.AddDays(-1).Month == start.Month)
             {
                 start = start.AddDays(-1);
-            }    
-            
+            }
+
             while (start.AddMonths(1).Year == start.Year)
             {
                 totalOrderList.Add(orderRepository.GetTotalOrderByMonth(start));
@@ -389,20 +389,43 @@ namespace GiftHommieWinforms
             //LAY DATE THONG QUA GetDate()
             DateTime date = GetDate(DateTime.Now);
 
-            txtRevenueDay.Text = orderRepository.GetRevenueByDay(date).ToString();
-            txtRevenueWeek.Text = orderRepository.GetRevenueByWeek(date).ToString();
-            txtRevenueMonth.Text = orderRepository.GetRevenueByMonth(date).ToString();
+            txtRevenueDay.Text = orderRepository.GetRevenueByDay(date).ToString() + " VND";
+            txtRevenueWeek.Text = orderRepository.GetRevenueByWeek(date).ToString() + " VND";
+            txtRevenueMonth.Text = orderRepository.GetRevenueByMonth(date).ToString() + " VND";
 
-            txtOrderDay.Text = orderRepository.GetTotalOrderByDay(date).ToString();
+            txtOrderDay.Text = orderRepository.GetTotalOrderByDay(date).ToString() ;
             txtOrderWeek.Text = orderRepository.GetTotalOrderByWeek(date).ToString();
-            txtOrderMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString();
+            txtOrderMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString() ;
 
             txtCustomer.Text = userRepository.GetUsersQuantityByRole(CUSTOMER_ROLE).ToString();
             txtStaff.Text = userRepository.GetUsersQuantityByRole(STAFF_ROLE).ToString();
             txtShipper.Text = userRepository.GetUsersQuantityByRole(SHIPPER_ROLE).ToString();
-        
+
             List<double> revenueList = GetRevenueListOfYear(date);
             List<int> totalOrderList = GetTotalOrderListOfYear(date);
+
+            //draw pie chart 
+            int quantityCustomer = userRepository.GetUsersQuantityByRole(CUSTOMER_ROLE);
+            int quantityStaff = userRepository.GetUsersQuantityByRole(STAFF_ROLE);
+            int quantityShipper = userRepository.GetUsersQuantityByRole(SHIPPER_ROLE);
+            var model = new PlotModel { Title = "Percentage of User" };
+            
+            var series = new PieSeries();
+            if (quantityCustomer != 0)
+            {
+                series.Slices.Add(new PieSlice("Cutomer", quantityCustomer) { Fill = OxyColors.Blue });
+            }
+            if (quantityStaff != 0)
+            {
+                series.Slices.Add(new PieSlice("Staff", quantityStaff) { Fill = OxyColors.Red });
+            }
+            if (quantityShipper != 0)
+            {
+                series.Slices.Add(new PieSlice("Shipper", quantityShipper) { Fill = OxyColors.Orange });
+            }
+            model.Series.Add(series);
+
+            pvUser.Model = model;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -414,11 +437,29 @@ namespace GiftHommieWinforms
         {
             DateTime date = GetDate(DateTime.Now);
 
-            txtRevenueByDay.Text = orderRepository.GetRevenueByDay(date).ToString();
-            txtRevenueByWeek.Text = orderRepository.GetRevenueByWeek(date).ToString();
-            txtRevenueByMonth.Text = orderRepository.GetRevenueByDay(date).ToString();
+            txtRevenueByDay.Text = orderRepository.GetRevenueByDay(date).ToString() + " VND";
+            txtRevenueByWeek.Text = orderRepository.GetRevenueByWeek(date).ToString() + " VND";
+            txtRevenueByMonth.Text = orderRepository.GetRevenueByDay(date).ToString() + " VND";
 
             List<double> revenueList = GetRevenueListOfYear(date);
+            var model = new PlotModel { Title = "Revenue of each month" };
+
+            var xAxis = new CategoryAxis { Position = AxisPosition.Bottom, Title = "Month" };
+            var yAxis = new LinearAxis { Position = AxisPosition.Left, Title = "Revenue" };
+
+            //add data
+            var series = new LineSeries();
+            for (int i = 0; i < revenueList.Count; i++)
+            {
+                series.Points.Add(new DataPoint(i, revenueList[i]));
+                xAxis.Labels.Add((i + 1).ToString());
+            }
+
+            model.Series.Add(series);
+            model.Axes.Add(xAxis);
+            model.Axes.Add(yAxis);
+            pvRevenue.Model = model;
+ 
         }
 
         private void tabOrder_Click(object sender, EventArgs e)
@@ -432,12 +473,42 @@ namespace GiftHommieWinforms
             txtTotalOrder.Text = orderRepository.GetAll().Count().ToString();
 
             //Chinh lai status o day nha
-            txtSuccessflOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"SUCCESSFUL"}).Count().ToString();
-            txtFailOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"FAIL", "CANCELLED"}).Count().ToString();
-            txtPendingOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"PENDING"}).Count().ToString();
-            //txtConfirmOrder.text = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count().ToString();
+            txtSuccessflOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count().ToString();
+            txtFailOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count().ToString();
+            txtPendingOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "PENDING" }).Count().ToString();
+            txtConfirmOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count().ToString();
+
 
             List<int> totalOrderList = GetTotalOrderListOfYear(date);
+
+            //draw pie chart 
+            int quantitySuccess = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count();
+            int quantityFail = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count();
+            int quantityPending = orderRepository.GetOrdersWithStatus(new List<string> { "PENDING" }).Count();
+            int quantityConfirm = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count();
+
+            var model = new PlotModel { Title = "Percentage of Order Status by Year" };
+
+            var series = new PieSeries();
+            if (quantitySuccess != 0)
+            {
+                series.Slices.Add(new PieSlice("Success", quantitySuccess) { Fill = OxyColors.Blue });
+            }
+            if (quantityFail != 0)
+            {
+                series.Slices.Add(new PieSlice("Fail", quantityFail) { Fill = OxyColors.Red });
+            }
+            if (quantityConfirm != 0)
+            {
+                series.Slices.Add(new PieSlice("Confirm", quantityConfirm) { Fill = OxyColors.Orange });
+            }
+            if (quantityPending != 0)
+            {
+                series.Slices.Add(new PieSlice("Pending", quantityPending) { Fill = OxyColors.Violet });
+            }
+            model.Series.Add(series);
+
+            pvOrder.Model = model;
         }
     }
 }

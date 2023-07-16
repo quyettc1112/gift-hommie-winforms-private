@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj": {}
+    "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj": {}
   },
   "projects": {
-    "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj": {
+    "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj",
+        "projectUniqueName": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj",
         "projectName": "BusinessObjects",
-        "projectPath": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\GiftHubdotNet\\BusinessObjects\\obj\\",
+        "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj",
+        "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -74,17 +79,21 @@
         }
       }
     },
-    "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj": {
+    "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj",
+        "projectUniqueName": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj",
         "projectName": "DataAccessObjects",
-        "projectPath": "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\GiftHubdotNet\\DataAccessObjects\\obj\\",
+        "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj",
+        "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,14 +101,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj": {
-                "projectPath": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj"
+              "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj": {
+                "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj"
               }
             }
           }
@@ -132,17 +142,21 @@
         }
       }
     },
-    "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj": {
+    "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+        "projectUniqueName": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
         "projectName": "GiftHommieWinforms",
-        "projectPath": "D:\\GiftHubdotNet\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\GiftHubdotNet\\GiftHommieWinforms\\obj\\",
+        "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\GiftHommieWinforms.csproj",
+        "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\GiftHommieWinforms\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -150,14 +164,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj": {
-                "projectPath": "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj"
+              "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj": {
+                "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj"
               }
             }
           }
@@ -199,17 +214,21 @@
         }
       }
     },
-    "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "D:\\GiftHubdotNet\\Repositories\\Repositories.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\GiftHubdotNet\\Repositories\\obj\\",
+        "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\Repositories.csproj",
+        "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -217,14 +236,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj": {
-                "projectPath": "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj"
+              "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj": {
+                "projectPath": "C:\\Users\\X\\OneDrive\\Documents\\GitHub\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj"
               }
             }
           }

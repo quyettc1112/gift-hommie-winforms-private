@@ -141,6 +141,9 @@
             groupBox25 = new System.Windows.Forms.GroupBox();
             pvOrder = new OxyPlot.WindowsForms.PlotView();
             groupBox24 = new System.Windows.Forms.GroupBox();
+            groupBox31 = new System.Windows.Forms.GroupBox();
+            txtConfirmOrder = new System.Windows.Forms.TextBox();
+            label = new System.Windows.Forms.Label();
             groupBox29 = new System.Windows.Forms.GroupBox();
             txtFailOrder = new System.Windows.Forms.TextBox();
             label38 = new System.Windows.Forms.Label();
@@ -215,6 +218,7 @@
             tabOrder.SuspendLayout();
             groupBox25.SuspendLayout();
             groupBox24.SuspendLayout();
+            groupBox31.SuspendLayout();
             groupBox29.SuspendLayout();
             groupBox28.SuspendLayout();
             groupBox27.SuspendLayout();
@@ -1043,7 +1047,7 @@
             // 
             label27.AutoSize = true;
             label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label27.ForeColor = System.Drawing.Color.Red;
+            label27.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
             label27.Location = new System.Drawing.Point(125, 38);
             label27.Name = "label27";
             label27.Size = new System.Drawing.Size(98, 28);
@@ -1104,7 +1108,7 @@
             // 
             label25.AutoSize = true;
             label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label25.ForeColor = System.Drawing.Color.Red;
+            label25.ForeColor = System.Drawing.Color.Blue;
             label25.Location = new System.Drawing.Point(109, 35);
             label25.Name = "label25";
             label25.Size = new System.Drawing.Size(143, 28);
@@ -1476,6 +1480,7 @@
             // 
             // groupBox24
             // 
+            groupBox24.Controls.Add(groupBox31);
             groupBox24.Controls.Add(groupBox29);
             groupBox24.Controls.Add(groupBox28);
             groupBox24.Controls.Add(groupBox27);
@@ -1488,11 +1493,41 @@
             groupBox24.TabStop = false;
             groupBox24.Text = "Information";
             // 
+            // groupBox31
+            // 
+            groupBox31.Controls.Add(txtConfirmOrder);
+            groupBox31.Controls.Add(label);
+            groupBox31.Location = new System.Drawing.Point(6, 231);
+            groupBox31.Name = "groupBox31";
+            groupBox31.Size = new System.Drawing.Size(511, 71);
+            groupBox31.TabIndex = 11;
+            groupBox31.TabStop = false;
+            // 
+            // txtConfirmOrder
+            // 
+            txtConfirmOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtConfirmOrder.Location = new System.Drawing.Point(123, 29);
+            txtConfirmOrder.Name = "txtConfirmOrder";
+            txtConfirmOrder.ReadOnly = true;
+            txtConfirmOrder.Size = new System.Drawing.Size(239, 34);
+            txtConfirmOrder.TabIndex = 3;
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label.ForeColor = System.Drawing.Color.Orange;
+            label.Location = new System.Drawing.Point(6, 35);
+            label.Name = "label";
+            label.Size = new System.Drawing.Size(82, 28);
+            label.TabIndex = 2;
+            label.Text = "Confirm";
+            // 
             // groupBox29
             // 
             groupBox29.Controls.Add(txtFailOrder);
             groupBox29.Controls.Add(label38);
-            groupBox29.Location = new System.Drawing.Point(6, 327);
+            groupBox29.Location = new System.Drawing.Point(6, 383);
             groupBox29.Name = "groupBox29";
             groupBox29.Size = new System.Drawing.Size(511, 71);
             groupBox29.TabIndex = 10;
@@ -1501,7 +1536,7 @@
             // txtFailOrder
             // 
             txtFailOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtFailOrder.Location = new System.Drawing.Point(123, 29);
+            txtFailOrder.Location = new System.Drawing.Point(123, 26);
             txtFailOrder.Name = "txtFailOrder";
             txtFailOrder.ReadOnly = true;
             txtFailOrder.Size = new System.Drawing.Size(239, 34);
@@ -1522,7 +1557,7 @@
             // 
             groupBox28.Controls.Add(txtPendingOrder);
             groupBox28.Controls.Add(label37);
-            groupBox28.Location = new System.Drawing.Point(6, 241);
+            groupBox28.Location = new System.Drawing.Point(6, 306);
             groupBox28.Name = "groupBox28";
             groupBox28.Size = new System.Drawing.Size(511, 71);
             groupBox28.TabIndex = 9;
@@ -1541,7 +1576,7 @@
             // 
             label37.AutoSize = true;
             label37.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label37.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
+            label37.ForeColor = System.Drawing.Color.Violet;
             label37.Location = new System.Drawing.Point(6, 35);
             label37.Name = "label37";
             label37.Size = new System.Drawing.Size(83, 28);
@@ -1801,6 +1836,8 @@
             groupBox25.ResumeLayout(false);
             groupBox24.ResumeLayout(false);
             groupBox24.PerformLayout();
+            groupBox31.ResumeLayout(false);
+            groupBox31.PerformLayout();
             groupBox29.ResumeLayout(false);
             groupBox29.PerformLayout();
             groupBox28.ResumeLayout(false);
@@ -1957,5 +1994,8 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.GroupBox groupBox30;
         private OxyPlot.WindowsForms.PlotView pvUser;
+        private System.Windows.Forms.GroupBox groupBox31;
+        private System.Windows.Forms.TextBox txtConfirmOrder;
+        private System.Windows.Forms.Label label;
     }
 }

@@ -132,7 +132,8 @@ namespace Repositories
         private int GetTotalOrderFromTo(DateTime start, DateTime end)
         {
             end = end.AddDays(1);
-
+            List<Order> orders = GetAll().Where(o => start <= o.OrderTime
+                                                            && o.OrderTime <= end).ToList();
             return GetAll().Where(o => start <= o.OrderTime
                                                             && o.OrderTime <= end).Count();
         }
