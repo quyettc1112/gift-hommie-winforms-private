@@ -134,7 +134,7 @@ namespace Repositories
                             && product.Quantity >= unitInStockMin
                             && product.Quantity <= unitInStockMax
                             && (categoryId == 0 || product.CategoryId == categoryId)
-                           
+                            && product.isDelete == false
                             ).ToList();
 
             return result;

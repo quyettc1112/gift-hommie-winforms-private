@@ -170,6 +170,7 @@ namespace GiftHommieWinforms
                 dgvProducts.Columns["Category"].Visible = false;
                 dgvProducts.Columns["CategoryId"].Visible = false;
                 dgvProducts.Columns["OrderDetails"].Visible = false;
+                dgvProducts.Columns["isDelete"].Visible = false;
                 setRowNumber(dgvProducts);
             }
             catch (Exception ex)
@@ -330,9 +331,10 @@ namespace GiftHommieWinforms
                 {
                     d = MessageBox.Show("Bạn có thật sự muốn xóa hay không sản phẩm " + p.Name + "?", "Quản lý thông tin Product - Xóa dữ liệu", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
+                    p.isDelete = true;
                     if (d == DialogResult.OK)
                     {
-                        productRepository.Delete(p.Id);
+                        productRepository.Update(p);
                         HomeLoadData();
                     }
                 }
