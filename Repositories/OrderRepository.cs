@@ -25,13 +25,13 @@ namespace Repositories
         public List<Order> GetAllOrdersOfCustomer(string username) => OrderDAO.Instance.GetAllOrdersOfUser(username);
 
         public double GetTotalOfOrder(int id)
-        {            
+        {
             Order order = Get(id);
             if (order == null)
                 return 0;
             double res = order.ShippingFee.Value;
 
-            if(order.OrderDetails != null)
+            if (order.OrderDetails != null)
             {
                 foreach (OrderDetail detail in order.OrderDetails)
                     res += detail.Price.Value * detail.Quantity.Value;
@@ -45,7 +45,7 @@ namespace Repositories
 
         private int GetOrderedProductQuantity(int id)
         {
-            List<string> statusList = new List<string> { "PENDING", "DELIVERY", "SUCCESSFUL", "CONFIRM" };
+            List<string> statusList = new List<string> { "PENDING", "DELIVERY", "SUCCESSFUL", "CONFIRMED" };
             List<Order> list = GetOrdersWithStatus(statusList);
             int orderedQuantity = 0;
 
@@ -64,6 +64,128 @@ namespace Repositories
         public int GetAvailableProductQuantity(int id) => (ProductDAO.Instance.Get(id)).Quantity - GetOrderedProductQuantity(id);
 
         public List<OrderDetail> GetOrderDetails(int id) => OrderDAO.Instance.GetOrderDetails(id);
-     
+        private double GetRevenueFromTo(DateTime start, DateTime end)
+        {
+            end = end.AddDays(1);
+            List<string> statusList = new List<string>
+            {
+                "SUCCESSFUL"
+            };
+            List<Order> list = GetOrdersWithStatus(statusList).Where(o => start <= o.OrderTime
+                                                            && o.OrderTime <= end).ToList();
+            
+            double revenue = 0;
+
+            foreach (var order in list)
+            {
+                revenue += (double)order.OrderDetails.Sum(od => od.Quantity * od.Price);
+            }
+
+            return revenue;
+        }
+
+        public double GetRevenueByDay(DateTime date) => GetRevenueFromTo(date, date);
+
+        public double GetRevenueByMonth(DateTime date)
+        {
+            DateTime start = date;
+            int month = date.Month;
+            DateTime end = date;
+
+            while (start.Month == month)
+            {
+                if (start.AddDays(-1).Month != month)
+                {
+                    break;
+                }
+                start = start.AddDays(-1);
+            }
+            while (end.Month == month)
+            {
+                if (end.AddDays(1).Month != month)
+                {
+                    break;
+                }
+                end = end.AddDays(1);
+            }
+
+            return GetRevenueFromTo(start, end);
+        }
+
+        public double GetRevenueByWeek(DateTime date)
+        {
+            DateTime start = date;
+            DateTime end = date;
+
+            while (start.DayOfWeek != DayOfWeek.Monday) 
+            { 
+                start = start.AddDays(-1);
+            }
+            while (end.DayOfWeek != DayOfWeek.Sunday) 
+            { 
+                end = end.AddDays(1);
+            }
+            
+            return GetRevenueFromTo(start, end);
+        }
+
+        private int GetTotalOrderFromTo(DateTime start, DateTime end)
+        {
+            end = end.AddDays(1);
+
+            return GetAll().Where(o => start <= o.OrderTime
+                                                            && o.OrderTime <= end).Count();
+        }
+
+        public int GetTotalOrderByDay(DateTime date) => GetTotalOrderFromTo(date, date);
+        public int GetTotalOrderByWeek(DateTime date)
+        {
+            DateTime start = date;
+            int month = date.Month;
+            DateTime end = date;
+
+            while (start.Month == month)
+            {
+                if (start.AddDays(-1).Month != month)
+                {
+                    break;
+                }
+                start = start.AddDays(-1);
+            }
+            while (end.Month == month)
+            {
+                if (end.AddDays(1).Month != month)
+                {
+                    break;
+                }
+                end = end.AddDays(1);
+            }
+            return GetTotalOrderFromTo(start, end);
+        }
+        public int GetTotalOrderByMonth(DateTime date)
+        {
+            DateTime start = date;
+            int month = date.Month;
+            DateTime end = date;
+
+            while (start.Month == month)
+            {
+                if (start.AddDays(-1).Month != month)
+                {
+                    break;
+                }
+                start = start.AddDays(-1);
+            }
+            while (end.Month == month)
+            {
+                if (end.AddDays(1).Month != month)
+                {
+                    break;
+                }
+                end = end.AddDays(1);
+            }
+
+            return GetTotalOrderFromTo(start, end);
+        }
     }
 }

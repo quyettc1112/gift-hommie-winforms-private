@@ -13,15 +13,18 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using OxyPlot.Axes;
+using System.Windows.Forms.VisualStyles;
 
 namespace GiftHommieWinforms
 {
     public partial class frmAdmin : Form
     {
         BindingSource source;
+        IOrderRepository orderRepository = new OrderRepository();
         IUserRepository userRepository = new UserRepository();
         private const string CUSTOMER_ROLE = "CUSTOMER";
         private const string STAFF_ROLE = "STAFF";
+        private const string SHIPPER_ROLE = "SHIPPER";
         private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
 
         public frmAdmin()
@@ -324,12 +327,82 @@ namespace GiftHommieWinforms
             }
         }
         //====================statistic=====================
+        private DateTime GetDate(DateTime date)
+        {
+            date = DateTime.Now.Date;
 
+            while (date.AddHours(-1).Day == date.Day) 
+                date = date.AddHours(-1);
 
+            return date;
+        }
+        private List<double> GetRevenueListOfYear(DateTime date)
+        {
+            DateTime start = date;
+            DateTime end = date;
 
+            List<double> revenueList = new List<double>();
+
+            //GET FIRST DAY OF FIRST MONTH
+            while (start.AddMonths(-1).Year == date.Year)
+                start = start.AddMonths(-1);
+            while (start.AddDays(-1).Month == start.Month)
+            {
+                start = start.AddDays(-1);
+            }    
+            
+            while (start.AddMonths(1).Year == start.Year)
+            {
+                revenueList.Add(orderRepository.GetRevenueByMonth(start));
+                start = start.AddMonths(1);
+            }
+            revenueList.Add(orderRepository.GetRevenueByMonth(start));
+
+            return revenueList;
+        }        
+        private List<int> GetTotalOrderListOfYear(DateTime date)
+        {
+            DateTime start = date;
+            DateTime end = date;
+
+            List<int> totalOrderList = new List<int>();
+
+            //GET FIRST DAY OF FIRST MONTH
+            while (start.AddMonths(-1).Year == date.Year)
+                start = start.AddMonths(-1);
+            while (start.AddDays(-1).Month == start.Month)
+            {
+                start = start.AddDays(-1);
+            }    
+            
+            while (start.AddMonths(1).Year == start.Year)
+            {
+                totalOrderList.Add(orderRepository.GetTotalOrderByMonth(start));
+                start = start.AddMonths(1);
+            }
+            totalOrderList.Add(orderRepository.GetTotalOrderByMonth(start));
+
+            return totalOrderList;
+        }
         private void tabStatisticOveral_Click(object sender, EventArgs e)
         {
+            //LAY DATE THONG QUA GetDate()
+            DateTime date = GetDate(DateTime.Now);
 
+            txtRevenueDay.Text = orderRepository.GetRevenueByDay(date).ToString();
+            txtRevenueWeek.Text = orderRepository.GetRevenueByWeek(date).ToString();
+            txtRevenueMonth.Text = orderRepository.GetRevenueByMonth(date).ToString();
+
+            txtOrderDay.Text = orderRepository.GetTotalOrderByDay(date).ToString();
+            txtOrderWeek.Text = orderRepository.GetTotalOrderByWeek(date).ToString();
+            txtOrderMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString();
+
+            txtCustomer.Text = userRepository.GetUsersQuantityByRole(CUSTOMER_ROLE).ToString();
+            txtStaff.Text = userRepository.GetUsersQuantityByRole(STAFF_ROLE).ToString();
+            txtShipper.Text = userRepository.GetUsersQuantityByRole(SHIPPER_ROLE).ToString();
+        
+            List<double> revenueList = GetRevenueListOfYear(date);
+            List<int> totalOrderList = GetTotalOrderListOfYear(date);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -339,12 +412,32 @@ namespace GiftHommieWinforms
 
         private void tabRevenue_Click(object sender, EventArgs e)
         {
+            DateTime date = GetDate(DateTime.Now);
 
+            txtRevenueByDay.Text = orderRepository.GetRevenueByDay(date).ToString();
+            txtRevenueByWeek.Text = orderRepository.GetRevenueByWeek(date).ToString();
+            txtRevenueByMonth.Text = orderRepository.GetRevenueByDay(date).ToString();
+
+            List<double> revenueList = GetRevenueListOfYear(date);
         }
 
         private void tabOrder_Click(object sender, EventArgs e)
         {
+            DateTime date = GetDate(DateTime.Now);
 
+            txtOrderByDay.Text = orderRepository.GetTotalOrderByDay(date).ToString();
+            txtOrderByWeek.Text = orderRepository.GetTotalOrderByWeek(date).ToString();
+            txtOrderByMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString();
+
+            txtTotalOrder.Text = orderRepository.GetAll().Count().ToString();
+
+            //Chinh lai status o day nha
+            txtSuccessflOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"SUCCESSFUL"}).Count().ToString();
+            txtFailOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"FAIL", "CANCELLED"}).Count().ToString();
+            txtPendingOrder.Text = orderRepository.GetOrdersWithStatus(new List<string>{"PENDING"}).Count().ToString();
+            //txtConfirmOrder.text = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count().ToString();
+
+            List<int> totalOrderList = GetTotalOrderListOfYear(date);
         }
     }
 }

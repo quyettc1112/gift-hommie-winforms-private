@@ -9,6 +9,7 @@ namespace Repositories
     public class UserRepository : IUserRepository
     {
         public List<User> GetAll() => UserDAO.Instance.GetAll();
+        public int GetUsersQuantityByRole(string role) => GetUsersByRole(role).Count(); 
         public List<User> GetUsersByRole(string role) => GetAll().Where(u => u.Role.Equals(role)).ToList();
         public User Get(string usernameOrEmail) => UserDAO.Instance.Get(usernameOrEmail);
 
