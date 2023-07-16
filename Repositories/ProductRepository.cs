@@ -80,6 +80,7 @@ namespace Repositories
                             && product.Quantity <= unitInStockMax
                             && (categoryId == 0 || product.CategoryId == categoryId)
                             && product.Status == status
+                            && product.isDelete == false
                             ).ToList();
 
             return result;

@@ -72,6 +72,8 @@
             tabHome = new System.Windows.Forms.TabPage();
             tabcontrolStaff = new System.Windows.Forms.TabControl();
             tabOrder = new System.Windows.Forms.TabPage();
+            btnCreateOrder = new System.Windows.Forms.Button();
+            VbtnViewOrderDetail = new System.Windows.Forms.Button();
             groupBox5 = new System.Windows.Forms.GroupBox();
             rComment = new System.Windows.Forms.RichTextBox();
             label11 = new System.Windows.Forms.Label();
@@ -129,8 +131,43 @@
             label21 = new System.Windows.Forms.Label();
             label20 = new System.Windows.Forms.Label();
             lbUserName = new System.Windows.Forms.Label();
-            VbtnViewOrderDetail = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            tabStaffCreateOrder = new System.Windows.Forms.TabPage();
+            groupBox12 = new System.Windows.Forms.GroupBox();
+            groupBox11 = new System.Windows.Forms.GroupBox();
+            dgvCarts = new System.Windows.Forms.DataGridView();
+            Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            btnCartDelete = new System.Windows.Forms.Button();
+            btnDecrease = new System.Windows.Forms.Button();
+            btnIncrease = new System.Windows.Forms.Button();
+            txtCartQuantity = new System.Windows.Forms.TextBox();
+            label28 = new System.Windows.Forms.Label();
+            btnCheckout = new System.Windows.Forms.Button();
+            groupBox9 = new System.Windows.Forms.GroupBox();
+            lblCartIndex = new System.Windows.Forms.TextBox();
+            btnCartBack = new System.Windows.Forms.Button();
+            btnCartNext = new System.Windows.Forms.Button();
+            txtCartAvailable = new System.Windows.Forms.TextBox();
+            txtCartPrice = new System.Windows.Forms.TextBox();
+            groupBox10 = new System.Windows.Forms.GroupBox();
+            txtCartDescription = new System.Windows.Forms.TextBox();
+            label24 = new System.Windows.Forms.Label();
+            label25 = new System.Windows.Forms.Label();
+            label26 = new System.Windows.Forms.Label();
+            lbCartName = new System.Windows.Forms.Label();
+            pbCartAvatar = new System.Windows.Forms.PictureBox();
+            groupBox7 = new System.Windows.Forms.GroupBox();
+            txtCartTotal = new System.Windows.Forms.TextBox();
+            lbCartTotal = new System.Windows.Forms.Label();
+            cbCartSorting = new System.Windows.Forms.ComboBox();
+            label17 = new System.Windows.Forms.Label();
+            cbCartFilterCategory = new System.Windows.Forms.ComboBox();
+            label18 = new System.Windows.Forms.Label();
+            txtCartFilterName = new System.Windows.Forms.TextBox();
+            label19 = new System.Windows.Forms.Label();
+            btnCartReset = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
+            btnAddToCreateOrder = new System.Windows.Forms.Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBoxSearch.SuspendLayout();
@@ -156,6 +193,14 @@
             gbFilter.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).BeginInit();
+            tabStaffCreateOrder.SuspendLayout();
+            groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCarts).BeginInit();
+            groupBox8.SuspendLayout();
+            groupBox9.SuspendLayout();
+            groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCartAvatar).BeginInit();
+            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // label6
@@ -435,6 +480,7 @@
             // 
             // gbProduct
             // 
+            gbProduct.Controls.Add(btnAddToCreateOrder);
             gbProduct.Controls.Add(gbSelect);
             gbProduct.Controls.Add(txtAvailable);
             gbProduct.Controls.Add(txtPrice);
@@ -612,7 +658,7 @@
             // button1
             // 
             button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button1.Location = new System.Drawing.Point(844, 261);
+            button1.Location = new System.Drawing.Point(844, 264);
             button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(74, 22);
@@ -643,7 +689,7 @@
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(1652, 480);
+            btnClose.Location = new System.Drawing.Point(1652, 483);
             btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(74, 22);
@@ -669,6 +715,7 @@
             tabcontrolStaff.Controls.Add(tabHome);
             tabcontrolStaff.Controls.Add(tabOrder);
             tabcontrolStaff.Controls.Add(tabPage1);
+            tabcontrolStaff.Controls.Add(tabStaffCreateOrder);
             tabcontrolStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             tabcontrolStaff.Location = new System.Drawing.Point(0, 0);
             tabcontrolStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -682,7 +729,7 @@
             // 
             // tabOrder
             // 
-            tabOrder.Controls.Add(button2);
+            tabOrder.Controls.Add(btnCreateOrder);
             tabOrder.Controls.Add(VbtnViewOrderDetail);
             tabOrder.Controls.Add(groupBox5);
             tabOrder.Controls.Add(dgvOrders);
@@ -698,6 +745,30 @@
             tabOrder.Text = "Order";
             tabOrder.UseVisualStyleBackColor = true;
             tabOrder.Click += tabOrder_Click;
+            // 
+            // btnCreateOrder
+            // 
+            btnCreateOrder.BackColor = System.Drawing.Color.Silver;
+            btnCreateOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnCreateOrder.Location = new System.Drawing.Point(657, 307);
+            btnCreateOrder.Name = "btnCreateOrder";
+            btnCreateOrder.Size = new System.Drawing.Size(128, 33);
+            btnCreateOrder.TabIndex = 120;
+            btnCreateOrder.Text = "Create Order";
+            btnCreateOrder.UseVisualStyleBackColor = false;
+            btnCreateOrder.Click += btnCreateOrder_Click;
+            // 
+            // VbtnViewOrderDetail
+            // 
+            VbtnViewOrderDetail.BackColor = System.Drawing.Color.Silver;
+            VbtnViewOrderDetail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            VbtnViewOrderDetail.Location = new System.Drawing.Point(522, 308);
+            VbtnViewOrderDetail.Name = "VbtnViewOrderDetail";
+            VbtnViewOrderDetail.Size = new System.Drawing.Size(128, 33);
+            VbtnViewOrderDetail.TabIndex = 119;
+            VbtnViewOrderDetail.Text = "View ";
+            VbtnViewOrderDetail.UseVisualStyleBackColor = false;
+            VbtnViewOrderDetail.Click += VbtnViewOrderDetail_Click;
             // 
             // groupBox5
             // 
@@ -1329,28 +1400,420 @@
             lbUserName.TabIndex = 37;
             lbUserName.Text = "User Information";
             // 
-            // VbtnViewOrderDetail
+            // tabStaffCreateOrder
             // 
-            VbtnViewOrderDetail.BackColor = System.Drawing.Color.Silver;
-            VbtnViewOrderDetail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            VbtnViewOrderDetail.Location = new System.Drawing.Point(522, 308);
-            VbtnViewOrderDetail.Name = "VbtnViewOrderDetail";
-            VbtnViewOrderDetail.Size = new System.Drawing.Size(128, 33);
-            VbtnViewOrderDetail.TabIndex = 119;
-            VbtnViewOrderDetail.Text = "View ";
-            VbtnViewOrderDetail.UseVisualStyleBackColor = false;
-            VbtnViewOrderDetail.Click += VbtnViewOrderDetail_Click;
+            tabStaffCreateOrder.Controls.Add(groupBox12);
+            tabStaffCreateOrder.Controls.Add(groupBox11);
+            tabStaffCreateOrder.Controls.Add(groupBox8);
+            tabStaffCreateOrder.Controls.Add(groupBox7);
+            tabStaffCreateOrder.Location = new System.Drawing.Point(4, 24);
+            tabStaffCreateOrder.Name = "tabStaffCreateOrder";
+            tabStaffCreateOrder.Padding = new System.Windows.Forms.Padding(3);
+            tabStaffCreateOrder.Size = new System.Drawing.Size(1249, 544);
+            tabStaffCreateOrder.TabIndex = 3;
+            tabStaffCreateOrder.Text = "CreateOrder";
+            tabStaffCreateOrder.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // groupBox12
             // 
-            button2.BackColor = System.Drawing.Color.Silver;
-            button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            button2.Location = new System.Drawing.Point(657, 307);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(128, 33);
-            button2.TabIndex = 120;
-            button2.Text = "Create Order";
-            button2.UseVisualStyleBackColor = false;
+            groupBox12.Location = new System.Drawing.Point(3, 5);
+            groupBox12.Name = "groupBox12";
+            groupBox12.Size = new System.Drawing.Size(304, 310);
+            groupBox12.TabIndex = 3;
+            groupBox12.TabStop = false;
+            groupBox12.Text = "Customer";
+            // 
+            // groupBox11
+            // 
+            groupBox11.Controls.Add(dgvCarts);
+            groupBox11.Location = new System.Drawing.Point(316, 291);
+            groupBox11.Name = "groupBox11";
+            groupBox11.Size = new System.Drawing.Size(933, 257);
+            groupBox11.TabIndex = 2;
+            groupBox11.TabStop = false;
+            // 
+            // dgvCarts
+            // 
+            dgvCarts.AllowUserToAddRows = false;
+            dgvCarts.AllowUserToDeleteRows = false;
+            dgvCarts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCarts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCarts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Check });
+            dgvCarts.Dock = System.Windows.Forms.DockStyle.Top;
+            dgvCarts.Location = new System.Drawing.Point(3, 19);
+            dgvCarts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            dgvCarts.Name = "dgvCarts";
+            dgvCarts.ReadOnly = true;
+            dgvCarts.RowHeadersWidth = 51;
+            dgvCarts.RowTemplate.Height = 29;
+            dgvCarts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvCarts.Size = new System.Drawing.Size(927, 223);
+            dgvCarts.TabIndex = 1;
+            // 
+            // Check
+            // 
+            Check.FalseValue = "false";
+            Check.HeaderText = "Choose";
+            Check.MinimumWidth = 8;
+            Check.Name = "Check";
+            Check.ReadOnly = true;
+            Check.TrueValue = "true";
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(btnCartDelete);
+            groupBox8.Controls.Add(btnDecrease);
+            groupBox8.Controls.Add(btnIncrease);
+            groupBox8.Controls.Add(txtCartQuantity);
+            groupBox8.Controls.Add(label28);
+            groupBox8.Controls.Add(btnCheckout);
+            groupBox8.Controls.Add(groupBox9);
+            groupBox8.Controls.Add(txtCartAvailable);
+            groupBox8.Controls.Add(txtCartPrice);
+            groupBox8.Controls.Add(groupBox10);
+            groupBox8.Controls.Add(label24);
+            groupBox8.Controls.Add(label25);
+            groupBox8.Controls.Add(label26);
+            groupBox8.Controls.Add(lbCartName);
+            groupBox8.Controls.Add(pbCartAvatar);
+            groupBox8.Location = new System.Drawing.Point(313, 6);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new System.Drawing.Size(930, 286);
+            groupBox8.TabIndex = 1;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "Product";
+            // 
+            // btnCartDelete
+            // 
+            btnCartDelete.BackColor = System.Drawing.Color.LemonChiffon;
+            btnCartDelete.Location = new System.Drawing.Point(724, 109);
+            btnCartDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnCartDelete.Name = "btnCartDelete";
+            btnCartDelete.Size = new System.Drawing.Size(126, 28);
+            btnCartDelete.TabIndex = 112;
+            btnCartDelete.Text = "Delete";
+            btnCartDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnDecrease
+            // 
+            btnDecrease.Location = new System.Drawing.Point(821, 83);
+            btnDecrease.Margin = new System.Windows.Forms.Padding(2);
+            btnDecrease.Name = "btnDecrease";
+            btnDecrease.Size = new System.Drawing.Size(30, 18);
+            btnDecrease.TabIndex = 111;
+            btnDecrease.Text = "-";
+            btnDecrease.UseVisualStyleBackColor = true;
+            // 
+            // btnIncrease
+            // 
+            btnIncrease.Location = new System.Drawing.Point(821, 64);
+            btnIncrease.Margin = new System.Windows.Forms.Padding(2);
+            btnIncrease.Name = "btnIncrease";
+            btnIncrease.Size = new System.Drawing.Size(30, 16);
+            btnIncrease.TabIndex = 110;
+            btnIncrease.Text = "+";
+            btnIncrease.UseVisualStyleBackColor = true;
+            // 
+            // txtCartQuantity
+            // 
+            txtCartQuantity.Location = new System.Drawing.Point(771, 72);
+            txtCartQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtCartQuantity.Name = "txtCartQuantity";
+            txtCartQuantity.ReadOnly = true;
+            txtCartQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            txtCartQuantity.Size = new System.Drawing.Size(47, 23);
+            txtCartQuantity.TabIndex = 109;
+            txtCartQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label28.Location = new System.Drawing.Point(688, 72);
+            label28.Name = "label28";
+            label28.Size = new System.Drawing.Size(73, 21);
+            label28.TabIndex = 108;
+            label28.Text = "Quantity:";
+            // 
+            // btnCheckout
+            // 
+            btnCheckout.BackColor = System.Drawing.Color.LemonChiffon;
+            btnCheckout.Location = new System.Drawing.Point(768, 14);
+            btnCheckout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.Size = new System.Drawing.Size(126, 28);
+            btnCheckout.TabIndex = 101;
+            btnCheckout.Text = "Checkout";
+            btnCheckout.UseVisualStyleBackColor = false;
+            // 
+            // groupBox9
+            // 
+            groupBox9.Controls.Add(lblCartIndex);
+            groupBox9.Controls.Add(btnCartBack);
+            groupBox9.Controls.Add(btnCartNext);
+            groupBox9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            groupBox9.Location = new System.Drawing.Point(3, 243);
+            groupBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox9.Name = "groupBox9";
+            groupBox9.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox9.Size = new System.Drawing.Size(924, 40);
+            groupBox9.TabIndex = 107;
+            groupBox9.TabStop = false;
+            // 
+            // lblCartIndex
+            // 
+            lblCartIndex.Location = new System.Drawing.Point(414, 14);
+            lblCartIndex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            lblCartIndex.Name = "lblCartIndex";
+            lblCartIndex.ReadOnly = true;
+            lblCartIndex.Size = new System.Drawing.Size(111, 23);
+            lblCartIndex.TabIndex = 1;
+            lblCartIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnCartBack
+            // 
+            btnCartBack.Location = new System.Drawing.Point(283, 12);
+            btnCartBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnCartBack.Name = "btnCartBack";
+            btnCartBack.Size = new System.Drawing.Size(126, 23);
+            btnCartBack.TabIndex = 0;
+            btnCartBack.Text = "<< Back";
+            btnCartBack.UseVisualStyleBackColor = true;
+            // 
+            // btnCartNext
+            // 
+            btnCartNext.Location = new System.Drawing.Point(529, 12);
+            btnCartNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnCartNext.Name = "btnCartNext";
+            btnCartNext.Size = new System.Drawing.Size(126, 23);
+            btnCartNext.TabIndex = 2;
+            btnCartNext.Text = "Next >>";
+            btnCartNext.UseVisualStyleBackColor = true;
+            // 
+            // txtCartAvailable
+            // 
+            txtCartAvailable.Location = new System.Drawing.Point(551, 74);
+            txtCartAvailable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtCartAvailable.Name = "txtCartAvailable";
+            txtCartAvailable.ReadOnly = true;
+            txtCartAvailable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            txtCartAvailable.Size = new System.Drawing.Size(97, 23);
+            txtCartAvailable.TabIndex = 100;
+            txtCartAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtCartPrice
+            // 
+            txtCartPrice.Location = new System.Drawing.Point(317, 74);
+            txtCartPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtCartPrice.Name = "txtCartPrice";
+            txtCartPrice.ReadOnly = true;
+            txtCartPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            txtCartPrice.Size = new System.Drawing.Size(97, 23);
+            txtCartPrice.TabIndex = 99;
+            txtCartPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox10
+            // 
+            groupBox10.Controls.Add(txtCartDescription);
+            groupBox10.Location = new System.Drawing.Point(254, 136);
+            groupBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox10.Size = new System.Drawing.Size(641, 86);
+            groupBox10.TabIndex = 106;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "Description";
+            // 
+            // txtCartDescription
+            // 
+            txtCartDescription.Location = new System.Drawing.Point(8, 20);
+            txtCartDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtCartDescription.Multiline = true;
+            txtCartDescription.Name = "txtCartDescription";
+            txtCartDescription.ReadOnly = true;
+            txtCartDescription.Size = new System.Drawing.Size(626, 63);
+            txtCartDescription.TabIndex = 0;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label24.Location = new System.Drawing.Point(262, 137);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(0, 21);
+            label24.TabIndex = 105;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label25.Location = new System.Drawing.Point(465, 72);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(76, 21);
+            label25.TabIndex = 104;
+            label25.Text = "Available:";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label26.Location = new System.Drawing.Point(261, 72);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(47, 21);
+            label26.TabIndex = 103;
+            label26.Text = "Price:";
+            // 
+            // lbCartName
+            // 
+            lbCartName.AutoSize = true;
+            lbCartName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbCartName.Location = new System.Drawing.Point(254, 28);
+            lbCartName.Name = "lbCartName";
+            lbCartName.Size = new System.Drawing.Size(194, 37);
+            lbCartName.TabIndex = 98;
+            lbCartName.Text = "Product Name";
+            // 
+            // pbCartAvatar
+            // 
+            pbCartAvatar.Location = new System.Drawing.Point(15, 19);
+            pbCartAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            pbCartAvatar.Name = "pbCartAvatar";
+            pbCartAvatar.Size = new System.Drawing.Size(210, 203);
+            pbCartAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pbCartAvatar.TabIndex = 102;
+            pbCartAvatar.TabStop = false;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(txtCartTotal);
+            groupBox7.Controls.Add(lbCartTotal);
+            groupBox7.Controls.Add(cbCartSorting);
+            groupBox7.Controls.Add(label17);
+            groupBox7.Controls.Add(cbCartFilterCategory);
+            groupBox7.Controls.Add(label18);
+            groupBox7.Controls.Add(txtCartFilterName);
+            groupBox7.Controls.Add(label19);
+            groupBox7.Controls.Add(btnCartReset);
+            groupBox7.Controls.Add(button3);
+            groupBox7.Location = new System.Drawing.Point(2, 314);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new System.Drawing.Size(304, 222);
+            groupBox7.TabIndex = 0;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Search";
+            // 
+            // txtCartTotal
+            // 
+            txtCartTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            txtCartTotal.Location = new System.Drawing.Point(97, 183);
+            txtCartTotal.Margin = new System.Windows.Forms.Padding(2);
+            txtCartTotal.Name = "txtCartTotal";
+            txtCartTotal.ReadOnly = true;
+            txtCartTotal.Size = new System.Drawing.Size(181, 32);
+            txtCartTotal.TabIndex = 64;
+            // 
+            // lbCartTotal
+            // 
+            lbCartTotal.AutoSize = true;
+            lbCartTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbCartTotal.Location = new System.Drawing.Point(22, 184);
+            lbCartTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lbCartTotal.Name = "lbCartTotal";
+            lbCartTotal.Size = new System.Drawing.Size(78, 25);
+            lbCartTotal.TabIndex = 63;
+            lbCartTotal.Text = "TOTAL: ";
+            // 
+            // cbCartSorting
+            // 
+            cbCartSorting.BackColor = System.Drawing.Color.White;
+            cbCartSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbCartSorting.FormattingEnabled = true;
+            cbCartSorting.Items.AddRange(new object[] { "Sort by", "Price asc", "Price desc" });
+            cbCartSorting.Location = new System.Drawing.Point(24, 148);
+            cbCartSorting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            cbCartSorting.Name = "cbCartSorting";
+            cbCartSorting.Size = new System.Drawing.Size(254, 23);
+            cbCartSorting.TabIndex = 61;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(22, 133);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(45, 15);
+            label17.TabIndex = 62;
+            label17.Text = "Sorting";
+            // 
+            // cbCartFilterCategory
+            // 
+            cbCartFilterCategory.BackColor = System.Drawing.Color.White;
+            cbCartFilterCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbCartFilterCategory.FormattingEnabled = true;
+            cbCartFilterCategory.Items.AddRange(new object[] { "Select the category" });
+            cbCartFilterCategory.Location = new System.Drawing.Point(24, 108);
+            cbCartFilterCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            cbCartFilterCategory.Name = "cbCartFilterCategory";
+            cbCartFilterCategory.Size = new System.Drawing.Size(254, 23);
+            cbCartFilterCategory.TabIndex = 57;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(22, 93);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(55, 15);
+            label18.TabIndex = 60;
+            label18.Text = "Category";
+            // 
+            // txtCartFilterName
+            // 
+            txtCartFilterName.BackColor = System.Drawing.Color.White;
+            txtCartFilterName.Location = new System.Drawing.Point(24, 65);
+            txtCartFilterName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtCartFilterName.Name = "txtCartFilterName";
+            txtCartFilterName.Size = new System.Drawing.Size(254, 23);
+            txtCartFilterName.TabIndex = 55;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(22, 48);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(84, 15);
+            label19.TabIndex = 59;
+            label19.Text = "Product Name";
+            // 
+            // btnCartReset
+            // 
+            btnCartReset.Location = new System.Drawing.Point(180, 18);
+            btnCartReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnCartReset.Name = "btnCartReset";
+            btnCartReset.Size = new System.Drawing.Size(100, 23);
+            btnCartReset.TabIndex = 58;
+            btnCartReset.Text = "Reset";
+            btnCartReset.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Enabled = false;
+            button3.Location = new System.Drawing.Point(24, 18);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(124, 23);
+            button3.TabIndex = 56;
+            button3.Text = "Auto Filting";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // btnAddToCreateOrder
+            // 
+            btnAddToCreateOrder.BackColor = System.Drawing.Color.Aqua;
+            btnAddToCreateOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnAddToCreateOrder.Location = new System.Drawing.Point(762, 113);
+            btnAddToCreateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnAddToCreateOrder.Name = "btnAddToCreateOrder";
+            btnAddToCreateOrder.Size = new System.Drawing.Size(126, 28);
+            btnAddToCreateOrder.TabIndex = 93;
+            btnAddToCreateOrder.Text = "Create Order";
+            btnAddToCreateOrder.UseVisualStyleBackColor = false;
             // 
             // frmStaff
             // 
@@ -1399,6 +1862,18 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).EndInit();
+            tabStaffCreateOrder.ResumeLayout(false);
+            groupBox11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCarts).EndInit();
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            groupBox9.PerformLayout();
+            groupBox10.ResumeLayout(false);
+            groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCartAvatar).EndInit();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1507,6 +1982,43 @@
         private System.Windows.Forms.PictureBox pbStaffAvatar;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button VbtnViewOrderDetail;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCreateOrder;
+        private System.Windows.Forms.TabPage tabStaffCreateOrder;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox txtCartTotal;
+        private System.Windows.Forms.Label lbCartTotal;
+        private System.Windows.Forms.ComboBox cbCartSorting;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbCartFilterCategory;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtCartFilterName;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnCartReset;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCartDelete;
+        private System.Windows.Forms.Button btnDecrease;
+        private System.Windows.Forms.Button btnIncrease;
+        private System.Windows.Forms.TextBox txtCartQuantity;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button btnCheckout;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.TextBox lblCartIndex;
+        private System.Windows.Forms.Button btnCartBack;
+        private System.Windows.Forms.Button btnCartNext;
+        private System.Windows.Forms.TextBox txtCartAvailable;
+        private System.Windows.Forms.TextBox txtCartPrice;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox txtCartDescription;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lbCartName;
+        private System.Windows.Forms.PictureBox pbCartAvatar;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.DataGridView dgvCarts;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnAddToCreateOrder;
     }
 }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GiftHommieWinforms
 {
@@ -503,7 +504,7 @@ namespace GiftHommieWinforms
 
         private void dgvOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
             frmStaffOrderDetail frm = new frmStaffOrderDetail(this)
             {
                 orderDetails = orderRepository.GetOrderDetails(GetSelectedRowOrderIdValue()),
@@ -811,7 +812,14 @@ namespace GiftHommieWinforms
             }
         }
 
-        
+        private void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+
+            tabcontrolStaff.SelectTab("tabHome");
+            tabcontrolStaff.Focus();
+        }
+
+
 
 
 
