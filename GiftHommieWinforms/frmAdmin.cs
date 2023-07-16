@@ -27,21 +27,27 @@ namespace GiftHommieWinforms
         private const string SHIPPER_ROLE = "SHIPPER";
         private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
 
+        internal class UserDTO : User
+        {
+            public string Sex => (Gender == 0) ? "Female" : "Male";
+        }
+
         public frmAdmin()
         {
             InitializeComponent();
         }
-        //================ CUSTOMER AREA =========================
-        private void SetCustomersVisible()
+
+        private void SetDataGridViewVisible(DataGridView dgvList)
         {
-            string[] columnNameList = { "Avatar", "Password", "Role", "Enabled", "Carts", "Orders" };
+            string[] columnNameList = { "Avatar", "Password", "Role", "Enabled", "Carts", "Orders", "Gender" };
 
             //SET INVISIBLE COLUMN
             foreach (string column in columnNameList)
             {
-                dgvCustomers.Columns[column].Visible = false;
+                dgvList.Columns[column].Visible = false;
             }
         }
+        //================ CUSTOMER AREA =========================
 
         private List<User> LoadCustomerFilter(List<User> list)
         {
@@ -98,12 +104,13 @@ namespace GiftHommieWinforms
             txtCustomerPhone.DataBindings.Add("Text", source, "Phone");
             txtCustomerAddress.DataBindings.Add("Text", source, "Address");
             txtCustomerYob.DataBindings.Add("Text", source, "Yob");
-            txtCustomerGender.DataBindings.Add("Text", source, "Gender");
+            txtCustomerGender.DataBindings.Add("Text", source, "Sex");
             pbCustomerAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvCustomers.DataSource = source;
             btnCustomerStatus.Enabled = false;
-            SetCustomersVisible();
+
+            SetDataGridViewVisible(dgvCustomers);
         }
 
         private void cbCustomerStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -161,16 +168,6 @@ namespace GiftHommieWinforms
         //================ CUSTOMER AREA =========================
         //--------------------------------------------------------
         //================ STAFF AREA ============================
-        private void SetStaffVisible()
-        {
-            string[] columnNameList = { "Avatar", "Password", "Role", "Enabled", "Carts", "Orders" };
-
-            //SET INVISIBLE COLUMN
-            foreach (string column in columnNameList)
-            {
-                dgvStaffs.Columns[column].Visible = false;
-            }
-        }
         private List<User> LoadStaffFilter(List<User> list)
         {
             list = list.Where(u => u.Name.ToLower().Contains(txtStaffSearch.Text.ToLower())).ToList();
@@ -205,12 +202,12 @@ namespace GiftHommieWinforms
             txtStaffPhone.DataBindings.Add("Text", source, "Phone");
             txtStaffAddress.DataBindings.Add("Text", source, "Address");
             txtStaffYob.DataBindings.Add("Text", source, "Yob");
-            txtStaffGender.DataBindings.Add("Text", source, "Gender");
+            txtStaffGender.DataBindings.Add("Text", source, "Sex");
             pbStaffAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvStaffs.DataSource = source;
             btnStaffStatus.Enabled = false;
-            SetStaffVisible();
+            SetDataGridViewVisible(dgvStaffs);
         }
 
         private void LoadStaffButton()
@@ -439,7 +436,7 @@ namespace GiftHommieWinforms
 
             txtRevenueByDay.Text = orderRepository.GetRevenueByDay(date).ToString() + " VND";
             txtRevenueByWeek.Text = orderRepository.GetRevenueByWeek(date).ToString() + " VND";
-            txtRevenueByMonth.Text = orderRepository.GetRevenueByDay(date).ToString() + " VND";
+            txtRevenueByMonth.Text = orderRepository.GetRevenueByMonth(date).ToString() + " VND";
 
             List<double> revenueList = GetRevenueListOfYear(date);
             var model = new PlotModel { Title = "Revenue of each month" };
