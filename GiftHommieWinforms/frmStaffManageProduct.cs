@@ -52,6 +52,7 @@ namespace GiftHommieWinforms
 
             bindingSource.DataSource = new BindingSource();
             bindingSource.DataSource = Product;
+            lbProductName.Text = Product.Name;
             txtName.Text = Product.Name;
             txtPrice.Text = Convert.ToString(Product.Price);
             cbAvailable.Text = Convert.ToString(Product.Status);

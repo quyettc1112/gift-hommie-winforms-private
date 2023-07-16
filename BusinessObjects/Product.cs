@@ -21,6 +21,7 @@ namespace BusinessObjects
         public int CategoryId { get; set; }
         public string Avatar { get; set; }
         public bool Status { get; set; }
+        public bool isDelete { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
