@@ -93,6 +93,8 @@
             dgvStaffs = new System.Windows.Forms.DataGridView();
             button6 = new System.Windows.Forms.Button();
             tabStatisticOveral = new System.Windows.Forms.TabPage();
+            groupBox30 = new System.Windows.Forms.GroupBox();
+            pvUser = new OxyPlot.WindowsForms.PlotView();
             groupBox11 = new System.Windows.Forms.GroupBox();
             groupBox14 = new System.Windows.Forms.GroupBox();
             txtStaff = new System.Windows.Forms.TextBox();
@@ -127,41 +129,41 @@
             pvRevenue = new OxyPlot.WindowsForms.PlotView();
             groupBox15 = new System.Windows.Forms.GroupBox();
             groupBox16 = new System.Windows.Forms.GroupBox();
-            textBox1 = new System.Windows.Forms.TextBox();
+            txtRevenueByMonth = new System.Windows.Forms.TextBox();
             label28 = new System.Windows.Forms.Label();
             groupBox17 = new System.Windows.Forms.GroupBox();
-            textBox2 = new System.Windows.Forms.TextBox();
+            txtRevenueByWeek = new System.Windows.Forms.TextBox();
             label29 = new System.Windows.Forms.Label();
             groupBox18 = new System.Windows.Forms.GroupBox();
-            textBox3 = new System.Windows.Forms.TextBox();
+            txtRevenueByDay = new System.Windows.Forms.TextBox();
             label30 = new System.Windows.Forms.Label();
             tabOrder = new System.Windows.Forms.TabPage();
-            groupBox20 = new System.Windows.Forms.GroupBox();
-            groupBox21 = new System.Windows.Forms.GroupBox();
-            textBox4 = new System.Windows.Forms.TextBox();
-            label31 = new System.Windows.Forms.Label();
-            groupBox22 = new System.Windows.Forms.GroupBox();
-            textBox5 = new System.Windows.Forms.TextBox();
-            label32 = new System.Windows.Forms.Label();
-            groupBox23 = new System.Windows.Forms.GroupBox();
-            textBox6 = new System.Windows.Forms.TextBox();
-            label33 = new System.Windows.Forms.Label();
-            groupBox24 = new System.Windows.Forms.GroupBox();
             groupBox25 = new System.Windows.Forms.GroupBox();
-            label34 = new System.Windows.Forms.Label();
-            groupBox26 = new System.Windows.Forms.GroupBox();
-            txtTotalOrder = new System.Windows.Forms.TextBox();
-            label35 = new System.Windows.Forms.Label();
-            groupBox27 = new System.Windows.Forms.GroupBox();
-            txtSuccessflOrder = new System.Windows.Forms.TextBox();
-            label36 = new System.Windows.Forms.Label();
-            groupBox28 = new System.Windows.Forms.GroupBox();
-            txtPendingOrder = new System.Windows.Forms.TextBox();
-            label37 = new System.Windows.Forms.Label();
+            pvOrder = new OxyPlot.WindowsForms.PlotView();
+            groupBox24 = new System.Windows.Forms.GroupBox();
             groupBox29 = new System.Windows.Forms.GroupBox();
             txtFailOrder = new System.Windows.Forms.TextBox();
             label38 = new System.Windows.Forms.Label();
-            pvOrder = new OxyPlot.WindowsForms.PlotView();
+            groupBox28 = new System.Windows.Forms.GroupBox();
+            txtPendingOrder = new System.Windows.Forms.TextBox();
+            label37 = new System.Windows.Forms.Label();
+            groupBox27 = new System.Windows.Forms.GroupBox();
+            txtSuccessflOrder = new System.Windows.Forms.TextBox();
+            label36 = new System.Windows.Forms.Label();
+            groupBox26 = new System.Windows.Forms.GroupBox();
+            txtTotalOrder = new System.Windows.Forms.TextBox();
+            label35 = new System.Windows.Forms.Label();
+            label34 = new System.Windows.Forms.Label();
+            groupBox20 = new System.Windows.Forms.GroupBox();
+            groupBox21 = new System.Windows.Forms.GroupBox();
+            txtOrderByMonth = new System.Windows.Forms.TextBox();
+            label31 = new System.Windows.Forms.Label();
+            groupBox22 = new System.Windows.Forms.GroupBox();
+            txtOrderByWeek = new System.Windows.Forms.TextBox();
+            label32 = new System.Windows.Forms.Label();
+            groupBox23 = new System.Windows.Forms.GroupBox();
+            txtOrderByDay = new System.Windows.Forms.TextBox();
+            label33 = new System.Windows.Forms.Label();
             tabControlAdmin.SuspendLayout();
             tabCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -192,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStaffs).BeginInit();
             tabStatisticOveral.SuspendLayout();
+            groupBox30.SuspendLayout();
             groupBox11.SuspendLayout();
             groupBox14.SuspendLayout();
             groupBox13.SuspendLayout();
@@ -210,16 +213,16 @@
             groupBox17.SuspendLayout();
             groupBox18.SuspendLayout();
             tabOrder.SuspendLayout();
+            groupBox25.SuspendLayout();
+            groupBox24.SuspendLayout();
+            groupBox29.SuspendLayout();
+            groupBox28.SuspendLayout();
+            groupBox27.SuspendLayout();
+            groupBox26.SuspendLayout();
             groupBox20.SuspendLayout();
             groupBox21.SuspendLayout();
             groupBox22.SuspendLayout();
             groupBox23.SuspendLayout();
-            groupBox24.SuspendLayout();
-            groupBox25.SuspendLayout();
-            groupBox26.SuspendLayout();
-            groupBox27.SuspendLayout();
-            groupBox28.SuspendLayout();
-            groupBox29.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlAdmin
@@ -972,6 +975,7 @@
             // tabStatisticOveral
             // 
             tabStatisticOveral.BackColor = System.Drawing.Color.Azure;
+            tabStatisticOveral.Controls.Add(groupBox30);
             tabStatisticOveral.Controls.Add(groupBox11);
             tabStatisticOveral.Controls.Add(groupBox4);
             tabStatisticOveral.Location = new System.Drawing.Point(4, 29);
@@ -982,6 +986,28 @@
             tabStatisticOveral.Text = "Statistic";
             tabStatisticOveral.Click += tabStatisticOveral_Click;
             // 
+            // groupBox30
+            // 
+            groupBox30.Controls.Add(pvUser);
+            groupBox30.Location = new System.Drawing.Point(834, 331);
+            groupBox30.Name = "groupBox30";
+            groupBox30.Size = new System.Drawing.Size(544, 393);
+            groupBox30.TabIndex = 2;
+            groupBox30.TabStop = false;
+            groupBox30.Text = "Chart";
+            // 
+            // pvUser
+            // 
+            pvUser.Location = new System.Drawing.Point(19, 26);
+            pvUser.Name = "pvUser";
+            pvUser.PanCursor = System.Windows.Forms.Cursors.Hand;
+            pvUser.Size = new System.Drawing.Size(519, 361);
+            pvUser.TabIndex = 0;
+            pvUser.Text = "plotView1";
+            pvUser.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            pvUser.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            pvUser.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
             // groupBox11
             // 
             groupBox11.Controls.Add(groupBox14);
@@ -989,7 +1015,7 @@
             groupBox11.Controls.Add(groupBox12);
             groupBox11.Location = new System.Drawing.Point(3, 322);
             groupBox11.Name = "groupBox11";
-            groupBox11.Size = new System.Drawing.Size(1375, 407);
+            groupBox11.Size = new System.Drawing.Size(825, 407);
             groupBox11.TabIndex = 1;
             groupBox11.TabStop = false;
             groupBox11.Text = "User";
@@ -998,7 +1024,7 @@
             // 
             groupBox14.Controls.Add(txtStaff);
             groupBox14.Controls.Add(label27);
-            groupBox14.Location = new System.Drawing.Point(486, 223);
+            groupBox14.Location = new System.Drawing.Point(16, 210);
             groupBox14.Name = "groupBox14";
             groupBox14.Size = new System.Drawing.Size(382, 178);
             groupBox14.TabIndex = 3;
@@ -1028,7 +1054,7 @@
             // 
             groupBox13.Controls.Add(txtShipper);
             groupBox13.Controls.Add(label26);
-            groupBox13.Location = new System.Drawing.Point(801, 26);
+            groupBox13.Location = new System.Drawing.Point(434, 26);
             groupBox13.Name = "groupBox13";
             groupBox13.Size = new System.Drawing.Size(382, 178);
             groupBox13.TabIndex = 2;
@@ -1058,7 +1084,7 @@
             // 
             groupBox12.Controls.Add(txtCustomer);
             groupBox12.Controls.Add(label25);
-            groupBox12.Location = new System.Drawing.Point(209, 26);
+            groupBox12.Location = new System.Drawing.Point(16, 26);
             groupBox12.Name = "groupBox12";
             groupBox12.Size = new System.Drawing.Size(382, 178);
             groupBox12.TabIndex = 1;
@@ -1327,7 +1353,7 @@
             // 
             // groupBox16
             // 
-            groupBox16.Controls.Add(textBox1);
+            groupBox16.Controls.Add(txtRevenueByMonth);
             groupBox16.Controls.Add(label28);
             groupBox16.Location = new System.Drawing.Point(970, 37);
             groupBox16.Name = "groupBox16";
@@ -1335,14 +1361,14 @@
             groupBox16.TabIndex = 5;
             groupBox16.TabStop = false;
             // 
-            // textBox1
+            // txtRevenueByMonth
             // 
-            textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox1.Location = new System.Drawing.Point(18, 61);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new System.Drawing.Size(239, 34);
-            textBox1.TabIndex = 3;
+            txtRevenueByMonth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtRevenueByMonth.Location = new System.Drawing.Point(18, 61);
+            txtRevenueByMonth.Name = "txtRevenueByMonth";
+            txtRevenueByMonth.ReadOnly = true;
+            txtRevenueByMonth.Size = new System.Drawing.Size(239, 34);
+            txtRevenueByMonth.TabIndex = 3;
             // 
             // label28
             // 
@@ -1356,7 +1382,7 @@
             // 
             // groupBox17
             // 
-            groupBox17.Controls.Add(textBox2);
+            groupBox17.Controls.Add(txtRevenueByWeek);
             groupBox17.Controls.Add(label29);
             groupBox17.Location = new System.Drawing.Point(510, 37);
             groupBox17.Name = "groupBox17";
@@ -1364,14 +1390,14 @@
             groupBox17.TabIndex = 4;
             groupBox17.TabStop = false;
             // 
-            // textBox2
+            // txtRevenueByWeek
             // 
-            textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox2.Location = new System.Drawing.Point(15, 61);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new System.Drawing.Size(239, 34);
-            textBox2.TabIndex = 3;
+            txtRevenueByWeek.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtRevenueByWeek.Location = new System.Drawing.Point(15, 61);
+            txtRevenueByWeek.Name = "txtRevenueByWeek";
+            txtRevenueByWeek.ReadOnly = true;
+            txtRevenueByWeek.Size = new System.Drawing.Size(239, 34);
+            txtRevenueByWeek.TabIndex = 3;
             // 
             // label29
             // 
@@ -1385,7 +1411,7 @@
             // 
             // groupBox18
             // 
-            groupBox18.Controls.Add(textBox3);
+            groupBox18.Controls.Add(txtRevenueByDay);
             groupBox18.Controls.Add(label30);
             groupBox18.Location = new System.Drawing.Point(60, 37);
             groupBox18.Name = "groupBox18";
@@ -1393,14 +1419,14 @@
             groupBox18.TabIndex = 3;
             groupBox18.TabStop = false;
             // 
-            // textBox3
+            // txtRevenueByDay
             // 
-            textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox3.Location = new System.Drawing.Point(18, 61);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new System.Drawing.Size(239, 34);
-            textBox3.TabIndex = 1;
+            txtRevenueByDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtRevenueByDay.Location = new System.Drawing.Point(18, 61);
+            txtRevenueByDay.Name = "txtRevenueByDay";
+            txtRevenueByDay.ReadOnly = true;
+            txtRevenueByDay.Size = new System.Drawing.Size(239, 34);
+            txtRevenueByDay.TabIndex = 1;
             // 
             // label30
             // 
@@ -1424,108 +1450,29 @@
             tabOrder.TabIndex = 4;
             tabOrder.Text = "Order";
             tabOrder.UseVisualStyleBackColor = true;
+            tabOrder.Click += tabOrder_Click;
             // 
-            // groupBox20
+            // groupBox25
             // 
-            groupBox20.Controls.Add(groupBox21);
-            groupBox20.Controls.Add(groupBox22);
-            groupBox20.Controls.Add(groupBox23);
-            groupBox20.Location = new System.Drawing.Point(6, 6);
-            groupBox20.Name = "groupBox20";
-            groupBox20.Size = new System.Drawing.Size(1372, 212);
-            groupBox20.TabIndex = 0;
-            groupBox20.TabStop = false;
-            groupBox20.Text = "Information";
+            groupBox25.Controls.Add(pvOrder);
+            groupBox25.Location = new System.Drawing.Point(544, 224);
+            groupBox25.Name = "groupBox25";
+            groupBox25.Size = new System.Drawing.Size(834, 500);
+            groupBox25.TabIndex = 2;
+            groupBox25.TabStop = false;
+            groupBox25.Text = "Chart";
             // 
-            // groupBox21
+            // pvOrder
             // 
-            groupBox21.Controls.Add(textBox4);
-            groupBox21.Controls.Add(label31);
-            groupBox21.Location = new System.Drawing.Point(983, 48);
-            groupBox21.Name = "groupBox21";
-            groupBox21.Size = new System.Drawing.Size(318, 119);
-            groupBox21.TabIndex = 8;
-            groupBox21.TabStop = false;
-            // 
-            // textBox4
-            // 
-            textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox4.Location = new System.Drawing.Point(18, 65);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new System.Drawing.Size(239, 34);
-            textBox4.TabIndex = 3;
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label31.ForeColor = System.Drawing.Color.Blue;
-            label31.Location = new System.Drawing.Point(18, 18);
-            label31.Name = "label31";
-            label31.Size = new System.Drawing.Size(197, 28);
-            label31.TabIndex = 2;
-            label31.Text = "Total order By Month";
-            // 
-            // groupBox22
-            // 
-            groupBox22.Controls.Add(textBox5);
-            groupBox22.Controls.Add(label32);
-            groupBox22.Location = new System.Drawing.Point(523, 48);
-            groupBox22.Name = "groupBox22";
-            groupBox22.Size = new System.Drawing.Size(318, 119);
-            groupBox22.TabIndex = 7;
-            groupBox22.TabStop = false;
-            // 
-            // textBox5
-            // 
-            textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox5.Location = new System.Drawing.Point(15, 65);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new System.Drawing.Size(239, 34);
-            textBox5.TabIndex = 3;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label32.ForeColor = System.Drawing.Color.Blue;
-            label32.Location = new System.Drawing.Point(15, 18);
-            label32.Name = "label32";
-            label32.Size = new System.Drawing.Size(186, 28);
-            label32.TabIndex = 2;
-            label32.Text = "Total order By Week";
-            // 
-            // groupBox23
-            // 
-            groupBox23.Controls.Add(textBox6);
-            groupBox23.Controls.Add(label33);
-            groupBox23.Location = new System.Drawing.Point(73, 48);
-            groupBox23.Name = "groupBox23";
-            groupBox23.Size = new System.Drawing.Size(318, 119);
-            groupBox23.TabIndex = 6;
-            groupBox23.TabStop = false;
-            // 
-            // textBox6
-            // 
-            textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBox6.Location = new System.Drawing.Point(18, 65);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new System.Drawing.Size(239, 34);
-            textBox6.TabIndex = 3;
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label33.ForeColor = System.Drawing.Color.Blue;
-            label33.Location = new System.Drawing.Point(18, 18);
-            label33.Name = "label33";
-            label33.Size = new System.Drawing.Size(176, 28);
-            label33.TabIndex = 2;
-            label33.Text = "Total Order by Day";
+            pvOrder.Location = new System.Drawing.Point(54, 43);
+            pvOrder.Name = "pvOrder";
+            pvOrder.PanCursor = System.Windows.Forms.Cursors.Hand;
+            pvOrder.Size = new System.Drawing.Size(717, 430);
+            pvOrder.TabIndex = 0;
+            pvOrder.Text = "plotView1";
+            pvOrder.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            pvOrder.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            pvOrder.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // groupBox24
             // 
@@ -1540,117 +1487,6 @@
             groupBox24.TabIndex = 1;
             groupBox24.TabStop = false;
             groupBox24.Text = "Information";
-            // 
-            // groupBox25
-            // 
-            groupBox25.Controls.Add(pvOrder);
-            groupBox25.Location = new System.Drawing.Point(544, 224);
-            groupBox25.Name = "groupBox25";
-            groupBox25.Size = new System.Drawing.Size(834, 500);
-            groupBox25.TabIndex = 2;
-            groupBox25.TabStop = false;
-            groupBox25.Text = "Chart";
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label34.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label34.Location = new System.Drawing.Point(142, 43);
-            label34.Name = "label34";
-            label34.Size = new System.Drawing.Size(161, 31);
-            label34.TabIndex = 0;
-            label34.Text = "All OF ORDER";
-            // 
-            // groupBox26
-            // 
-            groupBox26.Controls.Add(txtTotalOrder);
-            groupBox26.Controls.Add(label35);
-            groupBox26.Location = new System.Drawing.Point(6, 77);
-            groupBox26.Name = "groupBox26";
-            groupBox26.Size = new System.Drawing.Size(511, 71);
-            groupBox26.TabIndex = 7;
-            groupBox26.TabStop = false;
-            // 
-            // txtTotalOrder
-            // 
-            txtTotalOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtTotalOrder.Location = new System.Drawing.Point(123, 32);
-            txtTotalOrder.Name = "txtTotalOrder";
-            txtTotalOrder.ReadOnly = true;
-            txtTotalOrder.Size = new System.Drawing.Size(239, 34);
-            txtTotalOrder.TabIndex = 3;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label35.ForeColor = System.Drawing.Color.LightSlateGray;
-            label35.Location = new System.Drawing.Point(6, 35);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(54, 28);
-            label35.TabIndex = 2;
-            label35.Text = "Total";
-            // 
-            // groupBox27
-            // 
-            groupBox27.Controls.Add(txtSuccessflOrder);
-            groupBox27.Controls.Add(label36);
-            groupBox27.Location = new System.Drawing.Point(6, 154);
-            groupBox27.Name = "groupBox27";
-            groupBox27.Size = new System.Drawing.Size(511, 71);
-            groupBox27.TabIndex = 8;
-            groupBox27.TabStop = false;
-            // 
-            // txtSuccessflOrder
-            // 
-            txtSuccessflOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtSuccessflOrder.Location = new System.Drawing.Point(123, 29);
-            txtSuccessflOrder.Name = "txtSuccessflOrder";
-            txtSuccessflOrder.ReadOnly = true;
-            txtSuccessflOrder.Size = new System.Drawing.Size(239, 34);
-            txtSuccessflOrder.TabIndex = 3;
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label36.ForeColor = System.Drawing.Color.Blue;
-            label36.Location = new System.Drawing.Point(6, 35);
-            label36.Name = "label36";
-            label36.Size = new System.Drawing.Size(100, 28);
-            label36.TabIndex = 2;
-            label36.Text = "Successful";
-            // 
-            // groupBox28
-            // 
-            groupBox28.Controls.Add(txtPendingOrder);
-            groupBox28.Controls.Add(label37);
-            groupBox28.Location = new System.Drawing.Point(6, 241);
-            groupBox28.Name = "groupBox28";
-            groupBox28.Size = new System.Drawing.Size(511, 71);
-            groupBox28.TabIndex = 9;
-            groupBox28.TabStop = false;
-            // 
-            // txtPendingOrder
-            // 
-            txtPendingOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtPendingOrder.Location = new System.Drawing.Point(123, 29);
-            txtPendingOrder.Name = "txtPendingOrder";
-            txtPendingOrder.ReadOnly = true;
-            txtPendingOrder.Size = new System.Drawing.Size(239, 34);
-            txtPendingOrder.TabIndex = 3;
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label37.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
-            label37.Location = new System.Drawing.Point(6, 35);
-            label37.Name = "label37";
-            label37.Size = new System.Drawing.Size(83, 28);
-            label37.TabIndex = 2;
-            label37.Text = "Pending";
             // 
             // groupBox29
             // 
@@ -1682,17 +1518,208 @@
             label38.TabIndex = 2;
             label38.Text = "Fail";
             // 
-            // pvOrder
+            // groupBox28
             // 
-            pvOrder.Location = new System.Drawing.Point(54, 43);
-            pvOrder.Name = "pvOrder";
-            pvOrder.PanCursor = System.Windows.Forms.Cursors.Hand;
-            pvOrder.Size = new System.Drawing.Size(717, 430);
-            pvOrder.TabIndex = 0;
-            pvOrder.Text = "plotView1";
-            pvOrder.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            pvOrder.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            pvOrder.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            groupBox28.Controls.Add(txtPendingOrder);
+            groupBox28.Controls.Add(label37);
+            groupBox28.Location = new System.Drawing.Point(6, 241);
+            groupBox28.Name = "groupBox28";
+            groupBox28.Size = new System.Drawing.Size(511, 71);
+            groupBox28.TabIndex = 9;
+            groupBox28.TabStop = false;
+            // 
+            // txtPendingOrder
+            // 
+            txtPendingOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtPendingOrder.Location = new System.Drawing.Point(123, 29);
+            txtPendingOrder.Name = "txtPendingOrder";
+            txtPendingOrder.ReadOnly = true;
+            txtPendingOrder.Size = new System.Drawing.Size(239, 34);
+            txtPendingOrder.TabIndex = 3;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label37.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
+            label37.Location = new System.Drawing.Point(6, 35);
+            label37.Name = "label37";
+            label37.Size = new System.Drawing.Size(83, 28);
+            label37.TabIndex = 2;
+            label37.Text = "Pending";
+            // 
+            // groupBox27
+            // 
+            groupBox27.Controls.Add(txtSuccessflOrder);
+            groupBox27.Controls.Add(label36);
+            groupBox27.Location = new System.Drawing.Point(6, 154);
+            groupBox27.Name = "groupBox27";
+            groupBox27.Size = new System.Drawing.Size(511, 71);
+            groupBox27.TabIndex = 8;
+            groupBox27.TabStop = false;
+            // 
+            // txtSuccessflOrder
+            // 
+            txtSuccessflOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtSuccessflOrder.Location = new System.Drawing.Point(123, 29);
+            txtSuccessflOrder.Name = "txtSuccessflOrder";
+            txtSuccessflOrder.ReadOnly = true;
+            txtSuccessflOrder.Size = new System.Drawing.Size(239, 34);
+            txtSuccessflOrder.TabIndex = 3;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label36.ForeColor = System.Drawing.Color.Blue;
+            label36.Location = new System.Drawing.Point(6, 35);
+            label36.Name = "label36";
+            label36.Size = new System.Drawing.Size(100, 28);
+            label36.TabIndex = 2;
+            label36.Text = "Successful";
+            // 
+            // groupBox26
+            // 
+            groupBox26.Controls.Add(txtTotalOrder);
+            groupBox26.Controls.Add(label35);
+            groupBox26.Location = new System.Drawing.Point(6, 77);
+            groupBox26.Name = "groupBox26";
+            groupBox26.Size = new System.Drawing.Size(511, 71);
+            groupBox26.TabIndex = 7;
+            groupBox26.TabStop = false;
+            // 
+            // txtTotalOrder
+            // 
+            txtTotalOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtTotalOrder.Location = new System.Drawing.Point(123, 32);
+            txtTotalOrder.Name = "txtTotalOrder";
+            txtTotalOrder.ReadOnly = true;
+            txtTotalOrder.Size = new System.Drawing.Size(239, 34);
+            txtTotalOrder.TabIndex = 3;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label35.ForeColor = System.Drawing.Color.LightSlateGray;
+            label35.Location = new System.Drawing.Point(6, 35);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(54, 28);
+            label35.TabIndex = 2;
+            label35.Text = "Total";
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label34.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label34.Location = new System.Drawing.Point(142, 43);
+            label34.Name = "label34";
+            label34.Size = new System.Drawing.Size(161, 31);
+            label34.TabIndex = 0;
+            label34.Text = "All OF ORDER";
+            // 
+            // groupBox20
+            // 
+            groupBox20.Controls.Add(groupBox21);
+            groupBox20.Controls.Add(groupBox22);
+            groupBox20.Controls.Add(groupBox23);
+            groupBox20.Location = new System.Drawing.Point(6, 6);
+            groupBox20.Name = "groupBox20";
+            groupBox20.Size = new System.Drawing.Size(1372, 212);
+            groupBox20.TabIndex = 0;
+            groupBox20.TabStop = false;
+            groupBox20.Text = "Information";
+            // 
+            // groupBox21
+            // 
+            groupBox21.Controls.Add(txtOrderByMonth);
+            groupBox21.Controls.Add(label31);
+            groupBox21.Location = new System.Drawing.Point(983, 48);
+            groupBox21.Name = "groupBox21";
+            groupBox21.Size = new System.Drawing.Size(318, 119);
+            groupBox21.TabIndex = 8;
+            groupBox21.TabStop = false;
+            // 
+            // txtOrderByMonth
+            // 
+            txtOrderByMonth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtOrderByMonth.Location = new System.Drawing.Point(18, 65);
+            txtOrderByMonth.Name = "txtOrderByMonth";
+            txtOrderByMonth.ReadOnly = true;
+            txtOrderByMonth.Size = new System.Drawing.Size(239, 34);
+            txtOrderByMonth.TabIndex = 3;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label31.ForeColor = System.Drawing.Color.Blue;
+            label31.Location = new System.Drawing.Point(18, 18);
+            label31.Name = "label31";
+            label31.Size = new System.Drawing.Size(197, 28);
+            label31.TabIndex = 2;
+            label31.Text = "Total order By Month";
+            // 
+            // groupBox22
+            // 
+            groupBox22.Controls.Add(txtOrderByWeek);
+            groupBox22.Controls.Add(label32);
+            groupBox22.Location = new System.Drawing.Point(523, 48);
+            groupBox22.Name = "groupBox22";
+            groupBox22.Size = new System.Drawing.Size(318, 119);
+            groupBox22.TabIndex = 7;
+            groupBox22.TabStop = false;
+            // 
+            // txtOrderByWeek
+            // 
+            txtOrderByWeek.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtOrderByWeek.Location = new System.Drawing.Point(15, 65);
+            txtOrderByWeek.Name = "txtOrderByWeek";
+            txtOrderByWeek.ReadOnly = true;
+            txtOrderByWeek.Size = new System.Drawing.Size(239, 34);
+            txtOrderByWeek.TabIndex = 3;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label32.ForeColor = System.Drawing.Color.Blue;
+            label32.Location = new System.Drawing.Point(15, 18);
+            label32.Name = "label32";
+            label32.Size = new System.Drawing.Size(186, 28);
+            label32.TabIndex = 2;
+            label32.Text = "Total order By Week";
+            // 
+            // groupBox23
+            // 
+            groupBox23.Controls.Add(txtOrderByDay);
+            groupBox23.Controls.Add(label33);
+            groupBox23.Location = new System.Drawing.Point(73, 48);
+            groupBox23.Name = "groupBox23";
+            groupBox23.Size = new System.Drawing.Size(318, 119);
+            groupBox23.TabIndex = 6;
+            groupBox23.TabStop = false;
+            // 
+            // txtOrderByDay
+            // 
+            txtOrderByDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtOrderByDay.Location = new System.Drawing.Point(18, 65);
+            txtOrderByDay.Name = "txtOrderByDay";
+            txtOrderByDay.ReadOnly = true;
+            txtOrderByDay.Size = new System.Drawing.Size(239, 34);
+            txtOrderByDay.TabIndex = 3;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label33.ForeColor = System.Drawing.Color.Blue;
+            label33.Location = new System.Drawing.Point(18, 18);
+            label33.Name = "label33";
+            label33.Size = new System.Drawing.Size(176, 28);
+            label33.TabIndex = 2;
+            label33.Text = "Total Order by Day";
             // 
             // frmAdmin
             // 
@@ -1740,6 +1767,7 @@
             ((System.ComponentModel.ISupportInitialize)pbStaffAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStaffs).EndInit();
             tabStatisticOveral.ResumeLayout(false);
+            groupBox30.ResumeLayout(false);
             groupBox11.ResumeLayout(false);
             groupBox14.ResumeLayout(false);
             groupBox14.PerformLayout();
@@ -1770,6 +1798,17 @@
             groupBox18.ResumeLayout(false);
             groupBox18.PerformLayout();
             tabOrder.ResumeLayout(false);
+            groupBox25.ResumeLayout(false);
+            groupBox24.ResumeLayout(false);
+            groupBox24.PerformLayout();
+            groupBox29.ResumeLayout(false);
+            groupBox29.PerformLayout();
+            groupBox28.ResumeLayout(false);
+            groupBox28.PerformLayout();
+            groupBox27.ResumeLayout(false);
+            groupBox27.PerformLayout();
+            groupBox26.ResumeLayout(false);
+            groupBox26.PerformLayout();
             groupBox20.ResumeLayout(false);
             groupBox21.ResumeLayout(false);
             groupBox21.PerformLayout();
@@ -1777,17 +1816,6 @@
             groupBox22.PerformLayout();
             groupBox23.ResumeLayout(false);
             groupBox23.PerformLayout();
-            groupBox24.ResumeLayout(false);
-            groupBox24.PerformLayout();
-            groupBox25.ResumeLayout(false);
-            groupBox26.ResumeLayout(false);
-            groupBox26.PerformLayout();
-            groupBox27.ResumeLayout(false);
-            groupBox27.PerformLayout();
-            groupBox28.ResumeLayout(false);
-            groupBox28.PerformLayout();
-            groupBox29.ResumeLayout(false);
-            groupBox29.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1890,13 +1918,13 @@
         private System.Windows.Forms.TabPage tabRevenue;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRevenueByMonth;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRevenueByWeek;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtRevenueByDay;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.GroupBox groupBox19;
         private OxyPlot.WindowsForms.PlotView pvRevenue;
@@ -1919,13 +1947,15 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.GroupBox groupBox20;
         private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtOrderByMonth;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtOrderByWeek;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtOrderByDay;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.GroupBox groupBox30;
+        private OxyPlot.WindowsForms.PlotView pvUser;
     }
 }

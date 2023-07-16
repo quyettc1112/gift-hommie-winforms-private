@@ -318,8 +318,13 @@ namespace GiftHommieWinforms
             {
                 tabRevenue_Click(sender, e);
             }
+            else if (tabControlAdmin.SelectedIndex == 4)
+            {
+                tabOrder_Click(sender, e);
+            }
         }
         //====================statistic=====================
+
 
 
         private void tabStatisticOveral_Click(object sender, EventArgs e)
@@ -333,6 +338,11 @@ namespace GiftHommieWinforms
         }
 
         private void tabRevenue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabOrder_Click(object sender, EventArgs e)
         {
 
         }
