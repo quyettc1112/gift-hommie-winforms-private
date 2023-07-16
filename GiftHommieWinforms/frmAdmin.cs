@@ -314,6 +314,10 @@ namespace GiftHommieWinforms
             {
                 tabStatisticOveral_Click(sender, e);
             }
+            else if (tabControlAdmin.SelectedIndex == 3)
+            {
+                tabRevenue_Click(sender, e);
+            }
         }
         //====================statistic=====================
 
@@ -324,6 +328,11 @@ namespace GiftHommieWinforms
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabRevenue_Click(object sender, EventArgs e)
         {
 
         }
