@@ -459,7 +459,8 @@
             Controls.Add(groupBox1);
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "frmStaffOrderDetail";
-            Text = "frmStaffOrderDetail";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Order Detail";
             FormClosed += frmStaffOrderDetail_FormClosed;
             Load += frmStaffOrderDetail_Load;
             groupBox1.ResumeLayout(false);

@@ -129,7 +129,6 @@
             txtPrice.Size = new System.Drawing.Size(171, 23);
             txtPrice.TabIndex = 7;
             txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-         
             // 
             // txtQuantity
             // 
@@ -140,7 +139,6 @@
             txtQuantity.Size = new System.Drawing.Size(171, 23);
             txtQuantity.TabIndex = 9;
             txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-         
             // 
             // txtDesciption
             // 
@@ -264,6 +262,7 @@
             Controls.Add(lbProductName);
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "frmStaffManageProduct";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "frmStaffManageProduct";
             Load += frmStaffManageProduct_Load;
             ((System.ComponentModel.ISupportInitialize)pbProductAvatar).EndInit();
