@@ -52,6 +52,8 @@
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             splitContainer2 = new System.Windows.Forms.SplitContainer();
             gbProduct = new System.Windows.Forms.GroupBox();
+            btnCancelCreateOrder = new System.Windows.Forms.Button();
+            btnAddToCreateOrder = new System.Windows.Forms.Button();
             gbSelect = new System.Windows.Forms.GroupBox();
             btnEditProduct = new System.Windows.Forms.Button();
             txtCurrentIndex = new System.Windows.Forms.TextBox();
@@ -167,7 +169,6 @@
             label19 = new System.Windows.Forms.Label();
             btnCartReset = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
-            btnAddToCreateOrder = new System.Windows.Forms.Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBoxSearch.SuspendLayout();
@@ -480,6 +481,7 @@
             // 
             // gbProduct
             // 
+            gbProduct.Controls.Add(btnCancelCreateOrder);
             gbProduct.Controls.Add(btnAddToCreateOrder);
             gbProduct.Controls.Add(gbSelect);
             gbProduct.Controls.Add(txtAvailable);
@@ -499,6 +501,31 @@
             gbProduct.TabIndex = 86;
             gbProduct.TabStop = false;
             gbProduct.Text = "Product Name";
+            // 
+            // btnCancelCreateOrder
+            // 
+            btnCancelCreateOrder.BackColor = System.Drawing.Color.LightCoral;
+            btnCancelCreateOrder.Location = new System.Drawing.Point(820, 119);
+            btnCancelCreateOrder.Name = "btnCancelCreateOrder";
+            btnCancelCreateOrder.Size = new System.Drawing.Size(75, 23);
+            btnCancelCreateOrder.TabIndex = 94;
+            btnCancelCreateOrder.Text = "Cancel";
+            btnCancelCreateOrder.UseVisualStyleBackColor = false;
+            btnCancelCreateOrder.Visible = false;
+            btnCancelCreateOrder.Click += btnCancelCreateOrder_Click;
+            // 
+            // btnAddToCreateOrder
+            // 
+            btnAddToCreateOrder.BackColor = System.Drawing.Color.Aqua;
+            btnAddToCreateOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnAddToCreateOrder.Location = new System.Drawing.Point(681, 118);
+            btnAddToCreateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnAddToCreateOrder.Name = "btnAddToCreateOrder";
+            btnAddToCreateOrder.Size = new System.Drawing.Size(126, 28);
+            btnAddToCreateOrder.TabIndex = 93;
+            btnAddToCreateOrder.Text = "Create Order";
+            btnAddToCreateOrder.UseVisualStyleBackColor = false;
+            btnAddToCreateOrder.Click += btnAddToCreateOrder_Click;
             // 
             // gbSelect
             // 
@@ -658,7 +685,7 @@
             // button1
             // 
             button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button1.Location = new System.Drawing.Point(844, 264);
+            button1.Location = new System.Drawing.Point(844, 266);
             button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(74, 22);
@@ -689,7 +716,7 @@
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(1652, 483);
+            btnClose.Location = new System.Drawing.Point(1652, 485);
             btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(74, 22);
@@ -1803,18 +1830,6 @@
             button3.Text = "Auto Filting";
             button3.UseVisualStyleBackColor = true;
             // 
-            // btnAddToCreateOrder
-            // 
-            btnAddToCreateOrder.BackColor = System.Drawing.Color.Aqua;
-            btnAddToCreateOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnAddToCreateOrder.Location = new System.Drawing.Point(762, 113);
-            btnAddToCreateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            btnAddToCreateOrder.Name = "btnAddToCreateOrder";
-            btnAddToCreateOrder.Size = new System.Drawing.Size(126, 28);
-            btnAddToCreateOrder.TabIndex = 93;
-            btnAddToCreateOrder.Text = "Create Order";
-            btnAddToCreateOrder.UseVisualStyleBackColor = false;
-            // 
             // frmStaff
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2020,5 +2035,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Button btnAddToCreateOrder;
+        private System.Windows.Forms.Button btnCancelCreateOrder;
     }
 }
