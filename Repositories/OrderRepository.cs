@@ -45,7 +45,7 @@ namespace Repositories
 
         private int GetOrderedProductQuantity(int id)
         {
-            List<string> statusList = new List<string> { "PENDING", "DELIVERY", "SUCCESSFUL", "CONFIRMED" };
+            List<string> statusList = new List<string> {"ORDERED", "DELIVERY", "SUCCESSFUL", "CONFIRMED" };
             List<Order> list = GetOrdersWithStatus(statusList);
             int orderedQuantity = 0;
 
