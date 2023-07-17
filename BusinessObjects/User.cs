@@ -19,7 +19,6 @@ namespace BusinessObjects
         public string Password { get; set; }
         public string Name { get; set; }
         public byte? Gender { get; set; }
-        public string Sex => (Gender == 0) ? "Female" : "Male";
         public string Phone { get; set; }
         public int? Yob { get; set; }
         public string Address { get; set; }
