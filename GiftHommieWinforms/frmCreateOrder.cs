@@ -421,5 +421,14 @@ namespace GiftHommieWinforms
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Do you want to exit?",
+                                   "Confirmation",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (confirmResult == DialogResult.Yes)
+                Close();
+        }
     }
 }
