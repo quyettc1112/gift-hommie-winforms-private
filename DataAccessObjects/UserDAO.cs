@@ -46,7 +46,7 @@ namespace DataAccessObjects
             return list;
         }
 
-        public User Get(string usernameOrEmail)
+        public User Get(string usernameOrEmailOrPhone)
         {
             User entity = null;
             try
@@ -54,8 +54,9 @@ namespace DataAccessObjects
                 using (var context = new HommieStoreContext())
                 {
                     entity = context.Users.SingleOrDefault(item => 
-                                                                item.Username.ToLower().Equals(usernameOrEmail.ToLower()) 
-                                                            || item.Email.ToLower().Equals(usernameOrEmail.ToLower()));
+                                                                item.Username.ToLower().Equals(usernameOrEmailOrPhone.ToLower()) 
+                                                            || item.Email.ToLower().Equals(usernameOrEmailOrPhone.ToLower())
+                                                            || item.Phone.Equals(usernameOrEmailOrPhone));
                 }
             }
             catch (Exception ex)

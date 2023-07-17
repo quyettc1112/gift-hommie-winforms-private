@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtReceiver = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtOrderBy = new System.Windows.Forms.TextBox();
             this.btnNewCustomer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textAddress = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.Address = new System.Windows.Forms.Label();
             this.dgvSelectedProducts = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -54,10 +59,6 @@
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,14 +79,14 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.txtPhone);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox4);
+            this.splitContainer1.Panel1.Controls.Add(this.txtReceiver);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.txtOrderBy);
             this.splitContainer1.Panel1.Controls.Add(this.btnNewCustomer);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.textAddress);
+            this.splitContainer1.Panel1.Controls.Add(this.txtAddress);
             this.splitContainer1.Panel1.Controls.Add(this.Address);
             this.splitContainer1.Panel1.Controls.Add(this.dgvSelectedProducts);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -96,6 +97,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnReset);
             this.splitContainer1.Panel2.Controls.Add(this.dgvProducts);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.txtAvailable);
@@ -106,12 +108,50 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
             // 
-            // textBox2
+            // txtPhone
             // 
-            this.textBox2.Location = new System.Drawing.Point(382, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 27);
-            this.textBox2.TabIndex = 102;
+            this.txtPhone.Location = new System.Drawing.Point(425, 159);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(188, 27);
+            this.txtPhone.TabIndex = 107;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(278, 163);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 20);
+            this.label3.TabIndex = 105;
+            this.label3.Text = "RECEIVER\'s PHONE";
+            // 
+            // txtReceiver
+            // 
+            this.txtReceiver.Location = new System.Drawing.Point(113, 159);
+            this.txtReceiver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtReceiver.Name = "txtReceiver";
+            this.txtReceiver.Size = new System.Drawing.Size(146, 27);
+            this.txtReceiver.TabIndex = 104;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(33, 163);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 20);
+            this.label6.TabIndex = 103;
+            this.label6.Text = "RECEIVER";
+            // 
+            // txtOrderBy
+            // 
+            this.txtOrderBy.Location = new System.Drawing.Point(382, 115);
+            this.txtOrderBy.Name = "txtOrderBy";
+            this.txtOrderBy.Size = new System.Drawing.Size(159, 27);
+            this.txtOrderBy.TabIndex = 102;
+            this.txtOrderBy.TextChanged += new System.EventHandler(this.txtOrderBy_TextChanged);
             // 
             // btnNewCustomer
             // 
@@ -135,14 +175,14 @@
             this.label2.TabIndex = 99;
             this.label2.Text = "ORDER BY";
             // 
-            // textAddress
+            // txtAddress
             // 
-            this.textAddress.Location = new System.Drawing.Point(113, 200);
-            this.textAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textAddress.Multiline = true;
-            this.textAddress.Name = "textAddress";
-            this.textAddress.Size = new System.Drawing.Size(500, 64);
-            this.textAddress.TabIndex = 98;
+            this.txtAddress.Location = new System.Drawing.Point(113, 200);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(500, 64);
+            this.txtAddress.TabIndex = 98;
             // 
             // Address
             // 
@@ -224,6 +264,19 @@
             this.btnCheckout.TabIndex = 28;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnReset.Location = new System.Drawing.Point(593, 31);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(64, 28);
+            this.btnReset.TabIndex = 108;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // dgvProducts
             // 
@@ -359,57 +412,20 @@
             // txtProductNameSearch
             // 
             this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
-            this.txtProductNameSearch.Location = new System.Drawing.Point(364, 32);
+            this.txtProductNameSearch.Location = new System.Drawing.Point(298, 32);
             this.txtProductNameSearch.Name = "txtProductNameSearch";
             this.txtProductNameSearch.Size = new System.Drawing.Size(290, 27);
             this.txtProductNameSearch.TabIndex = 49;
+            this.txtProductNameSearch.TextChanged += new System.EventHandler(this.txtProductNameSearch_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(310, 36);
+            this.label5.Location = new System.Drawing.Point(239, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 20);
             this.label5.TabIndex = 50;
             this.label5.Text = "Search";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(425, 159);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(188, 27);
-            this.textBox3.TabIndex = 107;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(278, 163);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 20);
-            this.label3.TabIndex = 105;
-            this.label3.Text = "RECEIVER\'s PHONE";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(113, 159);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(146, 27);
-            this.textBox4.TabIndex = 104;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(33, 163);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 20);
-            this.label6.TabIndex = 103;
-            this.label6.Text = "RECEIVER";
             // 
             // frmCreateOrder
             // 
@@ -458,17 +474,18 @@
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textAddress;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label Address;
         private System.Windows.Forms.DataGridView dgvSelectedProducts;
         private System.Windows.Forms.Button btnNewCustomer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOrderBy;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtReceiver;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnReset;
     }
 }

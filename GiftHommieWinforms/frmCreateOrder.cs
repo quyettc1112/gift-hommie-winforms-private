@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace GiftHommieWinforms
 {
@@ -19,6 +20,7 @@ namespace GiftHommieWinforms
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
         private List<Product> selectedProducts = new List<Product>();
+        private User selectedUser = null;
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -239,6 +241,55 @@ namespace GiftHommieWinforms
 
                 row.Cells["Total"].Value = total;
             }
+        }
+
+        private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtProductNameSearch.Text = "";
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Order order = new Order()
+                {
+                    Name = txtReceiver.Text,
+                    Phone = txtPhone.Text,
+                    Address = txtAddress.Text,
+                    OrderTime = DateTime.Now,
+                    Status = "ORDERED",
+                    Username = "duyduc"
+                };
+                List<OrderDetail> orderDetails = new List<OrderDetail>();
+
+                foreach (Product product in selectedProducts)
+                {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.Product = product;
+                    orderDetail.ProductId = product.Id;
+                    orderDetail.Quantity = product.Quantity;
+                    orderDetail.Price = product.Price;
+                    orderDetails.Add(orderDetail);
+                }
+                order.OrderDetails = orderDetails;
+                orderRepository.Add(order);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Checkout Fail!");
+            }
+            
+        }
+
+        private void txtOrderBy_TextChanged(object sender, EventArgs e)
+        {
+            selectedUser = userRepository.Get(txtOrderBy.Text.Trim());
         }
     }
 }
