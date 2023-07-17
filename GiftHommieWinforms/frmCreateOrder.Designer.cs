@@ -134,7 +134,6 @@
             this.textAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textAddress.Multiline = true;
             this.textAddress.Name = "textAddress";
-            this.textAddress.ReadOnly = true;
             this.textAddress.Size = new System.Drawing.Size(500, 64);
             this.textAddress.TabIndex = 98;
             // 

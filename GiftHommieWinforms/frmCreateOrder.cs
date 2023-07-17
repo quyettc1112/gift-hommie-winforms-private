@@ -16,6 +16,7 @@ namespace GiftHommieWinforms
     {
         private IProductRepository productRepository = new ProductRepository();
         private IOrderRepository orderRepository = new OrderRepository();
+        private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
         private List<Product> selectedProducts = new List<Product>();
         public frmCreateOrder()
@@ -25,6 +26,10 @@ namespace GiftHommieWinforms
         private void frmCreateOrder_Load(object sender, EventArgs e)
         {
             HomeLoadData();
+            List<User> users = userRepository.GetAll().Where(u => u.Role.Equals("CUSTOMER")).ToList();
+            cbCustomer.DataSource = users;
+            cbCustomer.ValueMember = "Username";
+            cbCustomer.DisplayMember = "";
         }
         private void HomeLoadData()
         {
@@ -38,7 +43,9 @@ namespace GiftHommieWinforms
                 );
 
             HomeLoadDataToGridView(products);
+            
 
+            
 
         }
         private void HomeLoadDataToGridView(IEnumerable<Product> products)
