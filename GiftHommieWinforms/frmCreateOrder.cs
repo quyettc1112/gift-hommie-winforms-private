@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace GiftHommieWinforms
 {
@@ -19,6 +20,7 @@ namespace GiftHommieWinforms
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
         private List<Product> selectedProducts = new List<Product>();
+        private User selectedUser = null;
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -26,10 +28,7 @@ namespace GiftHommieWinforms
         private void frmCreateOrder_Load(object sender, EventArgs e)
         {
             HomeLoadData();
-            List<User> users = userRepository.GetAll().Where(u => u.Role.Equals("CUSTOMER")).ToList();            
-            cbCustomer.DataSource = users;
-            cbCustomer.ValueMember = "Username";
-            cbCustomer.DisplayMember = "Username";
+            LoadSelectedProducts();
         }
         private void HomeLoadData()
         {
@@ -141,9 +140,13 @@ namespace GiftHommieWinforms
         private bool flagLoadSelected = false;
         private void LoadSelectedProducts()
         {
+            if (selectedProducts == null)
+                selectedProducts = new List<Product>();
+            BindingSource bding = new BindingSource();
+            bding.DataSource = selectedProducts;
             flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
-            dgvSelectedProducts.DataSource = selectedProducts;
+            dgvSelectedProducts.DataSource = bding;           
             dgvSelectedProducts.Columns["Id"].Visible = false;
             dgvSelectedProducts.Columns["Avatar"].Visible = false;
             dgvSelectedProducts.Columns["Status"].Visible = false;
@@ -156,7 +159,7 @@ namespace GiftHommieWinforms
             dgvSelectedProducts.Columns["Description"].Visible = false;
             dgvSelectedProducts.Columns["Price"].ReadOnly = true;
             dgvSelectedProducts.Columns["Name"].ReadOnly = true;
-            
+            btnCheckout.Enabled = selectedProducts.Count > 0;
             // Add the column to the DataGridView
             if (dgvSelectedProducts.Columns["Total"] == null)
                 dgvSelectedProducts.Columns.Add("Total", "Total");
@@ -226,35 +229,6 @@ namespace GiftHommieWinforms
 
         }
 
-        private void dgvProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            MessageBox.Show("dfsafd");
-            LoadSelectedProducts();
-        }
-
-        private void dgvSelectedProducts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (flagLoadSelected == false)
-            //{
-            //    int c, r;
-
-            //    if (dgvProducts.RowCount > 0)
-            //    {
-            //        DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
-            //        c = e.ColumnIndex;
-            //        r = e.RowIndex;
-            //        dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-            //        int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-            //        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-            //        decimal total = quantity * price;
-
-            //        row.Cells["Total"].Value = total;
-            //    }
-            //}
-                
-        }
-
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
@@ -267,6 +241,79 @@ namespace GiftHommieWinforms
 
                 row.Cells["Total"].Value = total;
             }
+        }
+
+        private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
+        {
+            HomeLoadData();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtProductNameSearch.Text = "";
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Order order = null;
+                if (checkShipping.Checked)
+                    order = new Order()
+                    {
+                        Name = txtReceiver.Text,
+                        Phone = txtPhone.Text,
+                        Address = txtAddress.Text,
+                        OrderTime = DateTime.Now,
+                        Status = "ORDERED",
+                        Username = selectedUser?.Username,
+                        ShippingMode = checkShipping.Checked
+                    };
+                else
+                    order = new Order()
+                    {
+                        OrderTime = DateTime.Now,
+                        Status = "ORDERED",
+                        Username = selectedUser?.Username,
+                        ShippingMode = checkShipping.Checked
+                    };
+
+                List<OrderDetail> orderDetails = new List<OrderDetail>();
+
+                foreach (Product product in selectedProducts)
+                {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.ProductId = product.Id;
+                    orderDetail.Quantity = product.Quantity;
+                    orderDetail.Price = product.Price;
+                    orderDetails.Add(orderDetail);
+                }
+                order.OrderDetails = orderDetails;
+                orderRepository.Add(order);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Checkout Fail!");
+            }
+            
+        }
+
+        private void txtOrderBy_TextChanged(object sender, EventArgs e)
+        {
+            selectedUser = userRepository.Get(txtOrderBy.Text.Trim());
+            if (selectedUser != null && txtReceiver.Text.Trim().Length == 0 
+                && txtReceiver.Text.Trim().Length == 0
+                && txtPhone.Text.Trim().Length == 0)
+            {
+                txtReceiver.Text = selectedUser.Name;
+                txtPhone.Text = selectedUser.Phone;
+                txtAddress.Text = selectedUser.Address;
+            }
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            groupShipping.Enabled = checkShipping.Checked;
         }
     }
 }

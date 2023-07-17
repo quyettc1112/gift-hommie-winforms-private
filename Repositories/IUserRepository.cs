@@ -9,7 +9,7 @@ namespace Repositories
         List<User> GetAll();
         public int GetUsersQuantityByRole(string role);
         public List<User> GetUsersByRole(string role);
-        User Get(string usernameOrEmail);
+        User Get(string usernameOrEmailOrPhone);
         bool Exist(string usernameOrEmail);
         void Create(User entity);
         void Update(User entity);

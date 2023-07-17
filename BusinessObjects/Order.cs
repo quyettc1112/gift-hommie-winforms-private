@@ -24,6 +24,8 @@ namespace BusinessObjects
         public string Comment { get; set; }
         public DateTime? LastUpdatedTime { get; set; }
 
+        public bool ShippingMode { get; set; }
+
         public virtual User User { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
