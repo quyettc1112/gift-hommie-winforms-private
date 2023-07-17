@@ -29,22 +29,20 @@
         private void InitializeComponent()
         {
             label1 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
+            dgvCheckout = new System.Windows.Forms.DataGridView();
             txtTotal = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
             txtAddress = new System.Windows.Forms.TextBox();
             txtPhone = new System.Windows.Forms.TextBox();
             button2 = new System.Windows.Forms.Button();
             btnCheckout = new System.Windows.Forms.Button();
-            txtComment = new System.Windows.Forms.TextBox();
             txtMessage = new System.Windows.Forms.TextBox();
             label9 = new System.Windows.Forms.Label();
             txtName = new System.Windows.Forms.TextBox();
             label8 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            dgvCheckout = new System.Windows.Forms.DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCheckout).BeginInit();
             SuspendLayout();
@@ -59,15 +57,6 @@
             label1.Size = new System.Drawing.Size(232, 54);
             label1.TabIndex = 0;
             label1.Text = "CHECKOUT";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(626, 150);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(100, 25);
-            label3.TabIndex = 2;
-            label3.Text = "COMMENT";
             // 
             // label5
             // 
@@ -87,8 +76,6 @@
             panel1.Controls.Add(txtPhone);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(btnCheckout);
-            panel1.Controls.Add(txtComment);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(txtMessage);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label9);
@@ -100,6 +87,23 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(1075, 619);
             panel1.TabIndex = 15;
+            // 
+            // dgvCheckout
+            // 
+            dgvCheckout.AllowUserToAddRows = false;
+            dgvCheckout.AllowUserToDeleteRows = false;
+            dgvCheckout.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCheckout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCheckout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            dgvCheckout.Location = new System.Drawing.Point(0, 375);
+            dgvCheckout.Margin = new System.Windows.Forms.Padding(4);
+            dgvCheckout.Name = "dgvCheckout";
+            dgvCheckout.ReadOnly = true;
+            dgvCheckout.RowHeadersWidth = 51;
+            dgvCheckout.RowTemplate.Height = 29;
+            dgvCheckout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvCheckout.Size = new System.Drawing.Size(1075, 244);
+            dgvCheckout.TabIndex = 24;
             // 
             // txtTotal
             // 
@@ -140,7 +144,7 @@
             // button2
             // 
             button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            button2.Location = new System.Drawing.Point(196, 247);
+            button2.Location = new System.Drawing.Point(826, 247);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(112, 34);
             button2.TabIndex = 19;
@@ -150,22 +154,13 @@
             // btnCheckout
             // 
             btnCheckout.DialogResult = System.Windows.Forms.DialogResult.OK;
-            btnCheckout.Location = new System.Drawing.Point(65, 247);
+            btnCheckout.Location = new System.Drawing.Point(626, 247);
             btnCheckout.Name = "btnCheckout";
             btnCheckout.Size = new System.Drawing.Size(112, 34);
             btnCheckout.TabIndex = 18;
-            btnCheckout.Text = "BUY";
+            btnCheckout.Text = "ORDER";
             btnCheckout.UseVisualStyleBackColor = true;
             btnCheckout.Click += button1_Click;
-            // 
-            // txtComment
-            // 
-            txtComment.Location = new System.Drawing.Point(489, 179);
-            txtComment.Margin = new System.Windows.Forms.Padding(4);
-            txtComment.Multiline = true;
-            txtComment.Name = "txtComment";
-            txtComment.Size = new System.Drawing.Size(449, 113);
-            txtComment.TabIndex = 17;
             // 
             // txtMessage
             // 
@@ -173,7 +168,7 @@
             txtMessage.Margin = new System.Windows.Forms.Padding(4);
             txtMessage.Multiline = true;
             txtMessage.Name = "txtMessage";
-            txtMessage.Size = new System.Drawing.Size(449, 109);
+            txtMessage.Size = new System.Drawing.Size(449, 185);
             txtMessage.TabIndex = 16;
             // 
             // label9
@@ -212,23 +207,6 @@
             label2.TabIndex = 1;
             label2.Text = "NAME:";
             // 
-            // dgvCheckout
-            // 
-            dgvCheckout.AllowUserToAddRows = false;
-            dgvCheckout.AllowUserToDeleteRows = false;
-            dgvCheckout.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCheckout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCheckout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            dgvCheckout.Location = new System.Drawing.Point(0, 375);
-            dgvCheckout.Margin = new System.Windows.Forms.Padding(4);
-            dgvCheckout.Name = "dgvCheckout";
-            dgvCheckout.ReadOnly = true;
-            dgvCheckout.RowHeadersWidth = 51;
-            dgvCheckout.RowTemplate.Height = 29;
-            dgvCheckout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvCheckout.Size = new System.Drawing.Size(1075, 244);
-            dgvCheckout.TabIndex = 24;
-            // 
             // frmCheckout
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -249,7 +227,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
@@ -262,7 +239,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhone;

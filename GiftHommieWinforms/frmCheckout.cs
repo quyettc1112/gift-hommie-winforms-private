@@ -49,9 +49,26 @@ namespace GiftHommieWinforms
                 OrderTime = DateTime.Now,
                 Message = txtMessage.Text,
                 Status = DEFAULT_STATUS,
-                Comment = txtComment.Text,
+                //Comment = txtComment.Text,
                 Phone = txtPhone.Text,
             };
+        }
+
+        private List<OrderDetail> GetCurrentOrderDetail()
+        {
+            List<OrderDetail> details = new List<OrderDetail>();
+
+            foreach (Cart cart in CartList)
+            {
+                details.Add(new OrderDetail
+                {
+                    ProductId = cart.ProductId,
+                    Price = cart.Product.Price,
+                    Quantity = cart.Quantity,
+                });
+            }
+
+            return details;
         }
 
         private void LoadData()
@@ -61,15 +78,23 @@ namespace GiftHommieWinforms
             txtPhone.Text = GlobalData.AuthenticatedUser.Phone;
             txtTotal.Text = Total.ToString();
 
-            dgvCheckout.DataSource = CartList;
+            List<string> columns = new List<string>
+            {
+                "ID", "OrderId", "ProductId", "Order"
+            };
+            List<OrderDetail> details = GetCurrentOrderDetail();
 
-            foreach (Cart cart in CartList)
-                cart.Product = productRepository.Get((int)cart.ProductId);
+            foreach (OrderDetail orderDetail in details)
+            {
+                orderDetail.Product = productRepository.Get((int)orderDetail.ProductId);
+            }
 
-            dgvCheckout.Columns["ID"].Visible = false;
-            dgvCheckout.Columns["Username"].Visible = false;
-            dgvCheckout.Columns["ProductId"].Visible = false;
-            dgvCheckout.Columns["UsernameNavigation"].Visible = false;
+            dgvCheckout.DataSource = details;
+
+            foreach (string c in columns)
+            {
+                dgvCheckout.Columns[c].Visible = false;
+            }
 
             SetValidation();
         }
@@ -85,17 +110,8 @@ namespace GiftHommieWinforms
             try
             {
                 Order order = GetCurrentOrder();
-                List<OrderDetail> details = new List<OrderDetail>();
-
-                foreach (Cart cart in CartList)
-                {
-                    details.Add(new OrderDetail
-                    {
-                        ProductId = cart.ProductId,
-                        Price = cart.Product.Price,
-                        Quantity = cart.Quantity,
-                    });
-                }
+                List<OrderDetail> details = GetCurrentOrderDetail();
+                
 
                 order.OrderDetails = details;
                 orderRepository.Add(order);
