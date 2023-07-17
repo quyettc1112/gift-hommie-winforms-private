@@ -771,6 +771,10 @@ namespace GiftHommieWinforms
         private void SetCartVisible()
         {
             List<Cart> list = cartRepository.GetAllCartItemsByUsername(GlobalData.AuthenticatedUser.Username);
+            List<string> columns = new List<string>
+            {
+                "ID", "Username", "ProductId", "UsernameNavigation", "LastUpdatedTime"
+            };
             bindingSource = new BindingSource();
 
             //RELOAD CART FILTER
@@ -779,10 +783,10 @@ namespace GiftHommieWinforms
             bindingSource.DataSource = list;
             dgvCarts.DataSource = bindingSource;
 
-            dgvCarts.Columns["ID"].Visible = false;
-            dgvCarts.Columns["Username"].Visible = false;
-            dgvCarts.Columns["ProductId"].Visible = false;
-            dgvCarts.Columns["UsernameNavigation"].Visible = false;
+            foreach (string c in columns)
+            {
+                dgvCarts.Columns[c].Visible = false;
+            }
 
             //SET DEFAULT VALUE FOR CHECKBOX
             LoadChoosenItems();
@@ -795,6 +799,7 @@ namespace GiftHommieWinforms
         //TRONG LOADCART CO SAN REFRESH CART
         private void LoadCart()
         {
+            bindingSource = new BindingSource();
             if (RefreshUserCart())
                 MessageBox.Show("YOUR CART HAS BEEN CHANGE");
 
@@ -851,9 +856,16 @@ namespace GiftHommieWinforms
         //CART CLICK
         private void dgvCarts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int productId = (int)((Cart)bindingSource.Current).ProductId;
-            lblCartIndex.Text = (bindingSource.Position + 1).ToString();
-            txtCartAvailable.Text = orderRepository.GetAvailableProductQuantity(productId).ToString();
+            try
+            {
+                int productId = (int)((Cart)bindingSource.Current).ProductId;
+                lblCartIndex.Text = (bindingSource.Position + 1).ToString();
+                txtCartAvailable.Text = orderRepository.GetAvailableProductQuantity(productId).ToString();
+            }
+            catch
+            {
+
+            }
         }
 
         private void dgvCarts_CellContentClick(object sender, DataGridViewCellEventArgs e)
