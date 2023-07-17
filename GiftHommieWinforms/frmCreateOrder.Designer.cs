@@ -30,7 +30,6 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnNewCustomer = new System.Windows.Forms.Button();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textAddress = new System.Windows.Forms.TextBox();
             this.Address = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,8 +74,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.textBox2);
             this.splitContainer1.Panel1.Controls.Add(this.btnNewCustomer);
-            this.splitContainer1.Panel1.Controls.Add(this.cbCustomer);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.textAddress);
             this.splitContainer1.Panel1.Controls.Add(this.Address);
@@ -109,19 +109,11 @@
             this.btnNewCustomer.Text = "New";
             this.btnNewCustomer.UseVisualStyleBackColor = true;
             // 
-            // cbCustomer
-            // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(382, 150);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(154, 28);
-            this.cbCustomer.TabIndex = 100;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(295, 155);
+            this.label2.Location = new System.Drawing.Point(295, 153);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
@@ -368,6 +360,13 @@
             this.label5.TabIndex = 50;
             this.label5.Text = "Search";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(382, 150);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(159, 27);
+            this.textBox2.TabIndex = 102;
+            // 
             // frmCreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -418,10 +417,10 @@
         private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.Label Address;
         private System.Windows.Forms.DataGridView dgvSelectedProducts;
-        private System.Windows.Forms.ComboBox cbCustomer;
         private System.Windows.Forms.Button btnNewCustomer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

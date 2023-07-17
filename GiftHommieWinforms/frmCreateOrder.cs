@@ -26,10 +26,7 @@ namespace GiftHommieWinforms
         private void frmCreateOrder_Load(object sender, EventArgs e)
         {
             HomeLoadData();
-            List<User> users = userRepository.GetAll().Where(u => u.Role.Equals("CUSTOMER")).ToList();            
-            cbCustomer.DataSource = users;
-            cbCustomer.ValueMember = "Username";
-            cbCustomer.DisplayMember = "Username";
+            LoadSelectedProducts();
         }
         private void HomeLoadData()
         {
@@ -141,6 +138,7 @@ namespace GiftHommieWinforms
         private bool flagLoadSelected = false;
         private void LoadSelectedProducts()
         {
+            
             flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
             dgvSelectedProducts.DataSource = selectedProducts;
@@ -156,7 +154,7 @@ namespace GiftHommieWinforms
             dgvSelectedProducts.Columns["Description"].Visible = false;
             dgvSelectedProducts.Columns["Price"].ReadOnly = true;
             dgvSelectedProducts.Columns["Name"].ReadOnly = true;
-            
+            btnCheckout.Enabled = selectedProducts.Count > 0;
             // Add the column to the DataGridView
             if (dgvSelectedProducts.Columns["Total"] == null)
                 dgvSelectedProducts.Columns.Add("Total", "Total");
