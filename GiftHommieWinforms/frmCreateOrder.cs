@@ -130,6 +130,19 @@ namespace GiftHommieWinforms
                 row.Cells["Check"].Value = (selectedItems.ContainsKey(id)) ? selectedItems[id] : false;
             }
         }
+
+        private void LoadSelectedProducts()
+        {
+            dgvSelectedProducts.DataSource = productRepository.GetAll().Where(p => selectedItems.ContainsKey(p.Id) && selectedItems[p.Id]).ToList();
+            dgvSelectedProducts.Columns["Id"].Visible = false;
+            dgvSelectedProducts.Columns["Avatar"].Visible = false;
+            dgvSelectedProducts.Columns["Status"].Visible = false;
+            dgvSelectedProducts.Columns["Carts"].Visible = false;
+            dgvSelectedProducts.Columns["Category"].Visible = false;
+            dgvSelectedProducts.Columns["CategoryId"].Visible = false;
+            dgvSelectedProducts.Columns["OrderDetails"].Visible = false;
+            dgvSelectedProducts.Columns["isDelete"].Visible = false;
+        }
         private void pbProductAvatar_Click(object sender, EventArgs e)
         {
 
@@ -143,24 +156,6 @@ namespace GiftHommieWinforms
         private void Address_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void dgvProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int c, r;
-
-            if (e.ColumnIndex == 0 && dgvProducts.RowCount > 0)
-            {
-                c = e.ColumnIndex;
-                r = e.RowIndex;
-
-                dgvProducts.Rows[r].Cells[c].Value = !((bool)dgvProducts.Rows[r].Cells[c].Value);
-
-                bool check = (bool)dgvProducts.Rows[r].Cells[c].Value;
-                int cartId = (int)dgvProducts.Rows[r].Cells["Id"].Value;
-
-                selectedItems[cartId] = check;                
-            }
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -179,6 +174,7 @@ namespace GiftHommieWinforms
 
                 selectedItems[cartId] = check;
             }
+            LoadSelectedProducts();
         }
     }
 }
