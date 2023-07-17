@@ -21,6 +21,8 @@ namespace GiftHommieWinforms
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
         private BindingSource bindingSourceOrderInfo = null;
+        private BindingSource bindingSourceOrderShipper = null;
+        private BindingSource bingdingSourceShipper = null;
         private IOrderRepository orderRepository = new OrderRepository();
         private bool orderTimeDescMode = true;
         private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
@@ -351,6 +353,8 @@ namespace GiftHommieWinforms
         }
 
         //------------------------Order------------------------------------
+
+
         private void tabOrder_Click(object sender, EventArgs e)
         {
             OrderInitDataForSearchComponent();
@@ -365,7 +369,7 @@ namespace GiftHommieWinforms
         {
             OrderResetFilter();
         }
-
+        //test
         private void OrderResetFilter()
         {
             orderTimeDescMode = true;
@@ -445,6 +449,10 @@ namespace GiftHommieWinforms
             {
                 tabOrder_Click(sender, e);
             }
+            else if (tabcontrolStaff.SelectedIndex == 4)
+            {
+                tabShipper_Click(sender, e);
+            }
         }
 
         private void txtOrderSearch_TextChanged(object sender, EventArgs e)
@@ -501,7 +509,7 @@ namespace GiftHommieWinforms
         {
             OrderLoadData();
         }
-
+        //test
         private void dgvOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -828,16 +836,132 @@ namespace GiftHommieWinforms
 
         private void btnCancelCreateOrder_Click(object sender, EventArgs e)
         {
-           if (btnAddToCreateOrder.Visible == true)
+            if (btnAddToCreateOrder.Visible == true)
             {
-            btnAddToCreateOrder.Text = "Create Order";
-            btnCancelCreateOrder.Visible = false; 
+                btnAddToCreateOrder.Text = "Create Order";
+                btnCancelCreateOrder.Visible = false;
             }
-              
+
+        }
+        //====================shipper=================
+        private void tabShipper_Click(object sender, EventArgs e)
+        {
+            LoadOrderShipping();
+            LoadShipper();
+            OrderShippingInitDataForSearchComponent();
+        }
+        private void OrderShippingInitDataForSearchComponent()
+        {
+            OrderShippingResetFilter();
+        }
+        private void OrderShippingResetFilter()
+        {
+            orderTimeDescMode = true;
+            if (orderTimeDescMode)
+                btnSortOrder.Text = "Sort In Ascending Date Order";
+            else btnSortOrder.Text = "Sort In Descending Date Order";
+
+            txtSearchOrder.Text = string.Empty;
+            cboOrderStatus.SelectedIndex = 0;
+        }
+
+        private void LoadOrderShipping()
+        {
+            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && o.Status == "ORDERED" && o.Shipper == null
+            && o.Name.ToLower().Contains(txtSearchOrder.Text.ToLower())).ToList();
+            LoadDataToGridView(order);
+
+        }
+
+        private void LoadDataToGridView(IEnumerable<Order> orders)
+        {
+            if (orders == null)
+                orders = new List<Order>()
+                {
+                };
+            bindingSourceOrderShipper = new BindingSource();
+            bindingSourceOrderShipper.DataSource = orders;
+            dgvOrderShipping.DataSource = null;
+            dgvOrderShipping.DataSource = bindingSourceOrderShipper;
+            setRowNumber(dgvOrderShipping);
+
+            txtOrderId.DataBindings.Clear();
+            txtOrderId.DataBindings.Add("Text", bindingSourceOrderShipper, "Id");
+
+            dgvOrderShipping.Columns["Id"].Visible = false;
+            dgvOrderShipping.Columns["ShippingFee"].Visible = false;
+            dgvOrderShipping.Columns["ShippingStatus"].Visible = false;
+            dgvOrderShipping.Columns["ShipperNavigation"].Visible = false;
+            dgvOrderShipping.Columns["User"].Visible = false;
+            dgvOrderShipping.Columns["OrderDetails"].Visible = false;
+        }
+
+        private void LoadShipper()
+        {
+
+            bingdingSourceShipper = new BindingSource();
+            List<User> users = userRepository.GetUsersByRole("SHIPPER");
+            LoadShipperToGridView(users);
+        }
+
+        private void LoadShipperToGridView(IEnumerable<User> shipper)
+        {
+            if (shipper == null)
+                shipper = new List<User>()
+                {
+                };
+            bingdingSourceShipper = new BindingSource();
+            bingdingSourceShipper.DataSource = shipper;
+            dgvShipper.DataSource = bingdingSourceShipper;
+            setRowNumber(dgvShipper);
+            dgvShipper.Columns["Enabled"].Visible = false;
+            dgvShipper.Columns["Carts"].Visible = false;
+            dgvShipper.Columns["OrderShipperNavigations"].Visible = false;
+            dgvShipper.Columns["OrderUsernameNavigations"].Visible = false;
+            txtShipperName.DataBindings.Clear();
+            txtShipperName.DataBindings.Add("Text", bingdingSourceShipper, "Username");
+
         }
 
 
+        //orderred
+        private void btnShipperAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult d;
+            try
+            {
+                Order order = orderRepository.Get(int.Parse(txtOrderId.Text));
+                order.Shipper = txtShipperName.Text;
 
+                if (order != null)
+                {
+                    d = MessageBox.Show("Bạn có thật sự muốn giao đơn hàng này không ?", "Quản lý shipper", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+
+                    if (d == DialogResult.OK)
+                    {
+                        orderRepository.Save(order);
+                        LoadOrderShipping();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+        }
+
+        private void txtSearchOrder_TextChanged(object sender, EventArgs e)
+        {
+            LoadOrderShipping();
+        }
 
 
 
