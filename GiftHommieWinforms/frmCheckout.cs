@@ -20,7 +20,7 @@ namespace GiftHommieWinforms
         public List<Cart> CartList;
         private double DEFAULT_SHIPPING_FEE = 20000;
         public double Total;
-        private string DEFAULT_STATUS = "PENDING";
+        private string DEFAULT_STATUS = "ORDERED";
         public frmCheckout()
         {
             InitializeComponent();
