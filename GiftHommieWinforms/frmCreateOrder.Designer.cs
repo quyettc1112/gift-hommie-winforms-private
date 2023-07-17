@@ -30,6 +30,8 @@
         {
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textAddress = new System.Windows.Forms.TextBox();
             this.Address = new System.Windows.Forms.Label();
@@ -39,32 +41,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.txtCartDescription = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbAvailable = new System.Windows.Forms.Label();
-            this.txtAvailable = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.lbPrice = new System.Windows.Forms.Label();
-            this.lbProductName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pbProductAvatar = new System.Windows.Forms.PictureBox();
+            this.txtBuyTotal = new System.Windows.Forms.TextBox();
+            this.lbProductName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbPrice = new System.Windows.Forms.Label();
+            this.txtBuyQuantity = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbAvailable = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
-            this.txtBuyTotal = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBuyQuantity = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnNewCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedProducts)).BeginInit();
-            this.groupBox9.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProducts
@@ -105,19 +106,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.txtBuyTotal);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Panel2.Controls.Add(this.txtBuyQuantity);
-            this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox9);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.lbAvailable);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.txtAvailable);
-            this.splitContainer1.Panel2.Controls.Add(this.txtPrice);
-            this.splitContainer1.Panel2.Controls.Add(this.lbPrice);
-            this.splitContainer1.Panel2.Controls.Add(this.lbProductName);
-            this.splitContainer1.Panel2.Controls.Add(this.pbProductAvatar);
-            this.splitContainer1.Panel2.Controls.Add(this.txtDesc);
             this.splitContainer1.Panel2.Controls.Add(this.txtProductNameSearch);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.dgvProducts);
@@ -125,6 +115,25 @@
             this.splitContainer1.SplitterDistance = 636;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // btnNewCustomer
+            // 
+            this.btnNewCustomer.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnNewCustomer.Location = new System.Drawing.Point(546, 150);
+            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnNewCustomer.Name = "btnNewCustomer";
+            this.btnNewCustomer.Size = new System.Drawing.Size(50, 28);
+            this.btnNewCustomer.TabIndex = 101;
+            this.btnNewCustomer.Text = "New";
+            this.btnNewCustomer.UseVisualStyleBackColor = true;
+            // 
+            // cbCustomer
+            // 
+            this.cbCustomer.FormattingEnabled = true;
+            this.cbCustomer.Location = new System.Drawing.Point(382, 150);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(154, 28);
+            this.cbCustomer.TabIndex = 100;
             // 
             // label2
             // 
@@ -228,44 +237,142 @@
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pbProductAvatar);
+            this.panel1.Controls.Add(this.txtBuyTotal);
+            this.panel1.Controls.Add(this.lbProductName);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.lbPrice);
+            this.panel1.Controls.Add(this.txtBuyQuantity);
+            this.panel1.Controls.Add(this.txtPrice);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lbAvailable);
+            this.panel1.Controls.Add(this.groupBox9);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(18, 445);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(635, 324);
+            this.panel1.TabIndex = 89;
+            // 
+            // pbProductAvatar
+            // 
+            this.pbProductAvatar.Location = new System.Drawing.Point(27, 26);
+            this.pbProductAvatar.Name = "pbProductAvatar";
+            this.pbProductAvatar.Size = new System.Drawing.Size(117, 128);
+            this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbProductAvatar.TabIndex = 91;
+            this.pbProductAvatar.TabStop = false;
+            // 
+            // txtBuyTotal
+            // 
+            this.txtBuyTotal.Location = new System.Drawing.Point(465, 113);
+            this.txtBuyTotal.Name = "txtBuyTotal";
+            this.txtBuyTotal.ReadOnly = true;
+            this.txtBuyTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtBuyTotal.Size = new System.Drawing.Size(167, 27);
+            this.txtBuyTotal.TabIndex = 98;
+            this.txtBuyTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbProductName
+            // 
+            this.lbProductName.AutoSize = true;
+            this.lbProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbProductName.Location = new System.Drawing.Point(150, 26);
+            this.lbProductName.Name = "lbProductName";
+            this.lbProductName.Size = new System.Drawing.Size(236, 45);
+            this.lbProductName.TabIndex = 87;
+            this.lbProductName.Text = "Product Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(394, 114);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 28);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Total";
+            // 
+            // lbPrice
+            // 
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbPrice.Location = new System.Drawing.Point(150, 75);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(58, 28);
+            this.lbPrice.TabIndex = 92;
+            this.lbPrice.Text = "Price:";
+            // 
+            // txtBuyQuantity
+            // 
+            this.txtBuyQuantity.Location = new System.Drawing.Point(522, 75);
+            this.txtBuyQuantity.Name = "txtBuyQuantity";
+            this.txtBuyQuantity.ReadOnly = true;
+            this.txtBuyQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtBuyQuantity.Size = new System.Drawing.Size(110, 27);
+            this.txtBuyQuantity.TabIndex = 96;
+            this.txtBuyQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(249, 76);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPrice.Size = new System.Drawing.Size(110, 27);
+            this.txtPrice.TabIndex = 89;
+            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(394, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 28);
+            this.label6.TabIndex = 97;
+            this.label6.Text = "Buy quantity";
+            // 
+            // lbAvailable
+            // 
+            this.lbAvailable.AutoSize = true;
+            this.lbAvailable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbAvailable.Location = new System.Drawing.Point(151, 113);
+            this.lbAvailable.Name = "lbAvailable";
+            this.lbAvailable.Size = new System.Drawing.Size(96, 28);
+            this.lbAvailable.TabIndex = 94;
+            this.lbAvailable.Text = "Available:";
+            // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.txtCartDescription);
-            this.groupBox9.Location = new System.Drawing.Point(64, 597);
+            this.groupBox9.Controls.Add(this.txtDesc);
+            this.groupBox9.Location = new System.Drawing.Point(36, 185);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(559, 111);
+            this.groupBox9.Size = new System.Drawing.Size(570, 111);
             this.groupBox9.TabIndex = 95;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Description";
             // 
-            // txtCartDescription
+            // txtDesc
             // 
-            this.txtCartDescription.Location = new System.Drawing.Point(9, 27);
-            this.txtCartDescription.Multiline = true;
-            this.txtCartDescription.Name = "txtCartDescription";
-            this.txtCartDescription.ReadOnly = true;
-            this.txtCartDescription.Size = new System.Drawing.Size(542, 77);
-            this.txtCartDescription.TabIndex = 0;
+            this.txtDesc.Location = new System.Drawing.Point(6, 26);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.ReadOnly = true;
+            this.txtDesc.Size = new System.Drawing.Size(558, 79);
+            this.txtDesc.TabIndex = 88;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(286, 552);
+            this.textBox1.Location = new System.Drawing.Point(249, 114);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox1.Size = new System.Drawing.Size(110, 27);
             this.textBox1.TabIndex = 93;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbAvailable
-            // 
-            this.lbAvailable.AutoSize = true;
-            this.lbAvailable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbAvailable.Location = new System.Drawing.Point(188, 551);
-            this.lbAvailable.Name = "lbAvailable";
-            this.lbAvailable.Size = new System.Drawing.Size(96, 28);
-            this.lbAvailable.TabIndex = 94;
-            this.lbAvailable.Text = "Available:";
             // 
             // txtAvailable
             // 
@@ -276,54 +383,6 @@
             this.txtAvailable.Size = new System.Drawing.Size(110, 27);
             this.txtAvailable.TabIndex = 90;
             this.txtAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(286, 514);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPrice.Size = new System.Drawing.Size(110, 27);
-            this.txtPrice.TabIndex = 89;
-            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbPrice
-            // 
-            this.lbPrice.AutoSize = true;
-            this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbPrice.Location = new System.Drawing.Point(187, 513);
-            this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(58, 28);
-            this.lbPrice.TabIndex = 92;
-            this.lbPrice.Text = "Price:";
-            // 
-            // lbProductName
-            // 
-            this.lbProductName.AutoSize = true;
-            this.lbProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbProductName.Location = new System.Drawing.Point(187, 464);
-            this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(236, 45);
-            this.lbProductName.TabIndex = 87;
-            this.lbProductName.Text = "Product Name";
-            // 
-            // pbProductAvatar
-            // 
-            this.pbProductAvatar.Location = new System.Drawing.Point(64, 464);
-            this.pbProductAvatar.Name = "pbProductAvatar";
-            this.pbProductAvatar.Size = new System.Drawing.Size(117, 128);
-            this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbProductAvatar.TabIndex = 91;
-            this.pbProductAvatar.TabStop = false;
-            // 
-            // txtDesc
-            // 
-            this.txtDesc.Location = new System.Drawing.Point(18, 429);
-            this.txtDesc.Multiline = true;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.ReadOnly = true;
-            this.txtDesc.Size = new System.Drawing.Size(635, 336);
-            this.txtDesc.TabIndex = 88;
             // 
             // txtProductNameSearch
             // 
@@ -342,65 +401,6 @@
             this.label5.TabIndex = 50;
             this.label5.Text = "Search";
             // 
-            // cbCustomer
-            // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(382, 150);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(154, 28);
-            this.cbCustomer.TabIndex = 100;
-            // 
-            // txtBuyTotal
-            // 
-            this.txtBuyTotal.Location = new System.Drawing.Point(476, 551);
-            this.txtBuyTotal.Name = "txtBuyTotal";
-            this.txtBuyTotal.ReadOnly = true;
-            this.txtBuyTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBuyTotal.Size = new System.Drawing.Size(167, 27);
-            this.txtBuyTotal.TabIndex = 98;
-            this.txtBuyTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(416, 552);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 28);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Total";
-            // 
-            // txtBuyQuantity
-            // 
-            this.txtBuyQuantity.Location = new System.Drawing.Point(533, 513);
-            this.txtBuyQuantity.Name = "txtBuyQuantity";
-            this.txtBuyQuantity.ReadOnly = true;
-            this.txtBuyQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBuyQuantity.Size = new System.Drawing.Size(110, 27);
-            this.txtBuyQuantity.TabIndex = 96;
-            this.txtBuyQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(405, 512);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 28);
-            this.label6.TabIndex = 97;
-            this.label6.Text = "Buy quantity";
-            // 
-            // btnNewCustomer
-            // 
-            this.btnNewCustomer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnNewCustomer.Location = new System.Drawing.Point(546, 150);
-            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnNewCustomer.Name = "btnNewCustomer";
-            this.btnNewCustomer.Size = new System.Drawing.Size(50, 28);
-            this.btnNewCustomer.TabIndex = 101;
-            this.btnNewCustomer.Text = "New";
-            this.btnNewCustomer.UseVisualStyleBackColor = true;
-            // 
             // frmCreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -411,6 +411,7 @@
             this.Name = "frmCreateOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Order";
+            this.Load += new System.EventHandler(this.frmCreateOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -419,9 +420,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedProducts)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,7 +444,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lbAvailable;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.TextBox txtCartDescription;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
@@ -457,5 +459,6 @@
         private System.Windows.Forms.TextBox txtBuyQuantity;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNewCustomer;
+        private System.Windows.Forms.Panel panel1;
     }
 }
