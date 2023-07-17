@@ -131,8 +131,10 @@ namespace GiftHommieWinforms
             }
         }
 
+        private bool flagLoadSelected = false;
         private void LoadSelectedProducts()
         {
+            flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
             dgvSelectedProducts.DataSource = selectedProducts;
             dgvSelectedProducts.Columns["Id"].Visible = false;
@@ -154,18 +156,19 @@ namespace GiftHommieWinforms
 
             //Calculate and assign the total value for each row
             foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
-            {
-                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                row.Cells["Quantity"].Value = 1;
-                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                {
+                    dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
 
-                decimal total = quantity * price;
+                    decimal total = quantity * price;
 
-                row.Cells["Total"].Value = total;
-            }
+                    row.Cells["Total"].Value = total;
+                }
             dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
             dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
+
+            flagLoadSelected = false;
         }
         private void pbProductAvatar_Click(object sender, EventArgs e)
         {
@@ -218,7 +221,45 @@ namespace GiftHommieWinforms
 
         private void dgvProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            MessageBox.Show("dfsafd");
             LoadSelectedProducts();
+        }
+
+        private void dgvSelectedProducts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (flagLoadSelected == false)
+            //{
+            //    int c, r;
+
+            //    if (dgvProducts.RowCount > 0)
+            //    {
+            //        DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
+            //        c = e.ColumnIndex;
+            //        r = e.RowIndex;
+            //        dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+            //        int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+            //        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+            //        decimal total = quantity * price;
+
+            //        row.Cells["Total"].Value = total;
+            //    }
+            //}
+                
+        }
+
+        private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
+            {
+                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                decimal total = quantity * price;
+
+                row.Cells["Total"].Value = total;
+            }
         }
     }
 }

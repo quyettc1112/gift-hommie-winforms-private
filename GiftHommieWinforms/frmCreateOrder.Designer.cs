@@ -163,6 +163,8 @@
             this.dgvSelectedProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSelectedProducts.Size = new System.Drawing.Size(630, 270);
             this.dgvSelectedProducts.TabIndex = 96;
+            this.dgvSelectedProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellEndEdit);
+            this.dgvSelectedProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellValueChanged);
             // 
             // label1
             // 
