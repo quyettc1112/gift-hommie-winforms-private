@@ -293,50 +293,58 @@ namespace GiftHommieWinforms
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Order order = null;
-                if (checkShipping.Checked)
-                    order = new Order()
-                    {
-                        Name = txtReceiver.Text,
-                        Phone = txtPhone.Text,
-                        Address = txtAddress.Text,
-                        OrderTime = DateTime.Now,
-                        Status = "ORDERED",
-                        Username = selectedUser?.Username,
-                        ShippingMode = checkShipping.Checked
-                    };
-                else
-                    order = new Order()
-                    {
-                        Name = "",
-                        Phone = "",
-                        Address = "",
-                        Comment = "Buy at showroom.",
-                        OrderTime = DateTime.Now,
-                        Status = "ORDERED",
-                        Username = selectedUser?.Username,
-                        ShippingMode = checkShipping.Checked
-                    };
+            var confirmResult = MessageBox.Show("Complete the order?",
+                                   "Confirm to checkout",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
-                List<OrderDetail> orderDetails = new List<OrderDetail>();
-
-                foreach (Product product in selectedProducts)
+            if (confirmResult == DialogResult.Yes)
+                try
                 {
-                    OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.ProductId = product.Id;
-                    orderDetail.Quantity = product.Quantity;
-                    orderDetail.Price = product.Price;
-                    orderDetails.Add(orderDetail);
+                    Order order = null;
+                    if (checkShipping.Checked)
+                        order = new Order()
+                        {
+                            Name = txtReceiver.Text,
+                            Phone = txtPhone.Text,
+                            Address = txtAddress.Text,
+                            OrderTime = DateTime.Now,
+                            Status = "ORDERED",
+                            Username = selectedUser?.Username,
+                            ShippingMode = checkShipping.Checked
+                        };
+                    else
+                        order = new Order()
+                        {
+                            Name = "",
+                            Phone = "",
+                            Address = "",
+                            Comment = "Buy at showroom.",
+                            OrderTime = DateTime.Now,
+                            Status = "ORDERED",
+                            Username = selectedUser?.Username,
+                            ShippingMode = checkShipping.Checked
+                        };
+
+                    List<OrderDetail> orderDetails = new List<OrderDetail>();
+
+                    foreach (Product product in selectedProducts)
+                    {
+                        OrderDetail orderDetail = new OrderDetail();
+                        orderDetail.ProductId = product.Id;
+                        orderDetail.Quantity = product.Quantity;
+                        orderDetail.Price = product.Price;
+                        orderDetails.Add(orderDetail);
+                    }
+                    order.OrderDetails = orderDetails;
+                    orderRepository.Add(order);
+
+                    MessageBox.Show("Checkout Successfully!", "Completed");
+                    Close();
                 }
-                order.OrderDetails = orderDetails;
-                orderRepository.Add(order);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Checkout Fail!");
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Checkout Fail!");
+                }
             
         }
 
