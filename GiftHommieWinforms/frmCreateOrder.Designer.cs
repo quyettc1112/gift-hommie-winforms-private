@@ -31,12 +31,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupShipping = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkShipping = new System.Windows.Forms.CheckBox();
             this.Address = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtReceiver = new System.Windows.Forms.TextBox();
+            this.checkShipping = new System.Windows.Forms.CheckBox();
             this.txtOrderBy = new System.Windows.Forms.TextBox();
             this.btnNewCustomer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -132,17 +132,6 @@
             this.label6.TabIndex = 103;
             this.label6.Text = "RECEIVER";
             // 
-            // checkShipping
-            // 
-            this.checkShipping.AutoSize = true;
-            this.checkShipping.Location = new System.Drawing.Point(480, 132);
-            this.checkShipping.Name = "checkShipping";
-            this.checkShipping.Size = new System.Drawing.Size(133, 24);
-            this.checkShipping.TabIndex = 96;
-            this.checkShipping.Text = "Shipping Mode";
-            this.checkShipping.UseVisualStyleBackColor = true;
-            this.checkShipping.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
-            // 
             // Address
             // 
             this.Address.AutoSize = true;
@@ -190,6 +179,17 @@
             this.txtReceiver.Size = new System.Drawing.Size(146, 27);
             this.txtReceiver.TabIndex = 104;
             // 
+            // checkShipping
+            // 
+            this.checkShipping.AutoSize = true;
+            this.checkShipping.Location = new System.Drawing.Point(480, 132);
+            this.checkShipping.Name = "checkShipping";
+            this.checkShipping.Size = new System.Drawing.Size(133, 24);
+            this.checkShipping.TabIndex = 96;
+            this.checkShipping.Text = "Shipping Mode";
+            this.checkShipping.UseVisualStyleBackColor = true;
+            this.checkShipping.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
+            // 
             // txtOrderBy
             // 
             this.txtOrderBy.Location = new System.Drawing.Point(382, 94);
@@ -234,6 +234,7 @@
             this.dgvSelectedProducts.Size = new System.Drawing.Size(630, 270);
             this.dgvSelectedProducts.TabIndex = 96;
             this.dgvSelectedProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellEndEdit);
+            this.dgvSelectedProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvSelectedProducts_EditingControlShowing);
             // 
             // label1
             // 

@@ -133,7 +133,16 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvProducts.Rows)
             {
                 int id = (int)row.Cells["Id"].Value;
-                row.Cells["Check"].Value = selectedProducts.SingleOrDefault(x => x.Id == id) != null;
+               
+                if (row.Cells["Quantity"].Value.Equals("0"))
+                {
+                    row.Cells["Check"].ReadOnly = true;
+                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
+                    row.Cells["Check"].Value = false;
+                }
+                else 
+                    row.Cells["Check"].Value = selectedProducts.SingleOrDefault(x => x.Id == id) != null;
+
             }
         }
 
@@ -234,7 +243,27 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
             {
                 dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                int id = (int)row.Cells["Id"].Value;
+                var product = productRepository.Get(id);
+                int quantity =  Convert.ToInt32(row.Cells["Quantity"].Value);
+                if (quantity == 0)
+                {
+                    MessageBox.Show("Please enter a positive number.");
+                    row.Cells["Quantity"].Value = 1;
+                    quantity = 1;
+                }
+
+                if (quantity > product.Quantity)
+                    quantity = product.Quantity;
+                if (quantity == 0)
+                {
+                    MessageBox.Show($"Sold out '{product.Name}', can not select to checkout.");
+                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
+                    HomeLoadData();
+                    LoadSelectedProducts();
+                    return;
+                }
+
                 decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
 
                 decimal total = quantity * price;
@@ -315,5 +344,26 @@ namespace GiftHommieWinforms
         {
             groupShipping.Enabled = checkShipping.Checked;
         }
+
+        private void dgvSelectedProducts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvSelectedProducts.CurrentCell.ColumnIndex == 4) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }
