@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnNewCustomer = new System.Windows.Forms.Button();
             this.cbCustomer = new System.Windows.Forms.ComboBox();
@@ -41,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbProductAvatar = new System.Windows.Forms.PictureBox();
             this.txtBuyTotal = new System.Windows.Forms.TextBox();
@@ -57,31 +58,16 @@
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.AllowUserToDeleteRows = false;
-            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(18, 85);
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.RowTemplate.Height = 29;
-            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(635, 339);
-            this.dgvProducts.TabIndex = 1;
             // 
             // splitContainer1
             // 
@@ -106,12 +92,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvProducts);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.txtAvailable);
             this.splitContainer1.Panel2.Controls.Add(this.txtProductNameSearch);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.dgvProducts);
-            this.splitContainer1.Size = new System.Drawing.Size(1309, 781);
+            this.splitContainer1.Size = new System.Drawing.Size(1309, 717);
             this.splitContainer1.SplitterDistance = 636;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
@@ -237,6 +223,34 @@
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
+            // dgvProducts
+            // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Check});
+            this.dgvProducts.Location = new System.Drawing.Point(18, 65);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowHeadersWidth = 51;
+            this.dgvProducts.RowTemplate.Height = 29;
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProducts.Size = new System.Drawing.Size(638, 292);
+            this.dgvProducts.TabIndex = 91;
+            this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
+            this.dgvProducts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellDoubleClick);
+            // 
+            // Check
+            // 
+            this.Check.FalseValue = "false";
+            this.Check.HeaderText = "Choose";
+            this.Check.MinimumWidth = 8;
+            this.Check.Name = "Check";
+            this.Check.ReadOnly = true;
+            this.Check.TrueValue = "true";
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -251,7 +265,7 @@
             this.panel1.Controls.Add(this.lbAvailable);
             this.panel1.Controls.Add(this.groupBox9);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Location = new System.Drawing.Point(18, 445);
+            this.panel1.Location = new System.Drawing.Point(18, 379);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 324);
             this.panel1.TabIndex = 89;
@@ -387,7 +401,7 @@
             // txtProductNameSearch
             // 
             this.txtProductNameSearch.BackColor = System.Drawing.Color.White;
-            this.txtProductNameSearch.Location = new System.Drawing.Point(363, 32);
+            this.txtProductNameSearch.Location = new System.Drawing.Point(364, 32);
             this.txtProductNameSearch.Name = "txtProductNameSearch";
             this.txtProductNameSearch.Size = new System.Drawing.Size(290, 27);
             this.txtProductNameSearch.TabIndex = 49;
@@ -395,7 +409,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 36);
+            this.label5.Location = new System.Drawing.Point(310, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 20);
             this.label5.TabIndex = 50;
@@ -405,14 +419,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 781);
+            this.ClientSize = new System.Drawing.Size(1309, 717);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmCreateOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Order";
             this.Load += new System.EventHandler(this.frmCreateOrder_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -420,6 +433,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductAvatar)).EndInit();
@@ -430,8 +444,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox txtProductNameSearch;
         private System.Windows.Forms.Label label5;
@@ -460,5 +472,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNewCustomer;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
     }
 }

@@ -17,6 +17,7 @@ namespace GiftHommieWinforms
         private IProductRepository productRepository = new ProductRepository();
         private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
+        private Dictionary<int, bool> selectedItems = new Dictionary<int, bool>();
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -67,6 +68,7 @@ namespace GiftHommieWinforms
                 dgvProducts.Columns["OrderDetails"].Visible = false;
                 dgvProducts.Columns["isDelete"].Visible = false;
                 setRowNumber(dgvProducts);
+                LoadChoosenItems();
 
 
 
@@ -119,6 +121,15 @@ namespace GiftHommieWinforms
             txtAvailable.Text = string.Empty;
             txtDesc.Text = string.Empty;
         }
+
+        private void LoadChoosenItems()
+        {
+            foreach (DataGridViewRow row in dgvProducts.Rows)
+            {
+                int id = (int)row.Cells["Id"].Value;
+                row.Cells["Check"].Value = (selectedItems.ContainsKey(id)) ? selectedItems[id] : false;
+            }
+        }
         private void pbProductAvatar_Click(object sender, EventArgs e)
         {
 
@@ -134,6 +145,40 @@ namespace GiftHommieWinforms
 
         }
 
-        
+        private void dgvProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int c, r;
+
+            if (e.ColumnIndex == 0 && dgvProducts.RowCount > 0)
+            {
+                c = e.ColumnIndex;
+                r = e.RowIndex;
+
+                dgvProducts.Rows[r].Cells[c].Value = !((bool)dgvProducts.Rows[r].Cells[c].Value);
+
+                bool check = (bool)dgvProducts.Rows[r].Cells[c].Value;
+                int cartId = (int)dgvProducts.Rows[r].Cells["Id"].Value;
+
+                selectedItems[cartId] = check;                
+            }
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int c, r;
+
+            if (e.ColumnIndex == 0 && dgvProducts.RowCount > 0)
+            {
+                c = e.ColumnIndex;
+                r = e.RowIndex;
+
+                dgvProducts.Rows[r].Cells[c].Value = !((bool)dgvProducts.Rows[r].Cells[c].Value);
+
+                bool check = (bool)dgvProducts.Rows[r].Cells[c].Value;
+                int cartId = (int)dgvProducts.Rows[r].Cells["Id"].Value;
+
+                selectedItems[cartId] = check;
+            }
+        }
     }
 }
