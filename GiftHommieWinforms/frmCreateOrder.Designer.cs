@@ -155,7 +155,7 @@
             this.dgvSelectedProducts.Size = new System.Drawing.Size(630, 270);
             this.dgvSelectedProducts.TabIndex = 96;
             this.dgvSelectedProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellEndEdit);
-            this.dgvSelectedProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellValueChanged);
+            //this.dgvSelectedProducts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectedProducts_CellValueChanged);
             // 
             // label1
             // 
@@ -228,7 +228,7 @@
             this.dgvProducts.Size = new System.Drawing.Size(638, 292);
             this.dgvProducts.TabIndex = 91;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
-            this.dgvProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellEndEdit);
+            //this.dgvProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellEndEdit);
             // 
             // Check
             // 

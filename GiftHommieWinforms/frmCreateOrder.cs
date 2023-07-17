@@ -138,10 +138,13 @@ namespace GiftHommieWinforms
         private bool flagLoadSelected = false;
         private void LoadSelectedProducts()
         {
-            
+            if (selectedProducts == null)
+                selectedProducts = new List<Product>();
+            BindingSource bding = new BindingSource();
+            bding.DataSource = selectedProducts;
             flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
-            dgvSelectedProducts.DataSource = selectedProducts;
+            dgvSelectedProducts.DataSource = bding;           
             dgvSelectedProducts.Columns["Id"].Visible = false;
             dgvSelectedProducts.Columns["Avatar"].Visible = false;
             dgvSelectedProducts.Columns["Status"].Visible = false;
@@ -222,35 +225,6 @@ namespace GiftHommieWinforms
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void dgvProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            MessageBox.Show("dfsafd");
-            LoadSelectedProducts();
-        }
-
-        private void dgvSelectedProducts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (flagLoadSelected == false)
-            //{
-            //    int c, r;
-
-            //    if (dgvProducts.RowCount > 0)
-            //    {
-            //        DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
-            //        c = e.ColumnIndex;
-            //        r = e.RowIndex;
-            //        dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-            //        int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-            //        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-            //        decimal total = quantity * price;
-
-            //        row.Cells["Total"].Value = total;
-            //    }
-            //}
-                
         }
 
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
