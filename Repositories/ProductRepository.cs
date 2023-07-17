@@ -80,7 +80,7 @@ namespace Repositories
                             && product.Quantity <= unitInStockMax
                             && (categoryId == 0 || product.CategoryId == categoryId)
                             && product.Status == status
-                            && product.isDelete == false
+                            && product.IsDelete == false
                             ).ToList();
 
             return result;
@@ -135,7 +135,7 @@ namespace Repositories
                             && product.Quantity >= unitInStockMin
                             && product.Quantity <= unitInStockMax
                             && (categoryId == 0 || product.CategoryId == categoryId)
-                            && product.isDelete == false
+                            && product.IsDelete == false
                             ).ToList();
 
             return result;
