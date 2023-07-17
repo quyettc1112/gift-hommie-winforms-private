@@ -44,13 +44,9 @@
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbProductAvatar = new System.Windows.Forms.PictureBox();
-            this.txtBuyTotal = new System.Windows.Forms.TextBox();
             this.lbProductName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
-            this.txtBuyQuantity = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbAvailable = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
@@ -162,7 +158,6 @@
             this.dgvSelectedProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectedProducts.Location = new System.Drawing.Point(3, 271);
             this.dgvSelectedProducts.Name = "dgvSelectedProducts";
-            this.dgvSelectedProducts.ReadOnly = true;
             this.dgvSelectedProducts.RowHeadersWidth = 51;
             this.dgvSelectedProducts.RowTemplate.Height = 29;
             this.dgvSelectedProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -240,7 +235,7 @@
             this.dgvProducts.Size = new System.Drawing.Size(638, 292);
             this.dgvProducts.TabIndex = 91;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
-            //this.dgvProducts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellDoubleClick);
+            this.dgvProducts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellEndEdit);
             // 
             // Check
             // 
@@ -255,13 +250,9 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pbProductAvatar);
-            this.panel1.Controls.Add(this.txtBuyTotal);
             this.panel1.Controls.Add(this.lbProductName);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lbPrice);
-            this.panel1.Controls.Add(this.txtBuyQuantity);
             this.panel1.Controls.Add(this.txtPrice);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.lbAvailable);
             this.panel1.Controls.Add(this.groupBox9);
             this.panel1.Controls.Add(this.textBox1);
@@ -269,6 +260,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 324);
             this.panel1.TabIndex = 89;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pbProductAvatar
             // 
@@ -278,16 +270,6 @@
             this.pbProductAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProductAvatar.TabIndex = 91;
             this.pbProductAvatar.TabStop = false;
-            // 
-            // txtBuyTotal
-            // 
-            this.txtBuyTotal.Location = new System.Drawing.Point(465, 113);
-            this.txtBuyTotal.Name = "txtBuyTotal";
-            this.txtBuyTotal.ReadOnly = true;
-            this.txtBuyTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBuyTotal.Size = new System.Drawing.Size(167, 27);
-            this.txtBuyTotal.TabIndex = 98;
-            this.txtBuyTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbProductName
             // 
@@ -299,16 +281,6 @@
             this.lbProductName.TabIndex = 87;
             this.lbProductName.Text = "Product Name";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(394, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 28);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Total";
-            // 
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
@@ -319,16 +291,6 @@
             this.lbPrice.TabIndex = 92;
             this.lbPrice.Text = "Price:";
             // 
-            // txtBuyQuantity
-            // 
-            this.txtBuyQuantity.Location = new System.Drawing.Point(522, 75);
-            this.txtBuyQuantity.Name = "txtBuyQuantity";
-            this.txtBuyQuantity.ReadOnly = true;
-            this.txtBuyQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBuyQuantity.Size = new System.Drawing.Size(110, 27);
-            this.txtBuyQuantity.TabIndex = 96;
-            this.txtBuyQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(249, 76);
@@ -338,16 +300,6 @@
             this.txtPrice.Size = new System.Drawing.Size(110, 27);
             this.txtPrice.TabIndex = 89;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(394, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 28);
-            this.label6.TabIndex = 97;
-            this.label6.Text = "Buy quantity";
             // 
             // lbAvailable
             // 
@@ -466,10 +418,6 @@
         private System.Windows.Forms.Label Address;
         private System.Windows.Forms.DataGridView dgvSelectedProducts;
         private System.Windows.Forms.ComboBox cbCustomer;
-        private System.Windows.Forms.TextBox txtBuyTotal;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBuyQuantity;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNewCustomer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvProducts;

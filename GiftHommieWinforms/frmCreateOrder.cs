@@ -17,7 +17,7 @@ namespace GiftHommieWinforms
         private IProductRepository productRepository = new ProductRepository();
         private IOrderRepository orderRepository = new OrderRepository();
         private BindingSource bindingSource = null;
-        private Dictionary<int, bool> selectedItems = new Dictionary<int, bool>();
+        private List<Product> selectedProducts = new List<Product>();
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -127,13 +127,14 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvProducts.Rows)
             {
                 int id = (int)row.Cells["Id"].Value;
-                row.Cells["Check"].Value = (selectedItems.ContainsKey(id)) ? selectedItems[id] : false;
+                row.Cells["Check"].Value = selectedProducts.SingleOrDefault(x => x.Id == id) != null;
             }
         }
 
         private void LoadSelectedProducts()
         {
-            dgvSelectedProducts.DataSource = productRepository.GetAll().Where(p => selectedItems.ContainsKey(p.Id) && selectedItems[p.Id]).ToList();
+            dgvSelectedProducts.DataSource = null;
+            dgvSelectedProducts.DataSource = selectedProducts;
             dgvSelectedProducts.Columns["Id"].Visible = false;
             dgvSelectedProducts.Columns["Avatar"].Visible = false;
             dgvSelectedProducts.Columns["Status"].Visible = false;
@@ -142,6 +143,29 @@ namespace GiftHommieWinforms
             dgvSelectedProducts.Columns["CategoryId"].Visible = false;
             dgvSelectedProducts.Columns["OrderDetails"].Visible = false;
             dgvSelectedProducts.Columns["isDelete"].Visible = false;
+            dgvSelectedProducts.Columns["Quantity"].ReadOnly = false;
+            dgvSelectedProducts.Columns["Description"].Visible = false;
+            dgvSelectedProducts.Columns["Price"].ReadOnly = true;
+            dgvSelectedProducts.Columns["Name"].ReadOnly = true;
+            
+            // Add the column to the DataGridView
+            if (dgvSelectedProducts.Columns["Total"] == null)
+                dgvSelectedProducts.Columns.Add("Total", "Total");
+
+            //Calculate and assign the total value for each row
+            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
+            {
+                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                row.Cells["Quantity"].Value = 1;
+                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                decimal total = quantity * price;
+
+                row.Cells["Total"].Value = total;
+            }
+            dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
+            dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
         }
         private void pbProductAvatar_Click(object sender, EventArgs e)
         {
@@ -170,10 +194,30 @@ namespace GiftHommieWinforms
                 dgvProducts.Rows[r].Cells[c].Value = !((bool)dgvProducts.Rows[r].Cells[c].Value);
 
                 bool check = (bool)dgvProducts.Rows[r].Cells[c].Value;
-                int cartId = (int)dgvProducts.Rows[r].Cells["Id"].Value;
+                int id = (int)dgvProducts.Rows[r].Cells["Id"].Value;
 
-                selectedItems[cartId] = check;
+                if (check == false)
+                {
+                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
+                }
+                else if (selectedProducts.SingleOrDefault(p => p.Id == id) == null)
+                {
+                    Product product = productRepository.Get(id);
+                    product.Quantity = 1;
+                    selectedProducts.Add(product);
+                }
             }
+
+            LoadSelectedProducts();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
             LoadSelectedProducts();
         }
     }
