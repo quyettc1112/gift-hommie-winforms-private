@@ -19,12 +19,16 @@ namespace BusinessObjects
         public string Address { get; set; }
         public DateTime? OrderTime { get; set; }
         public string Message { get; set; }
-        public double? ShippingFee { get; set; }
         public string Status { get; set; }
         public string Comment { get; set; }
         public DateTime? LastUpdatedTime { get; set; }
         public bool? ShippingMode { get; set; }
+        public double? ShippingFee { get; set; }
+        public string Shipper { get; set; }
+        public string ShippingStatus { get; set; }
+        public DateTime? ShippedTime { get; set; }
 
+        public virtual User ShipperNavigation { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

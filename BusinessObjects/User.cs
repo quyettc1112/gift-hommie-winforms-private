@@ -10,7 +10,8 @@ namespace BusinessObjects
         public User()
         {
             Carts = new HashSet<Cart>();
-            Orders = new HashSet<Order>();
+            OrderShipperNavigations = new HashSet<Order>();
+            OrderUsernameNavigations = new HashSet<Order>();
         }
 
         public string Username { get; set; }
@@ -26,6 +27,7 @@ namespace BusinessObjects
         public bool? Enabled { get; set; }
 
         public virtual ICollection<Cart> Carts { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> OrderShipperNavigations { get; set; }
+        public virtual ICollection<Order> OrderUsernameNavigations { get; set; }
     }
 }

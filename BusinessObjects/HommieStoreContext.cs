@@ -102,7 +102,17 @@ namespace BusinessObjects
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ShippedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Shipper)
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ShippingMode).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ShippingStatus)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
@@ -113,8 +123,13 @@ namespace BusinessObjects
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
+                entity.HasOne(d => d.ShipperNavigation)
+                    .WithMany(p => p.OrderShipperNavigations)
+                    .HasForeignKey(d => d.Shipper)
+                    .HasConstraintName("FK_Shipper_Order_User");
+
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Orders)
+                    .WithMany(p => p.OrderUsernameNavigations)
                     .HasForeignKey(d => d.Username)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Orders_User");
@@ -133,12 +148,12 @@ namespace BusinessObjects
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_OrderDetail_Orders");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_OrderDetail_Product");
             });
 
@@ -197,11 +212,11 @@ namespace BusinessObjects
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Password)
-                    .IsRequired()
                     .HasMaxLength(59)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Phone)
+                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
