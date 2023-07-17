@@ -147,6 +147,30 @@ namespace GiftHommieWinforms
         }
 
         private bool flagLoadSelected = false;
+        private void AdditionalSelectedProducts()
+        {
+            // Add the column to the DataGridView
+            if (dgvSelectedProducts.Columns["Total"] == null)
+                dgvSelectedProducts.Columns.Add("Total", "Total");
+
+            //Calculate and assign the total value for each row
+            decimal sum = 0;
+            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
+            {
+                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                decimal total = quantity * price;
+
+                row.Cells["Total"].Value = total;
+                sum += total;
+            }
+
+            dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
+            dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
+            txtTotal.Text = sum.ToString();
+        }
         private void LoadSelectedProducts()
         {
             if (selectedProducts == null)
@@ -169,23 +193,8 @@ namespace GiftHommieWinforms
             dgvSelectedProducts.Columns["Price"].ReadOnly = true;
             dgvSelectedProducts.Columns["Name"].ReadOnly = true;
             btnCheckout.Enabled = selectedProducts.Count > 0;
-            // Add the column to the DataGridView
-            if (dgvSelectedProducts.Columns["Total"] == null)
-                dgvSelectedProducts.Columns.Add("Total", "Total");
 
-            //Calculate and assign the total value for each row
-            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
-                {
-                    dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                    decimal total = quantity * price;
-
-                    row.Cells["Total"].Value = total;
-                }
-            dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
-            dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
+            AdditionalSelectedProducts();
 
             flagLoadSelected = false;
         }
@@ -301,6 +310,10 @@ namespace GiftHommieWinforms
                 else
                     order = new Order()
                     {
+                        Name = "",
+                        Phone = "",
+                        Address = "",
+                        Comment = "Buy at showroom.",
                         OrderTime = DateTime.Now,
                         Status = "ORDERED",
                         Username = selectedUser?.Username,
