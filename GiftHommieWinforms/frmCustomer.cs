@@ -1,4 +1,5 @@
 ﻿using BusinessObjects;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -792,6 +793,7 @@ namespace GiftHommieWinforms
             LoadChoosenItems();
             SetCartCurrentProduct();
             LoadCartTotal();
+            LoadCartIndexPage();
         }
 
         //REFRESH CART
@@ -918,12 +920,15 @@ namespace GiftHommieWinforms
                 if (quantity < orderRepository.GetAvailableProductQuantity(productId))
                 {
                     Cart cart = bindingSource.Current as Cart;
-                    txtCartQuantity.Text = (quantity + 1).ToString();
+                    int p = bindingSource.Position;
                     cartRepository.UpdateCartQuantityById(cart.Id, quantity + 1);
-                    cart.Quantity = quantity + 1;
+                    /*cart.Quantity = quantity + 1;
                     cart.LastUpdatedTime = DateTime.Now;
                     LoadCartTotal();
-                    //SetCartVisible();
+                    //SetCartVisible();*/
+                    LoadCart();
+                    bindingSource.Position = p;
+                    lblCartIndex.Text = (p + 1).ToString();
                 }
                 else
                     MessageBox.Show("QUANTITY CANNOT MORE THAN AVAILABLE");
@@ -932,6 +937,12 @@ namespace GiftHommieWinforms
             {
 
             }
+        }
+        //LOAD CART INDEX PAGE
+        private void LoadCartIndexPage()
+        {
+            int p = bindingSource.Position;
+            lblCartIndex.Text = (p + 1).ToString();
         }
 
         private void btnDecrease_Click(object sender, EventArgs e)
@@ -943,11 +954,15 @@ namespace GiftHommieWinforms
                 if (quantity > 1)
                 {
                     Cart cart = bindingSource.Current as Cart;
-                    txtCartQuantity.Text = (quantity - 1).ToString();
+                    int p = bindingSource.Position;
                     cartRepository.UpdateCartQuantityById(cart.Id, quantity - 1);
-                    cart.Quantity = quantity - 1;
+                    /*cart.Quantity = quantity + 1;
                     cart.LastUpdatedTime = DateTime.Now;
                     LoadCartTotal();
+                    //SetCartVisible();*/
+                    LoadCart();
+                    bindingSource.Position = p;
+                    lblCartIndex.Text = (p + 1).ToString();
                 }
             }
             catch (Exception ex)
