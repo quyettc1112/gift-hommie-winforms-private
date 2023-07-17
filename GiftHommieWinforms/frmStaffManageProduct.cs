@@ -59,7 +59,7 @@ namespace GiftHommieWinforms
             txtDesciption.Text = Product.Description;
             txtQuantity.Text = Convert.ToString(Product.Quantity);
             txtImgUrl.Text = Product.Avatar;
-            Category c = productRepository.GetCategoryById(Product.CategoryId);
+            Category c = productRepository.GetCategoryById(Product.CategoryId.Value);
             cbProductCategory.Text = c.Name;
             pbProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
                                 "ImageLocation", bindingSource, "Avatar", true));

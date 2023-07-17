@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -25,21 +24,12 @@ namespace BusinessObjects
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                                        .SetBasePath(Directory.GetCurrentDirectory())
-                                        .AddJsonFile("appsettings.json", true, true).Build();
-            return config["ConnectionStrings:DefaultConnectionString"];
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=1234567890;database=HommieStore;TrustServerCertificate=True");
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=1234567890;database=HommieStore;TrustServerCertificate=True");
             }
         }
 
@@ -51,8 +41,7 @@ namespace BusinessObjects
             {
                 entity.ToTable("Cart");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.LastUpdatedTime).HasColumnType("datetime");
 
@@ -113,6 +102,8 @@ namespace BusinessObjects
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ShippingMode).HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
                     .IsUnicode(false);
@@ -147,6 +138,7 @@ namespace BusinessObjects
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_OrderDetail_Product");
             });
 
@@ -163,6 +155,8 @@ namespace BusinessObjects
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
                 entity.Property(e => e.Description).HasMaxLength(400);
+
+                entity.Property(e => e.IsDelete).HasColumnName("isDelete");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -213,7 +207,7 @@ namespace BusinessObjects
 
                 entity.Property(e => e.Role)
                     .IsRequired()
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 
