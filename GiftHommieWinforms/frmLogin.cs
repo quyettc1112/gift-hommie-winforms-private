@@ -20,9 +20,14 @@ namespace GiftHommieWinforms
         {
            
 
-            User user = null;
+            User user = null;           
             try
             {
+                if (txtEmail.Text.Length == 0)
+                    throw new Exception("Please enter the email/username/phone!");
+                if (txtPassword.Text.Length == 0)
+                    throw new Exception("Please enter the password!");
+
                 user = userRepository.Authenticate(txtEmail.Text, txtPassword.Text);
                 if (user != null)
                 {
