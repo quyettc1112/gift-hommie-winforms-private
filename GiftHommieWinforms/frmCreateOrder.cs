@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -133,11 +134,44 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvProducts.Rows)
             {
                 int id = (int)row.Cells["Id"].Value;
-                row.Cells["Check"].Value = selectedProducts.SingleOrDefault(x => x.Id == id) != null;
+               
+                if (row.Cells["Quantity"].Value.Equals("0"))
+                {
+                    row.Cells["Check"].ReadOnly = true;
+                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
+                    row.Cells["Check"].Value = false;
+                }
+                else 
+                    row.Cells["Check"].Value = selectedProducts.SingleOrDefault(x => x.Id == id) != null;
+
             }
         }
 
         private bool flagLoadSelected = false;
+        private void AdditionalSelectedProducts()
+        {
+            // Add the column to the DataGridView
+            if (dgvSelectedProducts.Columns["Total"] == null)
+                dgvSelectedProducts.Columns.Add("Total", "Total");
+
+            //Calculate and assign the total value for each row
+            decimal sum = 0;
+            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
+            {
+                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                decimal total = quantity * price;
+
+                row.Cells["Total"].Value = total;
+                sum += total;
+            }
+
+            dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
+            dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
+            txtTotal.Text = sum.ToString();
+        }
         private void LoadSelectedProducts()
         {
             if (selectedProducts == null)
@@ -160,23 +194,8 @@ namespace GiftHommieWinforms
             dgvSelectedProducts.Columns["Price"].ReadOnly = true;
             dgvSelectedProducts.Columns["Name"].ReadOnly = true;
             btnCheckout.Enabled = selectedProducts.Count > 0;
-            // Add the column to the DataGridView
-            if (dgvSelectedProducts.Columns["Total"] == null)
-                dgvSelectedProducts.Columns.Add("Total", "Total");
 
-            //Calculate and assign the total value for each row
-            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
-                {
-                    dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                    decimal total = quantity * price;
-
-                    row.Cells["Total"].Value = total;
-                }
-            dgvSelectedProducts.Columns["Total"].DisplayIndex = 4;
-            dgvSelectedProducts.Columns["Total"].DataPropertyName = "Total";
+            AdditionalSelectedProducts();
 
             flagLoadSelected = false;
         }
@@ -231,16 +250,7 @@ namespace GiftHommieWinforms
 
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
-            {
-                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                decimal total = quantity * price;
-
-                row.Cells["Total"].Value = total;
-            }
+            AdditionalSelectedProducts();
         }
 
         private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
@@ -253,48 +263,123 @@ namespace GiftHommieWinforms
             txtProductNameSearch.Text = "";
         }
 
+        private bool OrderValidation()
+        {
+            bool res = true;
+            if (checkShipping.Checked && txtReceiver.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Recevier is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && txtPhone.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Recevier's phone is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && txtAddress.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Address is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && !ValidatePhoneNumber(txtPhone.Text.Trim()))
+            {
+                res = false;
+                MessageBox.Show("Receiver's phone number is wrong VN's phone number format.", "Invalid Data");
+            }
+            else
+            if (txtOrderBy.Text.Trim().Length > 0 && !ValidatePhoneNumber(txtOrderBy.Text.Trim()))
+            {
+                res = false;
+                MessageBox.Show("User's phone number is wrong format.", "Invalid Data");
+
+            }
+            else
+            if (txtOrderBy.Text.Trim().Length > 0 && userRepository.Exist(txtOrderBy.Text.Trim()) == false)
+            {
+                res = false;
+                var confirmResult = MessageBox.Show("Create new user's infomation?","Phone number is not exist in system",
+                                   
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // ...
+                }
+                else
+                {
+                    res = true;
+                }
+            }
+
+
+
+            return res;
+        }
+        public static bool ValidatePhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^((\+84)|0)(3[2-9]|5[2689]|7[06789]|8[1-9]|9[0-9])(\d{7})$";
+            return Regex.IsMatch(phoneNumber, pattern);
+        }
+
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Order order = null;
-                if (checkShipping.Checked)
-                    order = new Order()
-                    {
-                        Name = txtReceiver.Text,
-                        Phone = txtPhone.Text,
-                        Address = txtAddress.Text,
-                        OrderTime = DateTime.Now,
-                        Status = "ORDERED",
-                        Username = selectedUser?.Username,
-                        ShippingMode = checkShipping.Checked
-                    };
-                else
-                    order = new Order()
-                    {
-                        OrderTime = DateTime.Now,
-                        Status = "ORDERED",
-                        Username = selectedUser?.Username,
-                        ShippingMode = checkShipping.Checked
-                    };
+            if (OrderValidation() == false)
+                return;
+            
+            var confirmResult = MessageBox.Show("Complete the order?",
+                                   "Confirm to checkout",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
-                List<OrderDetail> orderDetails = new List<OrderDetail>();
+            if (confirmResult == DialogResult.Yes)
+                try
+                {                    
+                    Order order = null;
+                    if (checkShipping.Checked)
+                        order = new Order()
+                        {
+                            Name = txtReceiver.Text,
+                            Phone = txtPhone.Text,
+                            Address = txtAddress.Text,
+                            OrderTime = DateTime.Now,
+                            Status = "ORDERED",
+                            Username = selectedUser?.Username,
+                            ShippingMode = checkShipping.Checked
+                        };
+                    else
+                        order = new Order()
+                        {
+                            Name = "",
+                            Phone = "",
+                            Address = "",
+                            Comment = "Buy at showroom.",
+                            OrderTime = DateTime.Now,
+                            Status = "ORDERED",
+                            Username = selectedUser?.Username,
+                            ShippingMode = checkShipping.Checked
+                        };
 
-                foreach (Product product in selectedProducts)
-                {
-                    OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.ProductId = product.Id;
-                    orderDetail.Quantity = product.Quantity;
-                    orderDetail.Price = product.Price;
-                    orderDetails.Add(orderDetail);
+                    List<OrderDetail> orderDetails = new List<OrderDetail>();
+
+                    foreach (Product product in selectedProducts)
+                    {
+                        OrderDetail orderDetail = new OrderDetail();
+                        orderDetail.ProductId = product.Id;
+                        orderDetail.Quantity = product.Quantity;
+                        orderDetail.Price = product.Price;
+                        orderDetails.Add(orderDetail);
+                    }
+                    order.OrderDetails = orderDetails;
+                    orderRepository.Add(order);
+
+                    MessageBox.Show("Checkout Successfully!", "Completed");
+                    Close();
                 }
-                order.OrderDetails = orderDetails;
-                orderRepository.Add(order);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Checkout Fail!");
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Checkout Fail!");
+                }
             
         }
 
@@ -314,6 +399,36 @@ namespace GiftHommieWinforms
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
             groupShipping.Enabled = checkShipping.Checked;
+        }
+
+        private void dgvSelectedProducts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvSelectedProducts.CurrentCell.ColumnIndex == 4) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Do you want to exit?",
+                                   "Confirmation",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (confirmResult == DialogResult.Yes)
+                Close();
         }
     }
 }
