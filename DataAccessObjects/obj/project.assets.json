@@ -6181,19 +6181,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\MSI\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj",
+      "projectUniqueName": "D:\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj",
       "projectName": "DataAccessObjects",
-      "projectPath": "D:\\GiftHubdotNet\\DataAccessObjects\\DataAccessObjects.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\GiftHubdotNet\\DataAccessObjects\\obj\\",
+      "projectPath": "D:\\gift-hommie-winforms\\DataAccessObjects\\DataAccessObjects.csproj",
+      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
+      "outputPath": "D:\\gift-hommie-winforms\\DataAccessObjects\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6201,14 +6206,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj": {
-              "projectPath": "D:\\GiftHubdotNet\\BusinessObjects\\BusinessObjects.csproj"
+            "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj": {
+              "projectPath": "D:\\gift-hommie-winforms\\BusinessObjects\\BusinessObjects.csproj"
             }
           }
         }
