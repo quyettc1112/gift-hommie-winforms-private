@@ -498,7 +498,7 @@
             // 
             splitContainer3.Panel2.Controls.Add(splitContainer5);
             splitContainer3.Size = new System.Drawing.Size(1226, 535);
-            splitContainer3.SplitterDistance = 206;
+            splitContainer3.SplitterDistance = 218;
             splitContainer3.SplitterWidth = 3;
             splitContainer3.TabIndex = 0;
             // 
@@ -524,7 +524,7 @@
             splitContainer4.Panel2.Controls.Add(btnSearchOrder);
             splitContainer4.Panel2.Controls.Add(txtOrderSearch);
             splitContainer4.Panel2.Controls.Add(dgvOrders);
-            splitContainer4.Size = new System.Drawing.Size(1226, 206);
+            splitContainer4.Size = new System.Drawing.Size(1226, 218);
             splitContainer4.SplitterDistance = 406;
             splitContainer4.TabIndex = 0;
             // 
@@ -646,7 +646,7 @@
             dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvOrders.Dock = System.Windows.Forms.DockStyle.Bottom;
-            dgvOrders.Location = new System.Drawing.Point(0, 32);
+            dgvOrders.Location = new System.Drawing.Point(0, 44);
             dgvOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvOrders.Name = "dgvOrders";
             dgvOrders.ReadOnly = true;
@@ -675,7 +675,7 @@
             // splitContainer5.Panel2
             // 
             splitContainer5.Panel2.Controls.Add(splitContainer6);
-            splitContainer5.Size = new System.Drawing.Size(1226, 326);
+            splitContainer5.Size = new System.Drawing.Size(1226, 314);
             splitContainer5.SplitterDistance = 406;
             splitContainer5.TabIndex = 0;
             // 
@@ -690,11 +690,11 @@
             gbOrderProduct.Controls.Add(txtOrderPrice);
             gbOrderProduct.Controls.Add(txtOrderQuantity);
             gbOrderProduct.Dock = System.Windows.Forms.DockStyle.Bottom;
-            gbOrderProduct.Location = new System.Drawing.Point(0, 44);
+            gbOrderProduct.Location = new System.Drawing.Point(0, 58);
             gbOrderProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gbOrderProduct.Name = "gbOrderProduct";
             gbOrderProduct.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            gbOrderProduct.Size = new System.Drawing.Size(404, 280);
+            gbOrderProduct.Size = new System.Drawing.Size(404, 254);
             gbOrderProduct.TabIndex = 99;
             gbOrderProduct.TabStop = false;
             gbOrderProduct.Text = "Product";
@@ -808,8 +808,8 @@
             // splitContainer6.Panel2
             // 
             splitContainer6.Panel2.Controls.Add(dgvOrderDetails);
-            splitContainer6.Size = new System.Drawing.Size(814, 324);
-            splitContainer6.SplitterDistance = 189;
+            splitContainer6.Size = new System.Drawing.Size(814, 312);
+            splitContainer6.SplitterDistance = 182;
             splitContainer6.SplitterWidth = 3;
             splitContainer6.TabIndex = 0;
             // 
@@ -838,7 +838,7 @@
             gbOrderTarget.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gbOrderTarget.Name = "gbOrderTarget";
             gbOrderTarget.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            gbOrderTarget.Size = new System.Drawing.Size(814, 189);
+            gbOrderTarget.Size = new System.Drawing.Size(814, 182);
             gbOrderTarget.TabIndex = 107;
             gbOrderTarget.TabStop = false;
             gbOrderTarget.Text = "Order >> ID";
@@ -1008,7 +1008,7 @@
             dgvOrderDetails.Name = "dgvOrderDetails";
             dgvOrderDetails.RowHeadersWidth = 51;
             dgvOrderDetails.RowTemplate.Height = 29;
-            dgvOrderDetails.Size = new System.Drawing.Size(814, 132);
+            dgvOrderDetails.Size = new System.Drawing.Size(814, 127);
             dgvOrderDetails.TabIndex = 0;
             dgvOrderDetails.DataSourceChanged += dgvOrderDetails_DataSourceChanged;
             dgvOrderDetails.SelectionChanged += dgvOrderDetails_SelectionChanged;
@@ -1041,7 +1041,7 @@
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new System.Drawing.Size(1226, 535);
-            splitContainer1.SplitterDistance = 294;
+            splitContainer1.SplitterDistance = 293;
             splitContainer1.TabIndex = 87;
             // 
             // groupBoxSearch
@@ -1060,7 +1060,7 @@
             groupBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             groupBoxSearch.Location = new System.Drawing.Point(0, 0);
             groupBoxSearch.Name = "groupBoxSearch";
-            groupBoxSearch.Size = new System.Drawing.Size(294, 535);
+            groupBoxSearch.Size = new System.Drawing.Size(293, 535);
             groupBoxSearch.TabIndex = 0;
             groupBoxSearch.TabStop = false;
             groupBoxSearch.Text = "Search";
@@ -1275,7 +1275,7 @@
             // 
             splitContainer2.Panel2.Controls.Add(dgvProducts);
             splitContainer2.Panel2.Controls.Add(btnClose);
-            splitContainer2.Size = new System.Drawing.Size(928, 535);
+            splitContainer2.Size = new System.Drawing.Size(929, 535);
             splitContainer2.SplitterDistance = 279;
             splitContainer2.SplitterWidth = 3;
             splitContainer2.TabIndex = 87;
@@ -1297,7 +1297,7 @@
             gbProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gbProduct.Name = "gbProduct";
             gbProduct.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            gbProduct.Size = new System.Drawing.Size(928, 279);
+            gbProduct.Size = new System.Drawing.Size(929, 279);
             gbProduct.TabIndex = 86;
             gbProduct.TabStop = false;
             // 
@@ -1323,7 +1323,7 @@
             gbSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gbSelect.Name = "gbSelect";
             gbSelect.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            gbSelect.Size = new System.Drawing.Size(922, 40);
+            gbSelect.Size = new System.Drawing.Size(923, 40);
             gbSelect.TabIndex = 92;
             gbSelect.TabStop = false;
             // 
@@ -1467,14 +1467,14 @@
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.RowTemplate.Height = 29;
             dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new System.Drawing.Size(928, 223);
+            dgvProducts.Size = new System.Drawing.Size(929, 223);
             dgvProducts.TabIndex = 0;
             dgvProducts.CellContentClick += dgvProducts_CellContentClick;
             // 
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(841, 206);
+            btnClose.Location = new System.Drawing.Point(842, 207);
             btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(74, 22);
@@ -1949,7 +1949,7 @@
             // button6
             // 
             button6.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button6.Location = new System.Drawing.Point(1674, 433);
+            button6.Location = new System.Drawing.Point(1674, 434);
             button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button6.Name = "button6";
             button6.Size = new System.Drawing.Size(74, 22);
