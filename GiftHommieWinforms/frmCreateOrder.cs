@@ -257,21 +257,32 @@ namespace GiftHommieWinforms
         {
             try
             {
-                Order order = new Order()
-                {
-                    Name = txtReceiver.Text,
-                    Phone = txtPhone.Text,
-                    Address = txtAddress.Text,
-                    OrderTime = DateTime.Now,
-                    Status = "ORDERED",
-                    Username = "duyduc"
-                };
+                Order order = null;
+                if (checkShipping.Checked)
+                    order = new Order()
+                    {
+                        Name = txtReceiver.Text,
+                        Phone = txtPhone.Text,
+                        Address = txtAddress.Text,
+                        OrderTime = DateTime.Now,
+                        Status = "ORDERED",
+                        Username = selectedUser?.Username,
+                        ShippingMode = checkShipping.Checked
+                    };
+                else
+                    order = new Order()
+                    {
+                        OrderTime = DateTime.Now,
+                        Status = "ORDERED",
+                        Username = selectedUser?.Username,
+                        ShippingMode = checkShipping.Checked
+                    };
+
                 List<OrderDetail> orderDetails = new List<OrderDetail>();
 
                 foreach (Product product in selectedProducts)
                 {
                     OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.Product = product;
                     orderDetail.ProductId = product.Id;
                     orderDetail.Quantity = product.Quantity;
                     orderDetail.Price = product.Price;
@@ -290,6 +301,19 @@ namespace GiftHommieWinforms
         private void txtOrderBy_TextChanged(object sender, EventArgs e)
         {
             selectedUser = userRepository.Get(txtOrderBy.Text.Trim());
+            if (selectedUser != null && txtReceiver.Text.Trim().Length == 0 
+                && txtReceiver.Text.Trim().Length == 0
+                && txtPhone.Text.Trim().Length == 0)
+            {
+                txtReceiver.Text = selectedUser.Name;
+                txtPhone.Text = selectedUser.Phone;
+                txtAddress.Text = selectedUser.Address;
+            }
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            groupShipping.Enabled = checkShipping.Checked;
         }
     }
 }
