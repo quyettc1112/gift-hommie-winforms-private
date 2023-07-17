@@ -26,10 +26,10 @@ namespace GiftHommieWinforms
         private void frmCreateOrder_Load(object sender, EventArgs e)
         {
             HomeLoadData();
-            List<User> users = userRepository.GetAll().Where(u => u.Role.Equals("CUSTOMER")).ToList();
+            List<User> users = userRepository.GetAll().Where(u => u.Role.Equals("CUSTOMER")).ToList();            
             cbCustomer.DataSource = users;
             cbCustomer.ValueMember = "Username";
-            cbCustomer.DisplayMember = "";
+            cbCustomer.DisplayMember = "Username";
         }
         private void HomeLoadData()
         {
