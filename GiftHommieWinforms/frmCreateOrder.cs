@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -249,36 +250,7 @@ namespace GiftHommieWinforms
 
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
-            {
-                dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                int id = (int)row.Cells["Id"].Value;
-                var product = productRepository.Get(id);
-                int quantity =  Convert.ToInt32(row.Cells["Quantity"].Value);
-                if (quantity == 0)
-                {
-                    MessageBox.Show("Please enter a positive number.");
-                    row.Cells["Quantity"].Value = 1;
-                    quantity = 1;
-                }
-
-                if (quantity > product.Quantity)
-                    quantity = product.Quantity;
-                if (quantity == 0)
-                {
-                    MessageBox.Show($"Sold out '{product.Name}', can not select to checkout.");
-                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
-                    HomeLoadData();
-                    LoadSelectedProducts();
-                    return;
-                }
-
-                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                decimal total = quantity * price;
-
-                row.Cells["Total"].Value = total;
-            }
+            AdditionalSelectedProducts();
         }
 
         private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
@@ -291,15 +263,78 @@ namespace GiftHommieWinforms
             txtProductNameSearch.Text = "";
         }
 
+        private bool OrderValidation()
+        {
+            bool res = true;
+            if (checkShipping.Checked && txtReceiver.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Recevier is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && txtPhone.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Recevier's phone is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && txtAddress.Text.Length == 0)
+            {
+                res = false;
+                MessageBox.Show("Address is required in shipping mode.", "Invalid Data");
+            }
+            else
+            if (checkShipping.Checked && !ValidatePhoneNumber(txtPhone.Text.Trim()))
+            {
+                res = false;
+                MessageBox.Show("Receiver's phone number is wrong VN's phone number format.", "Invalid Data");
+            }
+            else
+            if (txtOrderBy.Text.Trim().Length > 0 && !ValidatePhoneNumber(txtOrderBy.Text.Trim()))
+            {
+                res = false;
+                MessageBox.Show("User's phone number is wrong format.", "Invalid Data");
+
+            }
+            else
+            if (txtOrderBy.Text.Trim().Length > 0 && userRepository.Exist(txtOrderBy.Text.Trim()) == false)
+            {
+                res = false;
+                var confirmResult = MessageBox.Show("Create new user's infomation?","Phone number is not exist in system",
+                                   
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // ...
+                }
+                else
+                {
+                    res = true;
+                }
+            }
+
+
+
+            return res;
+        }
+        public static bool ValidatePhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^((\+84)|0)(3[2-9]|5[2689]|7[06789]|8[1-9]|9[0-9])(\d{7})$";
+            return Regex.IsMatch(phoneNumber, pattern);
+        }
+
         private void btnCheckout_Click(object sender, EventArgs e)
         {
+            if (OrderValidation() == false)
+                return;
+            
             var confirmResult = MessageBox.Show("Complete the order?",
                                    "Confirm to checkout",
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (confirmResult == DialogResult.Yes)
                 try
-                {
+                {                    
                     Order order = null;
                     if (checkShipping.Checked)
                         order = new Order()
