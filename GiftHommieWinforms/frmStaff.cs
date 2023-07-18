@@ -593,7 +593,6 @@ namespace GiftHommieWinforms
 
             txtOrderTotal.Text = (total + fee).ToString();
 
-
         }
         private string GetSelectedStatusValue()
         {

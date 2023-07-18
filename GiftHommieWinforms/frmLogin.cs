@@ -18,7 +18,6 @@ namespace GiftHommieWinforms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           
 
             User user = null;           
             try
@@ -67,6 +66,18 @@ namespace GiftHommieWinforms
                         form.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [ADMIN Mode]";
                         this.Hide();
                         form.Show();
+                    }
+                    else if (user.Role.Equals("SHIPPER")) {
+                        var form = new frmShipper();
+                        form.FormClosed += delegate
+                        {
+                            this.Close();
+                        };
+                        form.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [SHIPPER Mode]";
+                        this.Hide();
+                        form.Show();
+
+
                     }
                 }
                 else
