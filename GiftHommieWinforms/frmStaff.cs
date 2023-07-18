@@ -825,22 +825,22 @@ namespace GiftHommieWinforms
 
             tabcontrolStaff.SelectTab("tabHome");
             tabcontrolStaff.Focus();
-            btnAddToCreateOrder.Text = "Add To Cart";
+            //btnAddToCreateOrder.Text = "Add To Cart";
         }
 
         private void btnAddToCreateOrder_Click(object sender, EventArgs e)
         {
             btnCancelCreateOrder.Visible = true;
-            btnAddToCreateOrder.Text = "Add To Create Order";
+            //btnAddToCreateOrder.Text = "Add To Create Order";
         }
 
         private void btnCancelCreateOrder_Click(object sender, EventArgs e)
         {
-            if (btnAddToCreateOrder.Visible == true)
-            {
-                btnAddToCreateOrder.Text = "Create Order";
-                btnCancelCreateOrder.Visible = false;
-            }
+            //if (btnAddToCreateOrder.Visible == true)
+            //{
+            //    btnAddToCreateOrder.Text = "Create Order";
+            //    btnCancelCreateOrder.Visible = false;
+            //}
 
         }
         //====================shipper=================
@@ -961,6 +961,12 @@ namespace GiftHommieWinforms
         private void txtSearchOrder_TextChanged(object sender, EventArgs e)
         {
             LoadOrderShipping();
+        }
+
+        private void btnCreateOrder_Click_1(object sender, EventArgs e)
+        {
+            frmCreateOrder frmCreateOrder = new frmCreateOrder();
+            frmCreateOrder.ShowDialog();
         }
 
 
