@@ -202,7 +202,7 @@ namespace GiftHommieWinforms
             txtStaffPhone.DataBindings.Add("Text", source, "Phone");
             txtStaffAddress.DataBindings.Add("Text", source, "Address");
             txtStaffYob.DataBindings.Add("Text", source, "Yob");
-            txtStaffGender.DataBindings.Add("Text", source, "Sex");
+           // txtStaffGender.DataBindings.Add("Text", source, "Sex");
             pbStaffAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvStaffs.DataSource = source;
