@@ -30,5 +30,8 @@ namespace Repositories
         public int GetTotalOrderByDay(DateTime date);
         public int GetTotalOrderByWeek(DateTime date);
         public int GetTotalOrderByMonth(DateTime date);
+
+
+        // SHIPPER
     }
 }

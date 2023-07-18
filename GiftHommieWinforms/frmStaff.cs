@@ -47,7 +47,6 @@ namespace GiftHommieWinforms
                     return result;
                 }
             }
-
             // Nếu không thể chuyển đổi thành công hoặc không có giá trị, trả về giá trị mặc định (vd: -1)
             return -1;
         }
@@ -592,7 +591,6 @@ namespace GiftHommieWinforms
             }
 
             txtOrderTotal.Text = (total + fee).ToString();
-
 
         }
         private string GetSelectedStatusValue()
