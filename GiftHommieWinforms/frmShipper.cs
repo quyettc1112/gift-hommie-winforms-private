@@ -33,7 +33,9 @@ namespace GiftHommieWinforms
         public void LoadOrderToDelivery()
         {
             User user = GlobalData.AuthenticatedUser;
-            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && o.Status == "ORDERED" && o.Shipper == user.Username).ToList();
+            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && (o.Status == "ORDERED" || o.Status == "DELIVERYING" || o.Status == "FAIL") && o.Shipper == user.Username
+
+            ).ToList();
             LoadDataToGridView(order);
 
         }
@@ -57,7 +59,7 @@ namespace GiftHommieWinforms
             dgvTakeOrder.Columns["ShippingMode"].Visible = false;
             dgvTakeOrder.Columns["Shipper"].Visible = false;
             dgvTakeOrder.Columns["LastUpdatedTime"].Visible = false;
-            dgvTakeOrder.Columns["Status"].Visible = false;
+            //dgvTakeOrder.Columns["Status"].Visible = false;
             //dgvTakeOrder.Columns["ShippingFee"].Visible = false;
             dgvTakeOrder.Columns["ShippingStatus"].Visible = false;
             dgvTakeOrder.Columns["ShipperNavigation"].Visible = false;
@@ -160,10 +162,41 @@ namespace GiftHommieWinforms
         private void dgvTakeOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Order order = orderRepository.Get(GetSelectedRowOrderIdValue());
+            button1.Visible = true;
+            button2.Visible = true;
             if (order != null)
             {
                 LoadProductOrderInfo(order);
+                if (order.Status.Equals("DELIVERYING"))
+                {
+                    button1.BackColor = Color.Green;
+                    label8.Visible = true;
+                    button2.Visible = false;
+                    btnF.Visible = true;
+                    btnSuc.Visible = true;
+
+                }
+                else
+                {
+                    button1.BackColor = Color.LightBlue;
+                    label8.Visible = false;
+
+                    btnF.Visible = false;
+                    btnSuc.Visible = false;
+                }
+                if (order.Status.Equals("FAIL")) {
+                    button1.Visible = false;
+                    button2.Visible = false;
+                    label8.Visible = false;
+                    btnF.Visible = false;
+                    btnSuc.Visible = false;
+
+                }
+
+
             }
+
+
 
         }
 
@@ -217,6 +250,132 @@ namespace GiftHommieWinforms
         private void button2_Click(object sender, EventArgs e)
         {
 
+            DialogResult d;
+            try
+            {
+                Order p = orderRepository.Get(GetSelectedRowOrderIdValue());
+                if (p != null && p.Status.Equals("ORDERED"))
+                {
+                    d = MessageBox.Show("Confirm delivery refusal for " + p.Name + "?", "Refuse Delivery", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    p.Shipper = null;
+                    p.Status = "ORDERED";
+                    if (d == DialogResult.OK)
+                    {
+                        orderRepository.Update(p);
+                        LoadOrderToDelivery();
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Order is DELIVERYING");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult d;
+            try
+            {
+                Order p = orderRepository.Get(GetSelectedRowOrderIdValue());
+                if (p != null && p.Status.Equals("ORDERED"))
+                {
+                    d = MessageBox.Show("Confirm delivery  for " + p.Name + "?", "Confirm DELIVERYING", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    //p.Shipper = null;
+                    p.Status = "DELIVERYING";
+                    if (d == DialogResult.OK)
+                    {
+                        orderRepository.Update(p);
+                        LoadOrderToDelivery();
+                        button1.BackColor = Color.Green;
+                        label8.Visible = true;
+                        button2.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Order is DELIVERYING");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSuc_Click(object sender, EventArgs e)
+        {
+            DialogResult d;
+            try
+            {
+                Order p = orderRepository.Get(GetSelectedRowOrderIdValue());
+                if (p != null && p.Status.Equals("DELIVERYING"))
+                {
+                    d = MessageBox.Show("Delivery successful " + p.Name + "?", "Confirm Delivery successful", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    //p.Shipper = null;
+                    p.Status = "SUCCESSFUL";
+                    p.ShippedTime = DateTime.Now;
+                    if (d == DialogResult.OK)
+                    {
+                        orderRepository.Update(p);
+                        LoadOrderToDelivery();
+                        button1.BackColor = Color.Green;
+                        label8.Visible = true;
+                        button2.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Order is DELIVERYING");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnF_Click(object sender, EventArgs e)
+        {
+            DialogResult d;
+            try
+            {
+                Order p = orderRepository.Get(GetSelectedRowOrderIdValue());
+                if (p != null && p.Status.Equals("DELIVERYING"))
+                {
+                    d = MessageBox.Show("Delivery Fail " + p.Name + "?", "Confirm Delivery Fail", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    //p.Shipper = null;
+                    p.Status = "FAIL";
+                    p.ShippedTime = DateTime.Now;
+                    if (d == DialogResult.OK)
+                    {
+                        orderRepository.Update(p);
+                        LoadOrderToDelivery();
+                        button1.BackColor = Color.Green;
+                        label8.Visible = true;
+                        button2.Visible = false;
+
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Order is DELIVERYING");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

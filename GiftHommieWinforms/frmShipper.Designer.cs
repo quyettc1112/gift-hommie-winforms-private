@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new System.Windows.Forms.GroupBox();
+            btnF = new System.Windows.Forms.Button();
+            btnSuc = new System.Windows.Forms.Button();
+            label8 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             button2 = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
@@ -65,6 +68,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnF);
+            groupBox1.Controls.Add(btnSuc);
+            groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(button1);
@@ -75,6 +81,43 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Ordered";
+            // 
+            // btnF
+            // 
+            btnF.BackColor = System.Drawing.SystemColors.ControlDark;
+            btnF.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnF.Location = new System.Drawing.Point(434, 315);
+            btnF.Name = "btnF";
+            btnF.Size = new System.Drawing.Size(120, 42);
+            btnF.TabIndex = 6;
+            btnF.Text = "Fail";
+            btnF.UseVisualStyleBackColor = false;
+            btnF.Visible = false;
+            btnF.Click += btnF_Click;
+            // 
+            // btnSuc
+            // 
+            btnSuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            btnSuc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnSuc.Location = new System.Drawing.Point(308, 315);
+            btnSuc.Name = "btnSuc";
+            btnSuc.Size = new System.Drawing.Size(120, 42);
+            btnSuc.TabIndex = 5;
+            btnSuc.Text = "Sucessful";
+            btnSuc.UseVisualStyleBackColor = false;
+            btnSuc.Visible = false;
+            btnSuc.Click += btnSuc_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = System.Drawing.Color.Lime;
+            label8.Location = new System.Drawing.Point(132, 330);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(97, 15);
+            label8.TabIndex = 4;
+            label8.Text = "Order is in transit";
+            label8.Visible = false;
             // 
             // label1
             // 
@@ -97,11 +140,12 @@
             button2.TabIndex = 2;
             button2.Text = "Refuse";
             button2.UseVisualStyleBackColor = false;
+            button2.Visible = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
-            button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             button1.Location = new System.Drawing.Point(6, 313);
             button1.Name = "button1";
@@ -109,6 +153,8 @@
             button1.TabIndex = 1;
             button1.Text = "Delivery";
             button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
+            button1.Click += button1_Click;
             // 
             // dgvTakeOrder
             // 
@@ -407,5 +453,8 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtxAddress;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnF;
+        private System.Windows.Forms.Button btnSuc;
     }
 }
