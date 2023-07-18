@@ -508,5 +508,36 @@ namespace GiftHommieWinforms
             if (confirmResult == DialogResult.Yes)
                 Close();
         }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            string phone = txtOrderBy.Text.Trim();
+            frmCreateCustomerInCreateOrder frm = new frmCreateCustomerInCreateOrder()
+            {
+                InsertOrUpdate = phone.Length == 0,
+                Repository = userRepository,
+                Text = "Create new customer",
+            };
+            if (frm.InsertOrUpdate == false)
+            {
+                frm.TargetObject = new User()
+                {
+                    Name = "",
+                    Email = "user" + phone + "@gifthommie.com",
+                    Phone = phone,
+                    Username = "user" + phone,
+                    Address = "",
+                    Enabled = true
+                };
+            }
+            //MessageBox.Show(frm.InsertOrUpdate + "");
+            var dialogResult = frm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                txtOrderBy.Text = "";
+                txtOrderBy.Text = frm.TargetObject.Phone;
+            }
+        }
     }
 }
