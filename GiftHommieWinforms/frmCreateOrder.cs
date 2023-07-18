@@ -20,8 +20,9 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
+        private BindingSource selectedProductBding;
         private List<Product> selectedProducts = new List<Product>();
-        private User selectedUser = null;
+        private User selectedUser = null;        
         private User passersbyUser = new User()
         {
             Username = "passersby",
@@ -160,6 +161,7 @@ namespace GiftHommieWinforms
         private bool flagLoadSelected = false;
         private void AdditionalSelectedProducts()
         {
+            
             // Add the column to the DataGridView
             if (dgvSelectedProducts.Columns["Total"] == null)
                 dgvSelectedProducts.Columns.Add("Total", "Total");
@@ -169,7 +171,30 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
             {
                 dgvSelectedProducts.Columns["Total"].ReadOnly = true;
+                int id = (int)row.Cells["Id"].Value;
+                var product = productRepository.Get(id);
                 int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+
+                if (product.Quantity == 0)
+                {
+                    MessageBox.Show($"Sold out '{product.Name}', can not select it to checkout.");
+                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
+                    HomeLoadData();
+                    LoadSelectedProducts();
+                    return;
+                }
+
+                if (quantity == 0)
+                {
+                    MessageBox.Show("Please enter a positive number.");
+                    row.Cells["Quantity"].Value = 1;
+                    quantity = 1;
+                }
+
+                if (quantity > product.Quantity)
+                    quantity = product.Quantity;
+                
+
                 decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
 
                 decimal total = quantity * price;
@@ -186,11 +211,11 @@ namespace GiftHommieWinforms
         {
             if (selectedProducts == null)
                 selectedProducts = new List<Product>();
-            BindingSource bding = new BindingSource();
-            bding.DataSource = selectedProducts;
+            selectedProductBding = new BindingSource();
+            selectedProductBding.DataSource = selectedProducts;
             flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
-            dgvSelectedProducts.DataSource = bding;           
+            dgvSelectedProducts.DataSource = selectedProductBding;           
             dgvSelectedProducts.Columns["Id"].Visible = false;
             dgvSelectedProducts.Columns["Avatar"].Visible = false;
             dgvSelectedProducts.Columns["Status"].Visible = false;
@@ -260,7 +285,11 @@ namespace GiftHommieWinforms
 
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            int index = 0;
+            if (selectedProductBding != null)
+                index = selectedProductBding.Position;
             AdditionalSelectedProducts();
+            selectedProductBding.Position = index;
         }
 
         private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
