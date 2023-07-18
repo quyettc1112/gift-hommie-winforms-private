@@ -200,7 +200,6 @@
             // 
             // btnNewCustomer
             // 
-            this.btnNewCustomer.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnNewCustomer.Location = new System.Drawing.Point(546, 94);
             this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnNewCustomer.Name = "btnNewCustomer";
@@ -208,6 +207,7 @@
             this.btnNewCustomer.TabIndex = 101;
             this.btnNewCustomer.Text = "New";
             this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
             // label2
             // 
@@ -282,7 +282,6 @@
             // 
             // btnCheckout
             // 
-            this.btnCheckout.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCheckout.Location = new System.Drawing.Point(398, 579);
             this.btnCheckout.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCheckout.Name = "btnCheckout";
