@@ -39,13 +39,12 @@ namespace GiftHommieWinforms
 
         private void SetDataGridViewVisible(DataGridView dgvList)
         {
-            string[] columnNameList = { "Avatar", "Password", "Role", "Enabled",
-                            "OrderShipperNavigations", "OrderUsernameNavigations", "Carts", "Gender" };
+            string[] columnNameList = { "Avatar", "Password", "Role", "Enabled", "Carts", "Orders", "Gender" };
 
             //SET INVISIBLE COLUMN
             foreach (string column in columnNameList)
             {
-                dgvList.Columns[column].Visible = false;
+                //dgvList.Columns[column].Visible = false;
             }
         }
         //================ CUSTOMER AREA =========================
@@ -268,10 +267,7 @@ namespace GiftHommieWinforms
         }
         private void txtStaffAdd_Click(object sender, EventArgs e)
         {
-            var form = new frmStaffRegister
-            {
-                RegisterRole = "STAFF"
-            };
+            var form = new frmStaffRegister();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadStaffData();
@@ -294,135 +290,6 @@ namespace GiftHommieWinforms
             LoadStaffData();
         }
         //================ STAFF AREA ============================
-
-        //================ SHIPPER AREA ==========================
-        private List<User> LoadShipperFilter(List<User> list)
-        {
-            list = list.Where(u => u.Name.ToLower().Contains(txtShipperSearch.Text.ToLower())).ToList();
-            if (cbShipperStatus.SelectedIndex == 1)
-            {
-                list = list.Where(u => u.Enabled == true).ToList();
-            }
-            else if (cbShipperStatus.SelectedIndex == 2)
-            {
-                list = list.Where(u => u.Enabled == false).ToList();
-            }
-            return list;
-        }
-        private void LoadShipperData()
-        {
-            source = new BindingSource();
-            List<User> list = userRepository.GetUsersByRole(SHIPPER_ROLE);
-            list = LoadShipperFilter(list);
-
-            source.DataSource = list;
-            lblShipperFullname.DataBindings.Clear();
-            txtShipperEmail.DataBindings.Clear();
-            txtShipperUsername.DataBindings.Clear();
-            txtShipperPhone.DataBindings.Clear();
-            txtShipperAddress.DataBindings.Clear();
-            txtShipperYob.DataBindings.Clear();
-            txtShipperGender.DataBindings.Clear();
-
-            lblShipperFullname.DataBindings.Add("Text", source, "Name");
-            txtShipperEmail.DataBindings.Add("Text", source, "Email");
-            txtShipperUsername.DataBindings.Add("Text", source, "Username");
-            txtShipperPhone.DataBindings.Add("Text", source, "Phone");
-            txtShipperAddress.DataBindings.Add("Text", source, "Address");
-            txtShipperYob.DataBindings.Add("Text", source, "Yob");
-            txtShipperGender.DataBindings.Add("Text", source, "Sex");
-            pbShipperAvatar.ImageLocation = DEFAULT_AVATAR;
-
-            dgvShippers.DataSource = source;
-            btnShipperStatus.Enabled = false;
-            SetDataGridViewVisible(dgvShippers);
-        }
-
-        private void LoadShipperButton()
-        {
-            User u = userRepository.Get(txtShipperUsername.Text);
-            btnShipperStatus.Enabled = true;
-            if (u == null)
-            {
-                btnShipperStatus.Enabled = false;
-            }
-            else if (u.Enabled == true)
-            {
-                btnShipperStatus.Text = "BAN";
-                btnShipperStatus.ForeColor = Color.Red;
-            }
-            else
-            {
-                btnShipperStatus.Text = "ACTIVE";
-                btnShipperStatus.ForeColor = Color.Green;
-            }
-        }
-        //CLICK EVENT
-        private void tabShipper_Click(object sender, EventArgs e)
-        {
-            LoadShipperData();
-            cbShipperStatus.SelectedIndex = 0;
-        }
-        private void dgvShippers_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadShipperButton();
-        }
-
-        private void btnShipperStatus_Click(object sender, EventArgs e)
-        {
-            User u = userRepository.Get(txtShipperUsername.Text);
-
-            if (btnShipperStatus.Text == "BAN")
-            {
-                if (MessageBox.Show($"DO YOU WANT TO BAN {u.Name}?", "CONFIRM BOX", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    u.Enabled = false;
-
-                    userRepository.Update(u);
-                    LoadShipperData();
-                }
-            }
-            else
-            {
-                if (MessageBox.Show($"DO YOU WANT TO ACTIVE {u.Name}?", "CONFIRM BOX", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    u.Enabled = true;
-
-                    userRepository.Update(u);
-                    LoadShipperData();
-                }
-            }
-        }
-        private void txtShipperAdd_Click(object sender, EventArgs e)
-        {
-            var form = new frmStaffRegister
-            {
-                RegisterRole = "SHIPPER"
-            };
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadShipperData();
-            }
-        }
-        //RESET CLICK
-        private void btnShipperReset_Click(object sender, EventArgs e)
-        {
-            txtShipperSearch.Text = "";
-            cbShipperStatus.SelectedIndex = 0;
-            LoadShipperData();
-        }
-        //TEXT CHANGED EVENT
-        private void txtShipperSearch_TextChanged(object sender, EventArgs e)
-        {
-            LoadShipperData();
-        }
-        private void cbShipperStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadShipperData();
-        }
-
-        //================ SHIPPER AREA ==========================
-
         private void groupBoxSearch_Enter(object sender, EventArgs e)
         {
 
@@ -445,17 +312,13 @@ namespace GiftHommieWinforms
             }
             else if (tabControlAdmin.SelectedIndex == 2)
             {
-                tabShipper_Click(sender, e);
+                tabStatisticOveral_Click(sender, e);
             }
             else if (tabControlAdmin.SelectedIndex == 3)
             {
-                tabStatisticOveral_Click(sender, e);
-            }
-            else if (tabControlAdmin.SelectedIndex == 4)
-            {
                 tabRevenue_Click(sender, e);
             }
-            else if (tabControlAdmin.SelectedIndex == 5)
+            else if (tabControlAdmin.SelectedIndex == 4)
             {
                 tabOrder_Click(sender, e);
             }
@@ -527,9 +390,9 @@ namespace GiftHommieWinforms
             txtRevenueWeek.Text = orderRepository.GetRevenueByWeek(date).ToString() + " VND";
             txtRevenueMonth.Text = orderRepository.GetRevenueByMonth(date).ToString() + " VND";
 
-            txtOrderDay.Text = orderRepository.GetTotalOrderByDay(date).ToString();
+            txtOrderDay.Text = orderRepository.GetTotalOrderByDay(date).ToString() ;
             txtOrderWeek.Text = orderRepository.GetTotalOrderByWeek(date).ToString();
-            txtOrderMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString();
+            txtOrderMonth.Text = orderRepository.GetTotalOrderByMonth(date).ToString() ;
 
             txtCustomer.Text = userRepository.GetUsersQuantityByRole(CUSTOMER_ROLE).ToString();
             txtStaff.Text = userRepository.GetUsersQuantityByRole(STAFF_ROLE).ToString();
@@ -543,7 +406,7 @@ namespace GiftHommieWinforms
             int quantityStaff = userRepository.GetUsersQuantityByRole(STAFF_ROLE);
             int quantityShipper = userRepository.GetUsersQuantityByRole(SHIPPER_ROLE);
             var model = new PlotModel { Title = "Percentage of User" };
-
+            
             var series = new PieSeries();
             if (quantityCustomer != 0)
             {
@@ -593,7 +456,7 @@ namespace GiftHommieWinforms
             model.Axes.Add(xAxis);
             model.Axes.Add(yAxis);
             pvRevenue.Model = model;
-
+ 
         }
 
         private void tabOrder_Click(object sender, EventArgs e)
