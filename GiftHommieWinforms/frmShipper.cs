@@ -19,7 +19,9 @@ namespace GiftHommieWinforms
             InitializeComponent();
         }
         private IOrderRepository orderRepository = new OrderRepository();
+        private IProductRepository productRepository = new ProductRepository();
         private BindingSource bindingSource = null;
+        private BindingSource bindingSourceProduct = null;
         private BindingSource bindingSourceOrderShipper = null;
 
         private void frmShipper_Load(object sender, EventArgs e)
@@ -95,48 +97,126 @@ namespace GiftHommieWinforms
             return -1;
         }
 
+
+
         // Load Product In Order Đã chọn
-        public void LoadOrderInfo(Order order)
+        public void LoadProductOrderInfo(Order order)
         {
 
-            bindingSourceOrderInfo = new BindingSource();
-            bindingSourceOrderInfo.DataSource = order;
-            txtOrderStatus.DataBindings.Clear();
-            dtpOrderTime.DataBindings.Clear();
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = order.OrderDetails;
 
-            txtOrderReceiver.DataBindings.Clear();
-            txtOrderPhone.DataBindings.Clear();
-            txtOrderAddress.DataBindings.Clear();
-            txtOrderMessage.DataBindings.Clear();
-
-            txtOrderShippingFee.DataBindings.Clear();
-            txtOrderTotal.DataBindings.Clear();
-            rComment.DataBindings.Clear();
-
-            txtOrderStatus.DataBindings.Add("Text", bindingSourceOrderInfo, "Status");
-            dtpOrderTime.DataBindings.Add("Text", bindingSourceOrderInfo, "OrderTime");
-
-            txtOrderReceiver.DataBindings.Add("Text", bindingSourceOrderInfo, "Name");
-            txtOrderPhone.DataBindings.Add("Text", bindingSourceOrderInfo, "Phone");
-            txtOrderAddress.DataBindings.Add("Text", bindingSourceOrderInfo, "Address");
-            txtOrderMessage.DataBindings.Add("Text", bindingSourceOrderInfo, "Message");
-            rComment.DataBindings.Add("Text", bindingSourceOrderInfo, "Comment");
-
-            txtOrderShippingFee.DataBindings.Add("Text", bindingSourceOrderInfo, "ShippingFee");
-
-            double? total = 0;
-            double? fee = order.ShippingFee;
-            List<OrderDetail> orderDetails = orderRepository.GetOrderDetails(order.Id);
-            for (int i = 0; i < orderDetails.Count; i++)
+            foreach (OrderDetail o in order.OrderDetails)
             {
-                total = total + (orderDetails[i].Price * orderDetails[i].Quantity);
-
+                o.Product = productRepository.Get((int)o.ProductId);
             }
 
-            txtOrderTotal.Text = (total + fee).ToString();
+            dgvProductInfo.DataSource = bindingSource;
+
+            dgvProductInfo.Columns["Id"].Visible = false;
+            dgvProductInfo.Columns["OrderId"].Visible = false;
+            dgvProductInfo.Columns["ProductId"].Visible = false;
+            dgvProductInfo.Columns["Order"].Visible = false;
+            // dgvProductInfo.Columns["Product"].Visible = false;
+
+
+            txtOrderPrice.DataBindings.Clear();
+            txtOrderQuantity.DataBindings.Clear();
+            lbOrderProductName.DataBindings.Clear();
+            pbOrderProductAvatar.DataBindings.Clear();
+            int tmp = (int)((OrderDetail)bindingSource.Current).ProductId;
+
+            Product p = productRepository.Get(tmp);
+            bindingSourceProduct = new BindingSource();
+            bindingSourceProduct.DataSource = p;
+
+            lbOrderProductName.Text = p.Name;
+            txtOrderQuantity.DataBindings.Add("Text", bindingSource, "Quantity");
+            txtOrderPrice.DataBindings.Add("Text", bindingSource, "Price");
+            pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
+                                "ImageLocation", bindingSourceProduct, "Avatar", true));
+
+            // tbCountItem.Text = 
+            int count = 0;
+            double? Alltotal = 0;
+            foreach (OrderDetail o in order.OrderDetails)
+            {
+                count = (int)(count + o.Quantity);
+                Alltotal = Alltotal + (o.Price * o.Quantity);
+            }
+
+            tbCountItem.Text = count.ToString();
+            tbAllTotal.Text = Alltotal.ToString();
+            User user = GlobalData.AuthenticatedUser;
+
+            txtname.Text = order.Name;
+            txtPhone.Text = order.Phone;
+            txtxAddress.Text = order.Address;
+            txtTotal.Text = Alltotal.ToString();
+
 
         }
 
-      
+        private void dgvTakeOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Order order = orderRepository.Get(GetSelectedRowOrderIdValue());
+            if (order != null)
+            {
+                LoadProductOrderInfo(order);
+            }
+
+        }
+
+
+        private void dgvProductInfo_SelectionChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void dgvProductInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtOrderPrice.DataBindings.Clear();
+            txtOrderQuantity.DataBindings.Clear();
+            lbOrderProductName.DataBindings.Clear();
+            pbOrderProductAvatar.DataBindings.Clear();
+            Product p = productRepository.Get(GetSelectedRowProductIdValue());
+
+
+            bindingSourceProduct = new BindingSource();
+            bindingSourceProduct.DataSource = p;
+
+            lbOrderProductName.Text = p.Name;
+            txtOrderQuantity.DataBindings.Add("Text", bindingSource, "Quantity");
+            txtOrderPrice.DataBindings.Add("Text", bindingSource, "Price");
+            pbOrderProductAvatar.DataBindings.Add(new System.Windows.Forms.Binding(
+                                "ImageLocation", bindingSourceProduct, "Avatar", true));
+
+
+        }
+        private int GetSelectedRowProductIdValue()
+        {
+
+            if (dgvTakeOrder.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProductInfo.SelectedRows[0];
+                DataGridViewCell idCell = selectedRow.Cells["ProductId"];
+
+                if (dgvProductInfo.Columns["ProductId"].Visible == false && idCell != null && idCell.Value != null
+                    && int.TryParse(idCell.Value.ToString(), out int result))
+                {
+                    return result;
+                }
+            }
+
+            // Nếu không thể chuyển đổi thành công hoặc không có giá trị, trả về giá trị mặc định (vd: -1)
+            return -1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

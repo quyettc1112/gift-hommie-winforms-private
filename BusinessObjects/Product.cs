@@ -26,5 +26,10 @@ namespace BusinessObjects
         public virtual Category Category { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

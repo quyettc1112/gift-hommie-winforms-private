@@ -18,7 +18,8 @@ namespace GiftHommieWinforms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
+            txtEmail.Text = "hoangthien";
+            txtPassword.Text = "1";
             User user = null;           
             try
             {
