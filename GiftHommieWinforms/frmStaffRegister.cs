@@ -17,6 +17,7 @@ namespace GiftHommieWinforms
     public partial class frmStaffRegister : Form
     {
         IUserRepository userRepository = new UserRepository();
+        public string RegisterRole;
         public frmStaffRegister()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace GiftHommieWinforms
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
+            label1.Text += " " + RegisterRole;
             LoadDataToYob();
         }
 
@@ -117,7 +119,7 @@ namespace GiftHommieWinforms
                 {
                     Username = txtUserName.Text,
                     Email = txtEmail.Text,
-                    Role = "STAFF",
+                    Role = RegisterRole,
                     Password = txtPassword.Text,
                     Name = txtName.Text,
                     Phone = txtPhone.Text,
