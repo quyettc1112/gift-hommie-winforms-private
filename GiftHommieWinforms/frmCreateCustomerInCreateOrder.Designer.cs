@@ -50,7 +50,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(274, 85);
-            this.txtAddress.TabIndex = 28;
+            this.txtAddress.TabIndex = 4;
             // 
             // txtPhone
             // 
@@ -58,7 +58,7 @@
             this.txtPhone.Location = new System.Drawing.Point(143, 190);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(234, 30);
-            this.txtPhone.TabIndex = 27;
+            this.txtPhone.TabIndex = 2;
             // 
             // txtEmail
             // 
@@ -66,7 +66,7 @@
             this.txtEmail.Location = new System.Drawing.Point(143, 244);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(234, 30);
-            this.txtEmail.TabIndex = 24;
+            this.txtEmail.TabIndex = 3;
             // 
             // txtUsername
             // 
@@ -74,7 +74,7 @@
             this.txtUsername.Location = new System.Drawing.Point(143, 135);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(234, 30);
-            this.txtUsername.TabIndex = 23;
+            this.txtUsername.TabIndex = 1;
             // 
             // label9
             // 
@@ -132,7 +132,7 @@
             this.txtName.Location = new System.Drawing.Point(143, 83);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(234, 30);
-            this.txtName.TabIndex = 25;
+            this.txtName.TabIndex = 0;
             // 
             // label1
             // 
@@ -151,7 +151,7 @@
             this.btnSave.Location = new System.Drawing.Point(444, 246);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 38);
-            this.btnSave.TabIndex = 30;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -162,7 +162,7 @@
             this.btnCancel.Location = new System.Drawing.Point(560, 246);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 38);
-            this.btnCancel.TabIndex = 31;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

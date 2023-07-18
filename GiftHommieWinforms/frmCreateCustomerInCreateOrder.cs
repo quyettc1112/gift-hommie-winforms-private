@@ -58,14 +58,16 @@ namespace GiftHommieWinforms
             {
                 // VALIDATION
                 validForm = true;
-                if (txtPhone.Text.Length == 0)
-                    throw new Exception("Phone is required!");
-                if (txtEmail.Text.Length == 0)
-                    throw new Exception("Email is required!");
                 if (txtName.Text.Length == 0)
                     throw new Exception("Name is required!");
                 if (txtUsername.Text.Length == 0)
                     throw new Exception("Username is required!");
+                if (txtPhone.Text.Length == 0)
+                    throw new Exception("Phone is required!");
+                if (txtEmail.Text.Length == 0)
+                    throw new Exception("Email is required!");
+                
+                
                 if (ValidatePhoneNumber(txtPhone.Text) == false)
                     throw new Exception("Phone is not valid!");
                 if (ValidateEmail(txtEmail.Text) == false)
