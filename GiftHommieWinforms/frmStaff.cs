@@ -967,6 +967,8 @@ namespace GiftHommieWinforms
         {
             frmCreateOrder frmCreateOrder = new frmCreateOrder();
             frmCreateOrder.ShowDialog();
+            OrderInitDataForSearchComponent();
+            OrderLoadData();
         }
 
 
