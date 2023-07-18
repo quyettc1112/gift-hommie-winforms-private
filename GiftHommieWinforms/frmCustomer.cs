@@ -562,7 +562,7 @@ namespace GiftHommieWinforms
                 gbOrderTarget.Text = "Order >> " + order.Id;
                 txtOrderTotal.Text = orderRepository.GetTotalOfOrder(order.Id).ToString();
                 OrderDetailLoadData();
-                btnCancelOrder.Visible = order.Status.Equals("PENDING");
+                btnCancelOrder.Visible = order.Status.Equals("ORDERED");
             }
         }
         private void WhenSelectTheOrderDetail()
