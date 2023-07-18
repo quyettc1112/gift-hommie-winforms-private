@@ -44,7 +44,7 @@ namespace GiftHommieWinforms
             //SET INVISIBLE COLUMN
             foreach (string column in columnNameList)
             {
-                dgvList.Columns[column].Visible = false;
+                //dgvList.Columns[column].Visible = false;
             }
         }
         //================ CUSTOMER AREA =========================
@@ -104,7 +104,7 @@ namespace GiftHommieWinforms
             txtCustomerPhone.DataBindings.Add("Text", source, "Phone");
             txtCustomerAddress.DataBindings.Add("Text", source, "Address");
             txtCustomerYob.DataBindings.Add("Text", source, "Yob");
-            txtCustomerGender.DataBindings.Add("Text", source, "Sex");
+           //txtCustomerGender.DataBindings.Add("Text", source, "Sex");
             pbCustomerAvatar.ImageLocation = DEFAULT_AVATAR;
 
             dgvCustomers.DataSource = source;
