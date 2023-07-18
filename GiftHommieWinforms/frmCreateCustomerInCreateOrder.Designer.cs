@@ -45,35 +45,35 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddress.Location = new System.Drawing.Point(420, 121);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(264, 85);
+            this.txtAddress.Size = new System.Drawing.Size(274, 85);
             this.txtAddress.TabIndex = 28;
             // 
             // txtPhone
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPhone.Location = new System.Drawing.Point(143, 189);
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPhone.Location = new System.Drawing.Point(143, 190);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(189, 34);
+            this.txtPhone.Size = new System.Drawing.Size(234, 30);
             this.txtPhone.TabIndex = 27;
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.Location = new System.Drawing.Point(143, 243);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEmail.Location = new System.Drawing.Point(143, 244);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(189, 34);
+            this.txtEmail.Size = new System.Drawing.Size(234, 30);
             this.txtEmail.TabIndex = 24;
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUsername.Location = new System.Drawing.Point(143, 134);
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUsername.Location = new System.Drawing.Point(143, 135);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(189, 34);
+            this.txtUsername.Size = new System.Drawing.Size(234, 30);
             this.txtUsername.TabIndex = 23;
             // 
             // label9
@@ -128,10 +128,10 @@
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtName.Location = new System.Drawing.Point(143, 82);
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.Location = new System.Drawing.Point(143, 83);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(189, 34);
+            this.txtName.Size = new System.Drawing.Size(234, 30);
             this.txtName.TabIndex = 25;
             // 
             // label1
@@ -148,7 +148,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(435, 255);
+            this.btnSave.Location = new System.Drawing.Point(444, 246);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 38);
             this.btnSave.TabIndex = 30;
@@ -159,7 +159,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(551, 255);
+            this.btnCancel.Location = new System.Drawing.Point(560, 246);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 38);
             this.btnCancel.TabIndex = 31;
@@ -186,6 +186,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frmCreateCustomerInCreateOrder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCreateCustomerInCreateOrder";
             this.Load += new System.EventHandler(this.frm_Load);
             this.ResumeLayout(false);

@@ -66,9 +66,9 @@ namespace GiftHommieWinforms
                     throw new Exception("Name is required!");
                 if (txtUsername.Text.Length == 0)
                     throw new Exception("Username is required!");
-                if (ValidatePhoneNumber(txtPhone.Text))
+                if (ValidatePhoneNumber(txtPhone.Text) == false)
                     throw new Exception("Phone is not valid!");
-                if (ValidateEmail(txtEmail.Text))
+                if (ValidateEmail(txtEmail.Text) == false)
                     throw new Exception("Email is not valid!");
 
 
@@ -80,8 +80,10 @@ namespace GiftHommieWinforms
                     Phone = txtPhone.Text,
                     Email = txtEmail.Text,
                     Address = txtAddress.Text,
+                    Role = "CUSTOMER",
+                    Password = "123456"
                 };
-                if (InsertOrUpdate)
+                if (Repository.Exist(target.Username) == false)
                 {
                     Repository.Create(target);
                 }
