@@ -348,7 +348,7 @@ namespace GiftHommieWinforms
                 }
                 else
                 {
-                    res = true;
+                    res = true;                    
                 }
             }
 
@@ -392,6 +392,7 @@ namespace GiftHommieWinforms
                             Phone = txtPhone.Text,
                             Address = txtAddress.Text,
                             OrderTime = DateTime.Now,
+                            LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
@@ -404,6 +405,7 @@ namespace GiftHommieWinforms
                             Address = "",
                             Comment = "Buy at showroom.",
                             OrderTime = DateTime.Now,
+                            LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked

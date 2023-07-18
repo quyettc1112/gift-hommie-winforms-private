@@ -282,7 +282,6 @@
             // 
             // btnCheckout
             // 
-            this.btnCheckout.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCheckout.Location = new System.Drawing.Point(398, 579);
             this.btnCheckout.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCheckout.Name = "btnCheckout";
