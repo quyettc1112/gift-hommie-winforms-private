@@ -91,6 +91,7 @@ namespace GiftHommieWinforms
                 {
                     Repository.Update(target);
                 }
+                TargetObject = Repository.Get(target.Username);
                 MessageBox.Show("Save successfully.", this.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();

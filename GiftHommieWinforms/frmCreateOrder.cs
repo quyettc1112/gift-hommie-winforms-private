@@ -368,8 +368,9 @@ namespace GiftHommieWinforms
 
                     if (dialogResult == DialogResult.OK)
                     {
-                        res = true;
-                        txtOrderBy.Text = phone;
+                        res = true;                       
+                        txtOrderBy.Text = "";
+                        txtOrderBy.Text = frm.TargetObject.Phone;
                     }
                 }
                 else
