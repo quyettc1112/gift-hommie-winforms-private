@@ -22,6 +22,16 @@ namespace GiftHommieWinforms
         private BindingSource bindingSource = null;
         private List<Product> selectedProducts = new List<Product>();
         private User selectedUser = null;
+        private User passersbyUser = new User()
+        {
+            Username = "passersby",
+            Email = "passersby@gmail.com",
+            Role = "CUSTOMER",
+            Password = "123456",
+            Name = "Passersby",
+            Phone = "0900000000",
+            Enabled = true
+        };
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -334,7 +344,17 @@ namespace GiftHommieWinforms
 
             if (confirmResult == DialogResult.Yes)
                 try
-                {                    
+                {
+                    if (selectedUser == null) {
+                        if (userRepository.Exist(passersbyUser.Username))
+                            selectedUser = userRepository.Get(passersbyUser.Username);
+                        else
+                        {
+                            userRepository.Create(passersbyUser);
+                            selectedUser = userRepository.Get(passersbyUser.Username);
+                        }
+                    }
+
                     Order order = null;
                     if (checkShipping.Checked)
                         order = new Order()
