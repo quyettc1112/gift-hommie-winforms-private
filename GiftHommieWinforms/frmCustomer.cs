@@ -1177,7 +1177,9 @@ namespace GiftHommieWinforms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs() == true)
+            if (ValidateInputs() == true
+                && userRepository.CheckEmail(txtEmail.Text) == false
+                && userRepository.CheckEmail(txtPhone.Text) == true)
             {
                 User user = new User()
                 {
@@ -1206,6 +1208,9 @@ namespace GiftHommieWinforms
                     ChangeReadOnly();
                     LoadUserProfile();
                 }
+            }
+            else {
+                MessageBox.Show("Duplicated Value");
             }
 
         }

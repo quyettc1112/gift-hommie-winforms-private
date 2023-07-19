@@ -788,7 +788,9 @@ namespace GiftHommieWinforms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs() == true)
+            if (ValidateInputs() == true
+                && userRepository.CheckEmail(txtEmail.Text) == false
+                && userRepository.CheckEmail(txtEmail.Text) == false)
             {
                 User user = new User()
                 {
@@ -817,6 +819,11 @@ namespace GiftHommieWinforms
                     LoadUserProfile();
                 }
             }
+            else {
+                MessageBox.Show("Dupplicated Value");
+            }
+
+
         }
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
