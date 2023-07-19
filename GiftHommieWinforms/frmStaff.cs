@@ -453,7 +453,7 @@ namespace GiftHommieWinforms
             {
                 tabOrder_Click(sender, e);
             }
-            else if (tabcontrolStaff.SelectedIndex == 4)
+            else if (tabcontrolStaff.SelectedIndex == 3)
             {
                 tabShipper_Click(sender, e);
             }

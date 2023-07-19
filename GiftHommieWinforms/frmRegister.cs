@@ -84,6 +84,12 @@ namespace GiftHommieWinforms
                 txtName.Clear();
                 return false;
             }
+            if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text) != null)
+            {
+                MessageBox.Show("Phone was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
             if (userRepository.Exist(txtUserName.Text))
             {
                 MessageBox.Show("User Name đã trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

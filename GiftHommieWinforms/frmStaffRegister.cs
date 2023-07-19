@@ -95,6 +95,12 @@ namespace GiftHommieWinforms
                 txtUserName.Clear();
                 return false;
             }
+            if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text) != null)
+            {
+                MessageBox.Show("Phone was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
             if (userRepository.Exist(txtEmail.Text))
             {
                 MessageBox.Show("Email was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
