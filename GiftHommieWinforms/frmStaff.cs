@@ -70,8 +70,6 @@ namespace GiftHommieWinforms
 
         }
 
-
-
         // Hàm này để hiển thị Product Detail và có thể Update Product
         private void DgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -818,7 +816,30 @@ namespace GiftHommieWinforms
             }
         }
 
-        
+        private void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+
+            frmCreateOrder frmCreateOrder = new frmCreateOrder();
+            frmCreateOrder.ShowDialog();
+            OrderInitDataForSearchComponent();
+            OrderLoadData();
+        }
+
+        private void btnAddToCreateOrder_Click(object sender, EventArgs e)
+        {
+            btnCancelCreateOrder.Visible = true;
+            btnAddToCreateOrder.Text = "Add To Create Order";
+        }
+
+        private void btnCancelCreateOrder_Click(object sender, EventArgs e)
+        {
+            if (btnAddToCreateOrder.Visible == true)
+            {
+                btnAddToCreateOrder.Text = "Create Order";
+                btnCancelCreateOrder.Visible = false;
+            }
+
+        }
         //====================shipper=================
         private void tabShipper_Click(object sender, EventArgs e)
         {
@@ -937,14 +958,6 @@ namespace GiftHommieWinforms
         private void txtSearchOrder_TextChanged(object sender, EventArgs e)
         {
             LoadOrderShipping();
-        }
-
-        private void btnCreateOrder_Click_1(object sender, EventArgs e)
-        {
-            frmCreateOrder frmCreateOrder = new frmCreateOrder();
-            frmCreateOrder.ShowDialog();
-            OrderInitDataForSearchComponent();
-            OrderLoadData();
         }
 
 

@@ -389,6 +389,14 @@ namespace GiftHommieWinforms
             return Regex.IsMatch(phoneNumber, pattern);
         }
 
+        private bool IsGuest(User user)
+        {
+            if (user == null)
+                return true;
+            if (user.Username.ToLower().Equals(passersbyUser.Username.ToLower()))
+                return true;
+            return false;
+        }
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             if (OrderValidation() == false)
@@ -421,19 +429,21 @@ namespace GiftHommieWinforms
                             OrderTime = DateTime.Now,
                             LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
+                            ShippingFee = 20000,
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
                         };
                     else
                         order = new Order()
                         {
-                            Name = "",
-                            Phone = "",
-                            Address = "",
+                            Name = IsGuest(selectedUser) ? "Guest" : selectedUser.Name,
+                            Phone = IsGuest(selectedUser) ? "" : selectedUser.Phone,
+                            Address = IsGuest(selectedUser) ? "" : selectedUser.Address,
                             Comment = "Buy at showroom.",
                             OrderTime = DateTime.Now,
+                            ShippingFee = 20000,
                             LastUpdatedTime = DateTime.Now,
-                            Status = "ORDERED",
+                            Status = "SUCCESSFUL",
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
                         };

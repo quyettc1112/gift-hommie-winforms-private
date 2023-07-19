@@ -49,7 +49,6 @@ namespace GiftHommieWinforms
                 OrderTime = DateTime.Now,
                 Message = txtMessage.Text,
                 Status = DEFAULT_STATUS,
-                ShippingMode = true,
                 //Comment = txtComment.Text,
                 Phone = txtPhone.Text,
             };
@@ -113,6 +112,7 @@ namespace GiftHommieWinforms
                 Order order = GetCurrentOrder();
                 List<OrderDetail> details = GetCurrentOrderDetail();
                 
+
                 order.OrderDetails = details;
                 orderRepository.Add(order);
             }
