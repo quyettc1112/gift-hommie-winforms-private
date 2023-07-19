@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace GiftHommieWinforms
 {
@@ -766,6 +767,7 @@ namespace GiftHommieWinforms
                 txtAddress.ReadOnly = false;
                 txtYob.ReadOnly = false;
                 btnSave.Visible = true;
+                txtEmail.ReadOnly = false;
             }
             else
             {
@@ -781,6 +783,7 @@ namespace GiftHommieWinforms
             txtPhone.ReadOnly = true;
             txtAddress.ReadOnly = true;
             txtYob.ReadOnly = true;
+            txtEmail.ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -790,7 +793,7 @@ namespace GiftHommieWinforms
                 User user = new User()
                 {
                     Username = GlobalData.AuthenticatedUser.Username,
-                    Email = GlobalData.AuthenticatedUser.Email,
+                    Email = txtEmail.Text,
                     Role = GlobalData.AuthenticatedUser.Role,
                     Password = GlobalData.AuthenticatedUser.Password,
                     Name = txtName.Text,
@@ -958,6 +961,34 @@ namespace GiftHommieWinforms
         private void txtSearchOrder_TextChanged(object sender, EventArgs e)
         {
             LoadOrderShipping();
+        }
+        int count = 0;
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Email;
+            if (userRepository.CheckEmail(txtEmail.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtEmail.Text)
+                {
+                    MessageBox.Show("Email Dupplicated");
+                }
+
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Phone;
+            if (userRepository.CheckEmail(txtPhone.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtPhone.Text)
+                {
+                    MessageBox.Show("Phone Dupplicated");
+                }
+
+            }
         }
 
 

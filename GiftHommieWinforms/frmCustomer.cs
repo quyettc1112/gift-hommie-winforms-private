@@ -1111,7 +1111,8 @@ namespace GiftHommieWinforms
                 string.IsNullOrEmpty(txtName.Text) ||
                 string.IsNullOrEmpty(txtYob.Text) ||
                 string.IsNullOrEmpty(txtAddress.Text) ||
-                string.IsNullOrEmpty(txtPhone.Text)
+                string.IsNullOrEmpty(txtPhone.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text)
 
                 )
 
@@ -1155,6 +1156,7 @@ namespace GiftHommieWinforms
                 txtAddress.ReadOnly = false;
                 txtYob.ReadOnly = false;
                 btnSave.Visible = true;
+                txtEmail.ReadOnly = false;
             }
             else
             {
@@ -1170,6 +1172,7 @@ namespace GiftHommieWinforms
             txtPhone.ReadOnly = true;
             txtAddress.ReadOnly = true;
             txtYob.ReadOnly = true;
+            txtEmail.ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -1179,7 +1182,7 @@ namespace GiftHommieWinforms
                 User user = new User()
                 {
                     Username = GlobalData.AuthenticatedUser.Username,
-                    Email = GlobalData.AuthenticatedUser.Email,
+                    Email = txtEmail.Text,
                     Role = GlobalData.AuthenticatedUser.Role,
                     Password = GlobalData.AuthenticatedUser.Password,
                     Name = txtName.Text,
@@ -1188,7 +1191,8 @@ namespace GiftHommieWinforms
                     Yob = int.Parse(txtYob.Text.Trim()),
                     Address = txtAddress.Text,
                     Avatar = GlobalData.AuthenticatedUser.Avatar,
-                    Enabled = GlobalData.AuthenticatedUser.Enabled
+                    Enabled = GlobalData.AuthenticatedUser.Enabled,
+
                 };
                 DialogResult d;
                 d = MessageBox.Show($"Save User ", "Profile", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
@@ -1214,6 +1218,34 @@ namespace GiftHommieWinforms
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
+        }
+        int count = 0;
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Email;
+            if (userRepository.CheckEmail(txtEmail.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtEmail.Text)
+                {
+                    MessageBox.Show("Email Dupplicated");
+                }
+
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Phone;
+            if (userRepository.CheckEmail(txtPhone.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtPhone.Text)
+                {
+                    MessageBox.Show("Phone Dupplicated");
+                }
+
+            }
         }
     }
 

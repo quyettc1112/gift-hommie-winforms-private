@@ -16,5 +16,8 @@ namespace Repositories
         void Save(User entity);
         void Delete(string usernameOrEmail);
         User Authenticate(string usernameOrEmail, string password);
+
+        // Check Duplicated
+        bool CheckEmail(string usernameOrEmail);
     }
 }

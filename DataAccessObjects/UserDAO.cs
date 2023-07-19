@@ -77,6 +77,7 @@ namespace DataAccessObjects
                                                                 item.Username.ToLower().Equals(usernameOrEmailOrPhone.ToLower())
                                                             || item.Email.ToLower().Equals(usernameOrEmailOrPhone.ToLower())
                                                             || item.Phone.Equals(usernameOrEmailOrPhone));
+                    
                 }
             }
             catch (Exception ex)
@@ -106,13 +107,15 @@ namespace DataAccessObjects
                 throw new Exception(ex.Message);
             }
         }
-
+       
         public void Update(User entity)
         {
             try
             {
                 using (var context = new HommieStoreContext())
                 {
+                    
+
                     if (Instance.Exist(entity.Username) == false)
                     {
                         throw new Exception("The entity does not exist: " + entity.Username);
@@ -127,6 +130,32 @@ namespace DataAccessObjects
                 throw new Exception(ex.Message + " : " + entity.Username);
             }
         }
+
+
+        public bool IsUsernameExists(string username)
+        {
+            using (var context = new HommieStoreContext())
+            {
+                return context.Users.Any(u => u.Username == username);
+            }
+        }
+
+        public bool IsEmailExists(string email)
+        {
+            using (var context = new HommieStoreContext())
+            {
+                return context.Users.Any(u => u.Email.Equals(email));
+            }
+        }
+
+        public bool IsPhoneExists(string phone)
+        {
+            using (var context = new HommieStoreContext())
+            {
+                return context.Users.Any(u => u.Phone == phone);
+            }
+        }
+
 
         public void Save(User entity)
         {
