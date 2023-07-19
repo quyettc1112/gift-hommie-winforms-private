@@ -6,10 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace GiftHommieWinforms
 {
@@ -17,6 +19,7 @@ namespace GiftHommieWinforms
     public partial class frmStaffRegister : Form
     {
         IUserRepository userRepository = new UserRepository();
+        public string RegisterRole;
         public frmStaffRegister()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace GiftHommieWinforms
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
+            label1.Text += " " + RegisterRole;
             LoadDataToYob();
         }
 
@@ -117,7 +121,7 @@ namespace GiftHommieWinforms
                 {
                     Username = txtUserName.Text,
                     Email = txtEmail.Text,
-                    Role = "STAFF",
+                    Role = RegisterRole,
                     Password = txtPassword.Text,
                     Name = txtName.Text,
                     Phone = txtPhone.Text,

@@ -59,9 +59,9 @@
             label1.Location = new System.Drawing.Point(430, 9);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(335, 54);
+            label1.Size = new System.Drawing.Size(210, 54);
             label1.TabIndex = 0;
-            label1.Text = "ADD NEW STAFF";
+            label1.Text = "ADD NEW";
             // 
             // label2
             // 
@@ -160,7 +160,7 @@
             // 
             txtUserName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtUserName.Location = new System.Drawing.Point(259, 90);
-            txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtUserName.Margin = new System.Windows.Forms.Padding(4);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new System.Drawing.Size(235, 39);
             txtUserName.TabIndex = 9;
@@ -169,7 +169,7 @@
             // 
             txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtEmail.Location = new System.Drawing.Point(259, 156);
-            txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtEmail.Margin = new System.Windows.Forms.Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new System.Drawing.Size(235, 39);
             txtEmail.TabIndex = 10;
@@ -178,7 +178,7 @@
             // 
             txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtName.Location = new System.Drawing.Point(259, 230);
-            txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtName.Margin = new System.Windows.Forms.Padding(4);
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(235, 39);
             txtName.TabIndex = 11;
@@ -188,7 +188,7 @@
             cbYob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             cbYob.FormattingEnabled = true;
             cbYob.Location = new System.Drawing.Point(259, 299);
-            cbYob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            cbYob.Margin = new System.Windows.Forms.Padding(4);
             cbYob.Name = "cbYob";
             cbYob.Size = new System.Drawing.Size(235, 40);
             cbYob.TabIndex = 12;
@@ -197,7 +197,7 @@
             // 
             rbMale.AutoSize = true;
             rbMale.Location = new System.Drawing.Point(690, 92);
-            rbMale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            rbMale.Margin = new System.Windows.Forms.Padding(4);
             rbMale.Name = "rbMale";
             rbMale.Size = new System.Drawing.Size(75, 29);
             rbMale.TabIndex = 13;
@@ -209,7 +209,7 @@
             // 
             rbFemale.AutoSize = true;
             rbFemale.Location = new System.Drawing.Point(805, 92);
-            rbFemale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            rbFemale.Margin = new System.Windows.Forms.Padding(4);
             rbFemale.Name = "rbFemale";
             rbFemale.Size = new System.Drawing.Size(93, 29);
             rbFemale.TabIndex = 14;
@@ -221,7 +221,7 @@
             // 
             txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtPhone.Location = new System.Drawing.Point(690, 160);
-            txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtPhone.Margin = new System.Windows.Forms.Padding(4);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new System.Drawing.Size(235, 39);
             txtPhone.TabIndex = 15;
@@ -230,7 +230,7 @@
             // 
             txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtAddress.Location = new System.Drawing.Point(690, 230);
-            txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtAddress.Margin = new System.Windows.Forms.Padding(4);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new System.Drawing.Size(329, 105);
@@ -240,7 +240,7 @@
             // 
             txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtPassword.Location = new System.Drawing.Point(286, 378);
-            txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            txtPassword.Margin = new System.Windows.Forms.Padding(4);
             txtPassword.Name = "txtPassword";
             txtPassword.ReadOnly = true;
             txtPassword.Size = new System.Drawing.Size(208, 39);
@@ -251,7 +251,7 @@
             // 
             btnRegister.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnRegister.Location = new System.Drawing.Point(342, 519);
-            btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            btnRegister.Margin = new System.Windows.Forms.Padding(4);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new System.Drawing.Size(152, 55);
             btnRegister.TabIndex = 20;
@@ -263,7 +263,7 @@
             // 
             btnReset.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnReset.Location = new System.Drawing.Point(555, 519);
-            btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            btnReset.Margin = new System.Windows.Forms.Padding(4);
             btnReset.Name = "btnReset";
             btnReset.Size = new System.Drawing.Size(152, 55);
             btnReset.TabIndex = 21;
@@ -296,7 +296,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            Margin = new System.Windows.Forms.Padding(4);
             Name = "frmStaffRegister";
             Text = "CREATE STAFF PAGE";
             Load += frmRegister_Load;
