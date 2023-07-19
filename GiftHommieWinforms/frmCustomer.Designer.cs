@@ -328,6 +328,7 @@
             txtPhone.ReadOnly = true;
             txtPhone.Size = new System.Drawing.Size(175, 32);
             txtPhone.TabIndex = 32;
+            txtPhone.TextChanged += txtPhone_TextChanged;
             // 
             // txtGender
             // 
@@ -368,6 +369,7 @@
             txtEmail.ReadOnly = true;
             txtEmail.Size = new System.Drawing.Size(175, 32);
             txtEmail.TabIndex = 28;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtUserName
             // 
@@ -1474,7 +1476,7 @@
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(842, 208);
+            btnClose.Location = new System.Drawing.Point(842, 211);
             btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(74, 22);
@@ -1949,7 +1951,7 @@
             // button6
             // 
             button6.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button6.Location = new System.Drawing.Point(1674, 435);
+            button6.Location = new System.Drawing.Point(1674, 438);
             button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button6.Name = "button6";
             button6.Size = new System.Drawing.Size(74, 22);

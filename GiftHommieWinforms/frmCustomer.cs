@@ -1172,7 +1172,7 @@ namespace GiftHommieWinforms
             txtPhone.ReadOnly = true;
             txtAddress.ReadOnly = true;
             txtYob.ReadOnly = true;
-            txtEmail.ReadOnly= true;
+            txtEmail.ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -1192,7 +1192,7 @@ namespace GiftHommieWinforms
                     Address = txtAddress.Text,
                     Avatar = GlobalData.AuthenticatedUser.Avatar,
                     Enabled = GlobalData.AuthenticatedUser.Enabled,
-                   
+
                 };
                 DialogResult d;
                 d = MessageBox.Show($"Save User ", "Profile", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
@@ -1218,6 +1218,34 @@ namespace GiftHommieWinforms
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
+        }
+        int count = 0;
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Email;
+            if (userRepository.CheckEmail(txtEmail.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtEmail.Text)
+                {
+                    MessageBox.Show("Email Dupplicated");
+                }
+
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Phone;
+            if (userRepository.CheckEmail(txtPhone.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtPhone.Text)
+                {
+                    MessageBox.Show("Phone Dupplicated");
+                }
+
+            }
         }
     }
 

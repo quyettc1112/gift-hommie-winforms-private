@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace GiftHommieWinforms
 {
@@ -960,6 +961,34 @@ namespace GiftHommieWinforms
         private void txtSearchOrder_TextChanged(object sender, EventArgs e)
         {
             LoadOrderShipping();
+        }
+        int count = 0;
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Email;
+            if (userRepository.CheckEmail(txtEmail.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtEmail.Text)
+                {
+                    MessageBox.Show("Email Dupplicated");
+                }
+
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            String Oldemail = GlobalData.AuthenticatedUser.Phone;
+            if (userRepository.CheckEmail(txtPhone.Text) == true)
+            {
+                count++;
+                if (count > 1 && Oldemail != txtPhone.Text)
+                {
+                    MessageBox.Show("Phone Dupplicated");
+                }
+
+            }
         }
 
 

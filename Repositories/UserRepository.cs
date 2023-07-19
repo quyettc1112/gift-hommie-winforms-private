@@ -34,5 +34,8 @@ namespace Repositories
             
             return user;
         }
+
+        public bool CheckEmail(string usernameOrEmail) => UserDAO.Instance.Exist(usernameOrEmail);
+    
     }
 }
