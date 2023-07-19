@@ -1174,12 +1174,20 @@ namespace GiftHommieWinforms
             txtYob.ReadOnly = true;
             txtEmail.ReadOnly = true;
         }
+        private bool CheckDupplicated()
+        {
+            User Oldemail = GlobalData.AuthenticatedUser;
+
+            if (userRepository.CheckEmail(txtEmail.Text) != true || txtEmail.Text.Equals(Oldemail.Email) || userRepository.CheckEmail(txtPhone.Text) != true)
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs() == true
-                && userRepository.CheckEmail(txtEmail.Text) == false
-                && userRepository.CheckEmail(txtPhone.Text) == true)
+            if (ValidateInputs() == true && CheckDupplicated() == true)
             {
                 User user = new User()
                 {
@@ -1234,10 +1242,10 @@ namespace GiftHommieWinforms
                 count++;
                 if (count > 1 && Oldemail != txtEmail.Text)
                 {
-                    MessageBox.Show("Email Dupplicated");
+                    emaildup.Visible = true;
                 }
-
             }
+            else { emaildup.Visible = false; }
         }
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
@@ -1248,10 +1256,11 @@ namespace GiftHommieWinforms
                 count++;
                 if (count > 1 && Oldemail != txtPhone.Text)
                 {
-                    MessageBox.Show("Phone Dupplicated");
+                    phonedup.Visible = true;
                 }
 
             }
+            else { phonedup.Visible = false; }
         }
     }
 
