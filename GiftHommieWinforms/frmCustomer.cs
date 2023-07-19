@@ -381,6 +381,9 @@ namespace GiftHommieWinforms
                 dgvOrders.Columns["LastUpdatedTime"].Visible = false;
                 dgvOrders.Columns["User"].Visible = false;
                 dgvOrders.Columns["OrderDetails"].Visible = false;
+                dgvOrders.Columns["Shipper"].Visible = false;
+                dgvOrders.Columns["ShipperNavigation"].Visible = false;
+                dgvOrders.Columns["Message"].Visible = false;
                 //dgvOrders.Columns["Comment"].Visible = false;
                 //dgvOrders.Columns["Status"].Visible = false;
 

@@ -429,6 +429,7 @@ namespace GiftHommieWinforms
                             OrderTime = DateTime.Now,
                             LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
+                            ShippingFee = 20000,
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
                         };
@@ -440,6 +441,7 @@ namespace GiftHommieWinforms
                             Address = IsGuest(selectedUser) ? "" : selectedUser.Address,
                             Comment = "Buy at showroom.",
                             OrderTime = DateTime.Now,
+                            ShippingFee = 20000,
                             LastUpdatedTime = DateTime.Now,
                             Status = "SUCCESSFUL",
                             Username = selectedUser?.Username,
