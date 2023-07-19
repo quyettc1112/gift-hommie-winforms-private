@@ -441,7 +441,7 @@ namespace GiftHommieWinforms
                             Address = IsGuest(selectedUser) ? "" : selectedUser.Address,
                             Comment = "Buy at showroom.",
                             OrderTime = DateTime.Now,
-                            ShippingFee = 20000,
+                            ShippingFee = 0,
                             LastUpdatedTime = DateTime.Now,
                             Status = "SUCCESSFUL",
                             Username = selectedUser?.Username,
