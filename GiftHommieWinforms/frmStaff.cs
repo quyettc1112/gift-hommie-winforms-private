@@ -820,29 +820,7 @@ namespace GiftHommieWinforms
             }
         }
 
-        private void btnCreateOrder_Click(object sender, EventArgs e)
-        {
-
-            tabcontrolStaff.SelectTab("tabHome");
-            tabcontrolStaff.Focus();
-            //btnAddToCreateOrder.Text = "Add To Cart";
-        }
-
-        private void btnAddToCreateOrder_Click(object sender, EventArgs e)
-        {
-            btnCancelCreateOrder.Visible = true;
-            //btnAddToCreateOrder.Text = "Add To Create Order";
-        }
-
-        private void btnCancelCreateOrder_Click(object sender, EventArgs e)
-        {
-            //if (btnAddToCreateOrder.Visible == true)
-            //{
-            //    btnAddToCreateOrder.Text = "Create Order";
-            //    btnCancelCreateOrder.Visible = false;
-            //}
-
-        }
+        
         //====================shipper=================
         private void tabShipper_Click(object sender, EventArgs e)
         {
