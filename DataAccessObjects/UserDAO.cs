@@ -132,7 +132,7 @@ namespace DataAccessObjects
         {
             try
             {
-                if (Instance.Exist(entity.Username) || Instance.Exist(entity.Email))
+                if (Instance.Exist(entity.Username) || Instance.Exist(entity.Email) || Instance.Exist(entity.Phone))
                     Instance.Update(entity);
                 else
                     Instance.Create(entity);

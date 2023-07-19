@@ -766,6 +766,7 @@ namespace GiftHommieWinforms
                 txtAddress.ReadOnly = false;
                 txtYob.ReadOnly = false;
                 btnSave.Visible = true;
+                txtEmail.ReadOnly = false;
             }
             else
             {
@@ -781,6 +782,7 @@ namespace GiftHommieWinforms
             txtPhone.ReadOnly = true;
             txtAddress.ReadOnly = true;
             txtYob.ReadOnly = true;
+            txtEmail.ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -790,7 +792,7 @@ namespace GiftHommieWinforms
                 User user = new User()
                 {
                     Username = GlobalData.AuthenticatedUser.Username,
-                    Email = GlobalData.AuthenticatedUser.Email,
+                    Email = txtEmail.Text,
                     Role = GlobalData.AuthenticatedUser.Role,
                     Password = GlobalData.AuthenticatedUser.Password,
                     Name = txtName.Text,

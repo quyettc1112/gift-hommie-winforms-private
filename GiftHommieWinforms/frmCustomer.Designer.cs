@@ -362,7 +362,7 @@
             // txtEmail
             // 
             txtEmail.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtEmail.Location = new System.Drawing.Point(164, 171);
+            txtEmail.Location = new System.Drawing.Point(164, 173);
             txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
@@ -1474,7 +1474,7 @@
             // btnClose
             // 
             btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            btnClose.Location = new System.Drawing.Point(842, 207);
+            btnClose.Location = new System.Drawing.Point(842, 208);
             btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(74, 22);
@@ -1949,7 +1949,7 @@
             // button6
             // 
             button6.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button6.Location = new System.Drawing.Point(1674, 434);
+            button6.Location = new System.Drawing.Point(1674, 435);
             button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button6.Name = "button6";
             button6.Size = new System.Drawing.Size(74, 22);
