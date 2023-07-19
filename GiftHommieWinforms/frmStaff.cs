@@ -819,9 +819,10 @@ namespace GiftHommieWinforms
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
 
-            tabcontrolStaff.SelectTab("tabHome");
-            tabcontrolStaff.Focus();
-            btnAddToCreateOrder.Text = "Add To Cart";
+            frmCreateOrder frmCreateOrder = new frmCreateOrder();
+            frmCreateOrder.ShowDialog();
+            OrderInitDataForSearchComponent();
+            OrderLoadData();
         }
 
         private void btnAddToCreateOrder_Click(object sender, EventArgs e)
