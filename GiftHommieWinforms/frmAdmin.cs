@@ -609,40 +609,54 @@ namespace GiftHommieWinforms
             //Chinh lai status o day nha
             txtSuccessflOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count().ToString();
             txtFailOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count().ToString();
-            txtPendingOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "PENDING" }).Count().ToString();
-            txtConfirmOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count().ToString();
+            txtConfirmOrder.Text = orderRepository.GetOrdersWithStatus(new List<string> { "ORDERED" }).Count().ToString();
 
 
             List<int> totalOrderList = GetTotalOrderListOfYear(date);
-
-            //draw pie chart 
-            int quantitySuccess = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count();
-            int quantityFail = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count();
-            int quantityPending = orderRepository.GetOrdersWithStatus(new List<string> { "PENDING" }).Count();
-            int quantityConfirm = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count();
-
             var model = new PlotModel { Title = "Percentage of Order Status by Year" };
 
             var series = new PieSeries();
+            int quantitySuccess = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count();
             if (quantitySuccess != 0)
             {
                 series.Slices.Add(new PieSlice("Success", quantitySuccess) { Fill = OxyColors.Blue });
             }
+            int quantityConfirm = orderRepository.GetOrdersWithStatus(new List<string> { "ORDERED" }).Count();
+            if (quantityConfirm != 0)
+            {
+                series.Slices.Add(new PieSlice("Ordered", quantityConfirm) { Fill = OxyColors.Orange });
+            }
+            int quantityFail = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count();
             if (quantityFail != 0)
             {
                 series.Slices.Add(new PieSlice("Fail", quantityFail) { Fill = OxyColors.Red });
             }
-            if (quantityConfirm != 0)
-            {
-                series.Slices.Add(new PieSlice("Confirm", quantityConfirm) { Fill = OxyColors.Orange });
-            }
-            if (quantityPending != 0)
-            {
-                series.Slices.Add(new PieSlice("Pending", quantityPending) { Fill = OxyColors.Violet });
-            }
             model.Series.Add(series);
-
             pvOrder.Model = model;
+            //draw pie chart 
+            //int quantitySuccess = orderRepository.GetOrdersWithStatus(new List<string> { "SUCCESSFUL" }).Count();
+            //int quantityFail = orderRepository.GetOrdersWithStatus(new List<string> { "FAIL", "CANCELLED" }).Count();
+            //int quantityConfirm = orderRepository.GetOrdersWithStatus(new List<string> { "CONFIRMED" }).Count();
+
+            //var model = new PlotModel { Title = "Percentage of Order Status by Year" };
+
+            //var series = new PieSeries();
+            //if (quantitySuccess != 0)
+            //{
+            //    series.Slices.Add(new PieSlice("Success", quantitySuccess) { Fill = OxyColors.Blue });
+            //}
+            //if (quantityFail != 0)
+            //{
+            //    series.Slices.Add(new PieSlice("Fail", quantityFail) { Fill = OxyColors.Red });
+            //}
+            //if (quantityConfirm != 0)
+            //{
+            //    series.Slices.Add(new PieSlice("Confirm", quantityConfirm) { Fill = OxyColors.Orange });
+            //}
+
+            //model.Series.Add(series);
+
+            //pvOrder.Model = model;
         }
     }
 }
