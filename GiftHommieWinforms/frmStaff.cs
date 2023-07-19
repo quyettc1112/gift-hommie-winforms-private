@@ -30,12 +30,12 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private bool orderTimeDescMode = true;
         private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
-       
+
 
         public frmStaff()
         {
             InitializeComponent();
-            
+
         }
 
         // Hàm này để lấy ID của Product từ DataGrdView
@@ -323,7 +323,7 @@ namespace GiftHommieWinforms
             else
             {
                 GlobalData.AuthenticatedUser = null;
-       
+
 
             }
         }
@@ -881,7 +881,7 @@ namespace GiftHommieWinforms
 
         private void LoadOrderShipping()
         {
-            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && o.Status == "ORDERED" && o.Shipper == null
+            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true
             && o.Name.ToLower().Contains(txtSearchOrder.Text.ToLower())).ToList();
             LoadDataToGridView(order);
 
@@ -1007,9 +1007,9 @@ namespace GiftHommieWinforms
 
         private void frmStaff_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-           
-            
+
+
+
         }
 
 
