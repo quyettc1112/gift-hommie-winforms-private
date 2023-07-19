@@ -49,6 +49,7 @@ namespace GiftHommieWinforms
                 OrderTime = DateTime.Now,
                 Message = txtMessage.Text,
                 Status = DEFAULT_STATUS,
+                ShippingMode = true,
                 //Comment = txtComment.Text,
                 Phone = txtPhone.Text,
             };
