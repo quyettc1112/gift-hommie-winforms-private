@@ -18,7 +18,7 @@ namespace GiftHommieWinforms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            User user = null;           
+            User user = null;
             try
             {
                 if (txtEmail.Text.Length == 0)
@@ -49,7 +49,7 @@ namespace GiftHommieWinforms
                         frmStaff frmStaff = new frmStaff();
                         frmStaff.FormClosed += delegate
                         {
-                            this.Close();
+                             this.Close();
                         };
                         frmStaff.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [Staff Mode]";
                         this.Hide();
@@ -66,7 +66,8 @@ namespace GiftHommieWinforms
                         this.Hide();
                         form.Show();
                     }
-                    else if (user.Role.Equals("SHIPPER")) {
+                    else if (user.Role.Equals("SHIPPER"))
+                    {
                         var form = new frmShipper();
                         form.FormClosed += delegate
                         {
@@ -106,6 +107,11 @@ namespace GiftHommieWinforms
         {
             var frm = new frmRegister();
             frm.ShowDialog();
+        }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 

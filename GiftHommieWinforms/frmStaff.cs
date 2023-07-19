@@ -18,6 +18,9 @@ namespace GiftHommieWinforms
 
     public partial class frmStaff : Form
     {
+        private frmLogin _loginParentForm;
+
+
         private IProductRepository productRepository = new ProductRepository();
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
@@ -27,12 +30,13 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private bool orderTimeDescMode = true;
         private const string DEFAULT_AVATAR = "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg";
+       
+
         public frmStaff()
         {
             InitializeComponent();
-
+            
         }
-
 
         // Hàm này để lấy ID của Product từ DataGrdView
         private int GetSelectedRowIdValue()
@@ -319,6 +323,8 @@ namespace GiftHommieWinforms
             else
             {
                 GlobalData.AuthenticatedUser = null;
+       
+
             }
         }
 
@@ -997,6 +1003,13 @@ namespace GiftHommieWinforms
                 }
 
             }
+        }
+
+        private void frmStaff_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+           
+            
         }
 
 

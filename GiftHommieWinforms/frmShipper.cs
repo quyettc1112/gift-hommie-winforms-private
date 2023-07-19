@@ -33,7 +33,7 @@ namespace GiftHommieWinforms
         public void LoadOrderToDelivery()
         {
             User user = GlobalData.AuthenticatedUser;
-            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && (o.Status == "ORDERED" || o.Status == "DELIVERYING" || o.Status == "FAIL") && o.Shipper == user.Username
+            List<Order> order = orderRepository.GetAll().Where(o => o.ShippingMode == true && (o.Status == "ORDERED" || o.Status == "DELIVERYING" || o.Status == "SUCCESSFUL") && o.Shipper == user.Username
 
             ).ToList();
             LoadDataToGridView(order);
@@ -65,6 +65,38 @@ namespace GiftHommieWinforms
             dgvTakeOrder.Columns["ShipperNavigation"].Visible = false;
             dgvTakeOrder.Columns["User"].Visible = false;
             dgvTakeOrder.Columns["OrderDetails"].Visible = false;
+
+            if (orders.Count() > 0)
+            {
+                Order order = orders.First();
+                LoadProductOrderInfo(order);
+                if (order.Status.Equals("DELIVERYING"))
+                {
+                    button1.BackColor = Color.Green;
+                    label8.Visible = true;
+                    button2.Visible = false;
+                    btnF.Visible = true;
+                    btnSuc.Visible = true;
+
+                }
+                else
+                {
+                    button1.BackColor = Color.LightBlue;
+                    label8.Visible = false;
+
+                    btnF.Visible = false;
+                    btnSuc.Visible = false;
+                }
+                if (order.Status.Equals("FAIL"))
+                {
+                    button1.Visible = false;
+                    button2.Visible = false;
+                    label8.Visible = false;
+                    btnF.Visible = false;
+                    btnSuc.Visible = false;
+
+                }
+            }
         }
 
 
@@ -126,6 +158,11 @@ namespace GiftHommieWinforms
             txtOrderQuantity.DataBindings.Clear();
             lbOrderProductName.DataBindings.Clear();
             pbOrderProductAvatar.DataBindings.Clear();
+
+            txtname.DataBindings.Clear();
+            txtPhone.DataBindings.Clear(); 
+            txtxAddress.DataBindings.Clear();   
+            txtTotal.DataBindings.Clear();
             int tmp = (int)((OrderDetail)bindingSource.Current).ProductId;
 
             Product p = productRepository.Get(tmp);
@@ -157,6 +194,7 @@ namespace GiftHommieWinforms
             txtTotal.Text = Alltotal.ToString();
 
 
+
         }
 
         private void dgvTakeOrder_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -184,7 +222,8 @@ namespace GiftHommieWinforms
                     btnF.Visible = false;
                     btnSuc.Visible = false;
                 }
-                if (order.Status.Equals("FAIL")) {
+                if (order.Status.Equals("SUCCESSFUL"))
+                {
                     button1.Visible = false;
                     button2.Visible = false;
                     label8.Visible = false;
@@ -192,6 +231,18 @@ namespace GiftHommieWinforms
                     btnSuc.Visible = false;
 
                 }
+            }
+            else {
+                button1.Visible = false;
+                button2.Visible = false;
+                label8.Visible = false;
+                btnF.Visible = false;
+                btnSuc.Visible = false;
+
+                txtname.DataBindings.Clear();
+                txtPhone.DataBindings.Clear();
+                txtxAddress.DataBindings.Clear();
+                txtTotal.DataBindings.Clear();
 
 
             }
