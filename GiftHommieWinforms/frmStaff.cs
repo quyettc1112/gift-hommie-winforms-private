@@ -819,7 +819,8 @@ namespace GiftHommieWinforms
                     LoadUserProfile();
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Dupplicated Value");
             }
 
