@@ -20,19 +20,8 @@ namespace GiftHommieWinforms
         private IOrderRepository orderRepository = new OrderRepository();
         private IUserRepository userRepository = new UserRepository();
         private BindingSource bindingSource = null;
-        private BindingSource selectedProductBding;
         private List<Product> selectedProducts = new List<Product>();
-        private User selectedUser = null;        
-        private User passersbyUser = new User()
-        {
-            Username = "passersby",
-            Email = "passersby@gmail.com",
-            Role = "CUSTOMER",
-            Password = "123456",
-            Name = "Passersby",
-            Phone = "0900000000",
-            Enabled = true
-        };
+        private User selectedUser = null;
         public frmCreateOrder()
         {
             InitializeComponent();
@@ -161,7 +150,6 @@ namespace GiftHommieWinforms
         private bool flagLoadSelected = false;
         private void AdditionalSelectedProducts()
         {
-            
             // Add the column to the DataGridView
             if (dgvSelectedProducts.Columns["Total"] == null)
                 dgvSelectedProducts.Columns.Add("Total", "Total");
@@ -171,30 +159,7 @@ namespace GiftHommieWinforms
             foreach (DataGridViewRow row in dgvSelectedProducts.Rows)
             {
                 dgvSelectedProducts.Columns["Total"].ReadOnly = true;
-                int id = (int)row.Cells["Id"].Value;
-                var product = productRepository.Get(id);
                 int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-
-                if (product.Quantity == 0)
-                {
-                    MessageBox.Show($"Sold out '{product.Name}', can not select it to checkout.");
-                    selectedProducts = selectedProducts.Where(p => p.Id != id).ToList();
-                    HomeLoadData();
-                    LoadSelectedProducts();
-                    return;
-                }
-
-                if (quantity == 0)
-                {
-                    MessageBox.Show("Please enter a positive number.");
-                    row.Cells["Quantity"].Value = 1;
-                    quantity = 1;
-                }
-
-                if (quantity > product.Quantity)
-                    quantity = product.Quantity;
-                
-
                 decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
 
                 decimal total = quantity * price;
@@ -211,11 +176,11 @@ namespace GiftHommieWinforms
         {
             if (selectedProducts == null)
                 selectedProducts = new List<Product>();
-            selectedProductBding = new BindingSource();
-            selectedProductBding.DataSource = selectedProducts;
+            BindingSource bding = new BindingSource();
+            bding.DataSource = selectedProducts;
             flagLoadSelected = true;
             dgvSelectedProducts.DataSource = null;
-            dgvSelectedProducts.DataSource = selectedProductBding;           
+            dgvSelectedProducts.DataSource = bding;           
             dgvSelectedProducts.Columns["Id"].Visible = false;
             dgvSelectedProducts.Columns["Avatar"].Visible = false;
             dgvSelectedProducts.Columns["Status"].Visible = false;
@@ -285,11 +250,7 @@ namespace GiftHommieWinforms
 
         private void dgvSelectedProducts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int index = 0;
-            if (selectedProductBding != null)
-                index = selectedProductBding.Position;
             AdditionalSelectedProducts();
-            selectedProductBding.Position = index;
         }
 
         private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
@@ -344,38 +305,11 @@ namespace GiftHommieWinforms
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    string phone = txtOrderBy.Text.Trim();
-                    frmCreateCustomerInCreateOrder frm = new frmCreateCustomerInCreateOrder()
-                    {
-                        InsertOrUpdate = phone.Length == 0,
-                        Repository = userRepository,
-                        Text = "Create new customer",                        
-                    };
-                    if (frm.InsertOrUpdate == false)
-                    {                        
-                        frm.TargetObject = new User()
-                        {
-                            Name = "",
-                            Email = "user" + phone + "@gifthommie.com",
-                            Phone = phone,
-                            Username = "user" + phone,
-                            Address = "",
-                            Enabled = true
-                        };
-                    }
-                    //MessageBox.Show(frm.InsertOrUpdate + "");
-                    var dialogResult = frm.ShowDialog();
-
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        res = true;                       
-                        txtOrderBy.Text = "";
-                        txtOrderBy.Text = frm.TargetObject.Phone;
-                    }
+                    // ...
                 }
                 else
                 {
-                    res = true;                    
+                    res = true;
                 }
             }
 
@@ -400,17 +334,7 @@ namespace GiftHommieWinforms
 
             if (confirmResult == DialogResult.Yes)
                 try
-                {
-                    if (selectedUser == null) {
-                        if (userRepository.Exist(passersbyUser.Username))
-                            selectedUser = userRepository.Get(passersbyUser.Username);
-                        else
-                        {
-                            userRepository.Create(passersbyUser);
-                            selectedUser = userRepository.Get(passersbyUser.Username);
-                        }
-                    }
-
+                {                    
                     Order order = null;
                     if (checkShipping.Checked)
                         order = new Order()
@@ -419,7 +343,6 @@ namespace GiftHommieWinforms
                             Phone = txtPhone.Text,
                             Address = txtAddress.Text,
                             OrderTime = DateTime.Now,
-                            LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
@@ -432,7 +355,6 @@ namespace GiftHommieWinforms
                             Address = "",
                             Comment = "Buy at showroom.",
                             OrderTime = DateTime.Now,
-                            LastUpdatedTime = DateTime.Now,
                             Status = "ORDERED",
                             Username = selectedUser?.Username,
                             ShippingMode = checkShipping.Checked
@@ -507,37 +429,6 @@ namespace GiftHommieWinforms
 
             if (confirmResult == DialogResult.Yes)
                 Close();
-        }
-
-        private void btnNewCustomer_Click(object sender, EventArgs e)
-        {
-            string phone = txtOrderBy.Text.Trim();
-            frmCreateCustomerInCreateOrder frm = new frmCreateCustomerInCreateOrder()
-            {
-                InsertOrUpdate = phone.Length == 0,
-                Repository = userRepository,
-                Text = "Create new customer",
-            };
-            if (frm.InsertOrUpdate == false)
-            {
-                frm.TargetObject = new User()
-                {
-                    Name = "",
-                    Email = "user" + phone + "@gifthommie.com",
-                    Phone = phone,
-                    Username = "user" + phone,
-                    Address = "",
-                    Enabled = true
-                };
-            }
-            //MessageBox.Show(frm.InsertOrUpdate + "");
-            var dialogResult = frm.ShowDialog();
-
-            if (dialogResult == DialogResult.OK)
-            {
-                txtOrderBy.Text = "";
-                txtOrderBy.Text = frm.TargetObject.Phone;
-            }
         }
     }
 }

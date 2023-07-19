@@ -44,7 +44,7 @@ namespace GiftHommieWinforms
             //SET INVISIBLE COLUMN
             foreach (string column in columnNameList)
             {
-                //dgvList.Columns[column].Visible = false;
+                dgvList.Columns[column].Visible = false;
             }
         }
         //================ CUSTOMER AREA =========================

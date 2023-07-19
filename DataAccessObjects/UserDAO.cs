@@ -66,7 +66,7 @@ namespace DataAccessObjects
             return entity;
         }
 
-        public bool Exist(string usernameOrEmailPhone)
+        public bool Exist(string usernameOrEmail)
         {
             User entity = null;
             try
@@ -74,9 +74,8 @@ namespace DataAccessObjects
                 using (var context = new HommieStoreContext())
                 {
                     entity = context.Users.SingleOrDefault(item =>
-                                                                item.Username.ToLower().Equals(usernameOrEmailPhone.ToLower())
-                                                            || item.Email.ToLower().Equals(usernameOrEmailPhone.ToLower())
-                                                            || item.Phone.Equals(usernameOrEmailPhone));
+                                                                item.Username.ToLower().Equals(usernameOrEmail.ToLower())
+                                                            || item.Email.ToLower().Equals(usernameOrEmail.ToLower()));
                 }
             }
             catch (Exception ex)
