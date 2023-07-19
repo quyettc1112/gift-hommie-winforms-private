@@ -27,6 +27,8 @@ namespace DataAccessObjects
             }
         }
 
+
+
         // CRUD
         public List<Category> GetAll()
         {
