@@ -41,10 +41,9 @@
             // 
             // btnReset
             // 
-            btnReset.Location = new System.Drawing.Point(274, 278);
-            btnReset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnReset.Location = new System.Drawing.Point(240, 208);
             btnReset.Name = "btnReset";
-            btnReset.Size = new System.Drawing.Size(86, 30);
+            btnReset.Size = new System.Drawing.Size(75, 22);
             btnReset.TabIndex = 6;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
@@ -52,10 +51,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new System.Drawing.Point(147, 278);
-            btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnLogin.Location = new System.Drawing.Point(129, 208);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new System.Drawing.Size(86, 30);
+            btnLogin.Size = new System.Drawing.Size(75, 22);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -64,46 +62,44 @@
             // lbPassword
             // 
             lbPassword.AutoSize = true;
-            lbPassword.Location = new System.Drawing.Point(115, 168);
+            lbPassword.Location = new System.Drawing.Point(101, 126);
             lbPassword.Name = "lbPassword";
-            lbPassword.Size = new System.Drawing.Size(70, 20);
+            lbPassword.Size = new System.Drawing.Size(57, 15);
             lbPassword.TabIndex = 3;
             lbPassword.Text = "Password";
             // 
             // lbEmail
             // 
             lbEmail.AutoSize = true;
-            lbEmail.Location = new System.Drawing.Point(115, 100);
+            lbEmail.Location = new System.Drawing.Point(101, 75);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new System.Drawing.Size(118, 20);
+            lbEmail.Size = new System.Drawing.Size(94, 15);
             lbEmail.TabIndex = 1;
             lbEmail.Text = "Email/Username";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new System.Drawing.Point(115, 192);
-            txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtPassword.Location = new System.Drawing.Point(101, 144);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new System.Drawing.Size(292, 27);
+            txtPassword.Size = new System.Drawing.Size(256, 23);
             txtPassword.TabIndex = 4;
             txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new System.Drawing.Point(115, 124);
-            txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtEmail.Location = new System.Drawing.Point(101, 93);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new System.Drawing.Size(292, 27);
+            txtEmail.Size = new System.Drawing.Size(256, 23);
             txtEmail.TabIndex = 2;
             // 
             // lbLogin
             // 
             lbLogin.AutoSize = true;
             lbLogin.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbLogin.Location = new System.Drawing.Point(210, 36);
+            lbLogin.Location = new System.Drawing.Point(184, 27);
             lbLogin.Name = "lbLogin";
-            lbLogin.Size = new System.Drawing.Size(103, 46);
+            lbLogin.Size = new System.Drawing.Size(84, 37);
             lbLogin.TabIndex = 0;
             lbLogin.Text = "Login";
             // 
@@ -111,18 +107,18 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            label1.Location = new System.Drawing.Point(115, 245);
+            label1.Location = new System.Drawing.Point(101, 184);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(191, 20);
+            label1.Size = new System.Drawing.Size(153, 15);
             label1.TabIndex = 7;
             label1.Text = "Don't have an account yet? ";
             // 
             // lbRegister
             // 
             lbRegister.AutoSize = true;
-            lbRegister.Location = new System.Drawing.Point(312, 245);
+            lbRegister.Location = new System.Drawing.Point(273, 184);
             lbRegister.Name = "lbRegister";
-            lbRegister.Size = new System.Drawing.Size(95, 20);
+            lbRegister.Size = new System.Drawing.Size(75, 15);
             lbRegister.TabIndex = 8;
             lbRegister.TabStop = true;
             lbRegister.Text = "Register now";
@@ -130,9 +126,9 @@
             // 
             // frmLogin
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(511, 368);
+            ClientSize = new System.Drawing.Size(447, 276);
             Controls.Add(lbRegister);
             Controls.Add(label1);
             Controls.Add(btnReset);
@@ -142,9 +138,11 @@
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
             Controls.Add(lbLogin);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "frmLogin";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Login | Hommie Store";
+            Shown += frmLogin_Shown;
             ResumeLayout(false);
             PerformLayout();
         }
