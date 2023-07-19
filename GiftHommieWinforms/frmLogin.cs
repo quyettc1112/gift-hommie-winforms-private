@@ -38,7 +38,9 @@ namespace GiftHommieWinforms
 
                         frmCustomer.FormClosed += delegate
                         {
-                            this.Close();
+                            txtEmail.Text = "";
+                            txtPassword.Text = "";
+                            this.Show();
                         };
                         this.Hide();
                         frmCustomer.Show();
@@ -49,7 +51,10 @@ namespace GiftHommieWinforms
                         frmStaff frmStaff = new frmStaff();
                         frmStaff.FormClosed += delegate
                         {
-                             this.Close();
+                            txtEmail.Text = "";
+                            txtPassword.Text = "";
+                            this.Show();
+
                         };
                         frmStaff.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [Staff Mode]";
                         this.Hide();
@@ -60,7 +65,9 @@ namespace GiftHommieWinforms
                         var form = new frmAdmin();
                         form.FormClosed += delegate
                         {
-                            this.Close();
+                            txtEmail.Text = "";
+                            txtPassword.Text = "";
+                            this.Show();
                         };
                         form.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [ADMIN Mode]";
                         this.Hide();
@@ -71,7 +78,9 @@ namespace GiftHommieWinforms
                         var form = new frmShipper();
                         form.FormClosed += delegate
                         {
-                            this.Close();
+                            txtEmail.Text = "";
+                            txtPassword.Text = "";
+                            this.Show();
                         };
                         form.Text = "Welcome " + GlobalData.AuthenticatedUser.Name + "! [SHIPPER Mode]";
                         this.Hide();
