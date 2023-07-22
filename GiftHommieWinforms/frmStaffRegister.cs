@@ -47,111 +47,64 @@ namespace GiftHommieWinforms
         private bool CheckCharacterOfPhone(String input)
         {
             string pattern = @"^\d{9,12}$"; // Ký tự chữ cái không phải là số
-            if (Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Please type phone number from 9 to 12");
+            return Regex.IsMatch(input, pattern);
         }
         private bool CheckName(String input)
         {
             string pattern = @"\d"; // Ký tự chữ cái không phải là số
-
-            if (!Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Name cannot contain digit");
+            return Regex.IsMatch(input, pattern);
         }
-        private bool CheckGender(bool male, bool female)
-        {
-            if (!male && !female)
-                throw new Exception("Please check gender");
 
-            return true;
-        }
         private bool CheckCharacter(String input)
         {
             string pattern = "^[a-zA-Z ]+$"; // Ký tự chữ cái không phải là số
-            if (Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Please type phone number from 9 to 12");
+            return Regex.IsMatch(input, pattern);
         }
-        private bool CheckUsername(string input)
-        {
-            if (userRepository.Exist(input))
-                throw new Exception("Username was Exist");
-            if (!char.IsLetter(input[0]))
-                throw new Exception("Wrong format of username");
-            if (input.Length < 5)
-                throw new Exception("Username length equal or more than 5");
-            return true;
-        }
-        private bool CheckEmail(string input)
-        {
-            if (userRepository.Exist(input))
-                throw new Exception("Email was Exist");
-            if (!char.IsLetter(input[0]) || !input.Contains("@") || !input.Contains("."))
-                throw new Exception("Wrong format of email");
 
-            return true;
-        }
-        private bool CheckPassword(string input)
-        {
-            if (input.Length < 5)
-                throw new Exception("Password length equal or more than 5");
-
-            return true;
-        }
         private bool ValidateInputs()
         {
-            try
-            {
-                if (
-                                string.IsNullOrEmpty(txtUserName.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtEmail.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtName.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPhone.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPassword.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPassword.Text.Trim())
-                                )
-                {
-                    MessageBox.Show("Please enter all information field", "Lack of information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-                if (!CheckUsername(txtUserName.Text))
-                {
-                    //MessageBox.Show("Username was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtUserName.Clear();
-                }
-                if (!CheckEmail(txtEmail.Text))
-                {
-                    //MessageBox.Show("Email was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtEmail.Clear();
-                }
-                if (!CheckName(txtName.Text))
-                {
-                    //MessageBox.Show("Name cannot contain digit", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtName.Clear();
-                }
-                if (!CheckGender(rbMale.Checked, rbFemale.Checked))
-                {
+            if (
+                string.IsNullOrEmpty(txtUserName.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text) ||
+                string.IsNullOrEmpty(txtName.Text) ||
+                string.IsNullOrEmpty(txtPhone.Text) ||
+                string.IsNullOrEmpty(txtPassword.Text) ||
+                string.IsNullOrEmpty(txtPassword.Text)
+                )
 
-                }
-                if (!CheckCharacterOfPhone(txtPhone.Text) != true)
-                {
-                    //MessageBox.Show("Please type phone number from 9 to 12", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtPhone.Clear();
-                }
-                if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text).Count() > 0)
-                {
-                    //throw new Exception("Phone was Exist");
-                    throw new Exception("Phone was Exist");
-                    //txtPhone.Clear();
-                }
-            }
-            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Enter information", "Lack of information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (CheckCharacterOfPhone(txtPhone.Text) != true)
+            {
+                MessageBox.Show("Enter from 9 to 12 digit.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
+
+            if (CheckName(txtName.Text) == true)
+            {
+                MessageBox.Show("Name cannot contain number", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Clear();
+                return false;
+            }
+            if (userRepository.Exist(txtUserName.Text))
+            {
+                MessageBox.Show("Username was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUserName.Clear();
+                return false;
+            }
+            if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text) != null)
+            {
+                MessageBox.Show("Phone was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
+            if (userRepository.Exist(txtEmail.Text))
+            {
+                MessageBox.Show("Email was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Clear();
                 return false;
             }
 
@@ -204,6 +157,7 @@ namespace GiftHommieWinforms
         private void ResetInformation()
         {
             txtUserName.Text = string.Empty;
+            txtPassword.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtAddress.Text = string.Empty;
             txtPhone.Text = string.Empty;

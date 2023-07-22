@@ -42,125 +42,75 @@ namespace GiftHommieWinforms
         private bool CheckCharacterOfPhone(String input)
         {
             string pattern = @"^\d{9,12}$"; // Ký tự chữ cái không phải là số
-            if (Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Please type phone number from 9 to 12");
-        }
-        private bool CheckName(String input)
-        {
-            string pattern = @"\d"; // Ký tự chữ cái không phải là số
-
-            if (!Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Name cannot contain digit");
-        }
-        private bool CheckGender(bool male, bool female)
-        {
-            if (!male && !female)
-                throw new Exception("Please check gender");
-
-            return true;
+            return Regex.IsMatch(input, pattern);
         }
         private bool CheckCharacter(String input)
         {
             string pattern = "^[a-zA-Z ]+$"; // Ký tự chữ cái không phải là số
-            if (Regex.IsMatch(input, pattern))
-                return true;
-            else
-                throw new Exception("Please type phone number from 9 to 12");
+            return Regex.IsMatch(input, pattern);
         }
-        private bool CheckUsername(string input)
-        {
-            if (userRepository.Exist(input))
-                throw new Exception("Username was Exist");
-            if (!char.IsLetter(input[0]))
-                throw new Exception("Wrong format of username");
-            if (input.Length < 5)
-                throw new Exception("Username length equal or more than 5");
-            return true;
-        }
-        private bool CheckEmail(string input)
-        {
-            if (userRepository.Exist(input))
-                throw new Exception("Email was Exist");
-            if (!char.IsLetter(input[0]) || !input.Contains("@") || !input.Contains("."))
-                throw new Exception("Wrong format of email");
 
-            return true;
-        }
-        private bool CheckPassword(string input)
+        private bool CheckName(String input)
         {
-            if (input.Length < 5)
-                throw new Exception("Password length equal or more than 5");
-
-            return true;
+            string pattern = @"\d"; // Ký tự chữ cái không phải là số
+            return Regex.IsMatch(input, pattern);
         }
+
         private bool ValidateInputs()
         {
-            try
-            {
-                if (
-                                string.IsNullOrEmpty(txtUserName.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtEmail.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtName.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPhone.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPassword.Text.Trim()) ||
-                                string.IsNullOrEmpty(txtPassword.Text.Trim())
-                                )
-                {
-                    MessageBox.Show("Please enter all information field", "Lack of information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-                if (!CheckUsername(txtUserName.Text))
-                {
-                    //MessageBox.Show("Username was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtUserName.Clear();
-                }
-                if (!CheckEmail(txtEmail.Text))
-                {
-                    //MessageBox.Show("Email was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtEmail.Clear();
-                }
-                if (!CheckName(txtName.Text))
-                {
-                    //MessageBox.Show("Name cannot contain digit", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtName.Clear();
-                }
-                if (!CheckGender(rbMale.Checked, rbFemale.Checked))
-                {
+            if (
+                string.IsNullOrEmpty(txtUserName.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text) ||
+                string.IsNullOrEmpty(txtName.Text) ||
+                string.IsNullOrEmpty(txtPhone.Text)||
+                string.IsNullOrEmpty(txtPassword.Text)||
+                string.IsNullOrEmpty(txtPassword.Text)
+                )
 
-                }
-                if (!CheckCharacterOfPhone(txtPhone.Text) != true)
-                {
-                    //MessageBox.Show("Please type phone number from 9 to 12", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //txtPhone.Clear();
-                }
-                if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text).Count() > 0)
-                {
-                    //throw new Exception("Phone was Exist");
-                    throw new Exception("Phone was Exist");
-                    //txtPhone.Clear();
-                }
-                if (!CheckPassword(txtPassword.Text))
-                {
-                    return false;
-                }
-                if (txtPassword.Text != txtConfirmPassword.Text)
-                {
-                    throw new Exception("Password and confirm password was not similar");
-                }
-            }
-            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy điền đầy đủ thông tin", "Thiếu Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (CheckCharacterOfPhone(txtPhone.Text) != true)
+            {
+                MessageBox.Show("Vui lòng chỉ nhập số trong ô Phone từ 9 đến 12 số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
                 return false;
             }
 
+            if (CheckName(txtName.Text) == true)
+            {
+                MessageBox.Show("Tên không chứa chữ số .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Clear();
+                return false;
+            }
+            if (userRepository.GetAll().Where(u => u.Phone == txtPhone.Text) != null)
+            {
+                MessageBox.Show("Phone was Exist", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhone.Clear();
+                return false;
+            }
+            if (userRepository.Exist(txtUserName.Text))
+            {
+                MessageBox.Show("User Name đã trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUserName.Clear();
+                return false;
+            }
+            if (userRepository.Exist(txtEmail.Text))
+            {
+                MessageBox.Show("Email đã trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Clear();
+                return false;
+            }
+            if (txtPassword.Text != txtConfirmPassword.Text)
+            {
+                MessageBox.Show("Password và confirm password không giống nhau", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Clear();
+                txtConfirmPassword.Clear();
+                return false;
+            }
             return true;
         }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
             byte tmpGender;
